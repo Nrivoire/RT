@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/10 18:07:35 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 18:12:40 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -23,7 +23,13 @@ NAME = rt
 SRC_SUP = editeur
 SRC_PATH = src
 SRC_NAME =  main.c\
-			
+			display.c\
+			events/key_event.c\
+			events/mouse_button_event.c\
+			events/mouse_motion_event.c\
+			draw_tools/draw_circle.c\
+			draw_tools/drawline.c\
+			draw_tools/put_picture.c\
 
 #	Objects
 OBJ_PATH = .objects
