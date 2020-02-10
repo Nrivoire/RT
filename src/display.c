@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 17:55:13 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 18:06:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,9 +41,9 @@ void			display(t_env *v)
 	menu_text(v);
 	while (1)
 	{
+		keyboard_state = SDL_GetKeyboardState(NULL);
 		while (SDL_PollEvent(&e))
 		{
-			keyboard_state = SDL_GetKeyboardState(NULL);
 			if (e.type == SDL_KEYDOWN)
 				key_event(keyboard_state);
 			if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
