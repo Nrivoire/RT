@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/10 18:12:40 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 19:58:33 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -20,16 +20,17 @@ NAME = rt
 
 #	Sources
 # SRC_SUP = {dossiers dans src qui seront separe par une virgule}
-SRC_SUP = editeur
-SRC_PATH = src
-SRC_NAME =  main.c\
-			display.c\
-			events/key_event.c\
-			events/mouse_button_event.c\
-			events/mouse_motion_event.c\
-			draw_tools/draw_circle.c\
-			draw_tools/drawline.c\
-			draw_tools/put_picture.c\
+SRC_SUP		=	editeur
+SRC_PATH	=	src
+
+SRC_NAME	=	main.c
+SRC_NAME	+=	display.c
+SRC_NAME	+=	events/key_event.c
+SRC_NAME	+=	events/mouse_button_event.c
+SRC_NAME	+=	events/mouse_motion_event.c
+SRC_NAME	+=	draw_tools/draw_circle.c
+SRC_NAME	+=	draw_tools/drawline.c
+SRC_NAME	+=	draw_tools/put_picture.c
 
 #	Objects
 OBJ_PATH = .objects
