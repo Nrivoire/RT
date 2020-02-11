@@ -6,12 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 18:06:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/11 15:37:08 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../includes/rt.h"
+#include "../includes/rt.h"
 
 static int		get_hex_rgba(int r, int g, int b, int a)
 {
@@ -38,7 +38,6 @@ void			display(t_env *v)
 	SDL_Event	e;
 	const Uint8	*keyboard_state;
 
-	menu_text(v);
 	while (1)
 	{
 		keyboard_state = SDL_GetKeyboardState(NULL);
@@ -53,7 +52,7 @@ void			display(t_env *v)
 		}
 		if (e.type == SDL_QUIT || key_event(keyboard_state))
 			break ;
-		draw_pro_frame(v, e);
+		//draw_pro_frame(v, e);
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);

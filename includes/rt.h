@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:50:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 17:55:49 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/11 15:51:37 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,14 +18,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL.h"
-# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_surface.h"
-# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_video.h"
-# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_render.h"
-# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_pixels.h"
-# include "../../frameworks/SDL2.framework/Versions/A/Headers/SDL_events.h"
-# include "../../frameworks/SDL2_ttf.framework/Versions/A/Headers/SDL_ttf.h"
-# include "../../frameworks/SDL2_image.framework/Versions/A/Headers/SDL_image.h"
+# include "../SDL_include/SDL.h"
+# include "../SDL_include/SDL_ttf.h"
+# include "../SDL_include/SDL_image.h"
 
 typedef struct		s_start
 {

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   get_pixel.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 17:49:55 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/11 15:52:59 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/03 13:56:43 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/11 15:51:20 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "../../includes/rt.h"
 
-int        main(int argc, char **argv)
+Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 {
-    t_env   *v;
+	int			bpp;
+	Uint8		*p;
 
-    if (!(v = ft_memalloc(sizeof(t_env))))
-		return (0);
-    v->w = 1280;
-    v->h = 720;
-    argc = 1;
-	(void)argv;
-    return (0);
+	bpp = surface->format->BytesPerPixel;
+	p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+	if (bpp == 1)
+		return (*p);
+	else if (bpp == 2)
+		return (*(Uint16 *)p);
+	else if (bpp == 3)
+		return (p[0] | p[1] << 8 | p[2] << 16);
+	else if (bpp == 4)
+		return (*(Uint32 *)p);
+	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/10 19:58:33 by vasalome    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/11 15:52:40 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,8 +19,7 @@
 NAME = rt
 
 #	Sources
-# SRC_SUP = {dossiers dans src qui seront separe par une virgule}
-SRC_SUP		=	editeur
+SRC_SUP = {events,draw_tools}
 SRC_PATH	=	src
 
 SRC_NAME	=	main.c
@@ -31,6 +30,7 @@ SRC_NAME	+=	events/mouse_motion_event.c
 SRC_NAME	+=	draw_tools/draw_circle.c
 SRC_NAME	+=	draw_tools/drawline.c
 SRC_NAME	+=	draw_tools/put_picture.c
+SRC_NAME	+=	draw_tools/get_pixel.c
 
 #	Objects
 OBJ_PATH = .objects
@@ -39,28 +39,28 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 #	Includes
 INC_PATH = includes
-INC_NAME = editeur.h
+INC_NAME = rt.h
 INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
 
 CPPFLAGS = -I $(INC_PATH)
-LDFLAGS = -O3 -lpthread -L libft
+LDFLAGS =  -O3 -flto -ffast-math -march=native -L libft
 LDLIBS = -lft
 
 PWD := $(shell pwd)
 #	SDL
 #SDL = -lft -F /Library/Frameworks/ -L sdl2/2.0.10/lib/ -lSDL2 -L sdl2_image/2.0.5/lib/ -lSDL2_image
 #PATH_TO_SDL = ./
-INC_SDL		=	-I ../frameworks/SDL2.framework/Versions/A/Headers
-INC_SDL		+=	-I ../frameworks/SDL2_ttf.framework/Versions/A/Headers
-INC_SDL		+=	-I ../frameworks/SDL2_image.framework/Versions/A/Headers
-INC_SDL		+=	-I ../frameworks/SDL2_net.framework/Headers
-INC_SDL		+=	-F ../frameworks
-FRAMEWORKSDIR := ../frameworks
+INC_SDL		=	-I ./frameworks/SDL2.framework/Versions/A/Headers
+INC_SDL		+=	-I ./frameworks/SDL2_ttf.framework/Versions/A/Headers
+INC_SDL		+=	-I ./frameworks/SDL2_image.framework/Versions/A/Headers
+INC_SDL		+=	-I ./frameworks/SDL2_net.framework/Headers
+INC_SDL		+=	-F ./frameworks
+FRAMEWORKSDIR := ./frameworks
 SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR)
 
 #	Compiler
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra #-Werror
 
 ################
 ##   COLORS   ##
