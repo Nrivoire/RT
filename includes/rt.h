@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:50:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/11 15:51:37 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/11 20:18:02 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -75,6 +75,7 @@ typedef struct		s_env
     Uint32			*pixels;
     int             w;
     int             h;
+	char			*file;
 }					t_env;
 
 /*
