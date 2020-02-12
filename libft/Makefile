@@ -5,95 +5,221 @@
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
-#    Created: 2018/10/04 11:42:11 by vasalome     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/25 17:14:02 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Created: 2019/03/13 11:56:39 by qpupier      #+#   ##    ##    #+#        #
+#    Updated: 2020/02/12 18:37:40 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-#################
-##  VARIABLES  ##
-#################
-
-#	Libft Makefile path
-LIBFTDIR	=	../libft
-
-#	Sources
-SRC = ft_putchar.c ft_putchar_fd.c\
-	  ft_putstr.c ft_putstr_fd.c ft_strlen.c\
-	  ft_putnbr.c ft_putnbr_fd.c\
-	  ft_strequ.c ft_strnequ.c\
-	  ft_strcmp.c ft_strncmp.c\
-	  ft_strcpy.c ft_strncpy.c\
-	  ft_putendl.c ft_putendl_fd.c\
-	  ft_strcat.c ft_strncat.c ft_strlcat.c\
-	  ft_isalnum.c ft_isalpha.c ft_isdigit.c ft_isascii.c ft_isprint.c\
-	  ft_strchr.c ft_strrchr.c ft_strnchr.c\
-	  ft_memset.c ft_memcmp.c ft_memchr.c ft_memccpy.c ft_memcpy.c ft_memmove.c ft_memdel.c\
-	  ft_toupper.c ft_tolower.c\
-	  ft_atoi.c ft_atoi_base.c ft_itoa.c ft_range.c ft_swap.c\
-	  ft_strstr.c ft_strnstr.c\
-	  ft_bzero.c ft_strdup.c ft_memalloc.c\
-	  ft_strnew.c ft_strdel.c ft_strclr.c ft_strrev.c\
-	  ft_striter.c ft_striteri.c\
-	  ft_strmap.c ft_strmapi.c\
-	  ft_strtrim.c ft_strjoin.c ft_strjoinfree.c ft_strcjoin.c ft_strsub.c ft_strsplit.c\
-	  ft_lstnew.c ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_print_lst.c\
-	  ft_print_bits.c\
-	  ft_strspn.c ft_strcspn.c\
-	  ft_stractrim.c ft_occur.c ft_sqrt.c ft_error.c\
-	  ft_absolu.c\
-	  get_next_line.c\
-
-#	Output
+SRC_PATH = sources
+SRC_NAME = 	display/ft_putchar_fd.c 							\
+			display/ft_putchar.c 								\
+			display/ft_putendl_fd.c 							\
+			display/ft_putendl.c 								\
+			display/ft_putnbr_fd.c 								\
+			display/ft_putnbr.c 								\
+			display/ft_putstr_fd.c 								\
+			display/ft_putstr.c 								\
+			math/cplx/cplx_add.c 								\
+			math/cplx/cplx_average.c 							\
+			math/cplx/cplx_cos.c 								\
+			math/cplx/cplx_cosh.c 								\
+			math/cplx/cplx_discriminant.c 						\
+			math/cplx/cplx_div.c 								\
+			math/cplx/cplx_equ.c 								\
+			math/cplx/cplx_exp.c 								\
+			math/cplx/cplx_ln.c 								\
+			math/cplx/cplx_modul.c 								\
+			math/cplx/cplx_modul_2.c 							\
+			math/cplx/cplx_mult.c 								\
+			math/cplx/cplx_pow.c 								\
+			math/cplx/cplx_remove.c 							\
+			math/cplx/cplx_sin.c 								\
+			math/cplx/cplx_sinh.c 								\
+			math/cplx/cplx_swap.c 								\
+			math/cplx/cplx_to_real.c 							\
+			math/cplx/cplx_turn.c 								\
+			math/cplx/cplx_make.c 								\
+			math/cplx/ft_make_real.c 							\
+			math/cplx/ft_real_to_cplx.c 						\
+			math/geometry/create_2d_line_point_vec.c 			\
+			math/geometry/create_2d_line_points.c 				\
+			math/geometry/create_2d_ray.c 						\
+			math/geometry/inter_2d_line_line.c 					\
+			math/geometry/inter_2d_line_seg.c 					\
+			math/geometry/inter_2d_ray_seg.c 					\
+			math/geometry/point_2d_line_in_seg.c 				\
+			math/geometry/point_line_in_seg.c 					\
+			math/geometry/proj_point.c 							\
+			math/line/line_check.c 								\
+			math/line/line_create.c 							\
+			math/line/line_equal.c 								\
+			math/line/line_half_inter_seg.c 					\
+			math/line/line_init.c 								\
+			math/line/line_inter_line.c 						\
+			math/line/line_inter_seg.c 							\
+			math/line/line_parallel_line_point.c 				\
+			math/line/line_perpendicular_line_point_plane.c 	\
+			math/line/line_point.c 								\
+			math/line/line_vec_dir.c 							\
+			math/line/inter_line_plane.c 						\
+			math/line/inter_seg_plane.c 						\
+			math/matrix/matrix_mult_matrix.c 					\
+			math/matrix/matrix_mult_vec.c 						\
+			math/matrix/matrix_rotation.c 						\
+			math/real/op_real.c 								\
+			math/real/real_norm.c 								\
+			math/real/real_normalize.c 							\
+			math/real/real_oriented_angle.c 					\
+			math/real/real_scale_product.c 						\
+			math/real/real_turn.c 								\
+			math/real/real_arraycpy.c 							\
+			math/sys/sys_solve_1equ_1var_deg1.c 				\
+			math/sys/sys_solve_2equ_2var_deg1.c 				\
+			math/vec/vec_add.c 									\
+			math/vec/vec_array_cpy.c 							\
+			math/vec/vec_check.c 								\
+			math/vec/vec_null.c 								\
+			math/vec/vec_normalize.c 							\
+			math/vec/vec_collinears.c 							\
+			math/vec/vec_create.c 								\
+			math/vec/vec_equal.c 								\
+			math/vec/vec_mult.c 								\
+			math/vec/vec_move.c 								\
+			math/vec/vec_norm.c 								\
+			math/vec/vec_product.c 								\
+			math/vec/vec_sub.c 									\
+			math/vec/vec_extract.c 								\
+			math/vec/vec_rot.c 									\
+			math/ft_abs.c 										\
+			math/ft_average.c 									\
+			math/ft_deg_to_rad.c 								\
+			math/clamp.c 										\
+			math/ft_digit_abs.c 								\
+			math/ft_digit_hex_to_int.c 							\
+			math/ft_max.c 										\
+			math/ft_min.c 										\
+			math/ft_mod.c 										\
+			math/ft_pow.c 										\
+			math/ft_sq.c 										\
+			math/ft_sqrt.c 										\
+			math/float_cmp.c 									\
+			memory/ft_memalloc.c 								\
+			memory/ft_memccpy.c 								\
+			memory/ft_memchr.c 									\
+			memory/ft_memcmp.c 									\
+			memory/ft_memcpy.c 									\
+			memory/ft_memdel.c 									\
+			memory/ft_memmove.c 								\
+			memory/ft_memset.c 									\
+			str/ft_stractrim.c 									\
+			str/ft_strcat.c 									\
+			str/ft_strchr.c 									\
+			str/ft_strclr.c 									\
+			str/ft_strcmp.c 									\
+			str/ft_strcpy.c 									\
+			str/ft_strcspn.c 									\
+			str/ft_strctrim.c 									\
+			str/ft_strdel.c 									\
+			str/ft_strdup.c 									\
+			str/ft_strequ.c 									\
+			str/ft_striter.c 									\
+			str/ft_str_getaocc.c 								\
+			str/ft_count_dstr.c 								\
+			str/ft_striteri.c 									\
+			str/ft_strjoin.c 									\
+			str/ft_strlcat.c 									\
+			str/ft_strlen.c 									\
+			str/ft_strlen_words.c 								\
+			str/ft_strmap.c 									\
+			str/ft_strmap_display.c 							\
+			str/ft_strmapi.c 									\
+			str/ft_strncat.c 									\
+			str/ft_strncdelete.c 								\
+			str/ft_strncmp.c 									\
+			str/ft_strncpy.c 									\
+			str/ft_strnequ.c 									\
+			str/ft_strnew.c 									\
+			str/ft_strnstr.c 									\
+			str/ft_strrchr.c 									\
+			str/ft_strsplit.c 									\
+			str/ft_strstr.c 									\
+			str/ft_str_isnumber.c 								\
+			str/ft_strsub.c 									\
+			str/ft_strtrim.c 									\
+			str/ft_strtrimsplit.c 								\
+			ft_atoi.c 											\
+			ft_atof.c 											\
+			ft_atoi_hexa.c 										\
+			ft_bzero.c 											\
+			ft_count_words.c 									\
+			ft_error.c 											\
+			ft_exit.c 											\
+			ft_find.c 											\
+			ft_ftoa.c 											\
+			ft_intlen.c 										\
+			ft_isalnum.c 										\
+			ft_isalpha.c 										\
+			ft_isascii.c 										\
+			ft_isdigit.c 										\
+			ft_isnumber.c 										\
+			ft_isprint.c 										\
+			ft_itoa.c 											\
+			ft_occur.c 											\
+			ft_splitdel.c 										\
+			ft_swap.c 											\
+			ft_fileexists.c 									\
+			ft_tolower.c 										\
+			ft_toupper.c 										\
+			ft_realloc.c 										\
+			ft_calloc.c 										\
+			get_next_line.c
+SRC_SUP = {display,math,math/line,math/cplx,math/geometry,math/matrix,math/real,math/vec,math/sys,memory,mlx,mlx/colors,mlx/line,str}
+OBJ_PATH = .objects
+INC_PATH = includes
+CPPFLAGS = -I $(INC_PATH)
 NAME = libft.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -O3 -march=native -flto -ffast-math
+OBJ_NAME = $(SRC_NAME:.c=.o)
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-#	Objects
-OBJ = $(SRC:.c=.o)
+ERASE = \033[2K\r
+BLUE = \033[36m
+WHITE = \033[37m
+GREEN = \033[0;32m
+RED = \033[0;31m
+YELLOW = \033[0;33m
+END = \033[0m
 
-#	Includes
-INCLUDE = libft.h
+.PHONY: all, clean, fclean, re
 
-#	Compiler
-CFLAGS = -Wall -Werror -Wextra -I. -c 
-
-################
-##   COLORS   ##
-################
-GREY=$ \x1b[30m
-RED=$ \x1b[31m
-GREEN=$ \x1b[32m
-YELLOW=$ \x1b[33m
-BLUE=$ \x1b[34m
-PINK=$ \x1b[35m
-CYAN=$ \x1b[36m
-WHITE=$ \x1b[37m
-
-# This is a minimal set of ANSI/VT100 color codes
-END=$ \x1b[0m
-BOLD=$ \x1b[1m
-UNDER=$ \x1b[4m
-SUR=$ \x1b[7m
-
-#################
-##  TARGETS    ##
-#################
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ ar ruc $(NAME) $(OBJ)
-	@ ranlib $(NAME)
+	@ar -rc $@ $^
+	@ranlib $@
+	@printf "$(ERASE)$(BLUE)> libft : $(GREEN)Success !$(END)\n"
 
-%.o:%.c libft.h
-	@gcc $(CFLAGS) $< -o $@
-	@printf "\r $(PINK) $(BOLD) [CC] $(END) $(<:.c=)..."
+#mlx:
+#	@make -C ../minilibx_macos
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c includes/libft.h includes/get_next_line.h
+	@mkdir -p $(OBJ_PATH) $(OBJ_PATH)/$(SRC_SUP)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+	@printf "$(ERASE)$(BLUE)> Compilation :$(END) $<"
 
 clean:
-	@ /bin/rm -f $(OBJ)
+	@rm -rf $(OBJ_PATH)
+	@printf "$(BLUE)> Deleted : $(RED)libft/$(OBJ_PATH)$(END)\n"
 
 fclean: clean
-	@ /bin/rm -f $(NAME)
+	@rm -rf $(NAME)
+	@printf "$(BLUE)> Deleted : $(RED)$(NAME)$(END)\n"
+#@make -C ../minilibx_macos clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+norme:
+	@norminette $(SRC) $(INC_PATH)

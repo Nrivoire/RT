@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:02:00 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 14:02:00 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/12 18:34:55 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef EDITEUR_H
 # define EDITEUR_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
@@ -35,14 +35,7 @@ typedef struct		s_draw_circle
 	int				y;
 }					t_draw_circle;
 
-typedef struct		s_vec
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_vec;
-
-typedef struct 		s_ray
+typedef struct		s_ray
 {
 	t_vec			ori;
 	t_vec			dir;
@@ -57,14 +50,6 @@ typedef struct		s_point
 	int				x;
 	int				y;
 }					t_point;
-
-typedef struct		s_rgb
-{
-	int				r;
-	int				g;
-	int				b;
-	int				a;
-}					t_rgb;
 
 typedef struct		s_bressen
 {
@@ -104,7 +89,6 @@ typedef struct		s_env
 */
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_rgb color);
-void				drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
 void				draw_void_circle(t_env *v, int x, int y, int radius);
 void				draw_full_circle(t_env *v, int x, int y, int radius);
 void				put_picture(t_env *v, t_start start, int size, SDL_Surface *sur);

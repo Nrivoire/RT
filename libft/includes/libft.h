@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   libft.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: slopez <slopez@student.le-101.fr>          +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 16:49:53 by qpupier      #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 16:31:04 by slopez      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/12 18:36:58 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,6 @@
 # include <ctype.h>
 # include <math.h>
 # include "get_next_line.h"
-# include "../../minilibx_macos/mlx.h"
 
 # define RED 0xFF0000
 # define GREEN 0x00FF00
