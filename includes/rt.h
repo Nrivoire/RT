@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 17:50:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 13:46:00 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/12 14:02:00 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/12 14:02:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,6 +92,7 @@ typedef struct		s_env
 	int				fov;
 	float			angle_ratio;
 	t_vec			ori;
+	char			*file;
 }					t_env;
 
 /*

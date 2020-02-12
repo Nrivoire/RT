@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 17:49:55 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 13:44:14 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/12 14:02:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,7 @@ int        main(int argc, char **argv)
 
     argc = 1;
 	(void)argv;
+    //argc < 2 && !ft_strcmp(argv[1], "--help") ? usage("") : 0;
     if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
     v->w = 1280;
@@ -44,5 +45,7 @@ int        main(int argc, char **argv)
 	v->fov = 45;
 	init_sdl(v);
 	display(v);
+    v->file = NULL;
+    //check_options(&v, argc, argv);
     return (0);
 }
