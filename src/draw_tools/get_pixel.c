@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/03 13:56:43 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/11 15:51:20 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/11 18:24:20 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,4 +29,5 @@ Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 	else if (bpp == 4)
 		return (*(Uint32 *)p);
 	return (0);
+	//natacha
 }

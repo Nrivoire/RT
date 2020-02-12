@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:50:24 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/11 15:51:37 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/12 13:46:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@
 # include "../SDL_include/SDL.h"
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
+#include "stdio.h"
 
 typedef struct		s_start
 {
@@ -33,6 +34,19 @@ typedef struct		s_draw_circle
 	int				x;
 	int				y;
 }					t_draw_circle;
+
+typedef struct		s_vec
+{
+	float			x;
+	float			y;
+	float			z;
+}					t_vec;
+
+typedef struct 		s_ray
+{
+	t_vec			ori;
+	t_vec			dir;
+}					t_ray;
 
 /*
 ** -----------------------------DRAWLINE---------------------------------
@@ -75,6 +89,9 @@ typedef struct		s_env
     Uint32			*pixels;
     int             w;
     int             h;
+	int				fov;
+	float			angle_ratio;
+	t_vec			ori;
 }					t_env;
 
 /*
@@ -87,6 +104,9 @@ typedef struct		s_env
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_rgb color);
 void				drawline(t_point m1, t_point m2, t_rgb color, t_env *v);
+void				draw_void_circle(t_env *v, int x, int y, int radius);
+void				draw_full_circle(t_env *v, int x, int y, int radius);
+void				put_picture(t_env *v, t_start start, int size, SDL_Surface *sur);
 
 /*
 ** --events--
@@ -97,10 +117,8 @@ void				mouse_motion_event(SDL_Event event, t_env *v);
 int					key_event(const Uint8 *keyboard_state);
 
 /*
-** --draw_form--
+** --rays--
 */
-void				draw_void_circle(t_env *v, int x, int y, int radius);
-void				draw_full_circle(t_env *v, int x, int y, int radius);
-void				put_picture(t_env *v, t_start start, int size, SDL_Surface *sur);
+void				bouclette(t_env *v);
 
 #endif

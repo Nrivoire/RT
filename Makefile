@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/11 15:52:40 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/11 18:26:11 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -31,6 +31,7 @@ SRC_NAME	+=	draw_tools/draw_circle.c
 SRC_NAME	+=	draw_tools/drawline.c
 SRC_NAME	+=	draw_tools/put_picture.c
 SRC_NAME	+=	draw_tools/get_pixel.c
+SRC_NAME	+=	rays.c
 
 #	Objects
 OBJ_PATH = .objects
