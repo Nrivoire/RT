@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 16:49:53 by qpupier      #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 18:36:58 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/12 19:40:47 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -162,6 +162,19 @@ typedef struct		s_inter_seg_plane
 	int		s1;
 	int		s2;
 }					t_inter_seg_plane;
+
+typedef struct		s_sys_sol_1var_deg2
+{
+	float			x1;
+	float			x2;
+}					t_sys_sol_1var_deg2;
+
+typedef struct		s_equ_1var_deg2
+{
+	float			a;
+	float			b;
+	float			c;
+}					t_equ_1var_deg2;
 
 typedef float		t_matrix_3_3[3][3];
 

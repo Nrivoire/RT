@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:02:00 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 18:34:55 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/12 19:20:55 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,20 @@ typedef struct		s_ray
 	t_vec			ori;
 	t_vec			dir;
 }					t_ray;
+
+typedef struct		s_quadratic
+{
+	float			a;
+	float			b;
+	float			c;
+	float			d;
+	float			e;
+	float			f;
+	float			g;
+	float			h;
+	float			i;
+	float			j;
+}					t_quadratic;
 
 /*
 ** -----------------------------DRAWLINE---------------------------------
