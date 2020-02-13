@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/12 14:02:00 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:00:09 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/13 14:13:32 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/13 14:14:19 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -125,5 +125,11 @@ int					key_event(t_env *v, const Uint8 *keyboard_state);
 ** --rays--
 */
 void				bouclette(t_env *v);
+
+/*
+** --usage--
+*/
+void				check_options(t_env *v, int argc, char **argv);
+void				usage(char *error);
 
 #endif
