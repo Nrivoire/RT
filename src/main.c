@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 11:59:15 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 14:04:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,6 +43,9 @@ int        main(int argc, char **argv)
     v->w = 1280;
     v->h = 720;
 	v->fov = 60;
+	v->obj_x = 0;
+	v->obj_y = 0;
+	v->obj_z = 0;
 	init_sdl(v);
 	display(v);
     v->file = NULL;

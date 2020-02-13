@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/11 15:57:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 13:40:08 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 14:13:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,6 +65,20 @@ t_quadratic		make_plan(t_vec v, float d)
 // 	printf("DemiDroite((%f, %f, %f), Vecteur((%f, %f, %f)))\n", ray.ori.x, ray.ori.y, ray.ori.z, ray.dir.x, ray.dir.y, ray.dir.z);
 // }
 
+void					clear_pixels(t_env *v)
+{
+	int			x;
+	int			y;
+
+	y = -1;
+	while (++y <= v->h)
+	{
+		x = -1;
+		while (++x <= v->w)
+			pixel_put(v, x, y, (t_rgb){0, 0, 0, 255});
+	}
+}
+
 void		    		bouclette(t_env *v)
 {
 	int		    		x;
@@ -89,17 +103,10 @@ void		    		bouclette(t_env *v)
 	// ray = create_ray(v, 0, v->h);
 	// print_ray(ray);
 	// exit (1);
+	clear_pixels(v);
 
-	static float 		t = 0;
-	y = -1;
-	while (++y <= v->h)
-	{
-		x = -1;
-		while (++x <= v->w)
-			pixel_put(v, x, y, (t_rgb){0, 0, 0, 255});
-	}
-	sphere = make_sphere((t_vec){0, 0, 0}, 5);
-	plan = make_plan((t_vec){2, -10, 0}, 0.9);
+	sphere = make_sphere((t_vec){v->obj_x, v->obj_y, v->obj_z}, 5);
+	//plan = make_plan((t_vec){2, 0, 0}, -5);
     y = -1;
 	while (++y <= v->h)
 	{
@@ -107,13 +114,10 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray(v, x, y);
-			ray.ori = (t_vec){0, 0, 0};
-            //if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), sphere, &res_equ))
-			//{
-			//	pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
-			//}
-			if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), plan, &res_equ))
+            if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), sphere, &res_equ))
 				pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+			// if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), plan, &res_equ))
+			// 	pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 		}
 	}
 }

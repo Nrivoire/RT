@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:02:00 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 12:32:05 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 14:00:09 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,6 +92,9 @@ typedef struct		s_env
 	float			angle_ratio;
 	t_vec			ori;
 	char			*file;
+	float			obj_x;
+	float			obj_y;
+	float			obj_z;
 }					t_env;
 
 /*
@@ -116,7 +119,7 @@ void				put_picture(t_env *v, t_start start, int size, SDL_Surface *sur);
 void				button_down(SDL_Event e, t_env *v);
 void				mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v);
-int					key_event(const Uint8 *keyboard_state);
+int					key_event(t_env *v, const Uint8 *keyboard_state);
 
 /*
 ** --rays--
