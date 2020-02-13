@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:16:51 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 14:20:58 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,7 +72,7 @@ void			display(t_env *v)
 		}
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
-		draw_pro_frame(v, e);
+		draw_pro_frame(v);
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);
