@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/13 14:19:21 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/13 19:32:38 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -33,7 +33,7 @@ SRC_NAME	+=	draw_tools/get_pixel.c
 SRC_NAME	+=	rays.c
 SRC_NAME	+=	inter_line_quadratic.c
 SRC_NAME	+=	make_obj.c
-SRC_NAME	+=	
+SRC_NAME	+=	usage.c
 
 #	Objects
 OBJ_PATH = .objects

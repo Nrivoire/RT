@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:04:49 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 21:14:17 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ static void		init_sdl(t_env *v)
 {
 	if (SDL_Init(SDL_INIT_VIDEO))
 		ft_error("Couldn't initialize SDL");
-	if (!(v->win = SDL_CreateWindow("editeur", SDL_WINDOWPOS_UNDEFINED,
+	if (!(v->win = SDL_CreateWindow("rt", SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED, v->w, v->h, 0)))
 		ft_error("Could not create the window");
 	if (!(v->ren = SDL_CreateRenderer(v->win, -1, SDL_RENDERER_SOFTWARE)))
@@ -35,9 +35,9 @@ int        main(int argc, char **argv)
 {
     t_env   *v;
 
-    argc = 1;
+    //argc = 1;
 	(void)argv;
-    //argc < 2 && !ft_strcmp(argv[1], "--help") ? usage("") : 0;
+	//argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("") : 0;
     if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
     v->w = 1280;
@@ -46,9 +46,9 @@ int        main(int argc, char **argv)
 	v->obj_x = 0;
 	v->obj_y = 0;
 	v->obj_z = 0;
+	check_options(v, argc, argv);
 	init_sdl(v);
 	display(v);
     v->file = NULL;
-    //check_options(&v, argc, argv);
     return (0);
 }

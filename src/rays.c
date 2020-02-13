@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/11 15:57:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 18:22:45 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 19:21:36 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -129,7 +129,7 @@ void		    		bouclette(t_env *v)
 
 	//sphere = make_sphere((t_vec){v->obj_x, v->obj_y, v->obj_z}, 5);
 	//plan = make_plan((t_vec){2, 0, 0}, -5);
-	cyl = make_cyl((t_vec){v->obj_x, v->obj_y, v->obj_z}, (t_vec){8, 0, 0}, 2);
+	cyl = make_cyl((t_vec){2, 0, 2}, (t_vec){8, 0, 0}, 2);
     y = -1;
 	while (++y <= v->h)
 	{
