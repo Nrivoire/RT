@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 16:49:53 by qpupier      #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 19:40:47 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 12:56:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -279,6 +279,8 @@ int					sys_solve_1equ_1var_deg1(float a, float b, 				\
 					t_sys_sol_1var_deg1 *s);
 int					sys_solve_2equ_2var_deg1(t_equ_2var_deg1 e1, 			\
 					t_equ_2var_deg1 e2, t_sys_sol_2var_deg1 *s);
+int					sys_solve_1equ_1var_deg2(t_equ_1var_deg2 e, 			\
+					t_sys_sol_1var_deg2 *s);
 
 void				xpm_to_img(void *ptr, t_mlx_img *img, char *file);
 

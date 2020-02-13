@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/01/07 15:20:38 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/12 18:35:12 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/13 12:57:03 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -31,6 +31,8 @@ SRC_NAME	+=	draw_tools/draw_circle.c
 SRC_NAME	+=	draw_tools/put_picture.c
 SRC_NAME	+=	draw_tools/get_pixel.c
 SRC_NAME	+=	rays.c
+SRC_NAME	+=	inter_line_quadratic.c
+SRC_NAME	+=	
 
 #	Objects
 OBJ_PATH = .objects
@@ -92,10 +94,10 @@ SUR=$ \x1b[7m
 # empêche le Makefile de confondre un fichier et une règle en cas de même nom
 .PHONY: all clean fclean re sdl
 
-all: libft.a $(NAME)
+all: make_libft $(NAME)
 	@printf "$(BLUE)> $(NAME) : $(YELLOW)Project ready !$(END)\n"
 
-libft.a:
+make_libft:
 	@make -C ./libft/
 
 $(NAME): $(OBJ)

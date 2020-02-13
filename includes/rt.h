@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:02:00 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 19:20:55 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 12:32:05 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,6 +97,9 @@ typedef struct		s_env
 /*
 ** ----------------------------------------------------------------------
 */
+
+int					inter_line_quadratic(t_line l, t_quadratic q,
+					t_sys_sol_1var_deg2 *result);
 
 /*
 ** --draw_tools--

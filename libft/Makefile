@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/03/13 11:56:39 by qpupier      #+#   ##    ##    #+#        #
-#    Updated: 2020/02/12 18:37:40 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/13 12:58:19 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -76,6 +76,7 @@ SRC_NAME = 	display/ft_putchar_fd.c 							\
 			math/real/real_arraycpy.c 							\
 			math/sys/sys_solve_1equ_1var_deg1.c 				\
 			math/sys/sys_solve_2equ_2var_deg1.c 				\
+			math/sys/sys_solve_1equ_1var_deg2.c					\
 			math/vec/vec_add.c 									\
 			math/vec/vec_array_cpy.c 							\
 			math/vec/vec_check.c 								\
