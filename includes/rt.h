@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:02:00 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 12:32:05 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 13:45:11 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -122,5 +122,11 @@ int					key_event(const Uint8 *keyboard_state);
 ** --rays--
 */
 void				bouclette(t_env *v);
+
+/*
+** --usage--
+*/
+void				check_options(t_env *v, int argc, char **argv);
+void				usage(char *error);
 
 #endif

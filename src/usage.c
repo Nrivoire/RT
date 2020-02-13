@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/11 19:11:52 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/11 20:22:14 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 13:44:37 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,6 +46,6 @@ void    check_options(t_env *v, int argc, char **argv)
     }
     v->file == NULL ? usage("") : 0;
     // check if the file is good ? 0 : usage("bad file");
-    (fd = open(v->file, O_RDWR)) == -1 ? usage("bad file") : 0;
-    close(fd) == -1 ? usage("can't close fd") : 0;
+    (fd = open(v->file, O_RDWR)) == -1 ? ft_error("bad file") : 0;
+    close(fd) == -1 ? ft_error("can't close fd") : 0;
 }
