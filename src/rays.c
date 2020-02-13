@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/11 15:57:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:13:00 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 14:19:50 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,24 +23,6 @@ t_ray		create_ray(t_env *v, int x, int y)
 	ray.ori = (t_vec){0, 0, 50};
 	ray.dir = matrix_mult_vec(rot, (t_vec){0, 0, 1});
 	return (ray);
-}
-
-t_quadratic		make_sphere(t_vec center, float radius)
-{
-	t_quadratic	res;
-
-	res.a = 1;
-	res.b = 1;
-	res.c = 1;
-	res.d = 0;
-	res.e = 0;
-	res.f = 0;
-	res.g = -2 * center.x;
-	res.h = -2 * center.y;
-	res.i = -2 * center.z;
-	res.j = center.x * center.x + center.y * center.y + center.z * center.z
-			- radius * radius;
-	return (res);
 }
 
 t_quadratic		make_plan(t_vec v, float d)
@@ -64,20 +46,6 @@ t_quadratic		make_plan(t_vec v, float d)
 // {
 // 	printf("DemiDroite((%f, %f, %f), Vecteur((%f, %f, %f)))\n", ray.ori.x, ray.ori.y, ray.ori.z, ray.dir.x, ray.dir.y, ray.dir.z);
 // }
-
-void					clear_pixels(t_env *v)
-{
-	int			x;
-	int			y;
-
-	y = -1;
-	while (++y <= v->h)
-	{
-		x = -1;
-		while (++x <= v->w)
-			pixel_put(v, x, y, (t_rgb){0, 0, 0, 255});
-	}
-}
 
 void		    		bouclette(t_env *v)
 {
@@ -103,7 +71,6 @@ void		    		bouclette(t_env *v)
 	// ray = create_ray(v, 0, v->h);
 	// print_ray(ray);
 	// exit (1);
-	clear_pixels(v);
 
 	sphere = make_sphere((t_vec){v->obj_x, v->obj_y, v->obj_z}, 5);
 	//plan = make_plan((t_vec){2, 0, 0}, -5);

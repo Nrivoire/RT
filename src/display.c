@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 13:49:50 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 14:16:51 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,6 +33,26 @@ static void		quit(t_env *v)
 	TTF_Quit();
 }
 
+void			clear_pixels(t_env *v)
+{
+	int			x;
+	int			y;
+
+	y = -1;
+	while (++y <= v->h)
+	{
+		x = -1;
+		while (++x <= v->w)
+			pixel_put(v, x, y, (t_rgb){0, 0, 0, 255});
+	}
+}
+
+void			draw_pro_frame(t_env *v)
+{
+	clear_pixels(v);
+	bouclette(v);
+}
+
 void			display(t_env *v)
 {
 	SDL_Event	e;
@@ -52,8 +72,7 @@ void			display(t_env *v)
 		}
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
-		bouclette(v);
-		//draw_pro_frame(v, e);
+		draw_pro_frame(v, e);
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);

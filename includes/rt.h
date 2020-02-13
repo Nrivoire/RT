@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:13:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:14:19 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 14:18:20 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -120,6 +120,11 @@ void				button_down(SDL_Event e, t_env *v);
 void				mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
+
+/*
+** --form--
+*/
+t_quadratic			make_sphere(t_vec center, float radius);
 
 /*
 ** --rays--
