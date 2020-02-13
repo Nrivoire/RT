@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rays.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/11 15:57:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:19:50 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/13 18:22:45 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,60 @@ t_quadratic		make_plan(t_vec v, float d)
 	return (res);
 }
 
+// t_quadratic		make_cyl(t_vec p1, t_vec p2, float radius)
+// {
+// 	t_quadratic	res;
+// 	float		sc_p1_n;
+// 	t_vec   n;
+
+	
+// 	n = vec_normalize(vec_sub(p2, p1));
+// 	sc_p1_n = vec_scale_product(p1, n);
+
+// 	res.a = 1 - ft_sq(n.x);
+// 	res.b = 1 - ft_sq(n.y);
+// 	res.c = 1 - ft_sq(n.z);
+// 	res.d = -2 * n.x * n.y;
+// 	res.e = -2 * n.x * n.z;
+// 	res.f = -2 * n.y * n.z;
+// 	res.g = n.x * (2 * sc_p1_n - 1) - 2 * p1.x;
+// 	res.h = n.y * (2 * sc_p1_n - 1) - 2 * p1.y;
+// 	res.i = n.z * (2 * sc_p1_n - 1) - 2 * p1.z;
+// 	res.j = -ft_sq(sc_p1_n) - ft_sq(radius) + vec_scale_product(p1, p1);
+
+// 	printf("%.15f * x^2 + %.15f * y^2 + %.15f * z^2 + %.15f * x * y + %.15f * x * z + %.15f * y * z + %.15f * x + %.15f * y + %.15f * z + %.15f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+
+
+// 	return (res);
+// }
+
+t_quadratic		make_cyl(t_vec p1, t_vec p2, float radius)
+{
+	t_quadratic	res;
+	float		sc_p1_n;
+	t_vec   n;
+
+	
+	n = vec_normalize(vec_sub(p2, p1));
+	sc_p1_n = vec_scale_product(p1, n);
+
+	res.a = 1;
+	res.b = 1;
+	res.c = 1;
+	res.d = -1;
+	res.e = -1;
+	res.f = -1;
+	res.g = 0;
+	res.h = 0;
+	res.i = 0;
+	res.j = -25;
+
+	//printf("%.15f * x^2 + %.15f * y^2 + %.15f * z^2 + %.15f * x * y + %.15f * x * z + %.15f * y * z + %.15f * x + %.15f * y + %.15f * z + %.15f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+
+
+	return (res);
+}
+
 // void					print_ray(t_ray ray)
 // {
 // 	printf("DemiDroite((%f, %f, %f), Vecteur((%f, %f, %f)))\n", ray.ori.x, ray.ori.y, ray.ori.z, ray.dir.x, ray.dir.y, ray.dir.z);
@@ -54,6 +108,7 @@ void		    		bouclette(t_env *v)
 	t_ray	    		ray;
     t_quadratic 		sphere;
 	t_quadratic 		plan;
+	t_quadratic 		cyl;
 	t_sys_sol_1var_deg2	res_equ;
 
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
@@ -72,8 +127,9 @@ void		    		bouclette(t_env *v)
 	// print_ray(ray);
 	// exit (1);
 
-	sphere = make_sphere((t_vec){v->obj_x, v->obj_y, v->obj_z}, 5);
+	//sphere = make_sphere((t_vec){v->obj_x, v->obj_y, v->obj_z}, 5);
 	//plan = make_plan((t_vec){2, 0, 0}, -5);
+	cyl = make_cyl((t_vec){v->obj_x, v->obj_y, v->obj_z}, (t_vec){8, 0, 0}, 2);
     y = -1;
 	while (++y <= v->h)
 	{
@@ -81,10 +137,12 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray(v, x, y);
-            if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), sphere, &res_equ))
-				pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+            // if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), sphere, &res_equ))
+			// 	pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 			// if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), plan, &res_equ))
 			// 	pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+			if (inter_line_quadratic(line_create_point_vec(ray.ori, ray.dir), cyl, &res_equ))
+				pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 		}
 	}
 }
