@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/11 15:57:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 18:18:51 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/14 19:04:07 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,6 @@ t_ray		create_ray(t_env *v, int x, int y)
 // void					print_ray(t_ray ray)
 // {
 // 	printf("DemiDroite((%f, %f, %f), Vecteur((%f, %f, %f)))\n", ray.ori.x, ray.ori.y, ray.ori.z, ray.dir.x, ray.dir.y, ray.dir.z);
-
 	// ray = create_ray(v, 0, 0);
 	// print_ray(ray);
 	// ray = create_ray(v, v->w, 0);
@@ -114,9 +113,9 @@ void		    		bouclette(t_env *v)
 	//sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 5);
 	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});
 	res = cylindre;
-	printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
-	return ;
-	y = -1;
+	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+	//return ;
+    y = -1;
 	while (++y <= v->h)
 	{
 		x = -1;

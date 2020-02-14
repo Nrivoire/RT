@@ -1,0 +1,15 @@
+{
+  object:
+    type: SPHERE,
+    radius: 2.0,
+    pos:(x:0.0 y:0.0 z:5.0),
+    material:[
+      color:(255, 130, 100), #ou color: 0xFFFFFF,
+      reflect:0.0
+      refract:0.0
+      transparency:0.0
+    ]
+};
+
+@object:
+  type: etc....

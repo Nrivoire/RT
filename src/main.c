@@ -3,10 +3,14 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2020/02/14 18:19:49 by nrivoire    ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2020/02/14 17:11:44 by vasalome    ###    #+. /#+    ###.fr     */
+>>>>>>> e401ed4312fd0430001a7025dcfd9fbbe0aedfb8
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +21,7 @@ static void		init_sdl(t_env *v)
 {
 	if (SDL_Init(SDL_INIT_VIDEO))
 		ft_error("Couldn't initialize SDL");
-	if (!(v->win = SDL_CreateWindow("editeur", SDL_WINDOWPOS_UNDEFINED,
+	if (!(v->win = SDL_CreateWindow("rt", SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED, v->w, v->h, 0)))
 		ft_error("Could not create the window");
 	if (!(v->ren = SDL_CreateRenderer(v->win, -1, SDL_RENDERER_SOFTWARE)))
@@ -35,14 +39,15 @@ int        main(int argc, char **argv)
 {
     t_env   *v;
 
-    argc = 1;
+    //argc = 1;
 	(void)argv;
-    //argc < 2 && !ft_strcmp(argv[1], "--help") ? usage("") : 0;
+	//argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("") : 0;
     if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
     v->w = 1280;
     v->h = 720;
 	v->fov = 60;
+<<<<<<< HEAD
 	v->obj.x = 2;
 	v->obj.y = 3;
 	v->obj.z = 1;
@@ -53,9 +58,14 @@ int        main(int argc, char **argv)
 	v->p.ori.y = 0;
 	v->p.ori.z = 50;
 
+=======
+	v->obj_x = 0;
+	v->obj_y = 0;
+	v->obj_z = 0;
+	check_options(v, argc, argv);
+>>>>>>> e401ed4312fd0430001a7025dcfd9fbbe0aedfb8
 	init_sdl(v);
 	display(v);
     v->file = NULL;
-    //check_options(&v, argc, argv);
     return (0);
 }

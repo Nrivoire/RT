@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/13 14:13:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 15:30:28 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/14 19:04:28 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/14 19:04:29 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,6 +71,14 @@ typedef struct		s_point
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
+
+typedef struct		s_file
+{
+	int				fd;
+	char			*line;
+	int				i;
+	int				arg;
+}					t_file;
 
 typedef struct		s_env
 {
