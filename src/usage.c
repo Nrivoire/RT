@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/11 19:11:52 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 21:15:13 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 17:11:17 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,6 @@ void    usage(char *error)
 void    check_options(t_env *v, int argc, char **argv)
 {
     int     i;
-    int     fd;
 
     i = 0;
     while (++i < argc)
@@ -47,8 +46,6 @@ void    check_options(t_env *v, int argc, char **argv)
             i + 1 < argc ? v->file = ft_strdup(argv[i + 1]) : 0;
         }
     }
-    //ft_strcmp(v->file, "") ? usage("") : 0;
-    // check if the file is good ? 0 : ft_error("Bad file");
-    //(fd = open(v->file, O_RDWR)) == -1 ? ft_error("Bad file") : 0;
-    //close(fd) == -1 ? ft_error("Can't close fd") : 0;
+    //!ft_strcmp(v->file, "") ? v->file = "./scenes/default.yml" : 0;
+    //parser_file(v);
 }

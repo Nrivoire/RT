@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:13:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:18:20 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 16:17:40 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,6 +78,14 @@ typedef struct		s_bressen
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
+
+typedef struct		s_file
+{
+	int				fd;
+	char			*line;
+	int				i;
+	int				arg;
+}					t_file;
 
 typedef struct		s_env
 {
