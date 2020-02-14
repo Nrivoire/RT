@@ -6,12 +6,13 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 12:29:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 12:30:55 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 15:20:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int		sys_solve_1equ_1var_deg2(t_equ_1var_deg2 e, t_sys_sol_1var_deg2 *s)
 {

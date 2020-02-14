@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:13:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:18:20 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 15:30:28 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,12 +29,6 @@ typedef struct		s_start
 	int				y;
 }					t_start;
 
-typedef struct		s_draw_circle
-{
-	int				x;
-	int				y;
-}					t_draw_circle;
-
 typedef struct		s_ray
 {
 	t_vec			ori;
@@ -55,25 +49,24 @@ typedef struct		s_quadratic
 	float			j;
 }					t_quadratic;
 
-/*
-** -----------------------------DRAWLINE---------------------------------
-*/
+typedef struct		s_obj
+{
+	float			x;
+	float			y;
+	float			z;
+}					t_obj;
+
+typedef struct		s_parsing
+{
+	t_vec			ori;
+}					t_parsing;
 
 typedef struct		s_point
 {
-	int				x;
-	int				y;
+	float	x;
+	float	y;
+	float	z;
 }					t_point;
-
-typedef struct		s_bressen
-{
-	int				dx;
-	int				dy;
-	int				sx;
-	int				sy;
-	int				err;
-	int				e2;
-}					t_bressen;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
@@ -84,7 +77,6 @@ typedef struct		s_env
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	SDL_Texture		*tex;
-	t_draw_circle	center;
     Uint32			*pixels;
     int             w;
     int             h;
@@ -92,9 +84,9 @@ typedef struct		s_env
 	float			angle_ratio;
 	t_vec			ori;
 	char			*file;
-	float			obj_x;
-	float			obj_y;
-	float			obj_z;
+	t_obj			obj;
+	int				button_left;
+	t_parsing		p;
 }					t_env;
 
 /*
@@ -109,8 +101,6 @@ int					inter_line_quadratic(t_line l, t_quadratic q,
 */
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_rgb color);
-void				draw_void_circle(t_env *v, int x, int y, int radius);
-void				draw_full_circle(t_env *v, int x, int y, int radius);
 void				put_picture(t_env *v, t_start start, int size, SDL_Surface *sur);
 
 /*
@@ -125,6 +115,7 @@ int					key_event(t_env *v, const Uint8 *keyboard_state);
 ** --form--
 */
 t_quadratic			make_sphere(t_vec center, float radius);
+t_quadratic			make_plan(t_point a, t_point b, t_point c);
 
 /*
 ** --rays--

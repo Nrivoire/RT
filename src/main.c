@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:04:49 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 18:19:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,9 +43,16 @@ int        main(int argc, char **argv)
     v->w = 1280;
     v->h = 720;
 	v->fov = 60;
-	v->obj_x = 0;
-	v->obj_y = 0;
-	v->obj_z = 0;
+	v->obj.x = 2;
+	v->obj.y = 3;
+	v->obj.z = 1;
+	v->button_left = 0;
+
+	/* -- a changer par les valeurs prises dans le parsing */
+	v->p.ori.x = 0;
+	v->p.ori.y = 0;
+	v->p.ori.z = 50;
+
 	init_sdl(v);
 	display(v);
     v->file = NULL;
