@@ -68,17 +68,62 @@ typedef struct		s_point
 	float	z;
 }					t_point;
 
-/*
-** -----------------------------ENVIRONNEMENT----------------------------
-*/
+typedef struct		s_color
+{
+	int				r;
+	int				g;
+	int				b;
+}					t_color;
+
+typedef struct		s_scene
+{
+	float			amb_light;
+	// add autre params
+}					t_scene;
+
+typedef struct		s_camera
+{
+	t_vec			pos;
+	t_vec			dir;
+	int				fov;
+}					t_camera;
+
+typedef struct		s_light
+{
+	// add autre params
+}					t_light;
+
+typedef struct		s_object
+{
+	int				*type;
+	float			radius;
+	t_vec			pos;
+	t_vec			dir;
+	int				r;
+	int				g;
+	int				b;
+	float			reflect;
+	float			refract;
+	float			transparency;
+	float			absorbtion;
+	float			ambient;
+	float			diffuse;
+	float			specular;
+	float			shininess;
+	char			*texture;
+}					t_object;
 
 typedef struct		s_file
 {
 	int				fd;
 	char			*line;
-	int				i;
-	int				arg;
+	int				lg_n;
+	int				ob_n;
 }					t_file;
+
+/*
+** -----------------------------ENVIRONNEMENT----------------------------
+*/
 
 typedef struct		s_env
 {
@@ -95,6 +140,12 @@ typedef struct		s_env
 	t_obj			obj;
 	int				button_left;
 	t_parsing		p;
+	t_scene			sc;
+	t_camera		cam;
+	t_light			lg;
+	t_object		ob[2];
+	t_color			p_col;
+	t_point			p_xyz;
 }					t_env;
 
 /*
@@ -135,5 +186,18 @@ void				bouclette(t_env *v);
 */
 void				check_options(t_env *v, int argc, char **argv);
 void				usage(char *error);
+
+
+
+int		parser_file(t_env *v);
+void	parse_scene(t_env *v, t_file *file);
+void	parse_cam(t_env *v, t_file *file);
+void	parse_light(t_env *v, t_file *file);
+void	parse_obj(t_env *v, t_file *file);
+
+float	parse_value(char const *s);
+char	*ft_strtok(char *s, char const *delim);
+void	parse_color(char *s, t_env *v);
+void	parse_xyz(char *s, t_env *v);
 
 #endif

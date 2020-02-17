@@ -1,15 +1,49 @@
-{
-  object:
-    type: SPHERE,
-    radius: 2.0,
-    pos:(x:0.0 y:0.0 z:5.0),
-    material:[
-      color:(255, 130, 100), #ou color: 0xFFFFFF,
-      reflect:0.0
-      refract:0.0
-      transparency:0.0
-    ]
-};
+scene{
+  ambient-light= 0
+}
 
-@object:
-  type: etc....
+camera{
+  pos= {0, 0, 5}
+  dir= {0, 0, 1}
+  fov= 80
+}
+
+light{
+  type= POINT
+  pos= {10, -4, 10}
+  intensity= 1.5
+}
+
+object{
+  type= SPHERE
+  radius= 2.0
+  pos= {0, 0, 5}
+  dir= {0, 0, 1}
+  color= {255, 130, 100}
+  reflect= -1
+  refract= 1
+  transparency= 1
+  absorbtion= 2
+  ambient= 3
+  diffuse= 4
+  specular= 5
+  shininess= 6
+  texture= ""
+}
+
+object{
+  type= CONE
+  radius= 1.5
+  pos= {4, 4, 5}
+  dir= {0, 0, 1}
+  color= {255, 130, 100}
+  reflect= 0
+  refract= 0
+  transparency= 0
+  absorbtion= 0
+  ambient= 0
+  diffuse= 0
+  specular= 0
+  shininess= 0
+  texture= ""
+}

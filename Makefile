@@ -19,7 +19,7 @@
 NAME = rt
 
 #	Sources
-SRC_SUP = {events,draw_tools}
+SRC_SUP = {events,draw_tools,parser}
 SRC_PATH	=	src
 
 SRC_NAME	=	main.c
@@ -33,6 +33,10 @@ SRC_NAME	+=	rays.c
 SRC_NAME	+=	inter_line_quadratic.c
 SRC_NAME	+=	make_obj.c
 SRC_NAME	+=	usage.c
+SRC_NAME	+=	parser/parser.c
+SRC_NAME	+=	parser/parser_block.c
+SRC_NAME	+=	parser/parser_utils.c
+SRC_NAME	+=	parser/parser_color.c
 
 #	Objects
 OBJ_PATH = .objects

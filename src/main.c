@@ -6,11 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
-<<<<<<< HEAD
 /*   Updated: 2020/02/14 18:19:49 by nrivoire    ###    #+. /#+    ###.fr     */
-=======
-/*   Updated: 2020/02/14 17:11:44 by vasalome    ###    #+. /#+    ###.fr     */
->>>>>>> e401ed4312fd0430001a7025dcfd9fbbe0aedfb8
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +43,7 @@ int        main(int argc, char **argv)
     v->w = 1280;
     v->h = 720;
 	v->fov = 60;
-<<<<<<< HEAD
+	
 	v->obj.x = 2;
 	v->obj.y = 3;
 	v->obj.z = 1;
@@ -58,14 +54,9 @@ int        main(int argc, char **argv)
 	v->p.ori.y = 0;
 	v->p.ori.z = 50;
 
-=======
-	v->obj_x = 0;
-	v->obj_y = 0;
-	v->obj_z = 0;
 	check_options(v, argc, argv);
->>>>>>> e401ed4312fd0430001a7025dcfd9fbbe0aedfb8
+	//parser_file(v);
 	init_sdl(v);
 	display(v);
-    v->file = NULL;
     return (0);
 }

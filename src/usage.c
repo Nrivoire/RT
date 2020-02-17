@@ -30,6 +30,7 @@ void    check_options(t_env *v, int argc, char **argv)
     int     i;
 
     i = 0;
+    v->file = NULL;
     while (++i < argc)
     {
         !ft_strcmp(argv[i], "--help") ? usage("") : 0;
@@ -46,6 +47,5 @@ void    check_options(t_env *v, int argc, char **argv)
             i + 1 < argc ? v->file = ft_strdup(argv[i + 1]) : 0;
         }
     }
-    //!ft_strcmp(v->file, "") ? v->file = "./scenes/default.yml" : 0;
-    //parser_file(v);
+    v->file == NULL ? v->file = ft_strdup("./scene/first.test") : 0;
 }
