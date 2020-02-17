@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/14 19:04:19 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/17 19:06:39 by vasalome    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -66,7 +66,11 @@ SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL
 
 #	Compiler
 CC = clang
-CFLAGS = -Wall -Wextra #-Werror
+CFLAGS = -Wall -Wextra #-Werror -g
+#CFLAGS +=	-Wunused-command-line-argument
+#CFLAGS +=	-Wno-error
+#CFLAGS +=	--cflags --glibs
+#CFLAGS +=	-ggdb -g -fsanitize=address
 
 ################
 ##   COLORS   ##
@@ -112,7 +116,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	@mkdir -p $(OBJ_PATH)
 	@mkdir -p $(OBJ_PATH)/$(SRC_SUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -o $@ -c $<
-	@printf "\r$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=)..."
+	@printf "\r$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).........."
 
 clean:
 	@make -C libft clean

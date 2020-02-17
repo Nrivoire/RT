@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 15:09:04 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 17:17:10 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/17 19:09:12 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,14 +20,14 @@ static void     read_file(t_env *v, t_file *file)
     while (get_next_line(file->fd, &file->line) > 0)
     {
         tmp = ft_strdup(file->line);
-        if (!(ft_strncmp(tmp, "scene{", 6)))
-            parse_scene(v, file);
+        // if (!(ft_strncmp(tmp, "scene{", 6)))
+        //     parse_scene(v, file);
         if (!(ft_strncmp(tmp, "object{", 7)))
             parse_obj(v, file);
-        if (!(ft_strncmp(tmp, "camera{", 7)))
-            parse_cam(v, file);
-        if (!(ft_strncmp(tmp, "light{", 6)))
-            parse_light(v, file);
+        // if (!(ft_strncmp(tmp, "camera{", 7)))
+        //     parse_cam(v, file);
+        // if (!(ft_strncmp(tmp, "light{", 6)))
+        //     parse_light(v, file);
         ft_strdel(&file->line);
         ft_strdel(&tmp);
     }

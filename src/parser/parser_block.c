@@ -7,7 +7,7 @@ void	parse_scene(t_env *v, t_file *file)
     while (get_next_line(file->fd, &file->line) > 0 && ft_strncmp(file->line, "}", 1) != 0)
     {
         tmp = ft_strdup(file->line);
-        !ft_strncmp(tmp, "  ambient-light=", 16) ? v->sc.amb_light = parse_value(tmp) : 0;
+        !ft_strncmp(tmp, "\tambient-light=", 15) ? v->sc.amb_light = parse_value(tmp) : 0;
         ft_strdel(&file->line);
         ft_strdel(&tmp);
     }
@@ -20,21 +20,21 @@ void	parse_cam(t_env *v, t_file *file)
     while (get_next_line(file->fd, &file->line) > 0 && ft_strncmp(file->line, "}", 1) != 0)
     {
         tmp = ft_strdup(file->line);
-        if (ft_strncmp(tmp, "  pos=", 6))
-        {
-            parse_xyz(tmp, v);
-            printf("x %f\n", v->p_xyz.x);
-            printf("y %f\n", v->p_xyz.y);
-            printf("z %f\n", v->p_xyz.z);
-        }
-        if (ft_strncmp(tmp, "  dir=", 6))
-        {
-            parse_xyz(tmp, v);
-            printf("x %f\n", v->p_xyz.x);
-            printf("y %f\n", v->p_xyz.y);
-            printf("z %f\n", v->p_xyz.z);
-        }
-        !ft_strncmp(tmp, "  fov=", 6) ? v->cam.fov = parse_value(tmp) : 0;
+        // if (!ft_strncmp(tmp, "\tpos=", 5))
+        // {
+        //     parse_xyz(tmp, v);
+        //     printf("\ndir x %f\n", v->p_xyz.x);
+        //     printf("dir y %f\n", v->p_xyz.y);
+        //     printf("dir z %f\n\n", v->p_xyz.z);
+        // }
+        // if (!ft_strncmp(tmp, "\tdir=", 5))
+        // {
+        //     parse_xyz(tmp, v);
+        //     printf("\ndir x %f\n", v->p_xyz.x);
+        //     printf("dir y %f\n", v->p_xyz.y);
+        //     printf("dir z %f\n\n", v->p_xyz.z);
+        // }
+        !ft_strncmp(tmp, "\tfov=", 5) ? v->cam.fov = parse_value(tmp) : 0;
         ft_strdel(&file->line);
         ft_strdel(&tmp);
     }
@@ -47,20 +47,20 @@ void	parse_light(t_env *v, t_file *file)
     while (get_next_line(file->fd, &file->line) > 0 && ft_strncmp(file->line, "}", 1) != 0)
     {
         tmp = ft_strdup(file->line);
-        if (!ft_strncmp(tmp, "  type=", 7))
-        {
-            ft_strstr(tmp, "POINT") ? printf("POINT ICI\n") : 0;
-            ft_strstr(tmp, "DIRECTIONAL") ? printf("DIRECTIONAL ICI\n") : 0;
-            ft_strstr(tmp, "SPOT") ? printf("SPO ICI\n") : 0;
-        }
-        if (ft_strncmp(tmp, "  pos=", 6))
-        {
-            parse_xyz(tmp, v);
-            printf("x %f\n", v->p_xyz.x);
-            printf("y %f\n", v->p_xyz.y);
-            printf("z %f\n", v->p_xyz.z);
-        }
-        !ft_strncmp(tmp, "  intensity=", 12) ? printf("'%f'\n", parse_value(tmp)) : 0;
+        // if (!ft_strncmp(tmp, "\ttype=", 6))
+        // {
+        //     ft_strstr(tmp, "POINT") ? printf("POINT ICI\n") : 0;
+        //     ft_strstr(tmp, "DIRECTIONAL") ? printf("DIRECTIONAL ICI\n") : 0;
+        //     ft_strstr(tmp, "SPOT") ? printf("SPO ICI\n") : 0;
+        // }
+        // if (!ft_strncmp(tmp, "\tpos=", 5))
+        // {
+        //     parse_xyz(tmp, v);
+        //     printf("\ndir x %f\n", v->p_xyz.x);
+        //     printf("dir y %f\n", v->p_xyz.y);
+        //     printf("dir z %f\n\n", v->p_xyz.z);
+        // }
+        !ft_strncmp(tmp, "\tintensity=", 11) ? printf("'%f'\n", parse_value(tmp)) : 0;
         ft_strdel(&file->line);
         ft_strdel(&tmp);
     }
@@ -69,22 +69,22 @@ void	parse_light(t_env *v, t_file *file)
 
 void    parse_material(t_env *v, char *tmp)
 {
-    if (!ft_strncmp(tmp, "  color=", 8))
+    if (!ft_strncmp(tmp, "\tcolor=", 7))
     {
         parse_color(tmp, v);
-        printf("col r %d\n", v->p_col.r);
+        printf("\ncol r %d\n", v->p_col.r);
         printf("col g %d\n", v->p_col.g);
-        printf("col b %d\n", v->p_col.b);
+        printf("col b %d\n\n", v->p_col.b);
     }
-    !ft_strncmp(tmp, "  reflect=", 10) ? printf("'%f'\n", parse_value(tmp)) : 0;
-    !ft_strncmp(tmp, "  refract=", 10) ? printf("'%f'\n", parse_value(tmp)) : 0;
-    !ft_strncmp(tmp, "  transparency=", 15) ? printf("'%f'\n", parse_value(tmp)) : 0;
-    !ft_strncmp(tmp, "  absorbtion=", 13) ? printf("'%f'\n", parse_value(tmp)): 0;
-    !ft_strncmp(tmp, "  ambient=", 10) ? printf("'%f'\n", parse_value(tmp)) : 0;
-    !ft_strncmp(tmp, "  diffuse=", 10) ? printf("'%f'\n", parse_value(tmp)) : 0;
-    !ft_strncmp(tmp, "  specular=", 11) ? printf("'%f'\n", parse_value(tmp)) : 0;
-    !ft_strncmp(tmp, "  shininess=", 12) ? printf("'%f'\n", parse_value(tmp)) : 0;
-    !ft_strncmp(tmp, "  texture=", 10) ? printf("'%s'\n", tmp) : 0;
+    // !ft_strncmp(tmp, "\treflect=", 9) ? printf("'%f'\n", parse_value(tmp)) : 0;
+    // !ft_strncmp(tmp, "\trefract=", 9) ? printf("'%f'\n", parse_value(tmp)) : 0;
+    // !ft_strncmp(tmp, "\ttransparency=", 14) ? printf("'%f'\n", parse_value(tmp)) : 0;
+    // !ft_strncmp(tmp, "\tabsorbtion=", 12) ? printf("'%f'\n", parse_value(tmp)): 0;
+    // !ft_strncmp(tmp, "\tambient=", 9) ? printf("'%f'\n", parse_value(tmp)) : 0;
+    // !ft_strncmp(tmp, "\tdiffuse=", 9) ? printf("'%f'\n", parse_value(tmp)) : 0;
+    // !ft_strncmp(tmp, "\tspecular=", 10) ? printf("'%f'\n", parse_value(tmp)) : 0;
+    // !ft_strncmp(tmp, "\tshininess=", 11) ? printf("'%f'\n", parse_value(tmp)) : 0;
+    // !ft_strncmp(tmp, "\ttexture=", 9) ? printf("'%s'\n", tmp) : 0;
 }
 
 void	parse_obj(t_env *v, t_file *file)
@@ -95,27 +95,27 @@ void	parse_obj(t_env *v, t_file *file)
     {
         tmp = ft_strdup(file->line);
         //printf("test '%s'\n",file->line);
-        if (!ft_strncmp(tmp, "  type=", 7))
+        if (!ft_strncmp(tmp, "\ttype=", 6))
         {
             ft_strstr(tmp, "SPHERE") ? printf("SPHERE ICI\n") : 0;
             ft_strstr(tmp, "PLAN") ? printf("PLAN ICI\n") : 0;
             ft_strstr(tmp, "CONE") ? printf("CONE ICI\n") : 0;
             ft_strstr(tmp, "CYLINDER") ? printf("CYLINDER ICI\n") : 0;
         }
-        !ft_strncmp(tmp, "  radius=", 9) ? printf("'%f'\n", parse_value(tmp)) : 0;
-        if (ft_strncmp(tmp, "  pos=", 6))
+        !ft_strncmp(tmp, "\tradius=", 8) ? printf("'%f'\n", parse_value(tmp)) : 0;
+        if (!ft_strncmp(tmp, "\tpos=", 5))
         {
             parse_xyz(tmp, v);
-            printf("x %f\n", v->p_xyz.x);
-            printf("y %f\n", v->p_xyz.y);
-            printf("z %f\n", v->p_xyz.z);
+            printf("\npos x %f\n", v->p_xyz.x);
+            printf("pos y %f\n", v->p_xyz.y);
+            printf("pos z %f\n\n", v->p_xyz.z);
         }
-        if (ft_strncmp(tmp, "  dir=", 6))
+        if (!ft_strncmp(tmp, "\tdir=", 5))
         {
             parse_xyz(tmp, v);
-            printf("x %f\n", v->p_xyz.x);
-            printf("y %f\n", v->p_xyz.y);
-            printf("z %f\n", v->p_xyz.z);
+            printf("\ndir x %f\n", v->p_xyz.x);
+            printf("dir y %f\n", v->p_xyz.y);
+            printf("dir z %f\n\n", v->p_xyz.z);
         }
         parse_material(v, tmp);
         ft_strdel(&file->line);

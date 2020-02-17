@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/11 19:11:52 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 17:11:17 by vasalome    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/17 19:09:50 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ void    check_options(t_env *v, int argc, char **argv)
     int     i;
 
     i = 0;
-    v->file = NULL;
+    v->file = ft_strdup("./scenes/first.test");
     while (++i < argc)
     {
         !ft_strcmp(argv[i], "--help") ? usage("") : 0;
@@ -47,5 +47,4 @@ void    check_options(t_env *v, int argc, char **argv)
             i + 1 < argc ? v->file = ft_strdup(argv[i + 1]) : 0;
         }
     }
-    v->file == NULL ? v->file = ft_strdup("./scene/first.test") : 0;
 }

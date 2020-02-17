@@ -1,32 +1,5 @@
 #include "../includes/rt.h"
 
-/*
-char	*p_trim(char const *s)
-{
-	char	*new;
-	int		i;
-	int		j;
-	int		k;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	j = ft_strlen(s) - 1;
-	k = 0;
-	while (s[i] <= '0' || s[i] >= '9')
-		i++;
-	while (s[i] <= '0' || s[i] >= '9')
-		j--;
-	if (i > j)
-		return (ft_strdup(""));
-	if (!(new = (char*)malloc(sizeof(*new) * (j - i + 2))))
-		return (NULL);
-	while (i <= j)
-		new[k++] = s[i++];
-	new[k] = '\0';
-	return (new);
-}*/
-
 char	*ft_strtok(char *s, char const *delim)
 {
 	static char *res;
@@ -64,28 +37,21 @@ float  parse_value(char const *s)
     return (res);
 }
 
-void	parse_xyz(char *s, t_env *v)
+void	parse_xyz(char s[], t_env *v)
 {
 	int		i;
     char    *res = NULL;
 	
 	i = 0;
 	res = ft_strtok(s, ",");
-	while (res != NULL && i == 0)
+	while (res != NULL)
 	{
-		v->p_xyz.x = parse_value(res);
-		res = ft_strtok(NULL, ",");
-		i++;
-	}
-	while (res != NULL && i == 1)
-	{
-		v->p_xyz.y = parse_value(res);
-		res = ft_strtok(NULL, ",");
-		i++;
-	}
-	while (res != NULL && i == 2)
-	{
-		v->p_xyz.z = parse_value(res);
+		if (i == 0)
+			v->p_xyz.x = parse_value(res);
+		else if (i == 1)
+			v->p_xyz.y = parse_value(res);
+		else if (i == 2)
+			v->p_xyz.z = parse_value(res);
 		res = ft_strtok(NULL, ",");
 		i++;
 	}

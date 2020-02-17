@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:04:28 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 19:04:29 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/17 19:08:01 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -142,8 +142,8 @@ typedef struct		s_env
 	t_parsing		p;
 	t_scene			sc;
 	t_camera		cam;
-	t_light			lg;
-	t_object		ob[2];
+	t_light			*lg;
+	t_object		*ob;
 	t_color			p_col;
 	t_point			p_xyz;
 }					t_env;
@@ -197,7 +197,7 @@ void	parse_obj(t_env *v, t_file *file);
 
 float	parse_value(char const *s);
 char	*ft_strtok(char *s, char const *delim);
-void	parse_color(char *s, t_env *v);
-void	parse_xyz(char *s, t_env *v);
+void	parse_color(char s[], t_env *v);
+void	parse_xyz(char s[], t_env *v);
 
 #endif
