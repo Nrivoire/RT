@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 18:19:49 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/17 19:30:55 by vasalome    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ int        main(int argc, char **argv)
 
     //argc = 1;
 	(void)argv;
-	//argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("") : 0;
+	// argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("") : 0;
     if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
     v->w = 1280;
@@ -55,7 +55,7 @@ int        main(int argc, char **argv)
 	v->p.ori.z = 50;
 
 	check_options(v, argc, argv);
-	//parser_file(v);
+	// parser_file(v);
 	init_sdl(v);
 	display(v);
     return (0);
