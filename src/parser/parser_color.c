@@ -31,8 +31,9 @@ static int	color_value(char const *s)
 void		parse_color(char s[], t_env *v)
 {
 	int		i;
-	char	*res = NULL;
+	char	*res;
 
+	res = NULL;
 	i = 0;
 	res = ft_strtok(s, ",");
 	while (res != NULL)

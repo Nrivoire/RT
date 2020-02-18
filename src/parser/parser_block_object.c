@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-void	parse_material(t_env *v, char *tmp, t_object content)
+static void		parse_material_obj(t_env *v, char *tmp, t_object content)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
@@ -33,10 +33,11 @@ void	parse_material(t_env *v, char *tmp, t_object content)
 		content.specular = parse_value(tmp);
 	if (!ft_strncmp(tmp, "\tshininess=", 11))
 		content.shininess = parse_value(tmp);
-	// !ft_strncmp(tmp, "\ttexture=", 9) ? content.texture = parse_value(tmp) : 0;
+	// if (!ft_strncmp(tmp, "\ttexture=", 9))
+	// 	content.texture = parse_value(tmp); changer de fonction de recup valeur (maybe tableau)
 }
 
-void	parse_xyz_obj(t_env *v, char *tmp, t_object content)
+static void		parse_xyz_obj(t_env *v, char *tmp, t_object content)
 {
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
@@ -54,7 +55,7 @@ void	parse_xyz_obj(t_env *v, char *tmp, t_object content)
 	}
 }
 
-void	parse_obj(t_env *v, t_file *file)
+void			parse_obj(t_env *v, t_file *file)
 {
 	char		*tmp;
 	t_object	content;
@@ -73,7 +74,7 @@ void	parse_obj(t_env *v, t_file *file)
 		if (!ft_strncmp(tmp, "\tradius=", 8))
 			content.radius = parse_value(tmp);
 		parse_xyz_obj(v, tmp, content);
-		parse_material(v, tmp, content);
+		parse_material_obj(v, tmp, content);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

@@ -16,7 +16,7 @@
 #################
 
 #	Output
-NAME = rt
+NAME		=	rt
 
 #	Sources
 SRC_SUP = {events,draw_tools,parser}
@@ -46,15 +46,15 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 #	Includes
-INC_PATH = includes
-INC_NAME = rt.h
-INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
+INC_PATH	=	includes
+INC_NAME	=	rt.h
+INC			=	$(addprefix $(INC_PATH)/,$(INC_NAME))
 
-CPPFLAGS = -I $(INC_PATH)
-LDFLAGS =  -O3 -flto -ffast-math -march=native -L libft
-LDLIBS = -lft
+CPPFLAGS	=	-I $(INC_PATH)
+LDFLAGS		=	-O3 -flto -ffast-math -march=native -L libft
+LDLIBS		=	-lft
 
-PWD := $(shell pwd)
+PWD			:=	$(shell pwd)
 #	SDL
 #SDL = -lft -F /Library/Frameworks/ -L sdl2/2.0.10/lib/ -lSDL2 -L sdl2_image/2.0.5/lib/ -lSDL2_image
 #PATH_TO_SDL = ./
@@ -67,12 +67,12 @@ FRAMEWORKSDIR := ./frameworks
 SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR)
 
 #	Compiler
-CC = clang
-CFLAGS = -Wall -Wextra #-Werror -g
-#CFLAGS +=	-Wunused-command-line-argument
-#CFLAGS +=	-Wno-error
-#CFLAGS +=	--cflags --glibs
-#CFLAGS +=	-ggdb -g -fsanitize=address
+CC			=	clang
+CFLAGS		=	-Wall -Wextra #-Werror -g
+#CFLAGS		+=	-Wunused-command-line-argument
+#CFLAGS		+=	-Wno-error
+#CFLAGS		+=	--cflags --glibs
+#CFLAGS		+=	-ggdb -g -fsanitize=address
 
 ################
 ##   COLORS   ##
@@ -117,8 +117,9 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	@mkdir -p $(OBJ_PATH)
 	@mkdir -p $(OBJ_PATH)/$(SRC_SUP)
+	@printf "$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).c.............."
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -o $@ -c $<
-	@printf "\r$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).........."
+	@printf "\r																\r"
 
 clean:
 	@make -C libft clean

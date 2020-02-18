@@ -1,5 +1,17 @@
-#ifndef EDITEUR_H
-# define EDITEUR_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rt.h                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/18 17:39:47 by vasalome          #+#    #+#             */
+/*   Updated: 2020/02/18 17:39:55 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef RT_H
+# define RT_H
 
 # include "../libft/includes/libft.h"
 # include <unistd.h>
@@ -89,6 +101,9 @@ typedef struct		s_light
 	int				type;
 	t_vec			pos;
 	t_vec			dir;
+	int				r;
+	int				g;
+	int				b;
 	// add autre params
 	float			intensity;
 	struct s_light	*next;
@@ -130,9 +145,9 @@ typedef struct		s_env
 	SDL_Window		*win;
 	SDL_Renderer	*ren;
 	SDL_Texture		*tex;
-    Uint32			*pixels;
-    int             w;
-    int             h;
+	Uint32			*pixels;
+	int				w;
+	int				h;
 	int				fov;
 	float			angle_ratio;
 	t_vec			ori;
@@ -160,7 +175,8 @@ int					inter_line_quadratic(t_line l, t_quadratic q,
 */
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_rgb color);
-void				put_picture(t_env *v, t_start start, int size, SDL_Surface *sur);
+void				put_picture(t_env *v, t_start start, int size,
+					SDL_Surface *sur);
 
 /*
 ** --events--
@@ -185,21 +201,21 @@ void				bouclette(t_env *v);
 ** --usage--
 */
 void				check_options(t_env *v, int argc, char **argv);
-void				usage(char *error);
+void				usage(char *error, int run);
 
-
-
-int		parser_file(t_env *v);
-void	parse_scene(t_env *v, t_file *file);
-void	parse_cam(t_env *v, t_file *file);
-void	parse_light(t_env *v, t_file *file);
-void	parse_obj(t_env *v, t_file *file);
-
-float	parse_value(char const *s);
-char	*ft_strtok(char *s, char const *delim);
-void	parse_color(char s[], t_env *v);
-void	parse_xyz(char s[], t_env *v);
-int		add_lst_obj(t_object **ob, t_object content);
-int		add_lst_lgt(t_light **lg, t_light content);
+/*
+** --parser--
+*/
+int					parser_file(t_env *v);
+void				parse_scene(t_env *v, t_file *file);
+void				parse_cam(t_env *v, t_file *file);
+void				parse_light(t_env *v, t_file *file);
+void				parse_obj(t_env *v, t_file *file);
+float				parse_value(char const *s);
+char				*ft_strtok(char *s, char const *delim);
+void				parse_color(char s[], t_env *v);
+void				parse_xyz(char s[], t_env *v);
+int					add_lst_obj(t_object **ob, t_object content);
+int					add_lst_lgt(t_light **lg, t_light content);
 
 #endif

@@ -12,7 +12,20 @@
 
 #include "../includes/rt.h"
 
-void	parse_xyz_lgt(t_env *v, char *tmp, t_light content)
+static void		parse_material_lgt(t_env *v, char *tmp, t_light content)
+{
+	if (!ft_strncmp(tmp, "\tcolor=", 7))
+	{
+		parse_color(tmp, v);
+		content.r = v->p_col.r;
+		content.g = v->p_col.g;
+		content.b = v->p_col.b;
+	}
+	if (!ft_strncmp(tmp, "\tintensity=", 11))
+		content.intensity = parse_value(tmp);
+}
+
+static void		parse_xyz_lgt(t_env *v, char *tmp, t_light content)
 {
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
@@ -30,7 +43,7 @@ void	parse_xyz_lgt(t_env *v, char *tmp, t_light content)
 	}
 }
 
-void	parse_light(t_env *v, t_file *file)
+void			parse_light(t_env *v, t_file *file)
 {
 	char		*tmp;
 	t_light		content;
@@ -46,8 +59,7 @@ void	parse_light(t_env *v, t_file *file)
 			ft_strstr(tmp, "SPOT") ? content.type = SPOT : 0;
 		}
 		parse_xyz_lgt(v, tmp, content);
-		if (!ft_strncmp(tmp, "\tintensity=", 11))
-			content.intensity = parse_value(tmp);
+		parse_material_lgt(v, tmp, content);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

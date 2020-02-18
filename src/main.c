@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/18 18:18:29 by vasalome          #+#    #+#             */
+/*   Updated: 2020/02/18 18:18:32 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/rt.h"
 
 static void		init_sdl(t_env *v)
@@ -18,22 +30,26 @@ static void		init_sdl(t_env *v)
 		ft_error("Initialisation error of TFT_Init");
 }
 
-int				main(int argc, char **argv)
+static void		init_value(t_env *v)
 {
-	t_env	*v;
-
-	//argc = 1;
-	(void)argv;
-	// argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("") : 0;
-	if (!(v = ft_memalloc(sizeof(t_env))))
-		return (0);
 	v->w = 1280;
 	v->h = 720;
 	v->fov = 60;
 	
-	//init list
+	// init list du parser pour le malloc
 	v->ob = NULL;
 	v->lg = NULL;
+}
+
+int				main(int argc, char **argv)
+{
+	t_env	*v;
+
+	(void)argv;
+	argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
+	if (!(v = ft_memalloc(sizeof(t_env))))
+		return (0);
+	init_value(v);
 
 	v->obj.x = 2;
 	v->obj.y = 3;
