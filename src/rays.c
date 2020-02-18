@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 19:04:07 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/18 18:40:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,20 +80,43 @@ int		inter_ray_quadratic(t_ray r, t_quadratic q)
 	return (0);
 }
 
-t_quadratic		make_cylindre_infini(t_point a, t_vec vec, float r)
+// t_quadratic		make_cylindre_infini(t_vec vec, float r)
+// {
+// 	t_quadratic	res;
+
+// 	res.a = (vec.y * vec.y + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+// 	res.b = (vec.x * vec.x + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+// 	res.c = (vec.x * vec.x + vec.y * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+// 	res.d = -(2 * vec.x * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+// 	res.e = -(2 * vec.x * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+// 	res.f = -(2 * vec.y * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+// 	res.g = 0;
+// 	res.h = 0;
+// 	res.i = 0;
+// 	res.j = -(r * r);
+// 	return (res);
+// }
+
+t_quadratic		make_cone(t_vec a, t_vec v, float angle, float h)
 {
 	t_quadratic	res;
 
-	res.a = (vec.y * vec.y + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.b = (vec.x * vec.x + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.c = (vec.x * vec.x + vec.y * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.d = -(2 * vec.x * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.e = -(2 * vec.x * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.f = -(2 * vec.y * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.g = 0;
-	res.h = 0;
-	res.i = 0;
-	res.j = -r * r;
+	res.a = -(tan(angle) * tan(angle)) * v.x;
+	if (res.a == 0)
+		res.a = 1;
+	res.b = -(tan(angle) * tan(angle)) * v.y;
+	if (res.b == 0)
+		res.b = 1;
+	res.c = -(tan(angle) * tan(angle)) * v.z;
+	if (res.c == 0)
+		res.c = 1;
+	res.d = 0;
+	res.e = 0;
+	res.f = 0;
+	res.g = -2 * a.x * res.a;
+	res.h = -2 * a.y * res.b;
+	res.i = -2 * a.z * res.c;
+	res.j = a.x * a.x + a.y * a.y + a.z * a.z * (-tan(angle) * tan(angle));
 	return (res);
 }
 
@@ -103,17 +126,19 @@ void		    		bouclette(t_env *v)
 	int		    		y;
 	t_ray	    		ray;
     // t_quadratic 		sphere;
-	t_quadratic 		cylindre;
+	//t_quadratic 		cylindre;
 	// t_quadratic 		plan;
+	t_quadratic 		cone;
 
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
 	t_quadratic 		res;
 
-	cylindre = make_cylindre_infini((t_point){v->obj.x, v->obj.y, v->obj.z}, (t_vec){1, 2, 3}, 2);
+	//cylindre = make_cylindre_infini((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
 	//sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 5);
 	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});
-	res = cylindre;
-	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+	cone = make_cone((t_vec){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 45, 10);
+	res = cone;
+	printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	//return ;
     y = -1;
 	while (++y <= v->h)
@@ -122,7 +147,7 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray(v, x, y);
-			if (inter_ray_quadratic(ray, cylindre))
+			if (inter_ray_quadratic(ray, cone))
 				pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 		}
 	}

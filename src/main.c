@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 18:18:29 by vasalome          #+#    #+#             */
+/*   Created: 2020/02/18 18:18:29 by nrivoire          #+#    #+#             */
 /*   Updated: 2020/02/18 18:18:32 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
@@ -51,15 +51,15 @@ int				main(int argc, char **argv)
 		return (0);
 	init_value(v);
 
-	v->obj.x = 2;
-	v->obj.y = 3;
+	v->obj.x = 1;
+	v->obj.y = 1;
 	v->obj.z = 1;
 	v->button_left = 0;
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	v->p.ori.x = 0;
 	v->p.ori.y = 0;
-	v->p.ori.z = 50;
+	v->p.ori.z = -50;
 
 	check_options(v, argc, argv);
 	parser_file(v);
