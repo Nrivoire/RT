@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   main.c                                           .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/02/18 18:45:48 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/18 18:46:12 by nrivoire    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
 #include "../includes/rt.h"
 
 static void		init_sdl(t_env *v)
@@ -34,16 +47,15 @@ int				main(int argc, char **argv)
 	//init list
 	v->ob = NULL;
 	v->lg = NULL;
-
-	v->obj.x = 2;
-	v->obj.y = 3;
+	v->obj.x = 1;
+	v->obj.y = 1;
 	v->obj.z = 1;
 	v->button_left = 0;
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	v->p.ori.x = 0;
 	v->p.ori.y = 0;
-	v->p.ori.z = 50;
+	v->p.ori.z = -50;
 
 	check_options(v, argc, argv);
 	parser_file(v);
