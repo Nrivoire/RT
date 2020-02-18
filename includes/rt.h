@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   rt.h                                             .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/14 19:04:28 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/17 19:08:01 by vasalome    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
-/* ************************************************************************** */
-
 #ifndef EDITEUR_H
 # define EDITEUR_H
 
@@ -21,7 +8,16 @@
 # include "../SDL_include/SDL.h"
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
-#include "stdio.h"
+# include <stdio.h>
+
+# define SPHERE 1
+# define PLAN 2
+# define CONE 3
+# define CYLINDER 4
+
+# define POINT 5
+# define DIRECTIONAL 6
+# define SPOT 7
 
 typedef struct		s_start
 {
@@ -90,12 +86,17 @@ typedef struct		s_camera
 
 typedef struct		s_light
 {
+	int				type;
+	t_vec			pos;
+	t_vec			dir;
 	// add autre params
+	float			intensity;
+	struct s_light	*next;
 }					t_light;
 
 typedef struct		s_object
 {
-	char			*type;
+	int				type;
 	float			radius;
 	t_vec			pos;
 	t_vec			dir;
@@ -110,7 +111,8 @@ typedef struct		s_object
 	float			diffuse;
 	float			specular;
 	float			shininess;
-	char			*texture;
+	int				texture;
+	struct s_object	*next;
 }					t_object;
 
 typedef struct		s_file
@@ -197,5 +199,7 @@ float	parse_value(char const *s);
 char	*ft_strtok(char *s, char const *delim);
 void	parse_color(char s[], t_env *v);
 void	parse_xyz(char s[], t_env *v);
+int		add_lst_obj(t_object **ob, t_object content);
+int		add_lst_lgt(t_light **lg, t_light content);
 
 #endif

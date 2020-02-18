@@ -1,65 +1,43 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   parser.c                                         .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/14 15:09:04 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/17 19:09:12 by vasalome    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/18 15:31:41 by vasalome          #+#    #+#             */
+/*   Updated: 2020/02/18 15:31:45 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-int     init_parse_struct(void)
+static void		read_file(t_env *v, t_file *file)
 {
-    // t_scene     *sc;
-	// t_camera    *cam;
-	t_light     *lg;
-	t_object    *ob;
+	char		*tmp;
 
-    // if (!(sc = ft_memalloc(sizeof(t_scene))))
-	// 	return (0);
-    // if (!(ob = ft_memalloc(sizeof(t_cam))))
-	// 	return (0);
-    if (!(lg = ft_memalloc(sizeof(t_light))))
-		return (0);
-    if (!(ob = ft_memalloc(sizeof(t_object))))
-		return (0);
-    return(0);
+	while (get_next_line(file->fd, &file->line) > 0)
+	{
+		tmp = ft_strdup(file->line);
+		if (!(ft_strncmp(tmp, "scene{", 6)))
+			parse_scene(v, file);
+		if (!(ft_strncmp(tmp, "object{", 7)))
+			parse_obj(v, file);
+		if (!(ft_strncmp(tmp, "camera{", 7)))
+			parse_cam(v, file);
+		if (!(ft_strncmp(tmp, "light{", 6)))
+			parse_light(v, file);
+		ft_strdel(&file->line);
+		ft_strdel(&tmp);
+	}
 }
 
-static void     read_file(t_env *v, t_file *file)
+int				parser_file(t_env *v)
 {
-    char        *tmp;
+	t_file	file;
 
-    init_parse_struct();
-    while (get_next_line(file->fd, &file->line) > 0)
-    {
-        tmp = ft_strdup(file->line);
-        if (!(ft_strncmp(tmp, "scene{", 6)))
-            parse_scene(v, file);
-        if (!(ft_strncmp(tmp, "object{", 7)))
-            parse_obj(v, file);
-        if (!(ft_strncmp(tmp, "camera{", 7)))
-            parse_cam(v, file);
-        if (!(ft_strncmp(tmp, "light{", 6)))
-            parse_light(v, file);
-        ft_strdel(&file->line);
-        ft_strdel(&tmp);
-    }
-
-}
-
-int     parser_file(t_env *v)
-{
-    t_file  file;
-
-    (file.fd = open(v->file, O_RDWR)) == -1 ? ft_error("Bad file") : 0;
-    read_file(v, &file);
-
-    close(file.fd) == -1 ? ft_error("Can't close fd") : 0;
-    return (0);
+	(file.fd = open(v->file, O_RDWR)) == -1 ? ft_error("Bad file") : 0;
+	read_file(v, &file);
+	close(file.fd) == -1 ? ft_error("Can't close fd") : 0;
+	return (0);
 }

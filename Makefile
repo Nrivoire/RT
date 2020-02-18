@@ -34,7 +34,9 @@ SRC_NAME	+=	inter_line_quadratic.c
 SRC_NAME	+=	make_obj.c
 SRC_NAME	+=	usage.c
 SRC_NAME	+=	parser/parser.c
-SRC_NAME	+=	parser/parser_block.c
+SRC_NAME	+=	parser/parser_block_base.c
+SRC_NAME	+=	parser/parser_block_light.c
+SRC_NAME	+=	parser/parser_block_object.c
 SRC_NAME	+=	parser/parser_utils.c
 SRC_NAME	+=	parser/parser_color.c
 

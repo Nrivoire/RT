@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: vasalome <vasalome@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/12 14:00:44 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/17 19:30:55 by vasalome    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
-/* ************************************************************************** */
-
 #include "../includes/rt.h"
 
 static void		init_sdl(t_env *v)
@@ -31,19 +18,23 @@ static void		init_sdl(t_env *v)
 		ft_error("Initialisation error of TFT_Init");
 }
 
-int        main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
-    t_env   *v;
+	t_env	*v;
 
-    //argc = 1;
+	//argc = 1;
 	(void)argv;
 	// argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("") : 0;
-    if (!(v = ft_memalloc(sizeof(t_env))))
+	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
-    v->w = 1280;
-    v->h = 720;
+	v->w = 1280;
+	v->h = 720;
 	v->fov = 60;
 	
+	//init list
+	v->ob = NULL;
+	v->lg = NULL;
+
 	v->obj.x = 2;
 	v->obj.y = 3;
 	v->obj.z = 1;
@@ -55,8 +46,8 @@ int        main(int argc, char **argv)
 	v->p.ori.z = 50;
 
 	check_options(v, argc, argv);
-	// parser_file(v);
+	parser_file(v);
 	init_sdl(v);
 	display(v);
-    return (0);
+	return (0);
 }
