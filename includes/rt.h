@@ -95,7 +95,7 @@ typedef struct		s_light
 
 typedef struct		s_object
 {
-	int				*type;
+	char			*type;
 	float			radius;
 	t_vec			pos;
 	t_vec			dir;
@@ -117,8 +117,6 @@ typedef struct		s_file
 {
 	int				fd;
 	char			*line;
-	int				lg_n;
-	int				ob_n;
 }					t_file;
 
 /*

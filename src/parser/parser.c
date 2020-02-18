@@ -13,21 +13,40 @@
 
 #include "../includes/rt.h"
 
+int     init_parse_struct(void)
+{
+    // t_scene     *sc;
+	// t_camera    *cam;
+	t_light     *lg;
+	t_object    *ob;
+
+    // if (!(sc = ft_memalloc(sizeof(t_scene))))
+	// 	return (0);
+    // if (!(ob = ft_memalloc(sizeof(t_cam))))
+	// 	return (0);
+    if (!(lg = ft_memalloc(sizeof(t_light))))
+		return (0);
+    if (!(ob = ft_memalloc(sizeof(t_object))))
+		return (0);
+    return(0);
+}
+
 static void     read_file(t_env *v, t_file *file)
 {
     char        *tmp;
 
+    init_parse_struct();
     while (get_next_line(file->fd, &file->line) > 0)
     {
         tmp = ft_strdup(file->line);
-        // if (!(ft_strncmp(tmp, "scene{", 6)))
-        //     parse_scene(v, file);
+        if (!(ft_strncmp(tmp, "scene{", 6)))
+            parse_scene(v, file);
         if (!(ft_strncmp(tmp, "object{", 7)))
             parse_obj(v, file);
-        // if (!(ft_strncmp(tmp, "camera{", 7)))
-        //     parse_cam(v, file);
-        // if (!(ft_strncmp(tmp, "light{", 6)))
-        //     parse_light(v, file);
+        if (!(ft_strncmp(tmp, "camera{", 7)))
+            parse_cam(v, file);
+        if (!(ft_strncmp(tmp, "light{", 6)))
+            parse_light(v, file);
         ft_strdel(&file->line);
         ft_strdel(&tmp);
     }

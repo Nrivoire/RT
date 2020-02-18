@@ -64,10 +64,10 @@ void	parse_light(t_env *v, t_file *file)
         ft_strdel(&file->line);
         ft_strdel(&tmp);
     }
-    file->lg_n++;
+    // file->lg_n++;
 }
 
-void    parse_material(t_env *v, char *tmp)
+void    parse_material(t_env *v, char *tmp, int i)
 {
     if (!ft_strncmp(tmp, "\tcolor=", 7))
     {
@@ -90,7 +90,9 @@ void    parse_material(t_env *v, char *tmp)
 void	parse_obj(t_env *v, t_file *file)
 {
     char    *tmp;
+    static int i;
 
+    i = 0;
     while (get_next_line(file->fd, &file->line) > 0 && ft_strncmp(file->line, "}", 1) != 0)
     {
         tmp = ft_strdup(file->line);
@@ -98,10 +100,13 @@ void	parse_obj(t_env *v, t_file *file)
         if (!ft_strncmp(tmp, "\ttype=", 6))
         {
             ft_strstr(tmp, "SPHERE") ? printf("SPHERE ICI\n") : 0;
+            //ft_strstr(tmp, "SPHERE") ? v->ob[i].type = "SPHERE" : 0;
             ft_strstr(tmp, "PLAN") ? printf("PLAN ICI\n") : 0;
             ft_strstr(tmp, "CONE") ? printf("CONE ICI\n") : 0;
             ft_strstr(tmp, "CYLINDER") ? printf("CYLINDER ICI\n") : 0;
+            //printf("JE VEUX SAVOIR SI '%s' %d\n", v->ob[i].type, i);
         }
+        
         !ft_strncmp(tmp, "\tradius=", 8) ? printf("'%f'\n", parse_value(tmp)) : 0;
         if (!ft_strncmp(tmp, "\tpos=", 5))
         {
@@ -117,9 +122,10 @@ void	parse_obj(t_env *v, t_file *file)
             printf("dir y %f\n", v->p_xyz.y);
             printf("dir z %f\n\n", v->p_xyz.z);
         }
-        parse_material(v, tmp);
+        parse_material(v, tmp, i);
         ft_strdel(&file->line);
         ft_strdel(&tmp);
     }
-    file->ob_n++;
+    i++;
+    // file->ob_n++;
 }
