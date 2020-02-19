@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-static int	color_value(char const *s)
+static int		color_value(char const *s)
 {
 	int		i;
 	int		res;
@@ -28,23 +28,73 @@ static int	color_value(char const *s)
 	return (res);
 }
 
-void		parse_color(char s[], t_env *v)
+static int		atoi_hexa(char *s)
+{
+	int		i;
+	int		content;
+	int		res;
+
+	i = ft_strlen(s);
+	content = 1;
+	res = 0;
+	while (--i >= 0)
+	{
+		if ('0' <= s[i] && s[i] <= '0' + 16 - 1)
+			res += (s[i] - '0') * content;
+		if ('A' <= s[i] && s[i] <= 'A' + 16 - 11)
+			res += (s[i] - 'A' + 10) * content;
+		if ('a' <= s[i] && s[i] <= 'a' + 16 - 11)
+			res += (s[i] - 'a' + 10) * content;
+		content *= 16;
+	}
+	s[0] == '-' && 16 == 10 ? res *= -1 : 0;
+	return (res);
+}
+
+static void		hexa_value(char s[], t_env *v)
+{
+	int		i;
+	char	*res;
+	char	*hexa;
+
+	res = NULL;
+	hexa = NULL;
+	i = 0;
+	res = ft_strtok(s, "x");
+	while (res != NULL)
+	{
+		i == 1 ? hexa = ft_strtrim(res) : 0;
+		res = ft_strtok(NULL, "x");
+		i++;
+	}
+	printf("hexa '%s'\n\n", hexa);
+	v->p_col.r = atoi_hexa(hexa) >> 16 & 0xFF;
+	v->p_col.g = atoi_hexa(hexa) >> 8 & 0xFF;
+	v->p_col.b = atoi_hexa(hexa) & 0xFF;
+}
+
+void			parse_color(char s[], t_env *v)
 {
 	int		i;
 	char	*res;
 
 	res = NULL;
 	i = 0;
-	res = ft_strtok(s, ",");
-	while (res != NULL)
+	if (ft_strstr(s, "0x"))
+		hexa_value(s, v);
+	else
 	{
-		if (i == 0)
-			v->p_col.r = color_value(res);
-		else if (i == 1)
-			v->p_col.g = color_value(res);
-		else if (i == 2)
-			v->p_col.b = color_value(res);
-		res = ft_strtok(NULL, ",");
-		i++;
+		res = ft_strtok(s, ",");
+		while (res != NULL)
+		{
+			i == 0 ? v->p_col.r = color_value(res) : 0;
+			i == 1 ? v->p_col.g = color_value(res) : 0;
+			i == 2 ? v->p_col.b = color_value(res) : 0;
+			res = ft_strtok(NULL, ",");
+			i++;
+		}
 	}
+	printf("r '%d'\n", v->p_col.r);
+	printf("g '%d'\n", v->p_col.g);
+	printf("b '%d'\n", v->p_col.b);
 }
