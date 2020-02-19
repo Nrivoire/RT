@@ -12,6 +12,31 @@
 
 #include "../includes/rt.h"
 
+static int	atoi_clamp_usage(const char *str, int min, int max)
+{
+	int		value;
+
+	value = 0;
+	while (*str == '\t' || *str == '\n' || *str == '\r'
+			|| *str == '\v' || *str == ' ' || *str == '\f')
+		str++;
+	while (*str != '\0' && value < 2000)
+	{
+		*str >= '0' && *str <= '9' ? value = value * 10 + *str - '0' : 0;
+		str++;
+	}
+	value > max ? value = max : 0;
+	value < min ? value = max : 0;
+	return (value);
+}
+
+int			ft_clamp(int value, int min, int max)
+{
+	value > max ? value = min : 0;
+	value < min ? value = max : 0;
+	return (value);
+}
+
 void		usage(char *error, int run)
 {
 	ft_strcmp(error, "") != 0 ? ft_putendl(error) : 0;
@@ -24,13 +49,6 @@ void		usage(char *error, int run)
 	!run ? exit(0) : 0;
 }
 
-static int	ft_clamp(int value, int min, int max)
-{
-	value > max ? value = max : 0;
-	value < min ? value = min : 0;
-	return (value);
-}
-
 void		check_options(t_env *v, int argc, char **argv)
 {
 	int		i;
@@ -41,9 +59,15 @@ void		check_options(t_env *v, int argc, char **argv)
 	{
 		!ft_strcmp(argv[i], "--help") ? usage("", 1) : 0;
 		if (!ft_strcmp(argv[i], "-w") || !ft_strcmp(argv[i], "--width"))
-			i + 1 < argc ? v->w = ft_clamp(ft_atoi(argv[i + 1]), 100, 1280) : 0;
+		{
+			if (i + 1 < argc)
+				v->w = atoi_clamp_usage(argv[i + 1], 100, 1280);
+		}
 		else if (!ft_strcmp(argv[i], "-h") || !ft_strcmp(argv[i], "--height"))
-			i + 1 < argc ? v->h = ft_clamp(ft_atoi(argv[i + 1]), 100, 720) : 0;
+		{
+			if (i + 1 < argc)
+				v->h = atoi_clamp_usage(argv[i + 1], 100, 720);
+		}
 		else if (!ft_strcmp(argv[i], "-f") || !ft_strcmp(argv[i], "--file"))
 			i + 1 < argc ? v->file = ft_strdup(argv[i + 1]) : 0;
 	}
