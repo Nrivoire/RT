@@ -165,6 +165,40 @@ t_quadratic		make_cone(t_vec a, t_vec v, float angle, float h)
 	return (res);
 }
 
+void	create_lgt(t_env *v)
+{
+	t_light *tmp;
+
+	tmp = v->p.lg;
+	while(tmp)
+	{
+		// if (tmp->type == POINT)
+		//	fonction point light;
+		// else if (tmp->type == SPOT)
+		//	fonction spot light;
+		tmp = tmp->next;
+	}
+}
+
+void	create_obj(t_env *v)
+{
+	t_object *tmp;
+
+	tmp = v->p.ob;
+	while(tmp)
+	{
+		if (tmp->type == SPHERE)
+			make_sphere(tmp->pos, tmp->radius);
+		// else if (tmp->type == PLAN)
+		// 	make_plan();
+		// else if (tmp->type == CONE)
+		// 	make_cone();
+		// else if (tmp->type == CYLINDER)
+		// 	make_cylinder(tmp->pos, tmp->radius);
+		tmp = tmp->next;
+	}
+}
+
 void		    		bouclette(t_env *v)
 {
 	int		    		x;
@@ -174,6 +208,7 @@ void		    		bouclette(t_env *v)
 	//t_quadratic 		cylindre;
 	// t_quadratic 		plan;
 	//t_quadratic 		cone;
+	t_quadratic 		object;
 
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
 	t_quadratic 		res;
@@ -185,6 +220,7 @@ void		    		bouclette(t_env *v)
 	//res = cone;
 	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	//return ;
+
     y = -1;
 	while (++y <= v->h)
 	{

@@ -17,9 +17,9 @@ static void		parse_material_obj(t_env *v, char *tmp, t_object content)
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v);
-		content.r = v->p_col.r;
-		content.g = v->p_col.g;
-		content.b = v->p_col.b;
+		content.r = v->p.p_col.r;
+		content.g = v->p.p_col.g;
+		content.b = v->p.p_col.b;
 	}
 	!ft_strncmp(tmp, "\treflect=", 9) ? content.reflect = parse_value(tmp) : 0;
 	!ft_strncmp(tmp, "\trefract=", 9) ? content.refract = parse_value(tmp) : 0;
@@ -42,16 +42,16 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_object content)
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.pos.x = v->p_xyz.x;
-		content.pos.y = v->p_xyz.y;
-		content.pos.z = v->p_xyz.z;
+		content.pos.x = v->p.p_xyz.x;
+		content.pos.y = v->p.p_xyz.y;
+		content.pos.z = v->p.p_xyz.z;
 	}
 	if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.dir.x = v->p_xyz.x;
-		content.dir.y = v->p_xyz.y;
-		content.dir.z = v->p_xyz.z;
+		content.dir.x = v->p.p_xyz.x;
+		content.dir.y = v->p.p_xyz.y;
+		content.dir.z = v->p.p_xyz.z;
 	}
 }
 
@@ -78,5 +78,5 @@ void			parse_obj(t_env *v, t_file *file)
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
-	add_lst_obj(&v->ob, content);
+	add_lst_obj(&v->p.ob, content);
 }
