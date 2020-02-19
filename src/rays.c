@@ -6,14 +6,14 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/18 18:40:49 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/19 14:09:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_ray		create_ray(t_env *v, int x, int y)
+t_ray				create_ray(t_env *v, int x, int y)
 {
 	t_matrix_3_3	rot;
 	t_ray			ray;
@@ -97,26 +97,71 @@ int		inter_ray_quadratic(t_ray r, t_quadratic q)
 // 	return (res);
 // }
 
+// void	quadratic_rotate_x(float angle, t_quadratic *quadra)
+// {
+// 	const float			cos1 = cosf(angle);
+// 	const float			sin1 = sinf(angle);
+// 	const float			cos2 = (1.0 + cosf(2.0 * angle)) / 2.0;
+// 	const float			sin2 = (1.0 - cosf(2.0 * angle)) / 2.0;
+// 	const t_quadratic	tmp = *quadra;
+
+// 	quadra->b = quadra->b * cos2 + quadra->c * sin2 + quadra->d * cos1 * sin1;
+// 	quadra->c = tmp.b * sin2 + quadra->c * cos2 - quadra->d * cos1 * sin1;
+// 	quadra->d = -2.0 * tmp.b * cos1 * sin1 + 2.0 * tmp.c * cos1 * sin1 +
+// 		quadra->d * cos2 - quadra->d * sin2;
+// 	quadra->e = quadra->e * cos1 - quadra->f * sin1;
+// 	quadra->f = tmp.e * sin1 + quadra->f * cos1;
+// 	quadra->h = quadra->h * cos1 + quadra->i * sin1;
+// 	quadra->i = -tmp.h * sin1 + quadra->i * cos1;
+// }
+
+// void	quadratic_rotate_y(float angle, t_quadratic *quadra)
+// {
+// 	const float			cos1 = cosf(angle);
+// 	const float			sin1 = sinf(angle);
+// 	const float			cos2 = (1.0 + cosf(2.0 * angle)) / 2.0;
+// 	const float			sin2 = (1.0 - cosf(2.0 * angle)) / 2.0;
+// 	const t_quadratic	tmp = *quadra;
+
+// 	quadra->a = quadra->a * cos2 + quadra->c * sin2 - quadra->e * cos1 * sin1;
+// 	quadra->c = tmp.a * sin2 + quadra->c * cos2 + quadra->e * cos1 * sin1;
+// 	quadra->d = quadra->d * cos1 + quadra->f * sin1;
+// 	quadra->e = 2.0 * tmp.a * cos1 * sin1 - 2.0 * tmp.c * cos1 * sin1 +
+// 		quadra->e * cos2 - quadra->e * sin2;
+// 	quadra->f = -tmp.d * sin1 + quadra->f * cos1;
+// }
+
+// void	quadratic_rotate_z(float angle, t_quadratic *quadra)
+// {
+// 	const float			cos1 = cosf(angle);
+// 	const float			sin1 = sinf(angle);
+// 	const float			cos2 = (1.0 + cosf(2.0 * angle)) / 2.0;
+// 	const float			sin2 = (1.0 - cosf(2.0 * angle)) / 2.0;
+// 	const t_quadratic	tmp = *quadra;
+
+// 	quadra->a = quadra->a * cos2 + quadra->b * sin2 + quadra->f * sin1 * cos1;
+// 	quadra->b = tmp.a * sin2 + quadra->b * cos2 - quadra->f * sin1 * cos1;
+// 	quadra->f = 2.0 * (tmp.a - tmp.b) * sin1 * cos1 + quadra->f * (cos2 - sin2);
+// 	quadra->d = quadra->d * cos1 - quadra->e * sin1;
+// 	quadra->e = tmp.d * sin1 + quadra->e * cos1;
+// 	quadra->g = quadra->g * cos1 + quadra->h * sin1;
+// 	quadra->h = -tmp.g * sin1 + quadra->h * cos1;
+// }
+
 t_quadratic		make_cone(t_vec a, t_vec v, float angle, float h)
 {
 	t_quadratic	res;
 
-	res.a = -(tan(angle) * tan(angle)) * v.x;
-	if (res.a == 0)
-		res.a = 1;
-	res.b = -(tan(angle) * tan(angle)) * v.y;
-	if (res.b == 0)
-		res.b = 1;
-	res.c = -(tan(angle) * tan(angle)) * v.z;
-	if (res.c == 0)
-		res.c = 1;
-	res.d = 0;
-	res.e = 0;
-	res.f = 0;
-	res.g = -2 * a.x * res.a;
-	res.h = -2 * a.y * res.b;
-	res.i = -2 * a.z * res.c;
-	res.j = a.x * a.x + a.y * a.y + a.z * a.z * (-tan(angle) * tan(angle));
+ 	res.a = 1 * (1 / tan(angle) * 1 / tan(angle));
+ 	res.b = 1;
+ 	res.c = -1;
+ 	res.d = 0;
+ 	res.e = 0;
+ 	res.f = 0;
+ 	res.g = -2 * a.x * (1 / tan(angle) * 1 / tan(angle));
+ 	res.h = -2 * a.y;
+ 	res.i = 2 * a.z;
+ 	res.j = (a.x * a.x * (1 / tan(angle) * 1 / tan(angle))) + a.y * a.y + (-a.z) * a.z;
 	return (res);
 }
 
@@ -125,20 +170,20 @@ void		    		bouclette(t_env *v)
 	int		    		x;
 	int		    		y;
 	t_ray	    		ray;
-    // t_quadratic 		sphere;
+    t_quadratic 		sphere;
 	//t_quadratic 		cylindre;
 	// t_quadratic 		plan;
-	t_quadratic 		cone;
+	//t_quadratic 		cone;
 
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
 	t_quadratic 		res;
 
 	//cylindre = make_cylindre_infini((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
-	//sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 5);
+	sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 5);
 	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});
-	cone = make_cone((t_vec){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 45, 10);
-	res = cone;
-	printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+	//cone = make_cone((t_vec){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 45, 10);
+	//res = cone;
+	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	//return ;
     y = -1;
 	while (++y <= v->h)
@@ -147,7 +192,7 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray(v, x, y);
-			if (inter_ray_quadratic(ray, cone))
+			if (inter_ray_quadratic(ray, sphere))
 				pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 		}
 	}
