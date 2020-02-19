@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/18 18:45:48 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/18 18:46:12 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/18 18:18:29 by nrivoire          #+#    #+#             */
+/*   Updated: 2020/02/18 18:18:32 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
@@ -31,22 +30,27 @@ static void		init_sdl(t_env *v)
 		ft_error("Initialisation error of TFT_Init");
 }
 
-int				main(int argc, char **argv)
+static void		init_value(t_env *v)
 {
-	t_env	*v;
-
-	//argc = 1;
-	(void)argv;
-	// argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("") : 0;
-	if (!(v = ft_memalloc(sizeof(t_env))))
-		return (0);
 	v->w = 1280;
 	v->h = 720;
 	v->fov = 60;
 	
-	//init list
+	// init list du parser pour le malloc
 	v->ob = NULL;
 	v->lg = NULL;
+}
+
+int				main(int argc, char **argv)
+{
+	t_env	*v;
+
+	// argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
+	if (!(v = ft_memalloc(sizeof(t_env))))
+		return (0);
+	argc < 2 ? v->file = ft_strdup("./scenes/default.rt") : 0; // CONDITION A SUPPRIMER A L'AVENIR POUR LA REMPLACER PAR CELLE EN COMMENTAIRE AU DESSUS
+	init_value(v);
+
 	v->obj.x = 1;
 	v->obj.y = 1;
 	v->obj.z = 1;
