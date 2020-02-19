@@ -28,7 +28,7 @@ static int		color_value(char const *s)
 	return (res);
 }
 
-static int		atoi_hexa(char *s)
+static int		get_hexa(char *s)
 {
 	int		i;
 	int		content;
@@ -39,12 +39,9 @@ static int		atoi_hexa(char *s)
 	res = 0;
 	while (--i >= 0)
 	{
-		if ('0' <= s[i] && s[i] <= '0' + 16 - 1)
-			res += (s[i] - '0') * content;
-		if ('A' <= s[i] && s[i] <= 'A' + 16 - 11)
-			res += (s[i] - 'A' + 10) * content;
-		if ('a' <= s[i] && s[i] <= 'a' + 16 - 11)
-			res += (s[i] - 'a' + 10) * content;
+		'0' <= s[i] && s[i] <= '0' + 15 ? res += (s[i] - '0') * content : 0;
+		'A' <= s[i] && s[i] <= 'A' + 5 ? res += (s[i] - 'A' + 10) * content : 0;
+		'a' <= s[i] && s[i] <= 'a' + 5 ? res += (s[i] - 'a' + 10) * content : 0;
 		content *= 16;
 	}
 	s[0] == '-' && 16 == 10 ? res *= -1 : 0;
@@ -68,9 +65,9 @@ static void		hexa_value(char s[], t_env *v)
 		i++;
 	}
 	printf("hexa '%s'\n\n", hexa);
-	v->p_col.r = atoi_hexa(hexa) >> 16 & 0xFF;
-	v->p_col.g = atoi_hexa(hexa) >> 8 & 0xFF;
-	v->p_col.b = atoi_hexa(hexa) & 0xFF;
+	v->p_col.r = get_hexa(hexa) >> 16 & 0xFF;
+	v->p_col.g = get_hexa(hexa) >> 8 & 0xFF;
+	v->p_col.b = get_hexa(hexa) & 0xFF;
 }
 
 void			parse_color(char s[], t_env *v)
