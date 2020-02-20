@@ -103,9 +103,7 @@ typedef struct		s_light
 	int				type;
 	t_vec			pos;
 	t_vec			dir;
-	int				r;
-	int				g;
-	int				b;
+	t_color			color;
 	// add autre params
 	float			intensity;
 	struct s_light	*next;
@@ -117,9 +115,10 @@ typedef struct		s_object
 	float			radius;
 	t_vec			pos;
 	t_vec			dir;
-	int				r;
-	int				g;
-	int				b;
+	t_vec			a;
+	t_vec			b;
+	t_vec			c;
+	t_color			color;
 	float			reflect;
 	float			refract;
 	float			transparency;
@@ -173,7 +172,8 @@ typedef struct		s_env
 	t_object		*ob;
 	t_color			p_col;
 	t_point			p_xyz;
-	
+	int				nb_o;
+	int				nb_l;
 	float			cam_angle_x;
 	float			cam_angle_y;
 	t_vec			cam_ori;
@@ -235,5 +235,7 @@ void				parse_color(char s[], t_env *v);
 void				parse_xyz(char s[], t_env *v);
 int					add_lst_obj(t_object **ob, t_object content);
 int					add_lst_lgt(t_light **lg, t_light content);
+
+int				verif_bracket(t_file *file);
 
 #endif
