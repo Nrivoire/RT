@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 16:48:07 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 18:55:40 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -99,24 +99,30 @@ void	create_lgt(t_env *v)
 	}
 }
 
-void	create_obj(t_env *v)
+t_lst_q			*create_obj(t_env *v)
 {
-	t_object *tmp;
+	t_object	*tmp;
+	t_lst_q		*tmp_lst_q;
+	t_lst_q		*lst_q;
 
 	tmp = v->p.ob;
+	if (!(lst_q = (t_lst_q *)malloc(sizeof(t_lst_q))))
+		return (NULL);
+	tmp_lst_q = lst_q;
 	while(tmp)
 	{
 		if (tmp->type == SPHERE)
-			// printf("%f %d %d %d ma boi\n", tmp->transparency, tmp->r, tmp->g, tmp->b);
-			make_sphere(tmp->pos, tmp->radius);
-		// else if (tmp->type == PLAN)
-		// 	make_plan();
+			tmp_lst_q->q = make_sphere(tmp->pos, tmp->radius);
+		else if (tmp->type == PLAN)
+			tmp_lst_q->q = make_plan(tmp->a, tmp->b, tmp->c);
 		// else if (tmp->type == CONE)
-		// 	make_cone();
-		// else if (tmp->type == CYLINDER)
-		// 	make_cylinder(tmp->pos, tmp->radius);
+		// 	tmp_lst_q->q = make_cone();
+		else if (tmp->type == CYLINDER)
+			tmp_lst_q->q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
+		tmp_lst_q = tmp_lst_q->next;
 		tmp = tmp->next;
 	}
+	return (lst_q);
 }
 
 void		    		bouclette(t_env *v)
@@ -124,24 +130,14 @@ void		    		bouclette(t_env *v)
 	int		    		x;
 	int		    		y;
 	t_ray	    		ray;
-	//t_quadratic 		cylindre;
-	// t_quadratic 		plan;
-	//t_quadratic 		cone;
-	//t_quadratic 		object;
-	t_quadratic 		sphere;
-	t_quadratic 		sphere2;
 	//t_quadratic 		res;
+	t_lst_q				*begin;
+	t_lst_q				*tmp;
 
-	//create_obj(v);
-	//cylindre = make_cylindre_infini((t_point){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 2);
-	sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
-	sphere2 = make_sphere((t_vec){-5, 2, 0}, 2);
-	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});
-	//cone = make_cone((t_vec){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 45, 10);
-	//res = cylindre;
+	begin = create_obj(v);
+	tmp = begin;
+	//res = ;
 	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
-	//return ;
-	//res = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 0.05);
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
     y = -1;
 	while (++y <= v->h)
@@ -150,10 +146,13 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray(v, x, y);
-			if (inter_ray_quadratic(ray, sphere))
-				pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
-			if (inter_ray_quadratic(ray, sphere2))
-				pixel_put(v, x, y, (t_rgb){0, 255, 255, 255});
+			while (tmp)
+			{
+				if (inter_ray_quadratic(ray, sphere))
+					pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+				tmp = tmp->next;
+			}
+			tmp = begin;
 		}
 	}
 	//printf("%f %f %f\n", v->obj.x, v->obj.y, v->obj.z);

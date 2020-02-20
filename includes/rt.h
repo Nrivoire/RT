@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 15:48:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 18:45:35 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,8 +65,6 @@ typedef struct		s_obj
 	float			z;
 }					t_obj;
 
-
-
 typedef struct		s_point
 {
 	float	x;
@@ -117,6 +115,9 @@ typedef struct		s_object
 	float			radius;
 	t_vec			pos;
 	t_vec			dir;
+	t_point			a;
+	t_point			b;
+	t_point			c;
 	int				r;
 	int				g;
 	int				b;
@@ -148,6 +149,12 @@ typedef struct		s_file
 	int				fd;
 	char			*line;
 }					t_file;
+
+typedef struct		s_lst_q
+{
+	t_quadratic		q;
+	struct s_lst_q	*next;
+}					t_lst_q;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
@@ -207,7 +214,7 @@ int					key_event(t_env *v, const Uint8 *keyboard_state);
 */
 t_quadratic			make_sphere(t_vec center, float radius);
 t_quadratic			make_plan(t_point a, t_point b, t_point c);
-t_quadratic			make_cylindre_infini(t_point a, t_vec v, float r);
+t_quadratic			make_cylinder(t_vec a, t_vec v, float r);
 t_quadratic			make_cone(t_vec a, t_vec v, float angle, float h);
 
 /*
