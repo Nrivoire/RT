@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_color.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 15:32:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/18 15:32:07 by vasalome         ###   ########lyon.fr   */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   parser_color.c                                   .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/02/18 15:32:05 by vasalome     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/19 15:23:26 by nrivoire    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
-
 #include "../includes/rt.h"
 
 static int		color_value(char const *s)
@@ -64,7 +64,7 @@ static void		hexa_value(char s[], t_env *v)
 		res = ft_strtok(NULL, "x");
 		i++;
 	}
-	printf("hexa '%s'\n\n", hexa);
+	//printf("hexa '%s'\n\n", hexa);
 	v->p_col.r = get_hexa(hexa) >> 16 & 0xFF;
 	v->p_col.g = get_hexa(hexa) >> 8 & 0xFF;
 	v->p_col.b = get_hexa(hexa) & 0xFF;
@@ -91,7 +91,7 @@ void			parse_color(char s[], t_env *v)
 			i++;
 		}
 	}
-	printf("r '%d'\n", v->p_col.r);
-	printf("g '%d'\n", v->p_col.g);
-	printf("b '%d'\n", v->p_col.b);
+	//printf("r '%d'\n", v->p_col.r);
+	//printf("g '%d'\n", v->p_col.g);
+	//printf("b '%d'\n", v->p_col.b);
 }

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/19 14:09:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/19 18:42:57 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,12 +16,21 @@
 t_ray				create_ray(t_env *v, int x, int y)
 {
 	t_matrix_3_3	rot;
+	t_matrix_3_3	cam;
 	t_ray			ray;
 
 	matrix_rotation((y - v->h * .5) * v->angle_ratio,
 					(x - v->w * .5) * v->angle_ratio, 0, rot);
-	ray.ori = (t_vec){v->p.ori.x, v->p.ori.y, v->p.ori.z};
+	ray.ori = v->cam_ori;
 	ray.dir = matrix_mult_vec(rot, (t_vec){0, 0, 1});
+	//if (v->button_left == 1)
+	//	//printf("%f %f %f\n%f %f %f\n%f %f %f\n\n", rot[0][0], rot[0][1], rot[0][2], rot[1][0], rot[1][1], rot[1][2], rot[2][0], rot[2][1], rot[2][2]);
+	//	printf("x = %f y = %f -->", ray.dir.x, ray.dir.y);
+	matrix_rotation(v->cam_angle_x, v->cam_angle_y, 0, cam);
+	ray.dir = matrix_mult_vec(cam, ray.dir);
+	//if (v->button_left == 1)
+	//	//("%f %f %f\n%f %f %f\n%f %f %f\n\n", cam[0][0], cam[0][1], cam[0][2], cam[1][0], cam[1][1], cam[1][2], cam[2][0], cam[2][1], cam[2][2]);
+	//	printf("x = %f y = %f\n", ray.dir.x, ray.dir.y);
 	return (ray);
 }
 
@@ -80,22 +89,22 @@ int		inter_ray_quadratic(t_ray r, t_quadratic q)
 	return (0);
 }
 
-// t_quadratic		make_cylindre_infini(t_vec vec, float r)
-// {
-// 	t_quadratic	res;
+t_quadratic		make_cylindre_infini(t_vec vec, float r)
+{
+	t_quadratic	res;
 
-// 	res.a = (vec.y * vec.y + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-// 	res.b = (vec.x * vec.x + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-// 	res.c = (vec.x * vec.x + vec.y * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-// 	res.d = -(2 * vec.x * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-// 	res.e = -(2 * vec.x * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-// 	res.f = -(2 * vec.y * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-// 	res.g = 0;
-// 	res.h = 0;
-// 	res.i = 0;
-// 	res.j = -(r * r);
-// 	return (res);
-// }
+	res.a = (vec.y * vec.y + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.b = (vec.x * vec.x + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.c = (vec.x * vec.x + vec.y * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.d = -(2 * vec.x * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.e = -(2 * vec.x * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.f = -(2 * vec.y * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.g = 0;
+	res.h = 0;
+	res.i = 0;
+	res.j = -(r * r);
+	return (res);
+}
 
 // void	quadratic_rotate_x(float angle, t_quadratic *quadra)
 // {
@@ -171,20 +180,19 @@ void		    		bouclette(t_env *v)
 	int		    		y;
 	t_ray	    		ray;
     t_quadratic 		sphere;
-	//t_quadratic 		cylindre;
-	// t_quadratic 		plan;
-	//t_quadratic 		cone;
-
-	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
+	t_quadratic 		cylindre;
+	t_quadratic 		plan;
+	t_quadratic 		cone;
 	t_quadratic 		res;
 
 	//cylindre = make_cylindre_infini((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
-	sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 5);
+	sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
 	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});
 	//cone = make_cone((t_vec){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 45, 10);
 	//res = cone;
 	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	//return ;
+	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
     y = -1;
 	while (++y <= v->h)
 	{

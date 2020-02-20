@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 18:18:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/02/18 18:18:32 by vasalome         ###   ########lyon.fr   */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   main.c                                           .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/19 15:56:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
-
 #include "../includes/rt.h"
 
 static void		init_sdl(t_env *v)
@@ -51,15 +51,18 @@ int				main(int argc, char **argv)
 	argc < 2 ? v->file = ft_strdup("./scenes/default.rt") : 0; // CONDITION A SUPPRIMER A L'AVENIR POUR LA REMPLACER PAR CELLE EN COMMENTAIRE AU DESSUS
 	init_value(v);
 
-	v->obj.x = 1;
-	v->obj.y = 1;
-	v->obj.z = 1;
+	v->obj.x = 0;
+	v->obj.y = 0;
+	v->obj.z = 0;
 	v->button_left = 0;
+	v->cam_angle_x = 0;
+	v->cam_angle_y = 0;
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	v->p.ori.x = 0;
 	v->p.ori.y = 0;
-	v->p.ori.z = -50;
+	v->p.ori.z = -20;
+	v->cam_ori = v->p.ori;
 
 	check_options(v, argc, argv);
 	parser_file(v);
