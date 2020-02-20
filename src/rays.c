@@ -3,10 +3,14 @@
 /*                                                              /             */
 /*   rays.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2020/02/20 18:55:40 by nrivoire    ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2020/02/20 18:55:53 by qpupier     ###    #+. /#+    ###.fr     */
+>>>>>>> 633bcc9b51cbe4b46305ea877ce48e0a9346d1b6
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,17 +25,17 @@ t_ray				create_ray(t_env *v, int x, int y)
 
 	matrix_rotation((y - v->h * .5) * v->angle_ratio,
 					(x - v->w * .5) * v->angle_ratio, 0, rot);
-	ray.ori = v->cam_ori;
-	ray.dir = matrix_mult_vec(rot, (t_vec){0, 0, 1});
+	ray.o = v->cam_ori;
+	ray.d = matrix_mult_vec(rot, (t_vec){0, 0, 1});
 	matrix_rotation(v->cam_angle_x, v->cam_angle_y, 0, cam);
-	ray.dir = matrix_mult_vec(cam, ray.dir);
-	ray.ori = matrix_mult_vec(cam, v->cam_ori);
+	ray.d = matrix_mult_vec(cam, ray.d);
+	ray.o = matrix_mult_vec(cam, v->cam_ori);
 	return (ray);
 }
 
 // void					print_ray(t_ray ray)
 // {
-// 	printf("DemiDroite((%f, %f, %f), Vecteur((%f, %f, %f)))\n", ray.ori.x, ray.ori.y, ray.ori.z, ray.dir.x, ray.dir.y, ray.dir.z);
+// 	printf("DemiDroite((%f, %f, %f), Vecteur((%f, %f, %f)))\n", ray.o.x, ray.o.y, ray.o.z, ray.d.x, ray.d.y, ray.d.z);
 	// ray = create_ray(v, 0, 0);
 	// print_ray(ray);
 	// ray = create_ray(v, v->w, 0);
@@ -43,45 +47,70 @@ t_ray				create_ray(t_env *v, int x, int y)
 	// exit (1);
 // }
 
-float			inter_ray_quadratic(t_ray r, t_quadratic q)
+typedef struct	s_sol_2_vec
 {
-	t_sys_sol_1var_deg2	res_equ;
-	int					nb;
+	int		s1;
+	int		s2;
+	t_vec	v1;
+	t_vec	v2;
+}				t_sol_2_vec;
 
-	//printf("(%f %f %f) | (%f %f %f)\n", r.ori.x, r.ori.y, r.ori.z, r.dir.x, r.dir.y, r.dir.z);
-	nb = sys_solve_1equ_1var_deg2((t_equ_1var_deg2)				\
-			{													\
-				.a = q.a * r.dir.x * r.dir.x 						\
-					+ q.b * r.dir.y * r.dir.y 						\
-					+ q.c * r.dir.z * r.dir.z 						\
-					+ q.d * r.dir.x * r.dir.y 						\
-					+ q.e * r.dir.x * r.dir.z 						\
-					+ q.f * r.dir.y * r.dir.z, 						\
-				.b = q.a * 2 * r.ori.x * r.dir.x 					\
-					+ q.b * 2 * r.ori.y * r.dir.y 					\
-					+ q.c * 2 * r.ori.z * r.dir.z 					\
-					+ q.d * (r.ori.x * r.dir.y + r.dir.x * r.ori.y) 	\
-					+ q.e * (r.ori.x * r.dir.z + r.dir.x * r.ori.z) 	\
-					+ q.f * (r.ori.y * r.dir.z + r.dir.y * r.ori.z) 	\
-					+ q.g * r.dir.x + q.h * r.dir.y + q.i * r.dir.z, 	\
-				.c = q.a * r.ori.x * r.ori.x 						\
-					+ q.b * r.ori.y * r.ori.y 						\
-					+ q.c * r.ori.z * r.ori.z 						\
-					+ q.d * r.ori.x * r.ori.y 						\
-					+ q.e * r.ori.x * r.ori.z 						\
-					+ q.f * r.ori.y * r.ori.z 						\
-					+ q.g * r.ori.x + q.h * r.ori.y + q.i * r.ori.z 	\
-					+ q.j										\
-			}, 													\
-			&res_equ);
-	// nb = inter_line_quadratic(line_create_point_vec(r.ori, r.dir), q, &res_equ);
-	//if (nb)
-	//	printf("nb : [%d] => %f | %f\n", nb, res_equ.x1, res_equ.x2);
-	if (nb == 1)
-		return (res_equ.x1 > 0);
-	else if (nb == 2)
-		return (res_equ.x1 > 0 || res_equ.x2 > 0);
-	return (0);
+static int	inter_ray_quadratic_create_equ(t_ray r, t_quadratic q, 	\
+		t_sys_sol_1var_deg2 *sol)
+{
+	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)				\
+			{														\
+				.a = q.a * r.d.x * r.d.x 							\
+					+ q.b * r.d.y * r.d.y 							\
+					+ q.c * r.d.z * r.d.z 							\
+					+ q.d * r.d.x * r.d.y 							\
+					+ q.e * r.d.x * r.d.z 							\
+					+ q.f * r.d.y * r.d.z, 							\
+				.b = q.a * 2 * r.o.x * r.d.x 						\
+					+ q.b * 2 * r.o.y * r.d.y 						\
+					+ q.c * 2 * r.o.z * r.d.z 						\
+					+ q.d * (r.o.x * r.d.y + r.d.x * r.o.y) 		\
+					+ q.e * (r.o.x * r.d.z + r.d.x * r.o.z) 		\
+					+ q.f * (r.o.y * r.d.z + r.d.y * r.o.z) 		\
+					+ q.g * r.d.x + q.h * r.d.y + q.i * r.d.z, 		\
+				.c = q.a * r.o.x * r.o.x 							\
+					+ q.b * r.o.y * r.o.y 							\
+					+ q.c * r.o.z * r.o.z 							\
+					+ q.d * r.o.x * r.o.y 							\
+					+ q.e * r.o.x * r.o.z 							\
+					+ q.f * r.o.y * r.o.z 							\
+					+ q.g * r.o.x + q.h * r.o.y + q.i * r.o.z 		\
+					+ q.j											\
+			}, 														\
+			sol));
+}
+
+int		inter_ray_quadratic(t_ray r, t_quadratic q, t_sol_2_vec *sol)
+{
+	t_sys_sol_1var_deg2	res;
+	int					inter;
+
+	sol->s1 = 0;
+	sol->s2 = 0;
+	if (!(inter = inter_ray_quadratic_create_equ(r, q, &res)))
+		return (0);
+	sol->s1 = res.s1;
+	sol->s2 = res.s2;
+	if (res.s1)
+	{
+		if (res.x1 < 0)
+			sol->s1 = 0;
+		else
+			sol->v1 = vec_add(r.o, vec_mult_float(r.d, res.x1));
+	}
+	if (res.s2)
+	{
+		if (res.x2 < 0)
+			sol->s2 = 0;
+		else
+			sol->v2 = vec_add(r.o, vec_mult_float(r.d, res.x2));
+	}
+	return (sol->s1 || sol->s2);
 }
 
 void	create_lgt(t_env *v)
@@ -133,6 +162,7 @@ void		    		bouclette(t_env *v)
 	//t_quadratic 		res;
 	t_lst_q				*begin;
 	t_lst_q				*tmp;
+	t_sol_2_vec			sol;
 
 	begin = create_obj(v);
 	tmp = begin;
@@ -148,7 +178,7 @@ void		    		bouclette(t_env *v)
 			ray = create_ray(v, x, y);
 			while (tmp)
 			{
-				if (inter_ray_quadratic(ray, sphere))
+				if (inter_ray_quadratic(ray, tmp->q, &sol))
 					pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 				tmp = tmp->next;
 			}
