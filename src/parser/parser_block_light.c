@@ -17,9 +17,9 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_light content)
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v);
-		content.r = v->p_col.r;
-		content.g = v->p_col.g;
-		content.b = v->p_col.b;
+		content.r = v->p.p_col.r;
+		content.g = v->p.p_col.g;
+		content.b = v->p.p_col.b;
 	}
 	if (!ft_strncmp(tmp, "\tintensity=", 11))
 		content.intensity = parse_value(tmp);
@@ -30,16 +30,12 @@ static void		parse_xyz_lgt(t_env *v, char *tmp, t_light content)
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.pos.x = v->p_xyz.x;
-		content.pos.y = v->p_xyz.y;
-		content.pos.z = v->p_xyz.z;
+		content.pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 	if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.dir.x = v->p_xyz.x;
-		content.dir.y = v->p_xyz.y;
-		content.dir.z = v->p_xyz.z;
+		content.dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 }
 
@@ -63,5 +59,5 @@ void			parse_light(t_env *v, t_file *file)
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
-	add_lst_lgt(&v->lg, content);
+	add_lst_lgt(&v->p.lg, content);
 }

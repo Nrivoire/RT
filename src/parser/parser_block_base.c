@@ -23,7 +23,7 @@ void	parse_scene(t_env *v, t_file *file)
 		!ft_strncmp(tmp, "\twidth=", 7) ? v->w = parse_value(tmp) : 0;
 		!ft_strncmp(tmp, "\theight=", 8) ? v->h = parse_value(tmp) : 0;
 		if (!ft_strncmp(tmp, "\tambient-light=", 15))
-			v->sc.amb_light = parse_value(tmp);
+			v->p.sc.amb_light = parse_value(tmp);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
@@ -40,18 +40,18 @@ void	parse_cam(t_env *v, t_file *file)
 		if (!ft_strncmp(tmp, "\tpos=", 5))
 		{
 			parse_xyz(tmp, v);
-			v->cam.pos.x = v->p_xyz.x;
-			v->cam.pos.y = v->p_xyz.y;
-			v->cam.pos.z = v->p_xyz.z;
+			v->p.cam.pos.x = v->p.p_xyz.x;
+			v->p.cam.pos.y = v->p.p_xyz.y;
+			v->p.cam.pos.z = v->p.p_xyz.z;
 		}
 		if (!ft_strncmp(tmp, "\tdir=", 5))
 		{
 			parse_xyz(tmp, v);
-			v->cam.dir.x = v->p_xyz.x;
-			v->cam.dir.y = v->p_xyz.y;
-			v->cam.dir.z = v->p_xyz.z;
+			v->p.cam.dir.x = v->p.p_xyz.x;
+			v->p.cam.dir.y = v->p.p_xyz.y;
+			v->p.cam.dir.z = v->p.p_xyz.z;
 		}
-		!ft_strncmp(tmp, "\tfov=", 5) ? v->cam.fov = parse_value(tmp) : 0;
+		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_value(tmp) : 0;
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

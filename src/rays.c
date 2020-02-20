@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/19 18:42:57 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 11:19:08 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -174,17 +174,53 @@ t_quadratic		make_cone(t_vec a, t_vec v, float angle, float h)
 	return (res);
 }
 
+void	create_lgt(t_env *v)
+{
+	t_light *tmp;
+
+	tmp = v->p.lg;
+	while(tmp)
+	{
+		// if (tmp->type == POINT)
+		//	fonction point light;
+		// else if (tmp->type == SPOT)
+		//	fonction spot light;
+		tmp = tmp->next;
+	}
+}
+
+void	create_obj(t_env *v)
+{
+	t_object *tmp;
+
+	tmp = v->p.ob;
+	while(tmp)
+	{
+		if (tmp->type == SPHERE)
+			// printf("%f %d %d %d ma boi\n", tmp->transparency, tmp->r, tmp->g, tmp->b);
+			make_sphere(tmp->pos, tmp->radius);
+		// else if (tmp->type == PLAN)
+		// 	make_plan();
+		// else if (tmp->type == CONE)
+		// 	make_cone();
+		// else if (tmp->type == CYLINDER)
+		// 	make_cylinder(tmp->pos, tmp->radius);
+		tmp = tmp->next;
+	}
+}
+
 void		    		bouclette(t_env *v)
 {
 	int		    		x;
 	int		    		y;
 	t_ray	    		ray;
     t_quadratic 		sphere;
-	t_quadratic 		cylindre;
-	t_quadratic 		plan;
-	t_quadratic 		cone;
+	//t_quadratic 		cylindre;
+	// t_quadratic 		plan;
+	//t_quadratic 		cone;
+	t_quadratic 		object;
 	t_quadratic 		res;
-
+	// create_obj(v);
 	//cylindre = make_cylindre_infini((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
 	sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
 	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});

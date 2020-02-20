@@ -37,8 +37,8 @@ static void		init_value(t_env *v)
 	v->fov = 60;
 	
 	// init list du parser pour le malloc
-	v->ob = NULL;
-	v->lg = NULL;
+	v->p.ob = NULL;
+	v->p.lg = NULL;
 }
 
 int				main(int argc, char **argv)

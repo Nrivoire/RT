@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 15:32:05 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/19 15:23:26 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 11:18:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,7 @@ static int		get_hexa(char *s)
 	return (res);
 }
 
-static void		hexa_value(char s[], t_env *v)
+static void		hexa_value(char s[], t_env *v, char delim)
 {
 	int		i;
 	char	*res;
@@ -57,17 +57,17 @@ static void		hexa_value(char s[], t_env *v)
 	res = NULL;
 	hexa = NULL;
 	i = 0;
-	res = ft_strtok(s, "x");
+	res = ft_strtok(s, &delim);
 	while (res != NULL)
 	{
 		i == 1 ? hexa = ft_strtrim(res) : 0;
-		res = ft_strtok(NULL, "x");
+		res = ft_strtok(NULL, &delim);
 		i++;
 	}
-	//printf("hexa '%s'\n\n", hexa);
-	v->p_col.r = get_hexa(hexa) >> 16 & 0xFF;
-	v->p_col.g = get_hexa(hexa) >> 8 & 0xFF;
-	v->p_col.b = get_hexa(hexa) & 0xFF;
+	// printf("hexa '%s'\n\n", hexa);
+	v->p.p_col.r = get_hexa(hexa) >> 16 & 0xFF;
+	v->p.p_col.g = get_hexa(hexa) >> 8 & 0xFF;
+	v->p.p_col.b = get_hexa(hexa) & 0xFF;
 }
 
 void			parse_color(char s[], t_env *v)
@@ -78,20 +78,22 @@ void			parse_color(char s[], t_env *v)
 	res = NULL;
 	i = 0;
 	if (ft_strstr(s, "0x"))
-		hexa_value(s, v);
+		hexa_value(s, v, 'x');
+	else if (ft_strstr(s, "#"))
+		hexa_value(s, v, '#');
 	else
 	{
 		res = ft_strtok(s, ",");
 		while (res != NULL)
 		{
-			i == 0 ? v->p_col.r = color_value(res) : 0;
-			i == 1 ? v->p_col.g = color_value(res) : 0;
-			i == 2 ? v->p_col.b = color_value(res) : 0;
+			i == 0 ? v->p.p_col.r = color_value(res) : 0;
+			i == 1 ? v->p.p_col.g = color_value(res) : 0;
+			i == 2 ? v->p.p_col.b = color_value(res) : 0;
 			res = ft_strtok(NULL, ",");
 			i++;
 		}
 	}
-	//printf("r '%d'\n", v->p_col.r);
-	//printf("g '%d'\n", v->p_col.g);
-	//printf("b '%d'\n", v->p_col.b);
+	// printf("r '%d'\n", v->p.p_col.r);
+	// printf("g '%d'\n", v->p.p_col.g);
+	// printf("b '%d'\n", v->p.p_col.b);
 }

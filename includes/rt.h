@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/19 15:55:45 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 11:19:28 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,9 +28,9 @@
 # define CONE 3
 # define CYLINDER 4
 
-# define POINT 5
-# define DIRECTIONAL 6
-# define SPOT 7
+# define POINT 10
+# define DIRECTIONAL 11
+# define SPOT 12
 
 typedef struct		s_start
 {
@@ -65,10 +65,7 @@ typedef struct		s_obj
 	float			z;
 }					t_obj;
 
-typedef struct		s_parsing
-{
-	t_vec			ori;
-}					t_parsing;
+
 
 typedef struct		s_point
 {
@@ -83,6 +80,10 @@ typedef struct		s_color
 	int				g;
 	int				b;
 }					t_color;
+
+/*
+** -----------------------------PARSING----------------------------
+*/
 
 typedef struct		s_scene
 {
@@ -130,6 +131,17 @@ typedef struct		s_object
 	int				texture;
 	struct s_object	*next;
 }					t_object;
+
+typedef struct		s_parsing
+{
+	t_scene			sc;
+	t_camera		cam;
+	t_light			*lg;
+	t_object		*ob;
+	t_color			p_col;
+	t_point			p_xyz;
+	t_vec			ori;
+}					t_parsing;
 
 typedef struct		s_file
 {

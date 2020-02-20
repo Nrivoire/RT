@@ -102,11 +102,11 @@ void	parse_xyz(char s[], t_env *v)
 	while (res != NULL)
 	{
 		if (i == 0)
-			v->p_xyz.x = parse_value(res);
+			v->p.p_xyz.x = parse_value(res);
 		else if (i == 1)
-			v->p_xyz.y = parse_value(res);
+			v->p.p_xyz.y = parse_value(res);
 		else if (i == 2)
-			v->p_xyz.z = parse_value(res);
+			v->p.p_xyz.z = parse_value(res);
 		res = ft_strtok(NULL, ",");
 		i++;
 	}
