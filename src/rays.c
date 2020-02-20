@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 15:49:14 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 16:48:07 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -124,23 +124,24 @@ void		    		bouclette(t_env *v)
 	int		    		x;
 	int		    		y;
 	t_ray	    		ray;
-	t_quadratic 		cylindre;
+	//t_quadratic 		cylindre;
 	// t_quadratic 		plan;
 	//t_quadratic 		cone;
 	//t_quadratic 		object;
-	t_quadratic 		res;
-	//t_quadratic 		sphere;
-	//t_quadratic 		sphere2;
+	t_quadratic 		sphere;
+	t_quadratic 		sphere2;
+	//t_quadratic 		res;
 
-	// create_obj(v);
-	cylindre = make_cylindre_infini((t_point){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 2);
-	//sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
-	//sphere2 = make_sphere((t_vec){-5, 2, 0}, 2);
+	//create_obj(v);
+	//cylindre = make_cylindre_infini((t_point){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 2);
+	sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
+	sphere2 = make_sphere((t_vec){-5, 2, 0}, 2);
 	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});
 	//cone = make_cone((t_vec){v->obj.x, v->obj.y, v->obj.z}, (t_vec){0, 1, 0}, 45, 10);
-	res = cylindre;
-	printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+	//res = cylindre;
+	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	//return ;
+	//res = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 0.05);
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
     y = -1;
 	while (++y <= v->h)
@@ -149,10 +150,10 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray(v, x, y);
-			if (inter_ray_quadratic(ray, cylindre))
+			if (inter_ray_quadratic(ray, sphere))
 				pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
-			//if (inter_ray_quadratic(ray, sphere2))
-			//	pixel_put(v, x, y, (t_rgb){0, 255, 255, 255});
+			if (inter_ray_quadratic(ray, sphere2))
+				pixel_put(v, x, y, (t_rgb){0, 255, 255, 255});
 		}
 	}
 	//printf("%f %f %f\n", v->obj.x, v->obj.y, v->obj.z);

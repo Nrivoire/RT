@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:17:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 15:51:59 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 16:45:42 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,9 +80,9 @@ t_quadratic		make_cylindre_infini(t_point a, t_vec v, float r)
 	res.d = -2 * v.x * v.y;
 	res.e = -2 * v.x * v.z;
 	res.f = -2 * v.y * v.z;
-	res.g = 2 * (v.z * (v.x * a.z - v.z * a.x)) + v.y * (v.x * a.y - v.y * a.x);
-	res.h = 2 * (v.x * (v.y * a.x - v.x * a.y)) + v.z * (v.y * a.z - v.z * a.y);
-	res.i = 2 * (v.x * (v.z * a.z - v.x * a.z)) + v.y * (v.z * a.y - v.y * a.z);
+	res.g = 2 * (v.z * (v.x * a.z - v.z * a.x) + v.y * (v.x * a.y - v.y * a.x));
+	res.h = 2 * (v.x * (v.y * a.x - v.x * a.y) + v.z * (v.y * a.z - v.z * a.y));
+	res.i = 2 * (v.x * (v.z * a.z - v.x * a.z) + v.y * (v.z * a.y - v.y * a.z));
 	res.j = v.z * v.z * a.y * a.y + v.z * v.z * a.x * a.x +
 			v.x * v.x * a.z * a.z + v.x * v.x * a.y * a.y +
 			v.y * v.y * a.z * a.z + v.y * v.y * a.x * a.x - 2 * (
