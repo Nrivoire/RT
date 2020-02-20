@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/03/13 11:56:39 by qpupier      #+#   ##    ##    #+#        #
-#    Updated: 2020/02/13 12:58:19 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/20 18:14:25 by qpupier     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -54,7 +54,7 @@ SRC_NAME = 	display/ft_putchar_fd.c 							\
 			math/line/line_check.c 								\
 			math/line/line_create.c 							\
 			math/line/line_equal.c 								\
-			math/line/line_half_inter_seg.c 					\
+			math/line/inter_ray_seg.c 							\
 			math/line/line_init.c 								\
 			math/line/line_inter_line.c 						\
 			math/line/line_inter_seg.c 							\
