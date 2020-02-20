@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:17:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 14:08:47 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 15:51:59 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,36 +70,41 @@ t_quadratic		make_plan(t_point a, t_point b, t_point c)
 	return (res);
 }
 
-t_quadratic		make_cylindre_infini(t_vec vec, float r)
+t_quadratic		make_cylindre_infini(t_point a, t_vec v, float r)
 {
 	t_quadratic	res;
 
-	res.a = (vec.y * vec.y + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.b = (vec.x * vec.x + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.c = (vec.x * vec.x + vec.y * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.d = -(2 * vec.x * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.e = -(2 * vec.x * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.f = -(2 * vec.y * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-	res.g = 0;
-	res.h = 0;
-	res.i = 0;
-	res.j = -(r * r);
+	res.a = v.y * v.y + v.z * v.z;
+	res.b = v.x * v.x + v.z * v.z;
+	res.c = v.y * v.y + v.x * v.x;
+	res.d = -2 * v.x * v.y;
+	res.e = -2 * v.x * v.z;
+	res.f = -2 * v.y * v.z;
+	res.g = 2 * (v.z * (v.x * a.z - v.z * a.x)) + v.y * (v.x * a.y - v.y * a.x);
+	res.h = 2 * (v.x * (v.y * a.x - v.x * a.y)) + v.z * (v.y * a.z - v.z * a.y);
+	res.i = 2 * (v.x * (v.z * a.z - v.x * a.z)) + v.y * (v.z * a.y - v.y * a.z);
+	res.j = v.z * v.z * a.y * a.y + v.z * v.z * a.x * a.x +
+			v.x * v.x * a.z * a.z + v.x * v.x * a.y * a.y +
+			v.y * v.y * a.z * a.z + v.y * v.y * a.x * a.x - 2 * (
+			v.y * v.z * a.y * a.z +
+			v.x * v.z * a.x * a.z +
+			v.x * v.y * a.x * a.y) - r * r;
 	return (res);
 }
 
 t_quadratic		make_cone(t_vec a, t_vec v, float angle, float h)
 {
-	t_quadratic	res;
+	// t_quadratic	res;
 
- 	res.a = 1 * (1 / tan(angle) * 1 / tan(angle));
- 	res.b = 1;
- 	res.c = -1;
- 	res.d = 0;
- 	res.e = 0;
- 	res.f = 0;
- 	res.g = -2 * a.x * (1 / tan(angle) * 1 / tan(angle));
- 	res.h = -2 * a.y;
- 	res.i = 2 * a.z;
- 	res.j = (a.x * a.x * (1 / tan(angle) * 1 / tan(angle))) + a.y * a.y + (-a.z) * a.z;
-	return (res);
+ 	// res.a = ;
+ 	// res.b = ;
+ 	// res.c = ;
+ 	// res.d = ;
+ 	// res.e = ;
+ 	// res.f = ;
+ 	// res.g = ;
+ 	// res.h = ;
+ 	// res.i = ;
+ 	// res.j = ;
+	// return (res);
 }
