@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 18:59:10 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 20:03:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,9 +67,9 @@ typedef struct		s_obj
 
 typedef struct		s_point
 {
-	float	x;
-	float	y;
-	float	z;
+	float			x;
+	float			y;
+	float			z;
 }					t_point;
 
 typedef struct		s_color
@@ -116,7 +116,7 @@ typedef struct		s_object
 	t_vec			pos;
 	t_vec			dir;
 	t_point			a;
-	t_point			b;
+	t_point			m;
 	t_point			c;
 	int				r;
 	int				g;
@@ -150,11 +150,10 @@ typedef struct		s_file
 	char			*line;
 }					t_file;
 
-typedef struct		s_lst_q
+typedef struct		s_tab
 {
 	t_quadratic		q;
-	struct s_lst_q	*next;
-}					t_lst_q;
+}					t_tab;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------

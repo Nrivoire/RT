@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 18:59:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 20:16:54 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,20 +28,6 @@ t_ray				create_ray(t_env *v, int x, int y)
 	ray.o = matrix_mult_vec(cam, v->cam_ori);
 	return (ray);
 }
-
-// void					print_ray(t_ray ray)
-// {
-// 	printf("DemiDroite((%f, %f, %f), Vecteur((%f, %f, %f)))\n", ray.o.x, ray.o.y, ray.o.z, ray.d.x, ray.d.y, ray.d.z);
-	// ray = create_ray(v, 0, 0);
-	// print_ray(ray);
-	// ray = create_ray(v, v->w, 0);
-	// print_ray(ray);
-	// ray = create_ray(v, v->w, v->h);
-	// print_ray(ray);
-	// ray = create_ray(v, 0, v->h);
-	// print_ray(ray);
-	// exit (1);
-// }
 
 typedef struct	s_sol_2_vec
 {
@@ -124,30 +110,25 @@ void	create_lgt(t_env *v)
 	}
 }
 
-t_lst_q			*create_obj(t_env *v)
+t_tab			*create_obj(t_env *v)
 {
 	t_object	*tmp;
-	t_lst_q		*tmp_lst_q;
-	t_lst_q		*lst_q;
+	t_tab		*tab;
 
 	tmp = v->p.ob;
-	if (!(lst_q = (t_lst_q *)malloc(sizeof(t_lst_q))))
-		return (NULL);
-	tmp_lst_q = lst_q;
 	while(tmp)
 	{
 		if (tmp->type == SPHERE)
-			tmp_lst_q->q = make_sphere(tmp->pos, tmp->radius);
+			make_sphere(tmp->pos, tmp->radius);
 		else if (tmp->type == PLAN)
-			tmp_lst_q->q = make_plan(tmp->a, tmp->b, tmp->c);
+			make_plan(tmp->a, tmp->m, tmp->c);
 		// else if (tmp->type == CONE)
-		// 	tmp_lst_q->q = make_cone();
+		// 	add_elem(&lst_q, make_cone());
 		else if (tmp->type == CYLINDER)
-			tmp_lst_q->q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
-		tmp_lst_q = tmp_lst_q->next;
+			make_cylinder(tmp->pos, tmp->dir, tmp->radius);
 		tmp = tmp->next;
 	}
-	return (lst_q);
+	return (tab);
 }
 
 void		    		bouclette(t_env *v)
@@ -156,12 +137,11 @@ void		    		bouclette(t_env *v)
 	int		    		y;
 	t_ray	    		ray;
 	//t_quadratic 		res;
-	t_lst_q				*begin;
-	t_lst_q				*tmp;
 	t_sol_2_vec			sol;
+	t_tab				*tab;
+	int					i;
 
-	begin = create_obj(v);
-	tmp = begin;
+	tab = create_obj(v);
 	//res = ;
 	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
@@ -172,13 +152,15 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray(v, x, y);
-			while (tmp)
+			i = -1;
+			while (++i < max)
 			{
-				if (inter_ray_quadratic(ray, tmp->q, &sol))
+				if (inter_ray_quadratic(ray, tab[i].q, &sol))
+				{
+					printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", tmp->q.a, tmp->q.b, tmp->q.c, tmp->q.d, tmp->q.e, tmp->q.f, tmp->q.g, tmp->q.h, tmp->q.i, tmp->q.j);
 					pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
-				tmp = tmp->next;
+				}
 			}
-			tmp = begin;
 		}
 	}
 	//printf("%f %f %f\n", v->obj.x, v->obj.y, v->obj.z);

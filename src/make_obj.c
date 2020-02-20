@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:17:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 18:43:54 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 19:32:22 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,7 @@ t_quadratic		make_plan(t_point a, t_point b, t_point c)
 	return (res);
 }
 
-t_quadratic		make_cylindre_infini(t_vec a, t_vec v, float r)
+t_quadratic		make_cylinder(t_vec a, t_vec v, float r)
 {
 	t_quadratic	res;
 
