@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/19 15:56:24 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 14:11:09 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,6 @@ int				main(int argc, char **argv)
 	v->obj.x = 0;
 	v->obj.y = 0;
 	v->obj.z = 0;
-	v->button_left = 0;
 	v->cam_angle_x = 0;
 	v->cam_angle_y = 0;
 

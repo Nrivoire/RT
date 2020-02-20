@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:17:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 15:30:17 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 14:08:47 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,5 +67,39 @@ t_quadratic		make_plan(t_point a, t_point b, t_point c)
 	res.h = cross.y;
 	res.i = cross.z;
 	res.j = -cross.x * a.x - cross.y * a.y - cross.z * a.z;
+	return (res);
+}
+
+t_quadratic		make_cylindre_infini(t_vec vec, float r)
+{
+	t_quadratic	res;
+
+	res.a = (vec.y * vec.y + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.b = (vec.x * vec.x + vec.z * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.c = (vec.x * vec.x + vec.y * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.d = -(2 * vec.x * vec.y) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.e = -(2 * vec.x * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.f = -(2 * vec.y * vec.z) / (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	res.g = 0;
+	res.h = 0;
+	res.i = 0;
+	res.j = -(r * r);
+	return (res);
+}
+
+t_quadratic		make_cone(t_vec a, t_vec v, float angle, float h)
+{
+	t_quadratic	res;
+
+ 	res.a = 1 * (1 / tan(angle) * 1 / tan(angle));
+ 	res.b = 1;
+ 	res.c = -1;
+ 	res.d = 0;
+ 	res.e = 0;
+ 	res.f = 0;
+ 	res.g = -2 * a.x * (1 / tan(angle) * 1 / tan(angle));
+ 	res.h = -2 * a.y;
+ 	res.i = 2 * a.z;
+ 	res.j = (a.x * a.x * (1 / tan(angle) * 1 / tan(angle))) + a.y * a.y + (-a.z) * a.z;
 	return (res);
 }

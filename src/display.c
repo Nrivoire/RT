@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 14:20:58 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 13:31:30 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,11 +56,13 @@ void			draw_pro_frame(t_env *v)
 void			display(t_env *v)
 {
 	SDL_Event	e;
-	const Uint8	*keyboard_state;
+	const Uint8		*keyboard_state;
+	uint32_t		mouse_state;
 
 	while (1)
 	{
 		keyboard_state = SDL_GetKeyboardState(NULL);
+		mouse_state = SDL_GetMouseState(NULL, NULL);
 		while (SDL_PollEvent(&e))
 		{
 			if (e.type == SDL_KEYDOWN)
@@ -68,7 +70,7 @@ void			display(t_env *v)
 			if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
 				mouse_button_event(e, v);
 			if (e.type == SDL_MOUSEMOTION)
-				mouse_motion_event(e, v);
+				mouse_motion_event(e, v, mouse_state);
 		}
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
