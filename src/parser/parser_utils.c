@@ -22,9 +22,7 @@ int		add_lst_obj(t_object **ob, t_object content)
 	new->radius = content.radius;
 	new->pos = content.pos;
 	new->dir = content.dir;
-	new->r = content.r;
-	new->g = content.g;
-	new->b = content.b;
+	new->color = content.color;
 	new->reflect = content.reflect;
 	new->refract = content.refract;
 	new->transparency = content.transparency;

@@ -17,9 +17,7 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_light content)
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v);
-		content.r = v->p.p_col.r;
-		content.g = v->p.p_col.g;
-		content.b = v->p.p_col.b;
+		content.color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
 	if (!ft_strncmp(tmp, "\tintensity=", 11))
 		content.intensity = parse_value(tmp);
@@ -45,7 +43,7 @@ void			parse_light(t_env *v, t_file *file)
 	t_light		content;
 
 	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0)
+			ft_strncmp(file->line, "}", 1) != 0 && !verif_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\ttype=", 6))
