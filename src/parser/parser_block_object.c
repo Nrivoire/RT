@@ -17,9 +17,7 @@ static void		parse_material_obj(t_env *v, char *tmp, t_object content)
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v);
-		content.r = v->p.p_col.r;
-		content.g = v->p.p_col.g;
-		content.b = v->p.p_col.b;
+		content.color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
 	!ft_strncmp(tmp, "\treflect=", 9) ? content.reflect = parse_value(tmp) : 0;
 	!ft_strncmp(tmp, "\trefract=", 9) ? content.refract = parse_value(tmp) : 0;
@@ -57,7 +55,7 @@ void			parse_obj(t_env *v, t_file *file)
 	t_object	content;
 
 	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0)
+			ft_strncmp(file->line, "}", 1) != 0 && !verif_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\ttype=", 6))

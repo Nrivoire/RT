@@ -12,6 +12,17 @@
 
 #include "../includes/rt.h"
 
+int				verif_bracket(t_file *file)
+{
+	char	*tmp;
+
+	tmp = ft_strdup(file->line);
+	if (ft_strstr(tmp, "scene{") || ft_strstr(tmp, "camera{")
+			|| ft_strstr(tmp, "light{") || ft_strstr(tmp, "object{"))
+		ft_error("Bad file: missing '}' to close a block");
+	return (0);
+}
+
 static void		read_file(t_env *v, t_file *file)
 {
 	char		*tmp;
@@ -21,12 +32,18 @@ static void		read_file(t_env *v, t_file *file)
 		tmp = ft_strdup(file->line);
 		if (!(ft_strncmp(tmp, "scene{", 6)))
 			parse_scene(v, file);
-		if (!(ft_strncmp(tmp, "object{", 7)))
-			parse_obj(v, file);
 		if (!(ft_strncmp(tmp, "camera{", 7)))
 			parse_cam(v, file);
 		if (!(ft_strncmp(tmp, "light{", 6)))
+		{
+			v->nb_l++;
 			parse_light(v, file);
+		}
+		if (!(ft_strncmp(tmp, "object{", 7)))
+		{
+			v->nb_o++;
+			parse_obj(v, file);
+		}
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
