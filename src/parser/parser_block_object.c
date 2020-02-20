@@ -42,16 +42,12 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_object content)
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.pos.x = v->p.p_xyz.x;
-		content.pos.y = v->p.p_xyz.y;
-		content.pos.z = v->p.p_xyz.z;
+		content.pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 	if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.dir.x = v->p.p_xyz.x;
-		content.dir.y = v->p.p_xyz.y;
-		content.dir.z = v->p.p_xyz.z;
+		content.dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 }
 

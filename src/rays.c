@@ -188,6 +188,7 @@ void	create_obj(t_env *v)
 	while(tmp)
 	{
 		if (tmp->type == SPHERE)
+			// printf("%f %d %d %d ma boi\n", tmp->transparency, tmp->r, tmp->g, tmp->b);
 			make_sphere(tmp->pos, tmp->radius);
 		// else if (tmp->type == PLAN)
 		// 	make_plan();
@@ -212,7 +213,7 @@ void		    		bouclette(t_env *v)
 
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
 	t_quadratic 		res;
-
+	// create_obj(v);
 	//cylindre = make_cylindre_infini((t_vec){v->obj.x, v->obj.y, v->obj.z}, 2);
 	sphere = make_sphere((t_vec){v->obj.x, v->obj.y, v->obj.z}, 5);
 	//plan = make_plan((t_point){0, 1, 0},(t_point){3, 1, 0}, (t_point){-2, 1, 3});

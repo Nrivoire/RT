@@ -64,7 +64,7 @@ static void		hexa_value(char s[], t_env *v, char delim)
 		res = ft_strtok(NULL, &delim);
 		i++;
 	}
-	printf("hexa '%s'\n\n", hexa);
+	// printf("hexa '%s'\n\n", hexa);
 	v->p.p_col.r = get_hexa(hexa) >> 16 & 0xFF;
 	v->p.p_col.g = get_hexa(hexa) >> 8 & 0xFF;
 	v->p.p_col.b = get_hexa(hexa) & 0xFF;
@@ -93,7 +93,7 @@ void			parse_color(char s[], t_env *v)
 			i++;
 		}
 	}
-	printf("r '%d'\n", v->p.p_col.r);
-	printf("g '%d'\n", v->p.p_col.g);
-	printf("b '%d'\n", v->p.p_col.b);
+	// printf("r '%d'\n", v->p.p_col.r);
+	// printf("g '%d'\n", v->p.p_col.g);
+	// printf("b '%d'\n", v->p.p_col.b);
 }
