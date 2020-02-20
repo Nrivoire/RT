@@ -3,17 +3,17 @@
 /*                                                              /             */
 /*   inter_line_quadratic.c                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 12:31:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 15:20:21 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 18:32:43 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-int		inter_line_quadratic(t_line l, t_quadratic q, t_sys_sol_1var_deg2 *result)
+int	inter_line_quadratic(t_line l, t_quadratic q, t_sys_sol_1var_deg2 *result)
 {
 	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)			\
 			{													\

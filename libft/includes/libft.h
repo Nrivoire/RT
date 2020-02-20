@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   libft.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/03 16:49:53 by qpupier      #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/13 12:56:10 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 18:27:57 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,11 +70,11 @@ typedef struct		s_seg
 	t_vec	b;
 }					t_seg;
 
-typedef struct		s_half_line
+typedef struct		s_ray
 {
-	t_vec	p;
+	t_vec	o;
 	t_vec	d;
-}					t_half_line;
+}					t_ray;
 
 typedef struct		s_line_parameter
 {
@@ -136,7 +136,7 @@ typedef struct		s_inter_2d_ray_seg
 
 typedef struct		s_2d_ray
 {
-	t_real	p;
+	t_real	o;
 	t_real	d;
 	float	a;
 	float	b;
@@ -165,6 +165,8 @@ typedef struct		s_inter_seg_plane
 
 typedef struct		s_sys_sol_1var_deg2
 {
+	float			s1;
+	float			s2;
 	float			x1;
 	float			x2;
 }					t_sys_sol_1var_deg2;
@@ -265,7 +267,7 @@ int					line_check(t_line l, int nb_points, t_vec *points, 		\
 t_line				line_create_points(t_vec p1, t_vec p2);
 t_line				line_create_point_vec(t_vec o, t_vec u);
 int					line_equal(t_line l1, t_line l2);
-int					line_half_inter_seg(t_half_line l, t_seg s, t_vec *result);
+int					inter_ray_seg(t_ray l, t_seg s, t_vec *result);
 t_line				line_init(void);
 int					line_inter_line(t_line l1, t_line l2, t_vec *result);
 int					line_inter_seg(t_line l, t_seg s, t_vec *result);

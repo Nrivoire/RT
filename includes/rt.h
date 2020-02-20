@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 15:48:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 17:57:26 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,13 +37,13 @@ typedef struct		s_start
 	int				x;
 	int				y;
 }					t_start;
-
+/*
 typedef struct		s_ray
 {
 	t_vec			ori;
 	t_vec			dir;
 }					t_ray;
-
+*/
 typedef struct		s_quadratic
 {
 	float			a;
