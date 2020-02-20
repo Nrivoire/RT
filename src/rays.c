@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 20:16:54 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 20:23:56 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -121,7 +121,7 @@ t_tab			*create_obj(t_env *v)
 		if (tmp->type == SPHERE)
 			make_sphere(tmp->pos, tmp->radius);
 		else if (tmp->type == PLAN)
-			make_plan(tmp->a, tmp->m, tmp->c);
+			make_plan(tmp->a, tmp->b, tmp->c);
 		// else if (tmp->type == CONE)
 		// 	add_elem(&lst_q, make_cone());
 		else if (tmp->type == CYLINDER)
@@ -153,11 +153,10 @@ void		    		bouclette(t_env *v)
 		{
 			ray = create_ray(v, x, y);
 			i = -1;
-			while (++i < max)
+			while (++i <= v->nb_o)
 			{
 				if (inter_ray_quadratic(ray, tab[i].q, &sol))
 				{
-					printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", tmp->q.a, tmp->q.b, tmp->q.c, tmp->q.d, tmp->q.e, tmp->q.f, tmp->q.g, tmp->q.h, tmp->q.i, tmp->q.j);
 					pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 				}
 			}

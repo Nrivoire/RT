@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:17:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 19:32:22 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 20:22:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,7 +45,7 @@ int				is_it_colieaires(t_vec v1, t_vec v2)
 	return (0);
 }
 
-t_quadratic		make_plan(t_point a, t_point b, t_point c)
+t_quadratic		make_plan(t_vec a, t_vec b, t_vec c)
 {
 	t_quadratic	res;
 	t_vec		ab;

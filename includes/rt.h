@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 20:03:17 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 20:25:43 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,13 +65,6 @@ typedef struct		s_obj
 	float			z;
 }					t_obj;
 
-typedef struct		s_point
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_point;
-
 typedef struct		s_color
 {
 	int				r;
@@ -113,19 +106,10 @@ typedef struct		s_object
 	float			radius;
 	t_vec			pos;
 	t_vec			dir;
-<<<<<<< HEAD
 	t_vec			a;
 	t_vec			b;
 	t_vec			c;
 	t_color			color;
-=======
-	t_point			a;
-	t_point			m;
-	t_point			c;
-	int				r;
-	int				g;
-	int				b;
->>>>>>> 600b53ecae9d5d9bf1cf24914f5d5eba53b26ef0
 	float			reflect;
 	float			refract;
 	float			transparency;
@@ -145,7 +129,7 @@ typedef struct		s_parsing
 	t_light			*lg;
 	t_object		*ob;
 	t_color			p_col;
-	t_point			p_xyz;
+	t_vec			p_xyz;
 	t_vec			ori;
 }					t_parsing;
 
@@ -183,7 +167,7 @@ typedef struct		s_env
 	t_light			*lg;
 	t_object		*ob;
 	t_color			p_col;
-	t_point			p_xyz;
+	t_vec			p_xyz;
 	int				nb_o;
 	int				nb_l;
 	float			cam_angle_x;
@@ -218,7 +202,7 @@ int					key_event(t_env *v, const Uint8 *keyboard_state);
 ** --form--
 */
 t_quadratic			make_sphere(t_vec center, float radius);
-t_quadratic			make_plan(t_point a, t_point b, t_point c);
+t_quadratic			make_plan(t_vec a, t_vec b, t_vec c);
 t_quadratic			make_cylinder(t_vec a, t_vec v, float r);
 t_quadratic			make_cone(t_vec a, t_vec v, float angle, float h);
 
@@ -248,6 +232,6 @@ void				parse_xyz(char s[], t_env *v);
 int					add_lst_obj(t_object **ob, t_object content);
 int					add_lst_lgt(t_light **lg, t_light content);
 
-int				verif_bracket(t_file *file);
+int					verif_bracket(t_file *file);
 
 #endif
