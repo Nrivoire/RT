@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 14:07:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 15:59:18 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -110,7 +110,7 @@ typedef struct		s_file
 ** -----------------------------EVERYTHING-ELSE----------------------------
 */
 
-typedef struct		s_quadratic
+typedef struct		s_quadric
 {
 	float			a;
 	float			b;
@@ -122,7 +122,7 @@ typedef struct		s_quadratic
 	float			h;
 	float			i;
 	float			j;
-}					t_quadratic;
+}					t_quadric;
 
 typedef struct		s_obj
 {
@@ -133,7 +133,7 @@ typedef struct		s_obj
 
 typedef struct		s_tab
 {
-	t_quadratic		q;
+	t_quadric		q;
 }					t_tab;
 
 typedef struct		s_dist
@@ -180,7 +180,7 @@ typedef struct		s_env
 ** ----------------------------------------------------------------------
 */
 
-int					inter_line_quadratic(t_line l, t_quadratic q,
+int					inter_line_quadric(t_line l, t_quadric q,
 					t_sys_sol_1var_deg2 *result);
 
 /*
@@ -200,10 +200,10 @@ int					key_event(t_env *v, const Uint8 *keyboard_state);
 /*
 ** --form--
 */
-t_quadratic			make_sphere(t_vec center, float radius);
-t_quadratic			make_plan(t_vec a, t_vec b, t_vec c);
-t_quadratic			make_cylinder(t_vec a, t_vec v, float r);
-t_quadratic			make_cone(t_vec a, t_vec v, float angle, float h);
+t_quadric			make_sphere(t_vec center, float radius);
+t_quadric			make_plan(t_vec a, t_vec b, t_vec c);
+t_quadric			make_cylinder(t_vec a, t_vec v, float r);
+t_quadric			make_cone(t_vec a, t_vec v, float angle, float h);
 
 /*
 ** --rays--

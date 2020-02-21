@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/21 14:52:16 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/21 15:57:29 by qpupier     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,7 +29,7 @@ SRC_NAME	+=	events/mouse_button_event.c
 SRC_NAME	+=	events/mouse_motion_event.c
 SRC_NAME	+=	draw_tools/get_pixel.c
 SRC_NAME	+=	rays.c
-SRC_NAME	+=	inter_line_quadratic.c
+SRC_NAME	+=	inter_line_quadric.c
 SRC_NAME	+=	make_obj.c
 SRC_NAME	+=	usage.c
 SRC_NAME	+=	parser/parser.c

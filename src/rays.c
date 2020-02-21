@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rays.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 14:51:50 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 15:57:29 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ typedef struct	s_sol_2_vec
 	t_vec		v2;
 }				t_sol_2_vec;
 
-static int	inter_ray_quadratic_create_equ(t_ray r, t_quadratic q, 	\
+static int	inter_ray_quadric_create_equ(t_ray r, t_quadric q, 	\
 		t_sys_sol_1var_deg2 *sol)
 {
 	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)				\
@@ -67,14 +67,14 @@ static int	inter_ray_quadratic_create_equ(t_ray r, t_quadratic q, 	\
 			sol));
 }
 
-int		inter_ray_quadratic(t_ray r, t_quadratic q, t_sol_2_vec *sol)
+int		inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
 {
 	t_sys_sol_1var_deg2	res;
 	int					inter;
 
 	sol->s1 = 0;
 	sol->s2 = 0;
-	if (!(inter = inter_ray_quadratic_create_equ(r, q, &res)))
+	if (!(inter = inter_ray_quadric_create_equ(r, q, &res)))
 		return (0);
 	sol->s1 = res.s1;
 	sol->s2 = res.s2;
@@ -114,7 +114,7 @@ t_tab			*create_obj(t_env *v)
 {
 	t_object	*tmp;
 	int			i;
-	//t_quadratic 		res;
+	//t_quadric 		res;
 
 	i = 0;
 	tmp = v->p.ob;
@@ -163,7 +163,7 @@ void		    		bouclette(t_env *v)
 	t_sol_2_vec			sol;
 	t_tab				*tab;
 	int					i;
-	t_quadratic			sphere;
+	t_quadric			sphere;
 
 	sphere = make_sphere((t_vec){0, 0, 0}, 3);
 	//tab = create_obj(v);
@@ -176,7 +176,7 @@ void		    		bouclette(t_env *v)
 			ray = create_ray_win(v, x, y);
 			i = -1;
 			//while (++i <= v->nb_o)
-				if (inter_ray_quadratic(ray, /*tab[i].q*/sphere, &sol))
+				if (inter_ray_quadric(ray, /*tab[i].q*/sphere, &sol))
 					if (closer_intersect(v, sol))
 						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 		}
