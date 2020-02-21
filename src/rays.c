@@ -96,7 +96,6 @@ t_tab			*create_obj(t_env *v)
 		//res = v->tab[i].q;
 		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	}
-	exit(0);
 	return (v->tab);
 }
 
