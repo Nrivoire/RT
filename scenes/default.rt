@@ -11,7 +11,7 @@ camera{
 light{
 	type= POINT
 	color= 0xF5C7C2
-	pos= {10, -4, 10}
+	pos= {0, 0, -70}
 	dir= {0, 0, 1}
 	intensity= 1.5
 }
@@ -49,3 +49,23 @@ object{
 	shininess= 0
 	texture= ""
 }
+
+# object{
+# 	type= PLAN
+# 	radius= 1.5
+# 	pos= {4, 4, 5}
+# 	dir= {0, 0, 1}
+# 	point_a= {0, 1, 1}
+# 	point_b= {1, 3, 2}
+# 	point_c= {0, 2, 3}
+# 	color= {130, 230, 80}
+# 	reflect= 0
+# 	refract= 0
+# 	transparency= 0
+# 	absorbtion= 0
+# 	ambient= 0
+# 	diffuse= 0
+# 	specular= 0
+# 	shininess= 0
+# 	texture= ""
+# }

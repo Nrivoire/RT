@@ -10,6 +10,7 @@
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
 #include "../includes/rt.h"
 
 static void		parse_material_lgt(t_env *v, char *tmp, t_light content)

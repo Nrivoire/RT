@@ -10,6 +10,7 @@
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
 #include "../includes/rt.h"
 
 static void		parse_material_obj(t_env *v, char *tmp, t_object content)
@@ -33,6 +34,25 @@ static void		parse_material_obj(t_env *v, char *tmp, t_object content)
 		content.shininess = parse_value(tmp);
 	// if (!ft_strncmp(tmp, "\ttexture=", 9))
 	// 	content.texture = parse_value(tmp); changer de fonction de recup valeur (maybe tableau)
+}
+
+static void		parse_point_plan(t_env *v, char *tmp, t_object content)
+{
+	if (!ft_strncmp(tmp, "\tpoint_a=", 9))
+	{
+		parse_xyz(tmp, v);
+		content.a = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+	}
+	if (!ft_strncmp(tmp, "\tpoint_b=", 9))
+	{
+		parse_xyz(tmp, v);
+		content.b = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+	}
+	if (!ft_strncmp(tmp, "\tpoint_c=", 9))
+	{
+		parse_xyz(tmp, v);
+		content.c = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+	}
 }
 
 static void		parse_xyz_obj(t_env *v, char *tmp, t_object content)
@@ -68,6 +88,7 @@ void			parse_obj(t_env *v, t_file *file)
 		if (!ft_strncmp(tmp, "\tradius=", 8))
 			content.radius = parse_value(tmp);
 		parse_xyz_obj(v, tmp, content);
+		parse_point_plan(v, tmp, content);
 		parse_material_obj(v, tmp, content);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
