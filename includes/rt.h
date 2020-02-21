@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 11:38:40 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 16:18:04 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,38 +32,9 @@
 # define DIRECTIONAL 11
 # define SPOT 12
 
-typedef struct		s_start
-{
-	int				x;
-	int				y;
-}					t_start;
 /*
-typedef struct		s_ray
-{
-	t_vec			ori;
-	t_vec			dir;
-}					t_ray;
+** -----------------------------PARSING----------------------------
 */
-typedef struct		s_quadratic
-{
-	float			a;
-	float			b;
-	float			c;
-	float			d;
-	float			e;
-	float			f;
-	float			g;
-	float			h;
-	float			i;
-	float			j;
-}					t_quadratic;
-
-typedef struct		s_obj
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_obj;
 
 typedef struct		s_color
 {
@@ -71,10 +42,6 @@ typedef struct		s_color
 	int				g;
 	int				b;
 }					t_color;
-
-/*
-** -----------------------------PARSING----------------------------
-*/
 
 typedef struct		s_scene
 {
@@ -139,10 +106,43 @@ typedef struct		s_file
 	char			*line;
 }					t_file;
 
+/*
+** -----------------------------EVERYTHING-ELSE----------------------------
+*/
+
+typedef struct		s_quadric
+{
+	float			a;
+	float			b;
+	float			c;
+	float			d;
+	float			e;
+	float			f;
+	float			g;
+	float			h;
+	float			i;
+	float			j;
+}					t_quadric;
+
+typedef struct		s_obj
+{
+	float			x;
+	float			y;
+	float			z;
+}					t_obj;
+
 typedef struct		s_tab
 {
-	t_quadratic		q;
+	t_quadric		q;
 }					t_tab;
+
+typedef struct		s_sol_2_vec
+{
+	int				s1;
+	int				s2;
+	t_vec			v1;
+	t_vec			v2;
+}					t_sol_2_vec;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
@@ -174,22 +174,21 @@ typedef struct		s_env
 	float			cam_angle_y;
 	t_vec			cam_ori;
 	t_tab			*tab;
+	float			dist_min;
 }					t_env;
 
 /*
 ** ----------------------------------------------------------------------
 */
 
-int					inter_line_quadratic(t_line l, t_quadratic q,
-					t_sys_sol_1var_deg2 *result);
+int					inter_ray_quadric(t_ray r, t_quadric q,
+					t_sol_2_vec *sol);
 
 /*
 ** --draw_tools--
 */
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_rgb color);
-void				put_picture(t_env *v, t_start start, int size,
-					SDL_Surface *sur);
 
 /*
 ** --events--
@@ -202,10 +201,10 @@ int					key_event(t_env *v, const Uint8 *keyboard_state);
 /*
 ** --form--
 */
-t_quadratic			make_sphere(t_vec center, float radius);
-t_quadratic			make_plan(t_vec a, t_vec b, t_vec c);
-t_quadratic			make_cylinder(t_vec a, t_vec v, float r);
-t_quadratic			make_cone(t_vec a, t_vec v, float angle, float h);
+t_quadric			make_sphere(t_vec center, float radius);
+t_quadric			make_plan(t_vec a, t_vec b, t_vec c);
+t_quadric			make_cylinder(t_vec a, t_vec v, float r);
+t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 
 /*
 ** --rays--

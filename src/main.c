@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 11:51:18 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 15:26:07 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,6 +57,7 @@ int				main(int argc, char **argv)
 	v->cam_angle_x = 0;
 	v->cam_angle_y = 0;
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
+	v->dist_min = -1;
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	v->p.ori.x = 0;
