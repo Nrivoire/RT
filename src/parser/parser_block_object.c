@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 16:09:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 18:01:30 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 18:42:26 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,15 +61,11 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_object *content)
 	{
 		parse_xyz(tmp, v);
 		content->pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
-		printf("	==>%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
-		printf("~~~~~~~~~~~~>%f %f %f\n\n", content->pos.x, content->pos.y, content->pos.z);
 	}
 	if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
 		content->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
-		printf("	==>%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
-		printf("~~~~~~~~~~~~>%f %f %f\n\n", content->dir.x, content->dir.y, content->dir.z);
 	}
 }
 

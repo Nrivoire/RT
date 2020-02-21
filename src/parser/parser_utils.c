@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   parser_utils.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 15:32:12 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 18:18:31 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 18:46:42 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,5 +84,4 @@ void	parse_xyz(char s[], t_env *v)
 		res = ft_strtok(NULL, ",");
 		i++;
 	}
-	printf("-->%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
 }
