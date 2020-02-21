@@ -19,8 +19,6 @@ static void		parse_material_obj(t_env *v, char *tmp, t_object *content)
 	{
 		parse_color(tmp, v);
 		content->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
-		printf("\nbef %d %d %d\n", v->p.p_col.r, v->p.p_col.g, v->p.p_col.b);
-		printf("content %d %d %d\n\n", content->color.r, content->color.g, content->color.b);
 	}
 	!ft_strncmp(tmp, "\treflect=", 9) ? content->reflect = parse_value(tmp) : 0;
 	!ft_strncmp(tmp, "\trefract=", 9) ? content->refract = parse_value(tmp) : 0;
@@ -63,11 +61,15 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_object *content)
 	{
 		parse_xyz(tmp, v);
 		content->pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+		printf("	==>%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
+		printf("~~~~~~~~~~~~>%f %f %f\n\n", content->pos.x, content->pos.y, content->pos.z);
 	}
 	if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
 		content->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+		printf("	==>%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
+		printf("~~~~~~~~~~~~>%f %f %f\n\n", content->dir.x, content->dir.y, content->dir.z);
 	}
 }
 

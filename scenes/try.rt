@@ -49,3 +49,20 @@ object{
 	shininess= 0
 	texture= ""
 }
+
+object{
+	type= SPHERE
+	radius= 2.5
+	pos= {-7, 2, -8}
+	#dir= {0, 0, 1}
+	color= {0, 100, 100}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
