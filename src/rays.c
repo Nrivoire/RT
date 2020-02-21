@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 17:48:19 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 18:02:08 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -80,18 +80,21 @@ t_tab			*create_obj(t_env *v)
 	while(tmp)
 	{
 		if (tmp->type == SPHERE)
+		{
 			v->tab[i].q = make_sphere(tmp->pos, tmp->radius);
+			printf("%f %f %f %f\n", tmp->pos.x, tmp->pos.y, tmp->pos.z, tmp->radius);
+		}
 		else if (tmp->type == PLAN)
 			v->tab[i].q = make_plan(tmp->a, tmp->b, tmp->c);
 		else if (tmp->type == CONE)
-			v->tab[i].q = add_elem(tmp->pos, tmp->dir, tmp->radius);
+			v->tab[i].q = make_cone(tmp->pos, tmp->dir, tmp->radius);
 		else if (tmp->type == CYLINDER)
 			v->tab[i].q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
 		tmp = tmp->next;
 		i++;
-		printf("%f\n", tmp->type);
-		res = v->tab[i].q;
-		printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+		//printf("%d\n", tmp->type);
+		//res = v->tab[i].q;
+		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	}
 	exit(0);
 	return (v->tab);
