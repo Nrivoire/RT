@@ -51,7 +51,7 @@ void	parse_cam(t_env *v, t_file *file)
 			v->p.cam.dir.y = v->p.p_xyz.y;
 			v->p.cam.dir.z = v->p.p_xyz.z;
 		}
-		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_value(tmp) : 0;
+		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_int_value(tmp) : 0;
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
