@@ -6,14 +6,14 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 14:12:19 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 14:51:50 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_ray				create_ray(t_env *v, int x, int y)
+t_ray				create_ray_win(t_env *v, int x, int y)
 {
 	t_matrix_3_3	rot;
 	t_matrix_3_3	cam;
@@ -138,7 +138,22 @@ t_tab			*create_obj(t_env *v)
 	return (v->tab);
 }
 
+int						closer_intersect(t_env *v, t_sol_2_vec sol)
+{
+	float				tmp;
 
+	if (sol.s1 != 0)
+		v->dist.s1 = vec_norm(vec_sub(v->cam_ori, sol.v1));
+	if (sol.s2 != 0)
+		v->dist.s2 = vec_norm(vec_sub(v->cam_ori, sol.v2));
+	tmp = fmin(v->dist.s1, v->dist.s2);
+	v->dist.min = v->dist.min < tmp ? v->dist.min : tmp;
+	if (sol.s1 && sol.s2)
+		return (1);
+	else if (sol.s1 || sol.s2)
+		return (1);
+	return (0);
+}
 
 void		    		bouclette(t_env *v)
 {
@@ -149,10 +164,6 @@ void		    		bouclette(t_env *v)
 	t_tab				*tab;
 	int					i;
 	t_quadratic			sphere;
-	// float				dist_s1;
-	// float				dist_s2;
-	// float				dist;
-	//t_ray				light;
 
 	sphere = make_sphere((t_vec){0, 0, 0}, 3);
 	//tab = create_obj(v);
@@ -162,22 +173,12 @@ void		    		bouclette(t_env *v)
 		x = -1;
 		while (++x <= v->w)
 		{
-			ray = create_ray(v, x, y);
+			ray = create_ray_win(v, x, y);
 			i = -1;
 			//while (++i <= v->nb_o)
-			//{
 				if (inter_ray_quadratic(ray, /*tab[i].q*/sphere, &sol))
-				{
-					if (sol.s1 != 0)
-						v->dist.s1 = vec_norm(vec_sub(v->cam_ori, sol.v1));
-					if (sol.s2 != 0)
-						v->dist.s2 = vec_norm(vec_sub(v->cam_ori, sol.v2));
-					if (sol.s1 && sol.s2 && (v->dist.min = fmin(v->dist.s1, v->dist.s2)))
+					if (closer_intersect(v, sol))
 						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
-					else if (sol.s1 || sol.s2)
-						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
-				}
-			//}
 		}
 	}
 	//printf("%f %f %f\n", v->obj.x, v->obj.y, v->obj.z);
