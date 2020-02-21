@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 14:07:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 15:08:04 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -136,13 +136,6 @@ typedef struct		s_tab
 	t_quadratic		q;
 }					t_tab;
 
-typedef struct		s_dist
-{
-	float			s1;
-	float			s2;
-	float			min;
-}					t_dist;
-
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
@@ -173,7 +166,7 @@ typedef struct		s_env
 	float			cam_angle_y;
 	t_vec			cam_ori;
 	t_tab			*tab;
-	t_dist			dist;
+	float			dist_min;
 }					t_env;
 
 /*
