@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 15:59:18 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 16:13:09 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -136,12 +136,13 @@ typedef struct		s_tab
 	t_quadric		q;
 }					t_tab;
 
-typedef struct		s_dist
+typedef struct		s_sol_2_vec
 {
-	float			s1;
-	float			s2;
-	float			min;
-}					t_dist;
+	int				s1;
+	int				s2;
+	t_vec			v1;
+	t_vec			v2;
+}					t_sol_2_vec;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
@@ -173,15 +174,15 @@ typedef struct		s_env
 	float			cam_angle_y;
 	t_vec			cam_ori;
 	t_tab			*tab;
-	t_dist			dist;
+	float			dist_min;
 }					t_env;
 
 /*
 ** ----------------------------------------------------------------------
 */
 
-int					inter_line_quadric(t_line l, t_quadric q,
-					t_sys_sol_1var_deg2 *result);
+int					inter_ray_quadric(t_ray r, t_quadric q,
+					t_sol_2_vec *sol);
 
 /*
 ** --draw_tools--
