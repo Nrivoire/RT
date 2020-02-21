@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 16:15:17 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 16:18:21 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,8 @@ int				closer_point_with_cam(t_env *v, t_sol_2_vec sol)
 	float		dist_s1;
 	float		dist_s2;
 
+	dist_s1 = 0;
+	dist_s2 = 0;
 	if (sol.s1 != 0)
 		dist_s1 = vec_norm(vec_sub(v->cam_ori, sol.v1));
 	if (sol.s2 != 0)

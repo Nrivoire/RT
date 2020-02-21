@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 16:13:09 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 16:18:04 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -204,7 +204,7 @@ int					key_event(t_env *v, const Uint8 *keyboard_state);
 t_quadric			make_sphere(t_vec center, float radius);
 t_quadric			make_plan(t_vec a, t_vec b, t_vec c);
 t_quadric			make_cylinder(t_vec a, t_vec v, float r);
-t_quadric			make_cone(t_vec a, t_vec v, float angle, float h);
+t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 
 /*
 ** --rays--
