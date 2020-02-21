@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rays.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 16:18:21 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 18:02:08 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,7 +73,7 @@ t_tab			*create_obj(t_env *v)
 {
 	t_object	*tmp;
 	int			i;
-	//t_quadric 		res;
+	t_quadric 		res;
 
 	i = 0;
 	tmp = v->p.ob;
@@ -86,13 +86,13 @@ t_tab			*create_obj(t_env *v)
 		}
 		else if (tmp->type == PLAN)
 			v->tab[i].q = make_plan(tmp->a, tmp->b, tmp->c);
-		// else if (tmp->type == CONE)
-		// 	v->tab[i].q = add_elem(&lst_q, make_cone());
+		else if (tmp->type == CONE)
+			v->tab[i].q = make_cone(tmp->pos, tmp->dir, tmp->radius);
 		else if (tmp->type == CYLINDER)
 			v->tab[i].q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
 		tmp = tmp->next;
 		i++;
-		//printf("%f\n", tmp->type);
+		//printf("%d\n", tmp->type);
 		//res = v->tab[i].q;
 		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	}
