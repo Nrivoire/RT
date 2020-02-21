@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 18:15:42 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 11:51:18 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,6 +56,7 @@ int				main(int argc, char **argv)
 	v->obj.z = 0;
 	v->cam_angle_x = 0;
 	v->cam_angle_y = 0;
+	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	v->p.ori.x = 0;
@@ -65,6 +66,8 @@ int				main(int argc, char **argv)
 
 	check_options(v, argc, argv);
 	parser_file(v);
+	if (!(v->tab = (t_tab *)malloc(sizeof(t_tab) * v->nb_o)))
+		return (0);
 	init_sdl(v);
 	display(v);
 	return (0);

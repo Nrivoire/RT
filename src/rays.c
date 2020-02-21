@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 20:23:56 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 12:12:53 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,8 +31,10 @@ t_ray				create_ray(t_env *v, int x, int y)
 
 typedef struct	s_sol_2_vec
 {
-	int		s1;
-	int		s2;
+	int			s1;
+	int			s2;
+	float		x1;
+	float		x2;
 	t_vec	v1;
 	t_vec	v2;
 }				t_sol_2_vec;
@@ -92,6 +94,8 @@ int		inter_ray_quadratic(t_ray r, t_quadratic q, t_sol_2_vec *sol)
 		else
 			sol->v2 = vec_add(r.o, vec_mult_float(r.d, res.x2));
 	}
+	sol->x1 = res.x1;
+	sol->x2 = res.x2;
 	return (sol->s1 || sol->s2);
 }
 
@@ -113,22 +117,29 @@ void	create_lgt(t_env *v)
 t_tab			*create_obj(t_env *v)
 {
 	t_object	*tmp;
-	t_tab		*tab;
+	int			i;
+	//t_quadratic 		res;
 
+	i = 0;
 	tmp = v->p.ob;
+	//printf("%f\n", v->p.ob->type);
 	while(tmp)
 	{
 		if (tmp->type == SPHERE)
-			make_sphere(tmp->pos, tmp->radius);
+			v->tab[i].q = make_sphere(tmp->pos, tmp->radius);
 		else if (tmp->type == PLAN)
-			make_plan(tmp->a, tmp->b, tmp->c);
+			v->tab[i].q = make_plan(tmp->a, tmp->b, tmp->c);
 		// else if (tmp->type == CONE)
-		// 	add_elem(&lst_q, make_cone());
+		// 	v->tab[i].q = add_elem(&lst_q, make_cone());
 		else if (tmp->type == CYLINDER)
-			make_cylinder(tmp->pos, tmp->dir, tmp->radius);
+			v->tab[i].q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
 		tmp = tmp->next;
+		i++;
+		//printf("%f\n", tmp->type);
+		//res = v->tab[i].q;
+		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 	}
-	return (tab);
+	return (v->tab);
 }
 
 void		    		bouclette(t_env *v)
@@ -136,15 +147,13 @@ void		    		bouclette(t_env *v)
 	int		    		x;
 	int		    		y;
 	t_ray	    		ray;
-	//t_quadratic 		res;
 	t_sol_2_vec			sol;
 	t_tab				*tab;
 	int					i;
+	t_quadratic			sphere;
 
-	tab = create_obj(v);
-	//res = ;
-	//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
-	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
+	sphere = make_sphere((t_vec){0, 0, 0}, 3);
+	//tab = create_obj(v);
     y = -1;
 	while (++y <= v->h)
 	{
@@ -153,13 +162,17 @@ void		    		bouclette(t_env *v)
 		{
 			ray = create_ray(v, x, y);
 			i = -1;
-			while (++i <= v->nb_o)
-			{
-				if (inter_ray_quadratic(ray, tab[i].q, &sol))
+			//while (++i <= v->nb_o)
+			//{
+				if (inter_ray_quadratic(ray, /*tab[i].q*/sphere, &sol))
 				{
-					pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+					if (sol.s1 != 0 || sol.s2 != 0)
+					{
+						printf("%f %f\n", sol.x1, sol.x2);
+						pixel_put(v, x, y, (t_rgb){0, 255, 255, 255});
+					}
 				}
-			}
+			//}
 		}
 	}
 	//printf("%f %f %f\n", v->obj.x, v->obj.y, v->obj.z);

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 20:25:43 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 11:38:40 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -173,6 +173,7 @@ typedef struct		s_env
 	float			cam_angle_x;
 	float			cam_angle_y;
 	t_vec			cam_ori;
+	t_tab			*tab;
 }					t_env;
 
 /*
