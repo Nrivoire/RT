@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 12:12:53 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 14:12:19 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,10 +33,8 @@ typedef struct	s_sol_2_vec
 {
 	int			s1;
 	int			s2;
-	float		x1;
-	float		x2;
-	t_vec	v1;
-	t_vec	v2;
+	t_vec		v1;
+	t_vec		v2;
 }				t_sol_2_vec;
 
 static int	inter_ray_quadratic_create_equ(t_ray r, t_quadratic q, 	\
@@ -94,8 +92,6 @@ int		inter_ray_quadratic(t_ray r, t_quadratic q, t_sol_2_vec *sol)
 		else
 			sol->v2 = vec_add(r.o, vec_mult_float(r.d, res.x2));
 	}
-	sol->x1 = res.x1;
-	sol->x2 = res.x2;
 	return (sol->s1 || sol->s2);
 }
 
@@ -142,6 +138,8 @@ t_tab			*create_obj(t_env *v)
 	return (v->tab);
 }
 
+
+
 void		    		bouclette(t_env *v)
 {
 	int		    		x;
@@ -151,6 +149,10 @@ void		    		bouclette(t_env *v)
 	t_tab				*tab;
 	int					i;
 	t_quadratic			sphere;
+	// float				dist_s1;
+	// float				dist_s2;
+	// float				dist;
+	//t_ray				light;
 
 	sphere = make_sphere((t_vec){0, 0, 0}, 3);
 	//tab = create_obj(v);
@@ -166,11 +168,14 @@ void		    		bouclette(t_env *v)
 			//{
 				if (inter_ray_quadratic(ray, /*tab[i].q*/sphere, &sol))
 				{
-					if (sol.s1 != 0 || sol.s2 != 0)
-					{
-						printf("%f %f\n", sol.x1, sol.x2);
-						pixel_put(v, x, y, (t_rgb){0, 255, 255, 255});
-					}
+					if (sol.s1 != 0)
+						v->dist.s1 = vec_norm(vec_sub(v->cam_ori, sol.v1));
+					if (sol.s2 != 0)
+						v->dist.s2 = vec_norm(vec_sub(v->cam_ori, sol.v2));
+					if (sol.s1 && sol.s2 && (v->dist.min = fmin(v->dist.s1, v->dist.s2)))
+						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+					else if (sol.s1 || sol.s2)
+						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 				}
 			//}
 		}
