@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 15:08:04 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 16:01:24 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -136,6 +136,14 @@ typedef struct		s_tab
 	t_quadratic		q;
 }					t_tab;
 
+typedef struct		s_sol_2_vec
+{
+	int				s1;
+	int				s2;
+	t_vec			v1;
+	t_vec			v2;
+}					t_sol_2_vec;
+
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
@@ -173,8 +181,8 @@ typedef struct		s_env
 ** ----------------------------------------------------------------------
 */
 
-int					inter_line_quadratic(t_line l, t_quadratic q,
-					t_sys_sol_1var_deg2 *result);
+int					inter_ray_quadratic(t_ray r, t_quadratic q,
+					t_sol_2_vec *sol);
 
 /*
 ** --draw_tools--

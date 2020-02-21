@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 15:28:05 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 16:03:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,72 +29,6 @@ t_ray				create_ray_win(t_env *v, int x, int y)
 	return (ray);
 }
 
-typedef struct	s_sol_2_vec
-{
-	int			s1;
-	int			s2;
-	t_vec		v1;
-	t_vec		v2;
-}				t_sol_2_vec;
-
-static int	inter_ray_quadratic_create_equ(t_ray r, t_quadratic q, 	\
-		t_sys_sol_1var_deg2 *sol)
-{
-	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)				\
-			{														\
-				.a = q.a * r.d.x * r.d.x 							\
-					+ q.b * r.d.y * r.d.y 							\
-					+ q.c * r.d.z * r.d.z 							\
-					+ q.d * r.d.x * r.d.y 							\
-					+ q.e * r.d.x * r.d.z 							\
-					+ q.f * r.d.y * r.d.z, 							\
-				.b = q.a * 2 * r.o.x * r.d.x 						\
-					+ q.b * 2 * r.o.y * r.d.y 						\
-					+ q.c * 2 * r.o.z * r.d.z 						\
-					+ q.d * (r.o.x * r.d.y + r.d.x * r.o.y) 		\
-					+ q.e * (r.o.x * r.d.z + r.d.x * r.o.z) 		\
-					+ q.f * (r.o.y * r.d.z + r.d.y * r.o.z) 		\
-					+ q.g * r.d.x + q.h * r.d.y + q.i * r.d.z, 		\
-				.c = q.a * r.o.x * r.o.x 							\
-					+ q.b * r.o.y * r.o.y 							\
-					+ q.c * r.o.z * r.o.z 							\
-					+ q.d * r.o.x * r.o.y 							\
-					+ q.e * r.o.x * r.o.z 							\
-					+ q.f * r.o.y * r.o.z 							\
-					+ q.g * r.o.x + q.h * r.o.y + q.i * r.o.z 		\
-					+ q.j											\
-			}, 														\
-			sol));
-}
-
-int		inter_ray_quadratic(t_ray r, t_quadratic q, t_sol_2_vec *sol)
-{
-	t_sys_sol_1var_deg2	res;
-	int					inter;
-
-	sol->s1 = 0;
-	sol->s2 = 0;
-	if (!(inter = inter_ray_quadratic_create_equ(r, q, &res)))
-		return (0);
-	sol->s1 = res.s1;
-	sol->s2 = res.s2;
-	if (res.s1)
-	{
-		if (res.x1 < 0)
-			sol->s1 = 0;
-		else
-			sol->v1 = vec_add(r.o, vec_mult_float(r.d, res.x1));
-	}
-	if (res.s2)
-	{
-		if (res.x2 < 0)
-			sol->s2 = 0;
-		else
-			sol->v2 = vec_add(r.o, vec_mult_float(r.d, res.x2));
-	}
-	return (sol->s1 || sol->s2);
-}
-
 void	create_lgt(t_env *v)
 {
 	t_light *tmp;
@@ -110,15 +44,37 @@ void	create_lgt(t_env *v)
 	}
 }
 
+int				closer_point_with_cam(t_env *v, t_sol_2_vec sol)
+{
+	float		tmp;
+	float		dist_s1;
+	float		dist_s2;
+
+	if (sol.s1 != 0)
+		dist_s1 = vec_norm(vec_sub(v->cam_ori, sol.v1));
+	if (sol.s2 != 0)
+		dist_s2 = vec_norm(vec_sub(v->cam_ori, sol.v2));
+	tmp = fmin(dist_s1, dist_s2);
+	if (v->dist_min == -1)
+		v->dist_min = tmp;
+	if (sol.s1 && sol.s2 && v->dist_min > tmp)
+	{
+		v->dist_min = tmp;
+		return (1);
+	}
+	else if (sol.s1 || sol.s2)
+		return (1);
+	return (0);
+}
+
 t_tab			*create_obj(t_env *v)
 {
 	t_object	*tmp;
 	int			i;
-	//t_quadratic 		res;
+	t_quadratic 		res;
 
 	i = 0;
 	tmp = v->p.ob;
-	//printf("%f\n", v->p.ob->type);
 	while(tmp)
 	{
 		if (tmp->type == SPHERE)
@@ -138,29 +94,6 @@ t_tab			*create_obj(t_env *v)
 	return (v->tab);
 }
 
-int						closer_point_with_cam(t_env *v, t_sol_2_vec sol)
-{
-	float				tmp;
-	float				dist_s1;
-	float				dist_s2;
-
-	if (sol.s1 != 0)
-		dist_s1 = vec_norm(vec_sub(v->cam_ori, sol.v1));
-	if (sol.s2 != 0)
-		dist_s2 = vec_norm(vec_sub(v->cam_ori, sol.v2));
-	tmp = fmin(dist_s1, dist_s2);
-	if (v->dist_min == -1)
-		v->dist_min = tmp;
-	if (sol.s1 && sol.s2 && v->dist_min > tmp)
-	{
-		v->dist_min = tmp;
-		return (1);
-	}
-	else if (sol.s1 || sol.s2)
-		return (1);
-	return (0);
-}
-
 void		    		bouclette(t_env *v)
 {
 	int		    		x;
@@ -172,8 +105,8 @@ void		    		bouclette(t_env *v)
 	t_quadratic			sphere;
 	t_quadratic			sphere2;
 
-	sphere = make_sphere((t_vec){0, 0, 0}, 3);
-	sphere2 = make_sphere((t_vec){-10, 2, 2}, 3);
+	sphere = make_sphere((t_vec){0, 0, 2}, 3);
+	sphere2 = make_sphere((t_vec){10, 3, 2}, 2);
 	//tab = create_obj(v);
     y = -1;
 	while (++y <= v->h)
@@ -187,7 +120,9 @@ void		    		bouclette(t_env *v)
 				if (inter_ray_quadratic(ray, /*tab[i].q*/sphere, &sol))
 					if (closer_point_with_cam(v, sol))
 						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+				if (inter_ray_quadratic(ray, sphere2, &sol))
+					if (closer_point_with_cam(v, sol))
+						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
 		}
 	}
-	//printf("%f %f %f\n", v->obj.x, v->obj.y, v->obj.z);
 }
