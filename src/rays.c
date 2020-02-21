@@ -86,6 +86,7 @@ t_tab			*create_obj(t_env *v)
 			v->tab[i].q = make_cone(tmp->pos, tmp->dir, tmp->radius);
 		else if (tmp->type == CYLINDER)
 			v->tab[i].q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
+		v->tab[i].color = tmp->color;
 		tmp = tmp->next;
 		i++;
 		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
@@ -114,7 +115,9 @@ void		    		bouclette(t_env *v)
 			while (++i < v->nb_o)
 				if (inter_ray_quadric(ray, tab[i].q, &sol))
 					if (closer_point_with_cam(v, sol))
-						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+					{
+						pixel_put(v, x, y, (t_rgb){tab[i].color.r, tab[i].color.g, tab[i].color.b, 255});
+					}
 		}
 	}
 }

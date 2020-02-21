@@ -134,6 +134,7 @@ typedef struct		s_obj
 typedef struct		s_tab
 {
 	t_quadric		q;
+	t_color			color;
 }					t_tab;
 
 typedef struct		s_sol_2_vec
