@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rays.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 17:48:19 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/21 18:30:07 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,7 +111,7 @@ void		    		bouclette(t_env *v)
 	sphere = make_sphere((t_vec){0, 0, 2}, 3);
 	sphere2 = make_sphere((t_vec){10, 3, 2}, 2);
 	//tab = create_obj(v);
-    y = -1;
+	y = -1;
 	while (++y <= v->h)
 	{
 		x = -1;
