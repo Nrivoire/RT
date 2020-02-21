@@ -84,4 +84,5 @@ void	parse_xyz(char s[], t_env *v)
 		res = ft_strtok(NULL, ",");
 		i++;
 	}
+	printf("-->%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
 }
