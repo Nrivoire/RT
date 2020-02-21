@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-int				verif_bracket(t_file *file)
+int				check_bracket(t_file *file)
 {
 	char	*tmp;
 

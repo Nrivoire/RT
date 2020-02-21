@@ -17,7 +17,7 @@ void	parse_scene(t_env *v, t_file *file)
 	char	*tmp;
 
 	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !verif_bracket(file))
+			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		!ft_strncmp(tmp, "\twidth=", 7) ? v->w = parse_value(tmp) : 0;
@@ -34,22 +34,18 @@ void	parse_cam(t_env *v, t_file *file)
 	char	*tmp;
 
 	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !verif_bracket(file))
+			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\tpos=", 5))
 		{
 			parse_xyz(tmp, v);
-			v->p.cam.pos.x = v->p.p_xyz.x;
-			v->p.cam.pos.y = v->p.p_xyz.y;
-			v->p.cam.pos.z = v->p.p_xyz.z;
+			v->p.cam.pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 		}
 		if (!ft_strncmp(tmp, "\tdir=", 5))
 		{
 			parse_xyz(tmp, v);
-			v->p.cam.dir.x = v->p.p_xyz.x;
-			v->p.cam.dir.y = v->p.p_xyz.y;
-			v->p.cam.dir.z = v->p.p_xyz.z;
+			v->p.cam.dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 		}
 		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_int_value(tmp) : 0;
 		ft_strdel(&file->line);

@@ -13,28 +13,28 @@
 
 #include "../includes/rt.h"
 
-static void		parse_material_lgt(t_env *v, char *tmp, t_light content)
+static void		parse_material_lgt(t_env *v, char *tmp, t_light *content)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v);
-		content.color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
+		content->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
 	if (!ft_strncmp(tmp, "\tintensity=", 11))
-		content.intensity = parse_value(tmp);
+		content->intensity = parse_value(tmp);
 }
 
-static void		parse_xyz_lgt(t_env *v, char *tmp, t_light content)
+static void		parse_xyz_lgt(t_env *v, char *tmp, t_light *content)
 {
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+		content->pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 	if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
-		content.dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+		content->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 }
 
@@ -44,7 +44,7 @@ void			parse_light(t_env *v, t_file *file)
 	t_light		content;
 
 	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !verif_bracket(file))
+			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\ttype=", 6))
@@ -53,8 +53,8 @@ void			parse_light(t_env *v, t_file *file)
 			ft_strstr(tmp, "DIRECTIONAL") ? content.type = DIRECTIONAL : 0;
 			ft_strstr(tmp, "SPOT") ? content.type = SPOT : 0;
 		}
-		parse_xyz_lgt(v, tmp, content);
-		parse_material_lgt(v, tmp, content);
+		parse_xyz_lgt(v, tmp, &content);
+		parse_material_lgt(v, tmp, &content);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

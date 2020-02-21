@@ -1,11 +1,12 @@
 #include "../includes/rt.h"
 
-int		add_lst_obj(t_object **ob, t_object content)
+void	add_lst_obj(t_object **ob, t_object content)
 {
 	t_object	*new;
+	t_object	*tmp;
 
 	if (!(new = malloc(sizeof(t_object))))
-		return (0);
+		return ;
 	new->type = content.type;
 	new->radius = content.radius;
 	new->pos = content.pos;
@@ -25,20 +26,19 @@ int		add_lst_obj(t_object **ob, t_object content)
 	new->texture = content.texture;
 	new->next = (!*ob) ? NULL : *ob;
 	*ob = new;
-	return (0);
 }
 
-int		add_lst_lgt(t_light **lg, t_light content)
+void	add_lst_lgt(t_light **lg, t_light content)
 {
 	t_light		*new;
+	t_light		*tmp;
 
 	if (!(new = malloc(sizeof(t_light))))
-		return (0);
+		return ;
 	new->type = content.type;
 	new->pos = content.pos;
 	new->dir = content.dir;
 	// autres variables ?
 	new->next = (!*lg) ? NULL : *lg;
 	*lg = new;
-	return (0);
 }

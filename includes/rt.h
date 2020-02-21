@@ -231,9 +231,8 @@ int					parse_int_value(char const *s);
 char				*ft_strtok(char *s, char const *delim);
 void				parse_color(char s[], t_env *v);
 void				parse_xyz(char s[], t_env *v);
-int					add_lst_obj(t_object **ob, t_object content);
-int					add_lst_lgt(t_light **lg, t_light content);
-
-int					verif_bracket(t_file *file);
+void				add_lst_obj(t_object **ob, t_object content);
+void				add_lst_lgt(t_light **lg, t_light content);
+int					check_bracket(t_file *file);
 
 #endif
