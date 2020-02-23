@@ -48,7 +48,7 @@ int				main(int argc, char **argv)
 	// argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
-	argc < 2 ? v->file = ft_strdup("./scenes/default.rt") : 0; // CONDITION A SUPPRIMER A L'AVENIR POUR LA REMPLACER PAR CELLE EN COMMENTAIRE AU DESSUS
+	//argc < 2 ? v->file = ft_strdup("./scenes/default.rt") : 0; // CONDITION A SUPPRIMER A L'AVENIR POUR LA REMPLACER PAR CELLE EN COMMENTAIRE AU DESSUS
 	init_value(v);
 
 	v->obj.x = 0;

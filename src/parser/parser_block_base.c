@@ -16,8 +16,8 @@ void	parse_scene(t_env *v, t_file *file)
 {
 	char	*tmp;
 
-	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
+	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
+			!check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		!ft_strncmp(tmp, "\twidth=", 7) ? v->w = parse_value(tmp) : 0;
@@ -33,8 +33,8 @@ void	parse_cam(t_env *v, t_file *file)
 {
 	char	*tmp;
 
-	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
+	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
+			!check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\tpos=", 5))
