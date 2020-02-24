@@ -30,9 +30,9 @@ void		parse_scene(t_env *v, t_file *file)
 		tmp = ft_strdup(file->line);
 		if (ft_strncmp(tmp, "\twidth=", 7))
 			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 1280);
-		if (ft_strncmp(tmp, "\theight=", 8))
+		else if (ft_strncmp(tmp, "\theight=", 8))
 			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
-		if (!ft_strncmp(tmp, "\tambient-light=", 15))
+		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
 			v->p.sc.amb_light = parse_value(tmp);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
@@ -53,7 +53,7 @@ void		parse_cam(t_env *v, t_file *file)
 			parse_xyz(tmp, v);
 			v->p.cam.pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 		}
-		if (!ft_strncmp(tmp, "\tdir=", 5))
+		else if (!ft_strncmp(tmp, "\tdir=", 5))
 		{
 			parse_xyz(tmp, v);
 			v->p.cam.dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};

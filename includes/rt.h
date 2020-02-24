@@ -176,6 +176,7 @@ typedef struct		s_env
 	float			cam_angle_x;
 	float			cam_angle_y;
 	t_vec			cam_ori;
+	t_vec			cam_dir;
 	t_tab			*tab;
 	float			*dist;
 	float			intens;
@@ -240,5 +241,12 @@ void				add_lst_obj(t_object **ob, t_object content);
 void				add_lst_lgt(t_light **lg, t_light content);
 int					check_bracket(t_file *file);
 int					read_line(t_file *file);
+
+/*
+** --init--
+*/
+void				init_value(t_env *v);
+void				scene_value(t_env *v);
+void				restart_values(t_env *v);
 
 #endif

@@ -19,7 +19,7 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_light *content)
 		parse_color(tmp, v);
 		content->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
-	if (!ft_strncmp(tmp, "\tintensity=", 11))
+	else if (!ft_strncmp(tmp, "\tintensity=", 11))
 		content->intensity = parse_value(tmp);
 }
 
@@ -30,7 +30,7 @@ static void		parse_xyz_lgt(t_env *v, char *tmp, t_light *content)
 		parse_xyz(tmp, v);
 		content->pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
-	if (!ft_strncmp(tmp, "\tdir=", 5))
+	else if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
 		content->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};

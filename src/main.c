@@ -30,17 +30,6 @@ static void		init_sdl(t_env *v)
 		ft_error("Initialisation error of TFT_Init");
 }
 
-static void		init_value(t_env *v)
-{
-	v->w = 1280;
-	v->h = 720;
-	v->fov = 60;
-	
-	// init list du parser pour le malloc
-	v->p.ob = NULL;
-	v->p.lg = NULL;
-}
-
 int				main(int argc, char **argv)
 {
 	t_env	*v;
@@ -67,10 +56,7 @@ int				main(int argc, char **argv)
 	v->cam_mouv = 0;
 
 	/* -- a changer par les valeurs prises dans le parsing */
-	v->p.ori.x = 0;
-	v->p.ori.y = 0;
-	v->p.ori.z = -20;
-	v->cam_ori = v->p.ori;
+	scene_value(v);
 
 	if (!(v->tab = (t_tab *)malloc(sizeof(t_tab) * v->nb_o)))
 		return (0);
