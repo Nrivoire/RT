@@ -73,6 +73,7 @@ void			parse_obj(t_env *v, t_file *file)
 	char		*tmp;
 	t_object	content;
 
+	ft_strdel(&file->line);
 	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
 			!check_bracket(file))
 	{

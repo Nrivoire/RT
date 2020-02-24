@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-char		*my_strcat(char *s1, char *s2)
+char			*my_strcat(char *s1, char *s2)
 {
 	char	*res;
 	int		i;
@@ -54,7 +54,7 @@ int				read_line(t_file *file)
 	if (get_next_line(file->fd, &file->line) > 0)
 		return (1);
 	else
-		return(0);
+		return (0);
 }
 
 static void		read_file(t_env *v, t_file *file)
@@ -91,5 +91,6 @@ int				parser_file(t_env *v)
 	(file.fd = open(v->file, O_RDWR)) == -1 ? ft_error("Bad file") : 0;
 	read_file(v, &file);
 	close(file.fd) == -1 ? ft_error("Can't close fd") : 0;
+	ft_strdel(&file.line);
 	return (0);
 }

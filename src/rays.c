@@ -3,10 +3,14 @@
 /*                                                              /             */
 /*   rays.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2020/02/24 15:55:48 by nrivoire    ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2020/02/24 14:52:24 by qpupier     ###    #+. /#+    ###.fr     */
+>>>>>>> 1f1a79d30212b5a3d85efec9cfc70b02dffa5b24
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -98,6 +102,7 @@ t_tab			*create_obj(t_env *v)
 	return (v->tab);
 }
 
+<<<<<<< HEAD
 t_color		light_dot(t_env *v, t_sol_2_vec sol, t_color obj_color)
 {
 	float		dist_s1;
@@ -153,6 +158,16 @@ void		    bouclette(t_env *v)
 	t_color		light_d;
 	t_tab		*closest;
 
+=======
+void					bouclette(t_env *v)
+{
+	int					x;
+	int					y;
+	t_ray				ray;
+	t_sol_2_vec			sol;
+	t_tab				*tab;
+	int					i;
+>>>>>>> 1f1a79d30212b5a3d85efec9cfc70b02dffa5b24
 
 	tab = create_obj(v);
 	y = -1;
