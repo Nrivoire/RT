@@ -45,11 +45,13 @@ int				main(int argc, char **argv)
 {
 	t_env	*v;
 
-	// argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
+	argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
-	argc < 2 ? v->file = ft_strdup("./scenes/default.rt") : 0; // CONDITION A SUPPRIMER A L'AVENIR POUR LA REMPLACER PAR CELLE EN COMMENTAIRE AU DESSUS
 	init_value(v);
+
+	check_options(v, argc, argv);
+	parser_file(v);
 
 	v->obj.x = 0;
 	v->obj.y = 0;
@@ -65,8 +67,6 @@ int				main(int argc, char **argv)
 	v->p.ori.z = -20;
 	v->cam_ori = v->p.ori;
 
-	check_options(v, argc, argv);
-	parser_file(v);
 	if (!(v->tab = (t_tab *)malloc(sizeof(t_tab) * v->nb_o)))
 		return (0);
 	init_sdl(v);

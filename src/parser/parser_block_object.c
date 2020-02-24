@@ -73,8 +73,8 @@ void			parse_obj(t_env *v, t_file *file)
 	char		*tmp;
 	t_object	content;
 
-	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
+	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
+			!check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\ttype=", 6))
