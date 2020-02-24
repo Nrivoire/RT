@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rt.h                                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 16:18:04 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 14:50:39 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -158,6 +158,7 @@ typedef struct		s_env
 	Uint32			*pixels;
 	int				w;
 	int				h;
+	int				wh;
 	int				fov;
 	float			angle_ratio;
 	t_vec			ori;
@@ -176,7 +177,10 @@ typedef struct		s_env
 	float			cam_angle_y;
 	t_vec			cam_ori;
 	t_tab			*tab;
-	float			dist_min;
+	float			*dist;
+	float			intens;
+	t_vec			light_ori;
+	int				cam_mouv;
 }					t_env;
 
 /*

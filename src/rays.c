@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 11:10:39 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 15:55:48 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,7 +44,7 @@ void	create_lgt(t_env *v)
 	}
 }
 
-int				closer_point_with_cam(t_env *v, t_sol_2_vec sol)
+float				closer_point_with_cam(t_env *v, t_vec ori, t_sol_2_vec sol)
 {
 	float		tmp;
 	float		dist_s1;
@@ -52,21 +52,24 @@ int				closer_point_with_cam(t_env *v, t_sol_2_vec sol)
 
 	dist_s1 = 0;
 	dist_s2 = 0;
-	if (sol.s1 != 0)
-		dist_s1 = vec_norm(vec_sub(v->cam_ori, sol.v1));
-	if (sol.s2 != 0)
-		dist_s2 = vec_norm(vec_sub(v->cam_ori, sol.v2));
-	tmp = fmin(dist_s1, dist_s2);
-	if (v->dist_min == -1)
-		v->dist_min = tmp;
-	if (sol.s1 && sol.s2 && v->dist_min > tmp)
+	if (sol.s1 && sol.s2)
 	{
-		v->dist_min = tmp;
-		return (1);
+		dist_s1 = vec_norm(vec_sub(ori, sol.v1));
+		dist_s2 = vec_norm(vec_sub(ori, sol.v2));
+		tmp = fmin(dist_s1, dist_s2);
+		return (tmp);
 	}
-	else if (sol.s1 || sol.s2)
-		return (1);
-	return (0);
+	if (sol.s1 == 1 && sol.s2 == 0)
+	{
+		dist_s1 = vec_norm(vec_sub(ori, sol.v1));
+		return (dist_s1);
+	}
+	if (sol.s2 == 1 && sol.s1 == 0)
+	{
+		dist_s2 = vec_norm(vec_sub(ori, sol.v2));
+		return (dist_s2);
+	}
+	return (-1);
 }
 
 t_tab			*create_obj(t_env *v)
@@ -95,14 +98,61 @@ t_tab			*create_obj(t_env *v)
 	return (v->tab);
 }
 
-void		    		bouclette(t_env *v)
+t_color		light_dot(t_env *v, t_sol_2_vec sol, t_color obj_color)
 {
-	int		    		x;
-	int		    		y;
-	t_ray	    		ray;
-	t_sol_2_vec			sol;
-	t_tab				*tab;
-	int					i;
+	float		dist_s1;
+	float		dist_s2;
+	float		dist;
+	t_color		light;
+
+	dist_s1 = vec_norm(vec_sub(v->light_ori, sol.v1));
+	dist_s2 = vec_norm(vec_sub(v->light_ori, sol.v2));
+	dist = fmin(dist_s1, dist_s2);
+	if (dist < 0)
+		dist = 0;
+	if (dist > v->intens)
+		dist = v->intens;
+	light.r = obj_color.r - (dist / v->intens * obj_color.r);
+	light.g = obj_color.g - (dist / v->intens * obj_color.g);
+	light.b = obj_color.b - (dist / v->intens * obj_color.b);
+	return (light);
+}
+
+t_tab			*closest_obj(t_env *v, t_tab *tab, t_ray ray)
+{
+	int			i;
+	t_tab		*closest;
+	float		dis;
+	float		tmp;
+	t_sol_2_vec	sol;
+
+	i = -1;
+	dis = INFINITY;
+	tmp = -1;
+	closest = NULL;
+	while (++i < v->nb_o)
+		if (inter_ray_quadric(ray, tab[i].q, &sol))
+		{
+			tmp = closer_point_with_cam(v, ray.o, sol);
+			if (tmp >= 0 && tmp < dis)
+			{
+				closest = &tab[i];
+				dis = tmp;
+			}
+		}
+	return (closest);
+}
+
+void		    bouclette(t_env *v)
+{
+	int		    x;
+	int		    y;
+	t_ray	    ray;
+	t_tab		*tab;
+	int			i;
+	t_color		light_d;
+	t_tab		*closest;
+
 
 	tab = create_obj(v);
 	y = -1;
@@ -112,13 +162,12 @@ void		    		bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray_win(v, x, y);
-			i = -1;
-			while (++i < v->nb_o)
-				if (inter_ray_quadric(ray, tab[i].q, &sol))
-					if (closer_point_with_cam(v, sol))
-					{
-						pixel_put(v, x, y, (t_rgb){tab[i].color.r, tab[i].color.g, tab[i].color.b, 255});
-					}
+			closest = closest_obj(v, tab, ray);
+			if (closest)
+			{
+				//light_d = light_dot(v, sol, closest->color);
+				pixel_put(v, x, y, (t_rgb){closest->color.r, closest->color.g, closest->color.b, 255});
+			}
 		}
 	}
 }
