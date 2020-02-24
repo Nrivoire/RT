@@ -1,0 +1,251 @@
+scene{
+	ambient-light= 0
+}
+
+camera{
+	pos= {-4.0, 0.5, 0.0}
+	dir= {0.0, 0.0, 0.0}
+	fov= 60
+}
+
+light{
+	type= POINT
+	color= 0xF5C7C2
+	pos= {2.0, 0.0, -70.0}
+	dir= {0.0, 0.0, 1.0}
+	intensity= 1.5
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {2.0, -7.0, 3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= 0xFF0000
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {2.0, -3.0, -3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {2.0, -3.0, 3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= CYLINDER
+    comment= ""
+	radius= 0.5
+	pos= {2.0, -3.0, 0.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {6.5, -3.0, -3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {6.5, -3.0, 3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= CYLINDER
+    comment= ""
+	radius= 0.5
+	pos= {6.5, -3.0, 0.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {2.0, 3.0, -3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {2.0, 3.0, 3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= CYLINDER
+    comment= ""
+	radius= 0.5
+	pos= {2.0, 3.0, 0.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {6.5, 3.0, -3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+    comment= ""
+	radius= 0.7
+	pos= {6.5, 3.0, 3.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= CYLINDER
+    comment= ""
+	radius= 0.5
+	pos= {6.5, 3.0, 0.0}
+	dir= {0.0, 0.0, 1.0}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
