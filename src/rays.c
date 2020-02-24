@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   rays.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 11:10:39 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 14:52:24 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,11 +95,11 @@ t_tab			*create_obj(t_env *v)
 	return (v->tab);
 }
 
-void		    		bouclette(t_env *v)
+void					bouclette(t_env *v)
 {
-	int		    		x;
-	int		    		y;
-	t_ray	    		ray;
+	int					x;
+	int					y;
+	t_ray				ray;
 	t_sol_2_vec			sol;
 	t_tab				*tab;
 	int					i;
