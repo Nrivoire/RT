@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 18:52:33 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 11:10:39 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,8 +87,9 @@ t_tab			*create_obj(t_env *v)
 		else if (tmp->type == CYLINDER)
 			v->tab[i].q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
 		tmp = tmp->next;
-		i++;
+		//res = v->tab[i].q;
 		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+		i++;
 	}
 	return (v->tab);
 }
