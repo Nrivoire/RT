@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   parser_block_object.c                            .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/18 16:09:37 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 18:01:30 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_block_object.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
+/*   Updated: 2020/02/21 18:53:12 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
@@ -61,15 +60,11 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_object *content)
 	{
 		parse_xyz(tmp, v);
 		content->pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
-		printf("	==>%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
-		printf("~~~~~~~~~~~~>%f %f %f\n\n", content->pos.x, content->pos.y, content->pos.z);
 	}
 	if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v);
 		content->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
-		printf("	==>%f %f %f\n", v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z);
-		printf("~~~~~~~~~~~~>%f %f %f\n\n", content->dir.x, content->dir.y, content->dir.z);
 	}
 }
 
@@ -78,8 +73,8 @@ void			parse_obj(t_env *v, t_file *file)
 	char		*tmp;
 	t_object	content;
 
-	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
+	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
+			!check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\ttype=", 6))

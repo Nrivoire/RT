@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   parser_block_light.c                             .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/18 16:10:09 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 18:17:47 by qpupier     ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_block_light.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/21 18:53:19 by vasalome          #+#    #+#             */
+/*   Updated: 2020/02/21 18:53:22 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
@@ -43,8 +42,8 @@ void			parse_light(t_env *v, t_file *file)
 	char		*tmp;
 	t_light		content;
 
-	while (get_next_line(file->fd, &file->line) > 0 &&\
-			ft_strncmp(file->line, "}", 1) != 0 && !check_bracket(file))
+	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
+			!check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\ttype=", 6))

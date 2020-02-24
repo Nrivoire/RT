@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 18:33:45 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 14:52:24 by qpupier     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,47 +73,38 @@ t_tab			*create_obj(t_env *v)
 {
 	t_object	*tmp;
 	int			i;
-	t_quadric 		res;
 
 	i = 0;
 	tmp = v->p.ob;
 	while(tmp)
 	{
 		if (tmp->type == SPHERE)
-		{
 			v->tab[i].q = make_sphere(tmp->pos, tmp->radius);
-			printf("SPHERE~>%f %f %f\n\n", tmp->pos.x, tmp->pos.y, tmp->pos.z);
-		}
 		else if (tmp->type == PLAN)
 			v->tab[i].q = make_plan(tmp->a, tmp->b, tmp->c);
 		else if (tmp->type == CONE)
 			v->tab[i].q = make_cone(tmp->pos, tmp->dir, tmp->radius);
 		else if (tmp->type == CYLINDER)
 			v->tab[i].q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
+		v->tab[i].color = tmp->color;
 		tmp = tmp->next;
-		i++;
-		//printf("%d\n", tmp->type);
 		//res = v->tab[i].q;
 		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
+		i++;
 	}
-	exit(0);
 	return (v->tab);
 }
 
-void		    		bouclette(t_env *v)
+void					bouclette(t_env *v)
 {
-	int		    		x;
-	int		    		y;
-	t_ray	    		ray;
+	int					x;
+	int					y;
+	t_ray				ray;
 	t_sol_2_vec			sol;
 	t_tab				*tab;
 	int					i;
-	t_quadric			sphere;
-	t_quadric			sphere2;
 
-	sphere = make_sphere((t_vec){0, 0, 2}, 3);
-	sphere2 = make_sphere((t_vec){10, 3, 2}, 2);
-	//tab = create_obj(v);
+	tab = create_obj(v);
 	y = -1;
 	while (++y <= v->h)
 	{
@@ -122,13 +113,12 @@ void		    		bouclette(t_env *v)
 		{
 			ray = create_ray_win(v, x, y);
 			i = -1;
-			//while (++i <= v->nb_o)
-				if (inter_ray_quadric(ray, /*tab[i].q*/sphere, &sol))
+			while (++i < v->nb_o)
+				if (inter_ray_quadric(ray, tab[i].q, &sol))
 					if (closer_point_with_cam(v, sol))
-						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
-				if (inter_ray_quadric(ray, sphere2, &sol))
-					if (closer_point_with_cam(v, sol))
-						pixel_put(v, x, y, (t_rgb){255, 255, 255, 255});
+					{
+						pixel_put(v, x, y, (t_rgb){tab[i].color.r, tab[i].color.g, tab[i].color.b, 255});
+					}
 		}
 	}
 }

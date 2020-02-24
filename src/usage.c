@@ -30,13 +30,6 @@ static int	atoi_clamp_usage(const char *str, int min, int max)
 	return (value);
 }
 
-int			ft_clamp(int value, int min, int max)
-{
-	value > max ? value = min : 0;
-	value < min ? value = max : 0;
-	return (value);
-}
-
 void		usage(char *error, int run)
 {
 	ft_strcmp(error, "") != 0 ? ft_putendl(error) : 0;
@@ -52,9 +45,11 @@ void		usage(char *error, int run)
 void		check_options(t_env *v, int argc, char **argv)
 {
 	int		i;
+	char	*default_map;
 
 	i = 0;
-	v->file = ft_strdup("./scenes/default.rt");
+	default_map = ft_strdup("./scenes/default.rt");
+	v->file = default_map;
 	while (++i < argc)
 	{
 		!ft_strcmp(argv[i], "--help") ? usage("", 1) : 0;
@@ -71,4 +66,5 @@ void		check_options(t_env *v, int argc, char **argv)
 		else if (!ft_strcmp(argv[i], "-f") || !ft_strcmp(argv[i], "--file"))
 			i + 1 < argc ? v->file = ft_strdup(argv[i + 1]) : 0;
 	}
+	ft_strdel(&default_map);
 }

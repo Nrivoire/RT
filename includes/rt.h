@@ -104,6 +104,7 @@ typedef struct		s_file
 {
 	int				fd;
 	char			*line;
+	int				nb_line;
 }					t_file;
 
 /*
@@ -134,6 +135,7 @@ typedef struct		s_obj
 typedef struct		s_tab
 {
 	t_quadric		q;
+	t_color			color;
 }					t_tab;
 
 typedef struct		s_sol_2_vec
@@ -233,5 +235,6 @@ void				parse_xyz(char s[], t_env *v);
 void				add_lst_obj(t_object **ob, t_object content);
 void				add_lst_lgt(t_light **lg, t_light content);
 int					check_bracket(t_file *file);
+int					read_line(t_file *file);
 
 #endif
