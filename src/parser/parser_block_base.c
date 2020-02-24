@@ -23,6 +23,7 @@ void		parse_scene(t_env *v, t_file *file)
 {
 	char	*tmp;
 
+	ft_strdel(&file->line);
 	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
 			!check_bracket(file))
 	{
@@ -42,6 +43,7 @@ void		parse_cam(t_env *v, t_file *file)
 {
 	char	*tmp;
 
+	ft_strdel(&file->line);
 	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
 			!check_bracket(file))
 	{

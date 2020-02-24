@@ -45,7 +45,6 @@ int		parse_int_value(char const *s)
 	if (s[i - 1] == '-')
 		i -= 1;
 	res = ft_atoi(&s[i]);
-	//ajout gestion d'erreur?
 	return (res);
 }
 
@@ -60,7 +59,6 @@ float	parse_value(char const *s)
 	if (s[i - 1] == '-')
 		i -= 1;
 	res = ft_atof(&s[i]);
-	//ajout gestion d'erreur?
 	return (res);
 }
 
