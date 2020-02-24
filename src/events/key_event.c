@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 18:05:31 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 14:21:53 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 17:39:22 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,9 +26,9 @@ int         key_event(t_env *v, const Uint8 *keyboard_state)
     if (keyboard_state[SDL_SCANCODE_LEFT])
         v->obj.x -= .5;
     if (keyboard_state[SDL_SCANCODE_KP_MINUS])
-        v->cam_ori.z--;
+        v->cam.ori.z--;
     if (keyboard_state[SDL_SCANCODE_KP_PLUS])
-        v->cam_ori.z++;
+        v->cam.ori.z++;
     // contraste lumiere abiante //
     if (keyboard_state[SDL_SCANCODE_KP_DIVIDE])
         v->intens += 2;

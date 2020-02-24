@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 14:56:48 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 17:38:59 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,15 +45,11 @@ int				main(int argc, char **argv)
 	v->obj.x = 0;
 	v->obj.y = 0;
 	v->obj.z = 0;
-	v->cam_angle_x = 0;
-	v->cam_angle_y = 0;
+	v->cam.angle_x = 0;
+	v->cam.angle_y = 0;
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
-	v->wh = v->w * v->h;
-	if (!(v->dist = ft_memalloc(sizeof(int) * v->wh)))
-		return (0);
 	v->intens = 15;
 	v->light_ori = (t_vec){0, 10, 0};
-	v->cam_mouv = 0;
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	scene_value(v);
@@ -62,6 +58,5 @@ int				main(int argc, char **argv)
 		return (0);
 	init_sdl(v);
 	display(v);
-	free(v->dist);
 	return (0);
 }
