@@ -151,6 +151,7 @@ typedef struct		s_cam
 	float			angle_x;
 	float			angle_y;
 	t_vec			ori;
+	t_vec			dir;
 }					t_cam;
 
 /*
@@ -172,10 +173,6 @@ typedef struct		s_env
 	t_parsing		p;
 	int				nb_o;
 	int				nb_l;
-	float			cam_angle_x;
-	float			cam_angle_y;
-	t_vec			cam_ori;
-	t_vec			cam_dir;
 	t_tab			*tab;
 	float			intens;
 	t_vec			light_ori;

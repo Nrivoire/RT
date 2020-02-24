@@ -6,7 +6,7 @@ void			init_value(t_env *v)
 	v->h = 720;
 	v->fov = 60;
 
-	v->cam_ori = (t_vec){0, 0, -20};
+	v->cam.ori = (t_vec){0, 0, -20};
 
 	// init list du parser pour le malloc
 	v->p.ob = NULL;
@@ -15,8 +15,8 @@ void			init_value(t_env *v)
 
 void			scene_value(t_env *v)
 {
-	v->cam_ori = v->p.cam.pos;
-	v->cam_dir = v->p.cam.dir;
+	v->cam.ori = v->p.cam.pos;
+	v->cam.dir = v->p.cam.dir;
 }
 
 void			restart_values(t_env *v)
