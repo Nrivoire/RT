@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+      #
+#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/21 16:18:52 by qpupier     ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/24 18:56:31 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -39,6 +39,7 @@ SRC_NAME	+=	parser/parser_block_object.c
 SRC_NAME	+=	parser/parser_utils.c
 SRC_NAME	+=	parser/parser_color.c
 SRC_NAME	+=	parser/parser_list.c
+SRC_NAME	+=	create_obj.c
 
 #	Objects
 OBJ_PATH = .objects

@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 14:50:39 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 18:13:34 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -146,6 +146,13 @@ typedef struct		s_sol_2_vec
 	t_vec			v2;
 }					t_sol_2_vec;
 
+typedef struct		s_cam
+{
+	float			angle_x;
+	float			angle_y;
+	t_vec			ori;
+}					t_cam;
+
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
@@ -158,29 +165,18 @@ typedef struct		s_env
 	Uint32			*pixels;
 	int				w;
 	int				h;
-	int				wh;
 	int				fov;
 	float			angle_ratio;
-	t_vec			ori;
 	char			*file;
 	t_obj			obj;
 	t_parsing		p;
-	t_scene			sc;
-	t_camera		cam;
-	t_light			*lg;
-	t_object		*ob;
-	t_color			p_col;
-	t_vec			p_xyz;
 	int				nb_o;
 	int				nb_l;
-	float			cam_angle_x;
-	float			cam_angle_y;
-	t_vec			cam_ori;
 	t_tab			*tab;
-	float			*dist;
 	float			intens;
 	t_vec			light_ori;
-	int				cam_mouv;
+	t_cam			cam;
+	t_tab			selected_obj;
 }					t_env;
 
 /*
@@ -215,7 +211,9 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --rays--
 */
-void				bouclette(t_env *v);
+void				create_lgt(t_env *v);
+t_tab				*create_obj(t_env *v);
+void				bouclette(t_env *v, t_tab *tab_obj);
 
 /*
 ** --usage--

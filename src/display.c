@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 13:31:30 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 18:10:09 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,8 +49,11 @@ void			clear_pixels(t_env *v)
 
 void			draw_pro_frame(t_env *v)
 {
+	t_tab		*tab_obj;
+
 	clear_pixels(v);
-	bouclette(v);
+	tab_obj = create_obj(v);
+	bouclette(v, tab_obj);
 }
 
 void			display(t_env *v)
