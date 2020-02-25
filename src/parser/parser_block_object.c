@@ -12,27 +12,27 @@
 
 #include "../includes/rt.h"
 
-static void		parse_material_obj(t_env *v, char *tmp, t_object *content)
+static void		parse_material_obj(t_env *v, char *tmp, t_object *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
-		parse_color(tmp, v);
-		content->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
+		parse_color(tmp, v, f);
+		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
-	!ft_strncmp(tmp, "\treflect=", 9) ? content->reflect = parse_value(tmp) : 0;
-	!ft_strncmp(tmp, "\trefract=", 9) ? content->refract = parse_value(tmp) : 0;
+	!ft_strncmp(tmp, "\treflect=", 9) ? c->reflect = parse_value(tmp) : 0;
+	!ft_strncmp(tmp, "\trefract=", 9) ? c->refract = parse_value(tmp) : 0;
 	if (!ft_strncmp(tmp, "\ttransparency=", 14))
-		content->transparency = parse_value(tmp);
+		c->transparency = parse_value(tmp);
 	else if (!ft_strncmp(tmp, "\tabsorbtion=", 12))
-		content->absorbtion = parse_value(tmp);
-	!ft_strncmp(tmp, "\tambient=", 9) ? content->ambient = parse_value(tmp) : 0;
-	!ft_strncmp(tmp, "\tdiffuse=", 9) ? content->diffuse = parse_value(tmp) : 0;
+		c->absorbtion = parse_value(tmp);
+	!ft_strncmp(tmp, "\tambient=", 9) ? c->ambient = parse_value(tmp) : 0;
+	!ft_strncmp(tmp, "\tdiffuse=", 9) ? c->diffuse = parse_value(tmp) : 0;
 	if (!ft_strncmp(tmp, "\tspecular=", 10))
-		content->specular = parse_value(tmp);
+		c->specular = parse_value(tmp);
 	else if (!ft_strncmp(tmp, "\tshininess=", 11))
-		content->shininess = parse_value(tmp);
+		c->shininess = parse_value(tmp);
 	// if (!ft_strncmp(tmp, "\ttexture=", 9))
-	// 	content.texture = parse_value(tmp); changer de fonction de recup valeur (maybe tableau)
+	// 	c.texture = parse_value(tmp); changer de fonction de recup valeur (maybe tableau)
 }
 
 static void		parse_point_plan(t_env *v, char *tmp, t_object *content)
@@ -89,7 +89,7 @@ void			parse_obj(t_env *v, t_file *file)
 			content.radius = parse_value(tmp);
 		parse_xyz_obj(v, tmp, &content);
 		parse_point_plan(v, tmp, &content);
-		parse_material_obj(v, tmp, &content);
+		parse_material_obj(v, tmp, &content, file);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

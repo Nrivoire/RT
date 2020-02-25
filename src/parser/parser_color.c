@@ -12,6 +12,22 @@
 
 #include "../includes/rt.h"
 
+static int		color_int_value(char const *s)
+{
+	int		i;
+	int		res;
+
+	i = 0;
+	while (!ft_isdigit(s[i]))
+		i++;
+	if (s[i - 1] == '-')
+		i -= 1;
+	res = ft_atoi(&s[i]);
+	res > 255.0 ? res = 255.0 : 0;
+	res < 0.0 ? res = 0.0 : 0;
+	return (res);
+}
+
 static float	color_value(char const *s)
 {
 	int		i;
@@ -19,6 +35,8 @@ static float	color_value(char const *s)
 	float	result;
 
 	i = 0;
+	if (ft_strcmp(ft_strtrim(s), ft_strtrim(" ")) == 0)
+		return (0);
 	while (!ft_isdigit(s[i]))
 		i++;
 	if (s[i - 1] == '-')
@@ -26,17 +44,24 @@ static float	color_value(char const *s)
 	res = ft_atof(&s[i]);
 	res > 255.0 ? res = 255.0 : 0;
 	res < 0.0 ? res = 0.0 : 0;
-	result = res / 255;
+	result = res / 255.0;
 	return (result);
 }
 
-static int		get_hexa(char *s)
+static int		get_hexa(char *s, t_file *file)
 {
 	int		i;
 	int		content;
 	int		res;
 
 	i = ft_strlen(s);
+	printf("===> INFO DE I %d\n",i);
+	if (i != 8)
+	{
+		ft_putendl("Bad file: color hexa must be -> 'RRGGBBAA'");
+		ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
+		exit(1);
+	}
 	content = 1;
 	res = 0;
 	while (--i >= 0)
@@ -50,7 +75,7 @@ static int		get_hexa(char *s)
 	return (res);
 }
 
-static void		hexa_value(char s[], t_env *v, char delim)
+static void		hexa_value(char s[], t_env *v, char delim, t_file *file)
 {
 	int		i;
 	char	*res;
@@ -66,15 +91,17 @@ static void		hexa_value(char s[], t_env *v, char delim)
 		res = ft_strtok(NULL, &delim);
 		i++;
 	}
-	v->p.p_col.r = get_hexa(hexa) >> 16 & 0xFF;
-	v->p.p_col.g = get_hexa(hexa) >> 8 & 0xFF;
-	v->p.p_col.b = get_hexa(hexa) & 0xFF;
-	v->p.p_col.a = get_hexa(hexa) >> 24 & 0xFF;
-	printf("%d res\n",v->p.p_col.a);
+	v->p.prev_r = get_hexa(hexa, file) >> 24 & 0xFF;
+	v->p.prev_g = get_hexa(hexa, file) >> 16 & 0xFF;
+	v->p.prev_b = get_hexa(hexa, file) >> 8 & 0xFF;
+	v->p.p_col.r = (float)v->p.prev_r / 255;
+	v->p.p_col.g = (float)v->p.prev_g / 255;
+	v->p.p_col.b = (float)v->p.prev_b / 255;
+	v->p.p_col.a = get_hexa(hexa, file) & 0xFF;
 	free(hexa);
 }
 
-void			parse_color(char s[], t_env *v)
+void			parse_color(char s[], t_env *v, t_file *file)
 {
 	int		i;
 	char	*res;
@@ -82,9 +109,9 @@ void			parse_color(char s[], t_env *v)
 	res = NULL;
 	i = 0;
 	if (ft_strstr(s, "0x"))
-		hexa_value(s, v, 'x');
+		hexa_value(s, v, 'x', file);
 	else if (ft_strstr(s, "#"))
-		hexa_value(s, v, '#');
+		hexa_value(s, v, '#', file);
 	else
 	{
 		res = ft_strtok(s, ",");
@@ -93,6 +120,7 @@ void			parse_color(char s[], t_env *v)
 			i == 0 ? v->p.p_col.r = color_value(res) : 0;
 			i == 1 ? v->p.p_col.g = color_value(res) : 0;
 			i == 2 ? v->p.p_col.b = color_value(res) : 0;
+			i == 3 ? v->p.p_col.a = color_int_value(res) : 0;
 			res = ft_strtok(NULL, ",");
 			i++;
 		}
