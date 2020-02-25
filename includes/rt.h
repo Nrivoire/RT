@@ -38,9 +38,10 @@
 
 typedef struct		s_color
 {
-	int				r;
-	int				g;
-	int				b;
+	float			r;
+	float			g;
+	float			b;
+	int				a;
 }					t_color;
 
 typedef struct		s_scene
