@@ -10,35 +10,34 @@ camera{
 
 light{
 	type= POINT
-	color= 0xF5C7C2
-	pos= {10, -4, 10}
-	dir= {0, 0, 1}
-	intensity= 1.5
+	color= {255, 255, 255}
+	pos= {-5, 0, 0}
+	dir= {0, 0, 0}
+	intensity=1
+}
+
+light{
+	type= POINT
+	color= {255, 255, 255}
+	pos= {5, 0, 0}
+	dir= {0, 5, 2}
+	intensity=1
+}
+
+light{
+	type= POINT
+	color= {255, 255, 255}
+	pos= {0, 10, -5}
+	dir= {0, 5, 2}
+	intensity= 1
 }
 
 object{
 	type= SPHERE
 	radius= 2.0
-	pos= {0, 0, 5}
+	pos= {0, 0, 0}
 	color= {244, 208, 63}
 	reflect= -1
-	refract= 1
-	transparency= 1
-	absorbtion= 2
-	ambient= 3
-	diffuse= 4
-	specular= 5
-	shininess= 6
-	texture= ""
-}
-
-object{
-	type= CONE
-	radius= 0.2
-	pos= {1, 1, 15}
-	dir= {1, 1, 0}
-	color= {0, 5, 255}
-	reflect= 0
 	refract= 1
 	transparency= 1
 	absorbtion= 2

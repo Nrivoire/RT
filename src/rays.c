@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 13:05:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 16:10:55 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,25 +57,25 @@ float			closest_dist(t_vec ori, t_sol_2_vec sol)
 	return (-1);
 }
 
-t_color			light_dot(t_env *v, t_sol_2_vec sol, t_color obj_color)
-{
-	float		dist_s1;
-	float		dist_s2;
-	float		dist;
-	t_color		light;
+// t_color			light_dot(t_env *v, t_sol_2_vec sol, t_color obj_color)
+// {
+// 	float		dist_s1;
+// 	float		dist_s2;
+// 	float		dist;
+// 	t_color		light;
 
-	dist_s1 = vec_norm(vec_sub(v->light_ori, sol.v1));
-	dist_s2 = vec_norm(vec_sub(v->light_ori, sol.v2));
-	dist = fmin(dist_s1, dist_s2);
-	if (dist < 0)
-		dist = 0;
-	if (dist > v->intens)
-		dist = v->intens;
-	light.r = obj_color.r - (dist / v->intens * obj_color.r);
-	light.g = obj_color.g - (dist / v->intens * obj_color.g);
-	light.b = obj_color.b - (dist / v->intens * obj_color.b);
-	return (light);
-}
+// 	dist_s1 = vec_norm(vec_sub(v->light_ori, sol.v1));
+// 	dist_s2 = vec_norm(vec_sub(v->light_ori, sol.v2));
+// 	dist = fmin(dist_s1, dist_s2);
+// 	if (dist < 0)
+// 		dist = 0;
+// 	if (dist > v->intens)
+// 		dist = v->intens;
+// 	light.r = obj_color.r - (dist / v->intens * obj_color.r);
+// 	light.g = obj_color.g - (dist / v->intens * obj_color.g);
+// 	light.b = obj_color.b - (dist / v->intens * obj_color.b);
+// 	return (light);
+// }
 
 t_vec			closest_point(t_vec ori, t_sol_2_vec sol)
 {
@@ -98,40 +98,41 @@ t_vec			closest_point(t_vec ori, t_sol_2_vec sol)
 	return (sol.v2);
 }
 
-float			diffuse_light(t_env *v, t_vec p_intersect, t_vec center_sphere, t_vec dif_light)
+float			diffuse_light(t_env *v, t_px_data px, t_vec pos_light)
 {
 	float		dot;
 	t_vec		norm;
 	t_vec		light;
 
-	norm = vec_normalize(vec_sub(center_sphere, p_intersect));
-	light = vec_normalize(vec_sub(dif_light, p_intersect));
-	dot = vec_scale_product(norm, light);
+	norm = vec_normalize(vec_sub(px.center, px.point));
+	light = vec_normalize(vec_sub(px.point, pos_light));
+	dot = vec_scale_product(light, norm);
 	return (dot);
 }
 
-int					closest_intersect(t_env *v, t_ray ray, t_vec dif_light, t_px_data *closest)
+int					closest_intersect(t_env *v, t_ray ray, t_px_data *closest)
 {
-	float			dist_obj_1;
-	float			dist_obj_2;
+	float			dist;
+	float			tmp;
 	t_sol_2_vec		sol;
 	int				i;
 	int				state;
 
 	state = 0;
 	i = -1;
-	dist_obj_1 = INFINITY;
-	dist_obj_2 = -1;
+	dist = INFINITY;
+	tmp = -1;
 	while (++i < v->nb_o)
 		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol))
 		{
-			dist_obj_2 = closest_dist(ray.o, sol);
-			if (dist_obj_2 >= 0 && dist_obj_2 < dist_obj_1)
+			tmp = closest_dist(ray.o, sol);
+			if (tmp >= 0 && tmp < dist)
 			{
 				closest->point = closest_point(ray.o, sol);
-				closest->dot_diffuse_light = diffuse_light(v, closest->point, v->tab_obj[i].center, dif_light);
+				closest->center = v->tab_obj[i].center;
 				closest->color = v->tab_obj[i].color;
-				dist_obj_1 = dist_obj_2;
+				closest->dist = dist;
+				dist = tmp;
 				state = 1;
 			}
 		}
@@ -143,10 +144,11 @@ void		    bouclette(t_env *v)
 	int		    x;
 	int		    y;
 	t_ray	    ray;
-	t_vec		dif_light;
 	t_px_data	closest;
+	t_light		*tmp;
+	float		dot_diffuse_light;
+	t_color		color;
 
-	dif_light = (t_vec){0, 5, 2};
 	y = -1;
 	while (++y <= v->h)
 	{
@@ -154,11 +156,28 @@ void		    bouclette(t_env *v)
 		while (++x <= v->w)
 		{
 			ray = create_ray_win(v, x, y);
-			if (closest_intersect(v, ray, dif_light, &closest))
-			{
-				if (closest.dot_diffuse_light > 0)
-					pixel_put(v, x, y, (t_color){closest.color.r / 255.0 * closest.dot_diffuse_light, closest.color.g / 255.0 * closest.dot_diffuse_light, closest.color.b / 255.0 * closest.dot_diffuse_light, 255});
-			}
+				if (closest_intersect(v, ray, &closest))
+				{
+					color = (t_color) {.1, .1, .1, 255};
+					dot_diffuse_light = 0;
+					float intensity = 0;
+					tmp = v->p.lg;
+					while (tmp)
+					{
+						if ((dot_diffuse_light = diffuse_light(v, closest, tmp->pos)) > 0)
+						{
+							intensity = dot_diffuse_light;//* tmp->intensity;
+							color.r = color.r + (/* tmp->color.r * */ intensity);
+							color.g = color.g + (/* tmp->color.g * */ intensity);
+							color.b = color.b + (/* tmp->color.b * */ intensity);
+						}
+						tmp = tmp->next;
+					}
+					color.r = color.r * (closest.color.r / 255.0);
+					color.g = color.g * (closest.color.g / 255.0);
+					color.b = color.b * (closest.color.b / 255.0);
+					pixel_put(v, x, y, color);
+				}
 		}
 	}
 }

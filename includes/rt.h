@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 12:57:19 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 13:16:59 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -161,9 +161,10 @@ typedef struct		s_tab
 
 typedef struct		s_px_data
 {
-	float			dot_diffuse_light;
 	t_color			color;
 	t_vec			point;
+	float			dist;
+	t_vec			center;
 }					t_px_data;
 
 /*
@@ -186,7 +187,6 @@ typedef struct		s_env
 	int				nb_o;
 	int				nb_l;
 	t_tab			*tab_obj;
-	float			intens;
 	t_vec			light_ori;
 	t_cam			cam;
 	t_tab			selected_obj;

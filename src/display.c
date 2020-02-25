@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 12:51:51 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 16:09:12 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,13 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 {
 	if (x >= v->w || y >= v->h || x < 0 || y < 0)
 		return ;
+
+	if (color.r > 1)
+		color.r = 1;
+	if (color.g > 1)
+		color.g = 1;
+	if (color.b > 1)
+		color.b = 1;		
 	v->pixels[y * v->w + x] = get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a);
 }
 
