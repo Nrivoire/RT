@@ -12,20 +12,22 @@
 
 #include "../includes/rt.h"
 
-static int		color_value(char const *s)
+static float	color_value(char const *s)
 {
 	int		i;
-	int		res;
+	float	res;
+	float	result;
 
 	i = 0;
 	while (!ft_isdigit(s[i]))
 		i++;
 	if (s[i - 1] == '-')
 		i -= 1;
-	res = ft_atoi(&s[i]);
-	res > 255 ? res = 255 : 0;
-	res < 0 ? res = 0 : 0;
-	return (res);
+	res = ft_atof(&s[i]);
+	res > 255.0 ? res = 255.0 : 0;
+	res < 0.0 ? res = 0.0 : 0;
+	result = res / 255;
+	return (result);
 }
 
 static int		get_hexa(char *s)
@@ -67,6 +69,8 @@ static void		hexa_value(char s[], t_env *v, char delim)
 	v->p.p_col.r = get_hexa(hexa) >> 16 & 0xFF;
 	v->p.p_col.g = get_hexa(hexa) >> 8 & 0xFF;
 	v->p.p_col.b = get_hexa(hexa) & 0xFF;
+	v->p.p_col.a = get_hexa(hexa) >> 24 & 0xFF;
+	printf("%d res\n",v->p.p_col.a);
 	free(hexa);
 }
 
