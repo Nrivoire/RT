@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 17:38:59 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 12:49:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ int				main(int argc, char **argv)
 	/* -- a changer par les valeurs prises dans le parsing */
 	scene_value(v);
 
-	if (!(v->tab = (t_tab *)malloc(sizeof(t_tab) * v->nb_o)))
+	if (!(v->tab_obj = (t_tab *)malloc(sizeof(t_tab) * v->nb_o)))
 		return (0);
 	init_sdl(v);
 	display(v);
