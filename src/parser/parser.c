@@ -66,14 +66,14 @@ static void		read_file(t_env *v, t_file *file)
 		tmp = ft_strdup(file->line);
 		if (!(ft_strncmp(tmp, "scene{", 6)))
 			parse_scene(v, file);
-		if (!(ft_strncmp(tmp, "camera{", 7)))
+		else if (!(ft_strncmp(tmp, "camera{", 7)))
 			parse_cam(v, file);
-		if (!(ft_strncmp(tmp, "light{", 6)))
+		else if (!(ft_strncmp(tmp, "light{", 6)))
 		{
 			v->nb_l++;
 			parse_light(v, file);
 		}
-		if (!(ft_strncmp(tmp, "object{", 7)))
+		else if (!(ft_strncmp(tmp, "object{", 7)))
 		{
 			v->nb_o++;
 			parse_obj(v, file);

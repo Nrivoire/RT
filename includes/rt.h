@@ -146,6 +146,7 @@ typedef struct		s_cam
 	float			angle_x;
 	float			angle_y;
 	t_vec			ori;
+	t_vec			dir;
 }					t_cam;
 
 typedef struct		s_tab
@@ -248,5 +249,12 @@ void				add_lst_obj(t_object **ob, t_object content);
 void				add_lst_lgt(t_light **lg, t_light content);
 int					check_bracket(t_file *file);
 int					read_line(t_file *file);
+
+/*
+** --init--
+*/
+void				init_value(t_env *v);
+void				scene_value(t_env *v);
+void				restart_values(t_env *v);
 
 #endif
