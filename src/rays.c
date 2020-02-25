@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 16:10:55 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 17:03:01 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -147,7 +147,7 @@ void		    bouclette(t_env *v)
 	t_px_data	closest;
 	t_light		*tmp;
 	float		dot_diffuse_light;
-	t_color		color;
+	t_color		ambient_color;
 
 	y = -1;
 	while (++y <= v->h)
@@ -158,7 +158,7 @@ void		    bouclette(t_env *v)
 			ray = create_ray_win(v, x, y);
 				if (closest_intersect(v, ray, &closest))
 				{
-					color = (t_color) {.1, .1, .1, 255};
+					ambient_color = (t_color) {.1, .1, .1, 255};
 					dot_diffuse_light = 0;
 					float intensity = 0;
 					tmp = v->p.lg;
@@ -166,18 +166,17 @@ void		    bouclette(t_env *v)
 					{
 						if ((dot_diffuse_light = diffuse_light(v, closest, tmp->pos)) > 0)
 						{
-							printf("%f intensity\n\n", tmp->color.r);
-							intensity = dot_diffuse_light ;//* tmp->intensity;
-							color.r = color.r + (/* tmp->color.r * */ intensity);
-							color.g = color.g + (/* tmp->color.g * */ intensity);
-							color.b = color.b + (/* tmp->color.b * */ intensity);
+							intensity = dot_diffuse_light * tmp->intensity;
+							ambient_color.r = ambient_color.r + (tmp->color.r * intensity);
+							ambient_color.g = ambient_color.g + (tmp->color.g * intensity);
+							ambient_color.b = ambient_color.b + (tmp->color.b * intensity);
 						}
 						tmp = tmp->next;
 					}
-					color.r = color.r * (closest.color.r / 255.0);
-					color.g = color.g * (closest.color.g / 255.0);
-					color.b = color.b * (closest.color.b / 255.0);
-					pixel_put(v, x, y, color);
+					ambient_color.r = ambient_color.r * closest.color.r;
+					ambient_color.g = ambient_color.g * closest.color.g;
+					ambient_color.b = ambient_color.b * closest.color.b;
+					pixel_put(v, x, y, ambient_color);
 				}
 		}
 	}
