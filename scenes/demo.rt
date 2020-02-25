@@ -13,7 +13,15 @@ light{
 	color= 0xFF5733FF
 	pos= {2, 0, -70}
 	dir= {0, 0, 1}
-	intensity= 1.5
+	intensity= 1
+}
+
+light{
+	type= POINT
+	color= 0xFFFFFFFF
+	pos= {40, 40, -30}
+	dir= {0, 0, 1}
+	intensity= 1
 }
 
 object{
@@ -21,7 +29,7 @@ object{
 	radius= 1.5
 	pos= {2, 2, -3}
 	dir= {0, 0, 1}
-	color= {120, 108, 30, 255}
+	color= {0, 0, 255, 255}
 	reflect= -1
 	refract= 1
 	transparency= 1
@@ -38,7 +46,7 @@ object{
 	radius= 1.5
 	pos= {-2, -2, -1}
 	dir= {0, 0, 1}
-	color= {255, 100, 0, 255}
+	color= {255, 0, 0, 255}
 	reflect= -1
 	refract= 1
 	transparency= 1
@@ -55,7 +63,27 @@ object{
 	radius= 2
 	pos= {2, -2, 2}
 	dir= {0, 0, 1}
-	color= {244, 208, 63, 255}
+	color= {0, 255, 0, 255}
+	reflect= -1
+	refract= 1
+	transparency= 1
+	absorbtion= 2
+	ambient= 3
+	diffuse= 4
+	specular= 5
+	shininess= 6
+	texture= ""
+}
+
+object{
+	type= PLAN
+	radius= 2
+	pos= {0, 0, -50}
+	dir= {0, 0, 1}
+	point_a= {0, 1, 50}
+	point_b= {1, 3, 50}
+	point_c= {0, 2, 50}
+	color= {200, 200, 200, 255}
 	reflect= -1
 	refract= 1
 	transparency= 1

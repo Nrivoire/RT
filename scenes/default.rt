@@ -10,7 +10,7 @@ camera{
 
 light{
 	type= POINT
-	color= 0xF5C7C2
+	color= 0xF5C7C2FF
 	pos= {2, 0, -70}
 	dir= {0, 0, 1}
 	intensity= 1.5
@@ -38,7 +38,7 @@ object{
 	radius= 1.5
 	pos= {4, 4, 5}
 	dir= {0, 0, 1}
-	color= 0x3498DB
+	color= 0x3498DBFF
 	reflect= 0
 	refract= 0
 	transparency= 0
@@ -58,7 +58,7 @@ object{
 	point_a= {0, 1, 1}
 	point_b= {1, 3, 2}
 	point_c= {0, 2, 3}
-	color= 0x3498DB
+	color= 0x3498DBFF
 	reflect= 0
 	refract= 0
 	transparency= 0

@@ -33,9 +33,11 @@ static float	color_value(char const *s)
 	int		i;
 	float	res;
 	float	result;
+	char	*empty;
 
 	i = 0;
-	if (ft_strcmp(ft_strtrim(s), ft_strtrim(" ")) == 0)
+	empty = ft_strtrim(s);
+	if (ft_strcmp(empty, "") == 0)
 		return (0);
 	while (!ft_isdigit(s[i]))
 		i++;
@@ -45,6 +47,7 @@ static float	color_value(char const *s)
 	res > 255.0 ? res = 255.0 : 0;
 	res < 0.0 ? res = 0.0 : 0;
 	result = res / 255.0;
+	free(empty);
 	return (result);
 }
 
@@ -55,13 +58,14 @@ static int		get_hexa(char *s, t_file *file)
 	int		res;
 
 	i = ft_strlen(s);
-	printf("===> INFO DE I %d\n",i);
-	if (i != 8)
-	{
-		ft_putendl("Bad file: color hexa must be -> 'RRGGBBAA'");
-		ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
-		exit(1);
-	}
+	// printf("%s %lu\n", s, strlen(s));
+	// printf("===> i est egale a '%d'\n",i);
+	// if (i != 8)
+	// {
+	// 	ft_putendl("Bad file: color hexa must be -> 'RRGGBBAA'");
+	// 	ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
+	// 	exit(1);
+	// }
 	content = 1;
 	res = 0;
 	while (--i >= 0)
@@ -83,6 +87,7 @@ static void		hexa_value(char s[], t_env *v, char delim, t_file *file)
 
 	res = NULL;
 	hexa = NULL;
+	// hexa = ft_memalloc(sizeof(char));
 	i = 0;
 	res = ft_strtok(s, &delim);
 	while (res != NULL)
