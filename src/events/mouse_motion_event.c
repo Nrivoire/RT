@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:58:38 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 17:37:40 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 12:52:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,6 @@
 
 void		mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state)
 {
-	t_matrix_3_3	rot;
-
     if (mouse_state == 1)
     {
 		if (abs(event.motion.xrel) > abs(event.motion.yrel))

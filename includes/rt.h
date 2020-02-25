@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 18:13:34 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 12:57:19 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,9 +38,10 @@
 
 typedef struct		s_color
 {
-	int				r;
-	int				g;
-	int				b;
+	float			r;
+	float			g;
+	float			b;
+	int				a;
 }					t_color;
 
 typedef struct		s_scene
@@ -132,12 +133,6 @@ typedef struct		s_obj
 	float			z;
 }					t_obj;
 
-typedef struct		s_tab
-{
-	t_quadric		q;
-	t_color			color;
-}					t_tab;
-
 typedef struct		s_sol_2_vec
 {
 	int				s1;
@@ -152,6 +147,20 @@ typedef struct		s_cam
 	float			angle_y;
 	t_vec			ori;
 }					t_cam;
+
+typedef struct		s_tab
+{
+	t_quadric		q;
+	t_color			color;
+	t_vec			center;
+}					t_tab;
+
+typedef struct		s_px_data
+{
+	float			dot_diffuse_light;
+	t_color			color;
+	t_vec			point;
+}					t_px_data;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
@@ -172,7 +181,7 @@ typedef struct		s_env
 	t_parsing		p;
 	int				nb_o;
 	int				nb_l;
-	t_tab			*tab;
+	t_tab			*tab_obj;
 	float			intens;
 	t_vec			light_ori;
 	t_cam			cam;
@@ -183,6 +192,7 @@ typedef struct		s_env
 ** ----------------------------------------------------------------------
 */
 
+void				display(t_env *v);
 int					inter_ray_quadric(t_ray r, t_quadric q,
 					t_sol_2_vec *sol);
 
@@ -190,7 +200,7 @@ int					inter_ray_quadric(t_ray r, t_quadric q,
 ** --draw_tools--
 */
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
-void				pixel_put(t_env *v, int x, int y, t_rgb color);
+void				pixel_put(t_env *v, int x, int y, t_color color);
 
 /*
 ** --events--
@@ -212,8 +222,8 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 ** --rays--
 */
 void				create_lgt(t_env *v);
-t_tab				*create_obj(t_env *v);
-void				bouclette(t_env *v, t_tab *tab_obj);
+void				create_obj(t_env *v);
+void				bouclette(t_env *v);
 
 /*
 ** --usage--

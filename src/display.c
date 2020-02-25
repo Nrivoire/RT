@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/24 18:10:09 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 12:51:51 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,11 +18,11 @@ static int		get_hex_rgba(int r, int g, int b, int a)
 	return ((r << 24) | (g << 16) | (b << 8) | (a));
 }
 
-void			pixel_put(t_env *v, int x, int y, t_rgb color)
+void			pixel_put(t_env *v, int x, int y, t_color color)
 {
 	if (x >= v->w || y >= v->h || x < 0 || y < 0)
 		return ;
-	v->pixels[y * v->w + x] = get_hex_rgba(color.r, color.g, color.b, color.a);
+	v->pixels[y * v->w + x] = get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a);
 }
 
 static void		quit(t_env *v)
@@ -43,22 +43,20 @@ void			clear_pixels(t_env *v)
 	{
 		x = -1;
 		while (++x <= v->w)
-			pixel_put(v, x, y, (t_rgb){0, 0, 0, 255});
+			pixel_put(v, x, y, (t_color){0, 0, 0, 255});
 	}
 }
 
 void			draw_pro_frame(t_env *v)
 {
-	t_tab		*tab_obj;
-
 	clear_pixels(v);
-	tab_obj = create_obj(v);
-	bouclette(v, tab_obj);
+	create_obj(v);
+	bouclette(v);
 }
 
 void			display(t_env *v)
 {
-	SDL_Event	e;
+	SDL_Event		e;
 	const Uint8		*keyboard_state;
 	uint32_t		mouse_state;
 
