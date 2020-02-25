@@ -21,7 +21,7 @@ object{
 	radius= 1.5
 	pos= {2, 2, -3}
 	dir= {0, 0, 1}
-	color= {120, 108, 30, 2}
+	color= {120, 108, 30, 255}
 	reflect= -1
 	refract= 1
 	transparency= 1
@@ -38,7 +38,7 @@ object{
 	radius= 1.5
 	pos= {-2, -2, -1}
 	dir= {0, 0, 1}
-	color= {255, 100, 0, 5}
+	color= {255, 100, 0, 255}
 	reflect= -1
 	refract= 1
 	transparency= 1
@@ -55,7 +55,7 @@ object{
 	radius= 2
 	pos= {2, -2, 2}
 	dir= {0, 0, 1}
-	color= {244, 208, 63}
+	color= {244, 208, 63, 255}
 	reflect= -1
 	refract= 1
 	transparency= 1

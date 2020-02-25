@@ -50,6 +50,8 @@ void	add_lst_lgt(t_light **lg, t_light content)
 	new->type = content.type;
 	new->pos = content.pos;
 	new->dir = content.dir;
+	new->color = content.color;
+	new->intensity = content.intensity;
 	// autres variables ?
 	new->next = (!*lg) ? NULL : *lg;
 	*lg = new;

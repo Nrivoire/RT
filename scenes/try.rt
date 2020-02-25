@@ -13,7 +13,7 @@ light{
 	color= {255, 255, 255}
 	pos= {-5, 0, 0}
 	dir= {0, 0, 0}
-	intensity=1
+	intensity= 1
 }
 
 light{
@@ -21,7 +21,7 @@ light{
 	color= {255, 255, 255}
 	pos= {5, 0, 0}
 	dir= {0, 5, 2}
-	intensity=1
+	intensity= 1
 }
 
 light{

@@ -166,7 +166,8 @@ void		    bouclette(t_env *v)
 					{
 						if ((dot_diffuse_light = diffuse_light(v, closest, tmp->pos)) > 0)
 						{
-							intensity = dot_diffuse_light;//* tmp->intensity;
+							printf("%f intensity\n\n", tmp->color.r);
+							intensity = dot_diffuse_light ;//* tmp->intensity;
 							color.r = color.r + (/* tmp->color.r * */ intensity);
 							color.g = color.g + (/* tmp->color.g * */ intensity);
 							color.b = color.b + (/* tmp->color.b * */ intensity);
