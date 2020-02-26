@@ -34,7 +34,7 @@ void		parse_scene(t_env *v, t_file *file)
 			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
 		{
-			parse_color(tmp, v, f);
+			parse_color(tmp, v, file);
 			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b, 255};
 		}
 		ft_strdel(&file->line);
