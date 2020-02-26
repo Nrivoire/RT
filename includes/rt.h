@@ -47,6 +47,7 @@ typedef struct		s_color
 typedef struct		s_scene
 {
 	t_color			amb_light;
+	float			intensity;
 	// add autre params
 }					t_scene;
 
@@ -245,9 +246,8 @@ void				parse_light(t_env *v, t_file *file);
 void				parse_obj(t_env *v, t_file *file);
 float				parse_value(char const *s);
 int					parse_int_value(char const *s);
-char				*ft_strtok(char *s, char const *delim);
-void				parse_color(char s[], t_env *v, t_file *file);
-void				parse_xyz(char s[], t_env *v);
+void				parse_color(char *s, t_env *v, t_file *file);
+void				parse_xyz(char *s, t_env *v, t_file *file);
 void				add_lst_obj(t_object **ob, t_object content);
 void				add_lst_lgt(t_light **lg, t_light content);
 int					check_bracket(t_file *file);
