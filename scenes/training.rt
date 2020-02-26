@@ -26,3 +26,11 @@ object{
 	shininess= 0
 	texture= ""
 }
+
+light{
+	type= POINT
+	color= 0xFFFFFFFF
+	pos= {-3, 3, -3}
+	dir= {0, 0, 1}
+	intensity= 1
+}
