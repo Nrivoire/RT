@@ -28,9 +28,9 @@ void		parse_scene(t_env *v, t_file *file)
 			!check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
-		if (ft_strncmp(tmp, "\twidth=", 7))
+		if (!ft_strncmp(tmp, "\twidth=", 7))
 			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 1280);
-		else if (ft_strncmp(tmp, "\theight=", 8))
+		else if (!ft_strncmp(tmp, "\theight=", 8))
 			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
 		{
