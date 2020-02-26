@@ -15,7 +15,6 @@
 void	add_lst_obj(t_object **ob, t_object content)
 {
 	t_object	*new;
-	t_object	*tmp;
 
 	if (!(new = malloc(sizeof(t_object))))
 		return ;
@@ -43,7 +42,6 @@ void	add_lst_obj(t_object **ob, t_object content)
 void	add_lst_lgt(t_light **lg, t_light content)
 {
 	t_light		*new;
-	t_light		*tmp;
 
 	if (!(new = malloc(sizeof(t_light))))
 		return ;

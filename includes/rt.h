@@ -253,6 +253,7 @@ void				add_lst_lgt(t_light **lg, t_light content);
 int					check_bracket(t_file *file);
 int					read_line(t_file *file);
 char				*my_strcat(char *s1, char *s2);
+void				error_parser(char *error, t_file *file);
 
 /*
 ** --init--

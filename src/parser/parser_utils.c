@@ -12,6 +12,13 @@
 
 #include "../includes/rt.h"
 
+void	error_parser(char *error, t_file *file)
+{
+	ft_putendl(error);
+	ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
+	exit(1);
+}
+
 char	*ft_strtok(char *s, char const *delim)
 {
 	static char *res;
