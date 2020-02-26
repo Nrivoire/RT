@@ -23,8 +23,8 @@ static int		color_int_value(char const *s)
 	if (s[i - 1] == '-')
 		i -= 1;
 	res = ft_atoi(&s[i]);
-	res > 255.0 ? res = 255.0 : 0;
-	res < 0.0 ? res = 0.0 : 0;
+	res > 255 ? res = 255 : 0;
+	res < 0 ? res = 0 : 0;
 	return (res);
 }
 
@@ -58,13 +58,13 @@ static int		get_hexa(char *s, t_file *file)
 	int		res;
 
 	i = ft_strlen(s);
-	// printf("%s %lu\n", s, strlen(s));
-	// printf("===> i est egale a '%d'\n",i);
+	//printf("%s %lu\n", s, strlen(s));
+	//printf("===> i est egale a '%d'\n",i);
 	// if (i != 8)
 	// {
 	// 	ft_putendl("Bad file: color hexa must be -> 'RRGGBBAA'");
 	// 	ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
-	// 	exit(1);
+	// 	//exit(1);
 	// }
 	content = 1;
 	res = 0;
@@ -79,6 +79,33 @@ static int		get_hexa(char *s, t_file *file)
 	return (res);
 }
 
+// static void		hexa_value(char s[], t_env *v, char delim, t_file *file)
+// {
+// 	int		i;
+// 	char	*res;
+// 	char	*hexa;
+
+// 	res = NULL;
+// 	hexa = ft_memalloc(sizeof(char) * 9);
+// 	//hexa = "FFFFFFFF";
+// 	i = 0;
+// 	res = ft_strtok(s, &delim);
+// 	while (res != NULL)
+// 	{
+// 		i == 1 ? hexa = ft_strtrim(res) : 0;
+// 		res = ft_strtok(NULL, &delim);
+// 		i++;
+// 	}
+// 	v->p.prev_r = get_hexa(hexa, file) >> 24 & 0xFF;
+// 	v->p.prev_g = get_hexa(hexa, file) >> 16 & 0xFF;
+// 	v->p.prev_b = get_hexa(hexa, file) >> 8 & 0xFF;
+// 	v->p.p_col.r = (float)v->p.prev_r / 255;
+// 	v->p.p_col.g = (float)v->p.prev_g / 255;
+// 	v->p.p_col.b = (float)v->p.prev_b / 255;
+// 	v->p.p_col.a = get_hexa(hexa, file) & 0xFF;
+// 	free(hexa);
+// }
+
 static void		hexa_value(char s[], t_env *v, char delim, t_file *file)
 {
 	int		i;
@@ -86,8 +113,8 @@ static void		hexa_value(char s[], t_env *v, char delim, t_file *file)
 	char	*hexa;
 
 	res = NULL;
-	hexa = NULL;
-	// hexa = ft_memalloc(sizeof(char));
+	//hexa = ft_memalloc(sizeof(char) * 9);
+	//hexa = "FFFFFFFF";
 	i = 0;
 	res = ft_strtok(s, &delim);
 	while (res != NULL)

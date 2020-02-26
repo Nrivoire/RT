@@ -33,7 +33,10 @@ void		parse_scene(t_env *v, t_file *file)
 		else if (ft_strncmp(tmp, "\theight=", 8))
 			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
-			v->p.sc.amb_light = parse_value(tmp);
+		{
+			parse_color(tmp, v, f);
+			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b, 255};
+		}
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

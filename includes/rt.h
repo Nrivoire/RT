@@ -46,7 +46,7 @@ typedef struct		s_color
 
 typedef struct		s_scene
 {
-	float			amb_light;
+	t_color			amb_light;
 	// add autre params
 }					t_scene;
 
