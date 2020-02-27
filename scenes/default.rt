@@ -1,5 +1,5 @@
 scene{
-	ambient-light= {255, 255, 255}
+	ambient-light= {100, 100, 100}
 	intensity= 1
 }
 

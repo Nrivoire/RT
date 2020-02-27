@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/10 17:58:38 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 14:13:04 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 15:10:50 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,19 +15,19 @@
 
 void		mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state)
 {
-    if (mouse_state == 1)
-    {
-		if (abs(event.motion.xrel) > abs(event.motion.yrel))
-			v->cam.angle_y += (event.motion.xrel * 0.1) * (M_PI / 180);
-		else
-			v->cam.angle_x -= (event.motion.yrel * 0.1) * (M_PI / 180);
-		SDL_SetRelativeMouseMode(SDL_TRUE);
-    }
-	if (mouse_state == 4)
-    {
-		if (event.motion.xrel > 0 || event.motion.xrel < 0)
-			v->cam.ori.x -= event.motion.xrel * 0.02;
-		if (event.motion.yrel > 0 || event.motion.yrel < 0)
-			v->cam.ori.y += event.motion.yrel * 0.02;
-    }
+	//if (mouse_state == 1)
+	//{
+	//	if (abs(event.motion.xrel) > abs(event.motion.yrel))
+	//		v->cam.angle_y += (event.motion.xrel * 0.1) * (M_PI / 180);
+	//	else
+	//		v->cam.angle_x -= (event.motion.yrel * 0.1) * (M_PI / 180);
+	//	SDL_SetRelativeMouseMode(SDL_TRUE);
+	//}
+	//if (mouse_state == 4)
+	//{
+	//	if (event.motion.xrel > 0 || event.motion.xrel < 0)
+	//		v->cam.ori.x -= event.motion.xrel * 0.02;
+	//	if (event.motion.yrel > 0 || event.motion.yrel < 0)
+	//		v->cam.ori.y += event.motion.yrel * 0.02;
+	//}
 }

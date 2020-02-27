@@ -4,9 +4,7 @@ void			init_value(t_env *v)
 {
 	v->w = 1280;
 	v->h = 720;
-	v->fov = 60;
-
-	v->cam.ori = (t_vec){0, 0, -20};
+	v->cam.fov = 60;
 
 	// init list du parser pour le malloc
 	v->p.ob = NULL;

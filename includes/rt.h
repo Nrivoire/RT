@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 14:26:07 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 15:17:36 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -144,6 +144,9 @@ typedef struct		s_cam
 	float			angle_y;
 	t_vec			ori;
 	t_vec			dir;
+	float			fov_x;
+	float			fov_y;
+	float			fov;
 }					t_cam;
 
 typedef struct		s_tab_obj
@@ -182,7 +185,6 @@ typedef struct		s_env
 	Uint32			*pixels;
 	int				w;
 	int				h;
-	int				fov;
 	float			angle_ratio;
 	char			*file;
 	t_parsing		p;
@@ -227,6 +229,7 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --rays--
 */
+int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				create_lgt(t_env *v);
 void				create_tab_obj(t_env *v);
 t_ray				create_ray_cam(t_env *v, int x, int y);

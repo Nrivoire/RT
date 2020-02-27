@@ -1,10 +1,10 @@
 scene{
-	#ambient-light= {.5, .5, .5}
+	ambient-light= {100, 100, 100}
 }
 
 camera{
-	pos= {0, 0, -20}
-	dir= {0, 0, 1}
+	pos= {0, 0, 20}
+	dir= {0, 0, -1}
 	fov= 60
 }
 
@@ -16,26 +16,18 @@ light{
 	intensity= 1
 }
 
-light{
-	type= POINT
-	color= {255, 255, 255}
-	pos= {5, 0, 0}
-	dir= {0, 0, 0}
-	intensity= 1
-}
-
 object{
 	type= SPHERE
 	radius= 2.0
-	pos= {1, 1, 1}
-	color= {244, 208, 63}
-	reflect= -1
-	refract= 1
-	transparency= 1
-	absorbtion= 2
-	ambient= 3
-	diffuse= 4
-	specular= 5
-	shininess= 6
+	pos= {0, 0, 0}
+	color= {150, 258, 3}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
 	texture= ""
 }

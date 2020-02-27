@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/26 18:05:04 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 15:17:49 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,8 @@ int				main(int argc, char **argv)
 
 	v->cam.angle_x = 0;
 	v->cam.angle_y = 0;
-	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
+	v->cam.fov_x = tan(v->cam.fov * M_PI / 180 * 0.5);
+	v->cam.fov_y = -tan(v->h * v->cam.fov / v->w * M_PI / 180 * 0.5);
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	scene_value(v);

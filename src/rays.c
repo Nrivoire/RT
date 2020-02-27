@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 14:24:17 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 15:22:32 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,17 +15,15 @@
 
 t_ray				create_ray_cam(t_env *v, int x, int y)
 {
-	t_matrix_3_3	rot;
 	t_matrix_3_3	cam;
 	t_ray			ray;
 
-	matrix_rotation((y - v->h * .5) * v->angle_ratio,
-					(x - v->w * .5) * v->angle_ratio, 0, rot);
 	ray.o = v->cam.ori;
-	ray.d = matrix_mult_vec(rot, (t_vec){0, 0, 1});
+	ray.d.x = v->cam.fov_x * (2. * x / v->w - 1);
+	ray.d.y = v->cam.fov_y * (2. * y / v->h - 1);
+	ray.d.z = -1;
 	matrix_rotation(v->cam.angle_x, v->cam.angle_y, 0, cam);
 	ray.d = matrix_mult_vec(cam, ray.d);
-	ray.o = matrix_mult_vec(cam, v->cam.ori);
 	return (ray);
 }
 
@@ -56,26 +54,6 @@ float			closest_dist(t_vec ori, t_sol_2_vec sol)
 	}
 	return (-1);
 }
-
-// t_color			light_dot(t_env *v, t_sol_2_vec sol, t_color obj_color)
-// {
-// 	float		dist_s1;
-// 	float		dist_s2;
-// 	float		dist;
-// 	t_color		light;
-
-// 	dist_s1 = vec_norm(vec_sub(v->light_ori, sol.v1));
-// 	dist_s2 = vec_norm(vec_sub(v->light_ori, sol.v2));
-// 	dist = fmin(dist_s1, dist_s2);
-// 	if (dist < 0)
-// 		dist = 0;
-// 	if (dist > v->intens)
-// 		dist = v->intens;
-// 	light.r = obj_color.r - (dist / v->intens * obj_color.r);
-// 	light.g = obj_color.g - (dist / v->intens * obj_color.g);
-// 	light.b = obj_color.b - (dist / v->intens * obj_color.b);
-// 	return (light);
-// }
 
 t_vec			closest_point(t_vec ori, t_sol_2_vec sol)
 {
@@ -169,7 +147,6 @@ void		    bouclette(t_env *v)
 	t_ray	    ray;
 	t_light		*tmp;
 	float		dot_diffuse_light;
-	t_color		ambient_color;
 	t_color		px_color;
 	t_tab_obj	closest;
 
@@ -182,7 +159,6 @@ void		    bouclette(t_env *v)
 			ray = create_ray_cam(v, x, y);
 				if (closest_intersect(v, ray, &closest))
 				{
-					ambient_color = (t_color) {.2, .2, .2, 255};
 					px_color = (t_color) {0, 0, 0, 255};
 					dot_diffuse_light = 0;
 					float intensity = 0;
@@ -192,15 +168,15 @@ void		    bouclette(t_env *v)
 						if ((dot_diffuse_light = diffuse_light(v, closest, tmp->pos)) > 0)
 						{
 							intensity = dot_diffuse_light * tmp->intensity;
-							px_color.r += (tmp->color.r * intensity);
-							px_color.g += (tmp->color.g * intensity);
-							px_color.b += (tmp->color.b * intensity);
+							px_color.r += tmp->color.r * intensity;
+							px_color.g += tmp->color.g * intensity;
+							px_color.b += tmp->color.b * intensity;
 						}
 						tmp = tmp->next;
 					}
-					px_color.r = (ambient_color.r + px_color.r) * closest.color.r;
-					px_color.g = (ambient_color.g + px_color.g) * closest.color.g;
-					px_color.b = (ambient_color.b + px_color.b) * closest.color.b;
+					px_color.r = (px_color.r + v->p.sc.amb_light.r) * closest.color.r;
+					px_color.g = (px_color.g + v->p.sc.amb_light.g) * closest.color.g;
+					px_color.b = (px_color.b + v->p.sc.amb_light.b) * closest.color.b;
 					pixel_put(v, x, y, px_color);
 				}
 		}
