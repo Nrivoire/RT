@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 18:53:44 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 19:25:40 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -155,7 +155,6 @@ typedef struct		s_cam
 typedef struct		s_tab_obj
 {
 	int				i;
-	int				exist;
 	int				type;
 	float			radius;
 	t_vec			pos;
@@ -220,6 +219,7 @@ void				pixel_put(t_env *v, int x, int y, t_color color);
 void				button_down(SDL_Event e, t_env *v);
 void        		mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state);
+void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
 
 /*

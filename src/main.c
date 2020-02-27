@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 15:59:27 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 19:22:48 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,6 +82,7 @@ int				main(int argc, char **argv)
 		i++;
 		tmp = tmp->next;
 	}
+
 	init_sdl(v);
 	display(v);
 	return (0);

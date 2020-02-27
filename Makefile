@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/27 13:15:30 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/27 19:26:10 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,8 +25,7 @@ SRC_PATH	=	src
 SRC_NAME	=	main.c
 SRC_NAME	+=	display.c
 SRC_NAME	+=	events/key_event.c
-SRC_NAME	+=	events/mouse_button_event.c
-SRC_NAME	+=	events/mouse_motion_event.c
+SRC_NAME	+=	events/mouse_event.c
 SRC_NAME	+=	draw_tools/get_pixel.c
 SRC_NAME	+=	rays.c
 SRC_NAME	+=	inter_ray_quadric.c
