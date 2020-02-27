@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   create_obj.c                                     .::    .:/ .      .::   */
+/*   create_tab_obj.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 18:12:17 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 12:50:09 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 14:15:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,31 +28,20 @@ void	        create_lgt(t_env *v)
 	}
 }
 
-void			create_obj(t_env *v)
+void			create_tab_obj(t_env *v)
 {
-	t_object	*tmp;
 	int			i;
 
-	i = 0;
-	tmp = v->p.ob;
-	while(tmp)
+	i = -1;
+	while (++i < v->nb_o)
 	{
-		if (tmp->type == SPHERE)
-			v->tab_obj[i].q = make_sphere(tmp->pos, tmp->radius);
-		else if (tmp->type == PLAN)
-			v->tab_obj[i].q = make_plan(tmp->a, tmp->b, tmp->c);
-		else if (tmp->type == CONE)
-			v->tab_obj[i].q = make_cone(tmp->pos, tmp->dir, tmp->radius);
-		else if (tmp->type == CYLINDER)
-			v->tab_obj[i].q = make_cylinder(tmp->pos, tmp->dir, tmp->radius);
-		v->tab_obj[i].color = tmp->color;
-		
-		/* a generaliser */
-		v->tab_obj[i].center = tmp->pos;
-		
-		tmp = tmp->next;
-		//res = v->tab[i].q;
-		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
-		i++;
+		if (v->tab_obj[i].type == SPHERE)
+			v->tab_obj[i].q = make_sphere(v->tab_obj[i].pos, v->tab_obj[i].radius);
+		else if (v->tab_obj[i].type == PLAN)
+			v->tab_obj[i].q = make_plan(v->tab_obj[i].a, v->tab_obj[i].b, v->tab_obj[i].c);
+		else if (v->tab_obj[i].type == CONE)
+			v->tab_obj[i].q = make_cone(v->tab_obj[i].pos, v->tab_obj[i].dir, v->tab_obj[i].radius);
+		else if (v->tab_obj[i].type == CYLINDER)
+			v->tab_obj[i].q = make_cylinder(v->tab_obj[i].pos, v->tab_obj[i].dir, v->tab_obj[i].radius);
 	}
 }

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_list.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 18:54:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/21 18:54:08 by vasalome         ###   ########lyon.fr   */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   parser_list.c                                    .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/02/21 18:54:06 by vasalome     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/26 16:51:11 by nrivoire    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
-
 #include "../includes/rt.h"
 
-void	add_lst_obj(t_object **ob, t_object content)
+void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 {
-	t_object	*new;
-	t_object	*tmp;
+	t_lst_obj	*new;
+	t_lst_obj	*tmp;
 
-	if (!(new = malloc(sizeof(t_object))))
+	if (!(new = malloc(sizeof(t_lst_obj))))
 		return ;
 	new->type = content.type;
 	new->radius = content.radius;

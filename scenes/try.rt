@@ -1,5 +1,5 @@
 scene{
-	ambient-light= 0
+	#ambient-light= {.5, .5, .5}
 }
 
 camera{
@@ -20,22 +20,14 @@ light{
 	type= POINT
 	color= {255, 255, 255}
 	pos= {5, 0, 0}
-	dir= {0, 5, 2}
-	intensity= 1
-}
-
-light{
-	type= POINT
-	color= {255, 255, 255}
-	pos= {0, 10, -5}
-	dir= {0, 5, 2}
+	dir= {0, 0, 0}
 	intensity= 1
 }
 
 object{
 	type= SPHERE
 	radius= 2.0
-	pos= {0, 0, 0}
+	pos= {1, 1, 1}
 	color= {244, 208, 63}
 	reflect= -1
 	refract= 1

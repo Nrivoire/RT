@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_block_object.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/21 18:53:12 by vasalome         ###   ########lyon.fr   */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   parser_block_object.c                            .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/02/21 18:53:05 by vasalome     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/26 16:51:11 by nrivoire    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
-
 #include "../includes/rt.h"
 
-static void		parse_material_obj(t_env *v, char *tmp, t_object *c, t_file *f)
+static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
@@ -35,7 +35,7 @@ static void		parse_material_obj(t_env *v, char *tmp, t_object *c, t_file *f)
 	// 	c.texture = parse_value(tmp); changer de fonction de recup valeur (maybe tableau)
 }
 
-static void		parse_point_plan(t_env *v, char *tmp, t_object *content)
+static void		parse_point_plan(t_env *v, char *tmp, t_lst_obj *content)
 {
 	if (!ft_strncmp(tmp, "\tpoint_a=", 9))
 	{
@@ -54,7 +54,7 @@ static void		parse_point_plan(t_env *v, char *tmp, t_object *content)
 	}
 }
 
-static void		parse_xyz_obj(t_env *v, char *tmp, t_object *content)
+static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *content)
 {
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
@@ -71,7 +71,7 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_object *content)
 void			parse_obj(t_env *v, t_file *file)
 {
 	char		*tmp;
-	t_object	content;
+	t_lst_obj	content;
 
 	ft_strdel(&file->line);
 	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\

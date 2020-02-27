@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 13:16:59 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 14:22:03 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,7 @@ typedef struct		s_light
 	struct s_light	*next;
 }					t_light;
 
-typedef struct		s_object
+typedef struct		s_lst_obj
 {
 	int				type;
 	float			radius;
@@ -87,15 +87,15 @@ typedef struct		s_object
 	float			specular;
 	float			shininess;
 	int				texture;
-	struct s_object	*next;
-}					t_object;
+	struct s_lst_obj*next;
+}					t_lst_obj;
 
 typedef struct		s_parsing
 {
 	t_scene			sc;
 	t_camera		cam;
 	t_light			*lg;
-	t_object		*ob;
+	t_lst_obj		*ob;
 	t_color			p_col;
 	t_vec			p_xyz;
 	t_vec			ori;
@@ -129,13 +129,6 @@ typedef struct		s_quadric
 	float			j;
 }					t_quadric;
 
-typedef struct		s_obj
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_obj;
-
 typedef struct		s_sol_2_vec
 {
 	int				s1;
@@ -152,20 +145,29 @@ typedef struct		s_cam
 	t_vec			dir;
 }					t_cam;
 
-typedef struct		s_tab
+typedef struct		s_tab_obj
 {
+	int				type;
+	float			radius;
+	t_vec			pos;
+	t_vec			dir;
+	t_vec			a;
+	t_vec			b;
+	t_vec			c;
+	t_color			color;
+	float			reflect;
+	float			refract;
+	float			transparency;
+	float			absorbtion;
+	float			ambient;
+	float			diffuse;
+	float			specular;
+	float			shininess;
+	int				texture;
 	t_quadric		q;
-	t_color			color;
-	t_vec			center;
-}					t_tab;
-
-typedef struct		s_px_data
-{
-	t_color			color;
 	t_vec			point;
 	float			dist;
-	t_vec			center;
-}					t_px_data;
+}					t_tab_obj;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
@@ -182,14 +184,13 @@ typedef struct		s_env
 	int				fov;
 	float			angle_ratio;
 	char			*file;
-	t_obj			obj;
 	t_parsing		p;
 	int				nb_o;
 	int				nb_l;
-	t_tab			*tab_obj;
+	t_tab_obj		*tab_obj;
 	t_vec			light_ori;
 	t_cam			cam;
-	t_tab			selected_obj;
+	t_tab_obj		selected_obj;
 }					t_env;
 
 /*
@@ -210,7 +211,7 @@ void				pixel_put(t_env *v, int x, int y, t_color color);
 ** --events--
 */
 void				button_down(SDL_Event e, t_env *v);
-void				mouse_button_event(SDL_Event event, t_env *v);
+void        		mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
 
@@ -226,7 +227,8 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 ** --rays--
 */
 void				create_lgt(t_env *v);
-void				create_obj(t_env *v);
+void				create_tab_obj(t_env *v);
+t_ray				create_ray_cam(t_env *v, int x, int y);
 void				bouclette(t_env *v);
 
 /*
@@ -248,7 +250,7 @@ int					parse_int_value(char const *s);
 char				*ft_strtok(char *s, char const *delim);
 void				parse_color(char s[], t_env *v, t_file *file);
 void				parse_xyz(char s[], t_env *v);
-void				add_lst_obj(t_object **ob, t_object content);
+void				add_lst_obj(t_lst_obj **ob, t_lst_obj content);
 void				add_lst_lgt(t_light **lg, t_light content);
 int					check_bracket(t_file *file);
 int					read_line(t_file *file);
