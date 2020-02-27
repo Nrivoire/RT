@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 15:17:49 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 15:59:27 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,12 +70,9 @@ int				main(int argc, char **argv)
 	v->cam.angle_y = 0;
 	v->cam.fov_x = tan(v->cam.fov * M_PI / 180 * 0.5);
 	v->cam.fov_y = -tan(v->h * v->cam.fov / v->w * M_PI / 180 * 0.5);
-
-	/* -- a changer par les valeurs prises dans le parsing */
 	scene_value(v);
 	if (!(v->tab_obj = (t_tab_obj *)malloc(sizeof(t_tab_obj) * v->nb_o)))
 		return (0);
-	
 	t_lst_obj	*tmp;
 	int			i = 0;
 	tmp = v->p.ob;

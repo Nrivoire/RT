@@ -4,7 +4,7 @@ scene{
 
 camera{
 	pos= {0, 0, 20}
-	dir= {0, 0, -1}
+	dir= {0, 0, 1}
 	fov= 60
 }
 
@@ -19,8 +19,24 @@ light{
 object{
 	type= SPHERE
 	radius= 2.0
-	pos= {0, 0, 0}
-	color= {150, 258, 3}
+	pos= {1, 1, 1}
+	color= {255, 255, 255}
+	reflect= 0
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= ""
+}
+
+object{
+	type= SPHERE
+	radius= 2.0
+	pos= {10, 0, 1}
+	color= {255, 0, 3}
 	reflect= 0
 	refract= 0
 	transparency= 0
