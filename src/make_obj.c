@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   make_obj.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/13 14:17:18 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 18:02:33 by qpupier     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/26 14:50:00 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,11 +92,11 @@ t_quadric		make_cylinder(t_vec a, t_vec v, float r)
 	return (res);
 }
 
-static void	make_cone_quadric(t_quadric *q, t_vec a, t_vec v, float sin_2)
+static void		make_cone_quadric(t_quadric *q, t_vec v, float sin_2)
 {
-	float	vx_2;
-	float	vy_2;
-	float	vz_2;
+	float		vx_2;
+	float		vy_2;
+	float		vz_2;
 
 	vx_2 = v.x * v.x;
 	vy_2 = v.y * v.y;
@@ -109,11 +109,11 @@ static void	make_cone_quadric(t_quadric *q, t_vec a, t_vec v, float sin_2)
 	q->f = -2 * v.y * v.z;
 }
 
-static void	make_cone_surface(t_quadric *q, t_vec a, t_vec v, float sin_2)
+static void		make_cone_surface(t_quadric *q, t_vec a, t_vec v, float sin_2)
 {
-	float	vx_2;
-	float	vy_2;
-	float	vz_2;
+	float		vx_2;
+	float		vy_2;
+	float		vz_2;
 
 	vx_2 = v.x * v.x;
 	vy_2 = v.y * v.y;
@@ -132,7 +132,7 @@ static void	make_cone_surface(t_quadric *q, t_vec a, t_vec v, float sin_2)
 			+ v.y * v.z * a.y * a.z);
 }
 
-t_quadric	make_cone(t_vec a, t_vec v, float alpha)
+t_quadric		make_cone(t_vec a, t_vec v, float alpha)
 {
 	t_quadric	q;
 	float		vx_2;
@@ -144,7 +144,7 @@ t_quadric	make_cone(t_vec a, t_vec v, float alpha)
 	vy_2 = v.y * v.y;
 	vz_2 = v.z * v.z;
 	sin_2 = sin(alpha) * sin(alpha);
-	make_cone_quadric(&q, a, v, sin_2);
+	make_cone_quadric(&q, v, sin_2);
 	make_cone_surface(&q, a, v, sin_2);
 	return (q);
 }

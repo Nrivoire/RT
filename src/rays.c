@@ -6,14 +6,14 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 17:03:01 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 14:24:17 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_ray				create_ray_win(t_env *v, int x, int y)
+t_ray				create_ray_cam(t_env *v, int x, int y)
 {
 	t_matrix_3_3	rot;
 	t_matrix_3_3	cam;
@@ -98,19 +98,45 @@ t_vec			closest_point(t_vec ori, t_sol_2_vec sol)
 	return (sol.v2);
 }
 
-float			diffuse_light(t_env *v, t_px_data px, t_vec pos_light)
+float			diffuse_light(t_env *v, t_tab_obj px, t_vec pos_light)
 {
 	float		dot;
 	t_vec		norm;
 	t_vec		light;
 
-	norm = vec_normalize(vec_sub(px.center, px.point));
+	norm = vec_normalize(vec_sub(px.pos, px.point));
 	light = vec_normalize(vec_sub(px.point, pos_light));
 	dot = vec_scale_product(light, norm);
 	return (dot);
 }
 
-int					closest_intersect(t_env *v, t_ray ray, t_px_data *closest)
+t_tab_obj		make_closest(t_env *v, t_tab_obj p, t_vec point, float dist)
+{
+	t_tab_obj	closest;
+
+	closest.type = p.type;
+	closest.radius = p.radius;
+	closest.pos = p.pos;
+	closest.dir = p.dir;
+	closest.a = p.a;
+	closest.b = p.b;
+	closest.c = p.c;
+	closest.color = p.color;
+	closest.reflect = p.reflect;
+	closest.refract = p.refract;
+	closest.transparency = p.transparency;
+	closest.absorbtion = p.absorbtion;
+	closest.ambient = p.ambient;
+	closest.diffuse = p.diffuse;
+	closest.specular = p.specular;
+	closest.shininess = p.shininess;
+	closest.texture = p.texture;
+	closest.point = point;
+	closest.dist = dist;
+	return (closest);
+}
+
+int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest)
 {
 	float			dist;
 	float			tmp;
@@ -128,11 +154,8 @@ int					closest_intersect(t_env *v, t_ray ray, t_px_data *closest)
 			tmp = closest_dist(ray.o, sol);
 			if (tmp >= 0 && tmp < dist)
 			{
-				closest->point = closest_point(ray.o, sol);
-				closest->center = v->tab_obj[i].center;
-				closest->color = v->tab_obj[i].color;
-				closest->dist = dist;
 				dist = tmp;
+				*closest = make_closest(v, v->tab_obj[i], closest_point(ray.o, sol), dist);
 				state = 1;
 			}
 		}
@@ -144,10 +167,11 @@ void		    bouclette(t_env *v)
 	int		    x;
 	int		    y;
 	t_ray	    ray;
-	t_px_data	closest;
 	t_light		*tmp;
 	float		dot_diffuse_light;
 	t_color		ambient_color;
+	t_color		px_color;
+	t_tab_obj	closest;
 
 	y = -1;
 	while (++y <= v->h)
@@ -155,10 +179,11 @@ void		    bouclette(t_env *v)
 		x = -1;
 		while (++x <= v->w)
 		{
-			ray = create_ray_win(v, x, y);
+			ray = create_ray_cam(v, x, y);
 				if (closest_intersect(v, ray, &closest))
 				{
-					ambient_color = (t_color) {.1, .1, .1, 255};
+					ambient_color = (t_color) {.2, .2, .2, 255};
+					px_color = (t_color) {0, 0, 0, 255};
 					dot_diffuse_light = 0;
 					float intensity = 0;
 					tmp = v->p.lg;
@@ -167,16 +192,16 @@ void		    bouclette(t_env *v)
 						if ((dot_diffuse_light = diffuse_light(v, closest, tmp->pos)) > 0)
 						{
 							intensity = dot_diffuse_light * tmp->intensity;
-							ambient_color.r = ambient_color.r + (tmp->color.r * intensity);
-							ambient_color.g = ambient_color.g + (tmp->color.g * intensity);
-							ambient_color.b = ambient_color.b + (tmp->color.b * intensity);
+							px_color.r += (tmp->color.r * intensity);
+							px_color.g += (tmp->color.g * intensity);
+							px_color.b += (tmp->color.b * intensity);
 						}
 						tmp = tmp->next;
 					}
-					ambient_color.r = ambient_color.r * closest.color.r;
-					ambient_color.g = ambient_color.g * closest.color.g;
-					ambient_color.b = ambient_color.b * closest.color.b;
-					pixel_put(v, x, y, ambient_color);
+					px_color.r = (ambient_color.r + px_color.r) * closest.color.r;
+					px_color.g = (ambient_color.g + px_color.g) * closest.color.g;
+					px_color.b = (ambient_color.b + px_color.b) * closest.color.b;
+					pixel_put(v, x, y, px_color);
 				}
 		}
 	}

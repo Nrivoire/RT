@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_block_object.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/21 18:53:12 by vasalome         ###   ########lyon.fr   */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   parser_block_object.c                            .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/02/21 18:53:05 by vasalome     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/27 14:27:21 by nrivoire    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
-
 #include "../includes/rt.h"
 
-static void		parse_texture_obj(char *tmp, t_object *content, t_file *f)
+static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\ttexture=", 9))
 	{
@@ -25,7 +25,7 @@ static void		parse_texture_obj(char *tmp, t_object *content, t_file *f)
 	}
 }
 
-static void		parse_material_obj(t_env *v, char *tmp, t_object *c, t_file *f)
+static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
@@ -48,7 +48,7 @@ static void		parse_material_obj(t_env *v, char *tmp, t_object *c, t_file *f)
 	parse_texture_obj(tmp, c, f);
 }
 
-static void		parse_point_plan(t_env *v, char *tmp, t_object *c, t_file *f)
+static void		parse_point_plan(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tpoint_a=", 9))
 	{
@@ -67,7 +67,7 @@ static void		parse_point_plan(t_env *v, char *tmp, t_object *c, t_file *f)
 	}
 }
 
-static void		parse_xyz_obj(t_env *v, char *tmp, t_object *c, t_file *f)
+static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
@@ -84,7 +84,7 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_object *c, t_file *f)
 void			parse_obj(t_env *v, t_file *file)
 {
 	char		*tmp;
-	t_object	content;
+	t_lst_obj	content;
 
 	ft_strdel(&file->line);
 	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\

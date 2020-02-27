@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/24 18:56:31 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/27 13:15:30 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -40,7 +40,7 @@ SRC_NAME	+=	parser/parser_utils.c
 SRC_NAME	+=	parser/parser_color.c
 SRC_NAME	+=	parser/parser_list.c
 SRC_NAME	+=	init.c
-SRC_NAME	+=	create_obj.c
+SRC_NAME	+=	create_tab_obj.c
 
 #	Objects
 OBJ_PATH = .objects

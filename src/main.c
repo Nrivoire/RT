@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 13:07:50 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/26 18:05:04 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,30 @@ static void		init_sdl(t_env *v)
 		ft_error("Initialisation error of TFT_Init");
 }
 
+t_tab_obj		make_tab_obj(t_lst_obj *p)
+{
+	t_tab_obj	data;
+
+	data.type = p->type;
+	data.radius = p->radius;
+	data.pos = p->pos;
+	data.dir = p->dir;
+	data.a = p->a;
+	data.b = p->b;
+	data.c = p->c;
+	data.color = p->color;
+	data.reflect = p->reflect;
+	data.refract = p->refract;
+	data.transparency = p->transparency;
+	data.absorbtion = p->absorbtion;
+	data.ambient = p->ambient;
+	data.diffuse = p->diffuse;
+	data.specular = p->specular;
+	data.shininess = p->shininess;
+	data.texture = p->texture;
+	return (data);
+}
+
 int				main(int argc, char **argv)
 {
 	t_env	*v;
@@ -42,18 +66,24 @@ int				main(int argc, char **argv)
 	check_options(v, argc, argv);
 	parser_file(v);
 
-	v->obj.x = 0;
-	v->obj.y = 0;
-	v->obj.z = 0;
 	v->cam.angle_x = 0;
 	v->cam.angle_y = 0;
 	v->angle_ratio = (v->fov / (float)v->w) * M_PI / 180;
 
 	/* -- a changer par les valeurs prises dans le parsing */
 	scene_value(v);
-
-	if (!(v->tab_obj = (t_tab *)malloc(sizeof(t_tab) * v->nb_o)))
+	if (!(v->tab_obj = (t_tab_obj *)malloc(sizeof(t_tab_obj) * v->nb_o)))
 		return (0);
+	
+	t_lst_obj	*tmp;
+	int			i = 0;
+	tmp = v->p.ob;
+	while (tmp)
+	{
+		v->tab_obj[i] = make_tab_obj(tmp);
+		i++;
+		tmp = tmp->next;
+	}
 	init_sdl(v);
 	display(v);
 	return (0);
