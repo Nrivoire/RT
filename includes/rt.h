@@ -68,7 +68,6 @@ typedef struct		s_light
 	t_vec			pos;
 	t_vec			dir;
 	t_color			color;
-	// add autre params
 	float			intensity;
 	struct s_light	*next;
 }					t_light;
@@ -253,6 +252,8 @@ void				parse_obj(t_env *v, t_file *file);
 float				parse_value(char const *s);
 int					parse_int_value(char const *s);
 void				parse_color(char *s, t_env *v, t_file *file);
+void				parse_color_scene(char *s, t_env *v, t_file *file);
+void				hexa_value(char *s, t_env *v, char delim, t_file *file);
 void				parse_xyz(char *s, t_env *v, t_file *file);
 void				add_lst_obj(t_lst_obj **ob, t_lst_obj content);
 void				add_lst_lgt(t_light **lg, t_light content);
