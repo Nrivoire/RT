@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 15:22:32 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 15:32:21 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,7 @@ t_ray				create_ray_cam(t_env *v, int x, int y)
 	ray.d.z = -1;
 	matrix_rotation(v->cam.angle_x, v->cam.angle_y, 0, cam);
 	ray.d = matrix_mult_vec(cam, ray.d);
+	ray.o = matrix_mult_vec(cam, ray.o);
 	return (ray);
 }
 
