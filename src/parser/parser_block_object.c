@@ -12,12 +12,26 @@
 /* ************************************************************************** */
 #include "../includes/rt.h"
 
+static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *f)
+{
+	if (!ft_strncmp(tmp, "\ttexture=", 9))
+	{
+		ft_strstr(tmp, "WOOD") ? content->texture = WOOD : 0;
+		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
+		ft_strstr(tmp, "EARTH") ? content->texture = EARTH : 0;
+		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
+		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
+		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
+	}
+}
+
 static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v, f);
-		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b, v->p.p_col.a};
+		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b,\
+							v->p.p_col.a};
 	}
 	!ft_strncmp(tmp, "\treflect=", 9) ? c->reflect = parse_value(tmp) : 0;
 	!ft_strncmp(tmp, "\trefract=", 9) ? c->refract = parse_value(tmp) : 0;
@@ -31,8 +45,7 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 		c->specular = parse_value(tmp);
 	else if (!ft_strncmp(tmp, "\tshininess=", 11))
 		c->shininess = parse_value(tmp);
-	// if (!ft_strncmp(tmp, "\ttexture=", 9))
-	// 	c.texture = parse_value(tmp); changer de fonction de recup valeur (maybe tableau)
+	parse_texture_obj(tmp, c, f);
 }
 
 static void		parse_point_plan(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
