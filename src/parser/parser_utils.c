@@ -53,12 +53,12 @@ void	parse_xyz(char *s, t_env *v, t_file *file)
 	char	**res;
 
 	i = 0;
-	//res = NULL;
-	if(!(res = ft_strsplit(s, ',')))
-			error_parser("Bad file: error in xyz", file);
+	res = NULL;
+	if (!(res = ft_strsplit(s, ',')))
+		error_parser("Bad file: error in xyz", file);
 	while (res[++i] != NULL)
 	{
-		i == 1 ? v->p.p_xyz.x = parse_value(res[i-1]) : 0;
+		i == 1 ? v->p.p_xyz.x = parse_value(res[i - 1]) : 0;
 		i == 1 ? v->p.p_xyz.y = parse_value(res[i]) : 0;
 		i == 2 ? v->p.p_xyz.z = parse_value(res[i]) : 0;
 		ft_strdel(&res[i]);
@@ -66,24 +66,3 @@ void	parse_xyz(char *s, t_env *v, t_file *file)
 	}
 	free(res);
 }
-
-// void	parse_xyz(char s[], t_env *v)
-// {
-// 	int		i;
-// 	char	*res;
-
-// 	res = NULL;
-// 	i = 0;
-// 	res = ft_strtok(s, ",");
-// 	while (res != NULL)
-// 	{
-// 		if (i == 0)
-// 			v->p.p_xyz.x = parse_value(res);
-// 		else if (i == 1)
-// 			v->p.p_xyz.y = parse_value(res);
-// 		else if (i == 2)
-// 			v->p.p_xyz.z = parse_value(res);
-// 		res = ft_strtok(NULL, ",");
-// 		i++;
-// 	}
-// }

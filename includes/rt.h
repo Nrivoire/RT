@@ -32,6 +32,10 @@
 # define DIRECTIONAL 11
 # define SPOT 12
 
+# define WOOD 21
+# define BRICK 22
+# define EARTH 23
+
 /*
 ** -----------------------------PARSING----------------------------
 */

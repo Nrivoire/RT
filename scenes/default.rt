@@ -17,6 +17,14 @@ light{
 	intensity= 1.5
 }
 
+light{
+	type= POINT
+	color= 0xF5C7C2FF
+	pos= {-5, 20, -10}
+	dir= {0, 0, 1}
+	intensity= 0.8
+}
+
 object{
 	type= SPHERE
 	radius= 1
@@ -35,8 +43,8 @@ object{
 
 object{
 	type= CONE
-	radius= -5
-	pos= {1, 0, -0.4}
+	radius= 0.2
+	pos= {2, 0, -0.4}
 	dir= {-3, 3, -1}
 	color= 0xFFFF00FF
 	reflect= 0

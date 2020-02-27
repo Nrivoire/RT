@@ -35,7 +35,8 @@ void		parse_scene(t_env *v, t_file *file)
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
 		{
 			parse_color(tmp, v, file);
-			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b, 255};
+			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g,\
+										v->p.p_col.b, 255};
 		}
 		else if (!ft_strncmp(tmp, "\tintensity=", 11))
 			v->p.sc.intensity = parse_value(tmp);

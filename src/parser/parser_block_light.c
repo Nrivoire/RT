@@ -17,7 +17,8 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_light *c, t_file *f)
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v, f);
-		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b, v->p.p_col.a};
+		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b,\
+							v->p.p_col.a};
 	}
 	else if (!ft_strncmp(tmp, "\tintensity=", 11))
 		c->intensity = parse_value(tmp);
