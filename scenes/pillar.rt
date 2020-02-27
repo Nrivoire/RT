@@ -1,10 +1,10 @@
 scene{
-	ambient-light= {0.5, 0.5, 0.5}
+	ambient-light= {0.2, 0.0, 0.8}
 	intensity= 1
 }
 
 camera{
-	pos= {0, 0, -60}
+	pos= {0, 0, 70}
 	dir= {0, 0, 1}
 	fov= 60
 }
@@ -12,7 +12,7 @@ camera{
 light{
 	type= POINT
 	color= 0xFFFFFFFF
-	pos= {-15, 10, -40}
+	pos= {-15, 10, 60}
 	dir= {0, 0, 1}
 	intensity= 0.6
 }
@@ -20,7 +20,7 @@ light{
 light{
 	type= POINT
 	color= 0xFFFFFFFF
-	pos= {15, 10, -40}
+	pos= {15, 10, 60}
 	dir= {0, 0, 1}
 	intensity= 0.6
 }
@@ -261,9 +261,9 @@ object{
 
 object{
 	type= PLAN
-	point_a= {-15, 10, 62}
-	point_b= {15, 10, 62}
-	point_c= {15, -10, 62}
+	point_a= {-15, 10, -70}
+	point_b= {15, 10, -70}
+	point_c= {15, -10, -70}
 	color= {0, 0, 255, 255}
 	reflect= 0.5
 	refract= 0.2
@@ -280,7 +280,7 @@ object{
 object{
 	type= SPHERE
 	radius= 2.0
-	pos= {0, -7, -10}
+	pos= {0, -7, 30}
 	color= 0xFF0000FF
 	reflect= 0.5
 	refract= 0.2
