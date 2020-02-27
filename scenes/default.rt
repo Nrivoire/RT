@@ -4,7 +4,7 @@ scene{
 }
 
 camera{
-	pos= {0, 0, -10}
+	pos= {0, 0, 10}
 	dir= {0, 0, 0}
 	fov= 60
 }
@@ -12,7 +12,7 @@ camera{
 light{
 	type= POINT
 	color= 0xF5C7C2FF
-	pos= {5, 0, -10}
+	pos= {5, 0, 10}
 	dir= {0, 0, 1}
 	intensity= 1.5
 }
@@ -20,7 +20,7 @@ light{
 light{
 	type= POINT
 	color= 0xF5C7C2FF
-	pos= {-5, 20, -10}
+	pos= {-5, 20, 10}
 	dir= {0, 0, 1}
 	intensity= 0.8
 }
@@ -44,7 +44,7 @@ object{
 object{
 	type= CONE
 	radius= 0.8
-	pos= {2, 0, -0.4}
+	pos= {2, 0, 0.4}
 	dir= {-3, 3, -1}
 	color= 0xFFFF00FF
 	reflect= 0
@@ -77,9 +77,9 @@ object{
 
 object{
 	type= PLAN
-	point_a= {-15, 10, 5}
-	point_b= {15, 10, 5}
-	point_c= {15, -10, 5}
+	point_a= {-15, 10, -5}
+	point_b= {15, 10, -5}
+	point_c= {15, -10, -5}
 	color= 0x0000FFFF
 	reflect= 0
 	refract= 0
@@ -94,9 +94,9 @@ object{
 
 object{
 	type= PLAN
-	point_a= {0, -0.8, 10}
-	point_b= {10, -0.78, -10}
-	point_c= {-10, -0.8, 10}
+	point_a= {0, -0.78, 10}
+	point_b= {10, -0.8, -10}
+	point_c= {-10, -0.78, 10}
 	color= {77, 77, 77, 255}
 	reflect= 0
 	refract= 0

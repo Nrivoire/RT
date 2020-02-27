@@ -14,7 +14,7 @@ light{
 	color= 0xFF5733FF
 	pos= {2, 0, 70}
 	dir= {0, 0, 1}
-	intensity= 1
+	intensity= 0.8
 }
 
 light{
@@ -81,7 +81,7 @@ object{
 	point_a= {0, 1, -50}
 	point_b= {1, 3, -50}
 	point_c= {0, 2, -50}
-	color= {255, 255, 255, 255}
+	color= {77, 77, 77, 255}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
