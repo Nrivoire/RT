@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 18:12:17 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 15:03:45 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 19:12:26 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ void	        create_lgt(t_env *v)
 void			create_tab_obj(t_env *v)
 {
 	int			i;
-	t_quadric	res;
+	//t_quadric	res;
 
 	i = -1;
 	while (++i < v->nb_o)

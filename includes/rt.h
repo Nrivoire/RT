@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 15:17:36 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 18:53:44 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -154,6 +154,8 @@ typedef struct		s_cam
 
 typedef struct		s_tab_obj
 {
+	int				i;
+	int				exist;
 	int				type;
 	float			radius;
 	t_vec			pos;
@@ -188,7 +190,6 @@ typedef struct		s_env
 	Uint32			*pixels;
 	int				w;
 	int				h;
-	float			angle_ratio;
 	char			*file;
 	t_parsing		p;
 	int				nb_o;
@@ -196,7 +197,7 @@ typedef struct		s_env
 	t_tab_obj		*tab_obj;
 	t_vec			light_ori;
 	t_cam			cam;
-	t_tab_obj		selected_obj;
+	t_tab_obj		*selected_obj;
 }					t_env;
 
 /*
