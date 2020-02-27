@@ -1,5 +1,5 @@
 scene{
-	ambient-light= {100, 100, 100}
+	ambient-light= {0.2, 0.2, 0.2}
 }
 
 camera{
