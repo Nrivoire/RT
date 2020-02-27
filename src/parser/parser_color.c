@@ -23,8 +23,8 @@ static int		color_int_value(char const *s)
 	if (s[i - 1] == '-')
 		i -= 1;
 	res = ft_atoi(&s[i]);
-	res > 255.0 ? res = 255.0 : 0;
-	res < 0.0 ? res = 0.0 : 0;
+	res > 255 ? res = 255 : 0;
+	res < 0 ? res = 0 : 0;
 	return (res);
 }
 
@@ -58,14 +58,8 @@ static int		get_hexa(char *s, t_file *file)
 	int		res;
 
 	i = ft_strlen(s);
-	// printf("%s %lu\n", s, strlen(s));
-	// printf("===> i est egale a '%d'\n",i);
-	// if (i != 8)
-	// {
-	// 	ft_putendl("Bad file: color hexa must be -> 'RRGGBBAA'");
-	// 	ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
-	// 	exit(1);
-	// }
+	if (i != 8)
+		error_parser("Bad file: color hexa must be -> 'RRGGBBAA'", file);
 	content = 1;
 	res = 0;
 	while (--i >= 0)
@@ -79,55 +73,56 @@ static int		get_hexa(char *s, t_file *file)
 	return (res);
 }
 
-static void		hexa_value(char s[], t_env *v, char delim, t_file *file)
+static void		hexa_value(char *s, t_env *v, char delim, t_file *file)
 {
 	int		i;
-	char	*res;
-	char	*hexa;
+	char	**hexa;
 
-	res = NULL;
-	hexa = NULL;
-	// hexa = ft_memalloc(sizeof(char));
 	i = 0;
-	res = ft_strtok(s, &delim);
-	while (res != NULL)
+	if(!(hexa = ft_strsplit(s, delim)))
+		error_parser("Bad file: color hexa must be -> 'RRGGBBAA'", file);
+	while (hexa[++i] != NULL)
 	{
-		i == 1 ? hexa = ft_strtrim(res) : 0;
-		res = ft_strtok(NULL, &delim);
-		i++;
+		if (!ft_strstr(hexa[i], &delim) && i < 2)
+		{
+			v->p.prev_r = get_hexa(hexa[i], file) >> 24 & 0xFF;
+			v->p.prev_g = get_hexa(hexa[i], file) >> 16 & 0xFF;
+			v->p.prev_b = get_hexa(hexa[i], file) >> 8 & 0xFF;
+			v->p.p_col.r = (float)v->p.prev_r / 255;
+			v->p.p_col.g = (float)v->p.prev_g / 255;
+			v->p.p_col.b = (float)v->p.prev_b / 255;
+			v->p.p_col.a = get_hexa(hexa[1], file) & 0xFF;
+		}
+		ft_strdel(&hexa[i]);
+		ft_strdel(&hexa[i - 1]);
 	}
-	v->p.prev_r = get_hexa(hexa, file) >> 24 & 0xFF;
-	v->p.prev_g = get_hexa(hexa, file) >> 16 & 0xFF;
-	v->p.prev_b = get_hexa(hexa, file) >> 8 & 0xFF;
-	v->p.p_col.r = (float)v->p.prev_r / 255;
-	v->p.p_col.g = (float)v->p.prev_g / 255;
-	v->p.p_col.b = (float)v->p.prev_b / 255;
-	v->p.p_col.a = get_hexa(hexa, file) & 0xFF;
 	free(hexa);
 }
 
-void			parse_color(char s[], t_env *v, t_file *file)
+void			parse_color(char *s, t_env *v, t_file *file)
 {
 	int		i;
-	char	*res;
+	char	**res;
 
-	res = NULL;
 	i = 0;
+	res = NULL;
 	if (ft_strstr(s, "0x"))
 		hexa_value(s, v, 'x', file);
 	else if (ft_strstr(s, "#"))
 		hexa_value(s, v, '#', file);
 	else
 	{
-		res = ft_strtok(s, ",");
-		while (res != NULL)
+		if(!(res = ft_strsplit(s, ',')))
+			error_parser("Bad file: error in rgba", file);
+		while (res[++i] != NULL)
 		{
-			i == 0 ? v->p.p_col.r = color_value(res) : 0;
-			i == 1 ? v->p.p_col.g = color_value(res) : 0;
-			i == 2 ? v->p.p_col.b = color_value(res) : 0;
-			i == 3 ? v->p.p_col.a = color_int_value(res) : 0;
-			res = ft_strtok(NULL, ",");
-			i++;
+			i == 1 ? v->p.p_col.r = color_value(res[i-1]) : 0;
+			i == 1 ? v->p.p_col.g = color_value(res[i]) : 0;
+			i == 2 ? v->p.p_col.b = color_value(res[i]) : 0;
+			i == 3 ? v->p.p_col.a = color_int_value(res[i]) : 0;
+			ft_strdel(&res[i]);
+			ft_strdel(&res[i - 1]);
 		}
 	}
+	free(res);
 }

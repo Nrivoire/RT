@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/21 18:54:06 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/26 16:51:11 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 14:26:37 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,6 @@
 void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 {
 	t_lst_obj	*new;
-	t_lst_obj	*tmp;
 
 	if (!(new = malloc(sizeof(t_lst_obj))))
 		return ;
@@ -43,7 +42,6 @@ void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 void	add_lst_lgt(t_light **lg, t_light content)
 {
 	t_light		*new;
-	t_light		*tmp;
 
 	if (!(new = malloc(sizeof(t_light))))
 		return ;

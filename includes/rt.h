@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 14:22:03 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 14:26:07 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,8 @@ typedef struct		s_color
 
 typedef struct		s_scene
 {
-	float			amb_light;
+	t_color			amb_light;
+	float			intensity;
 	// add autre params
 }					t_scene;
 
@@ -247,14 +248,14 @@ void				parse_light(t_env *v, t_file *file);
 void				parse_obj(t_env *v, t_file *file);
 float				parse_value(char const *s);
 int					parse_int_value(char const *s);
-char				*ft_strtok(char *s, char const *delim);
-void				parse_color(char s[], t_env *v, t_file *file);
-void				parse_xyz(char s[], t_env *v);
+void				parse_color(char *s, t_env *v, t_file *file);
+void				parse_xyz(char *s, t_env *v, t_file *file);
 void				add_lst_obj(t_lst_obj **ob, t_lst_obj content);
 void				add_lst_lgt(t_light **lg, t_light content);
 int					check_bracket(t_file *file);
 int					read_line(t_file *file);
 char				*my_strcat(char *s1, char *s2);
+void				error_parser(char *error, t_file *file);
 
 /*
 ** --init--

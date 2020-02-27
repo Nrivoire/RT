@@ -12,26 +12,11 @@
 
 #include "../includes/rt.h"
 
-char	*ft_strtok(char *s, char const *delim)
+void	error_parser(char *error, t_file *file)
 {
-	static char *res;
-	int			i;
-
-	if (s)
-		res = s;
-	if (!res || !*res)
-		return (NULL);
-	i = 0;
-	while (!ft_strchr(delim, res[i]))
-		i++;
-	s = res;
-	res = &res[i];
-	if (!i)
-		return (ft_strtok(res + 1, delim));
-	if (s[i])
-		res += 1;
-	s[i] = '\0';
-	return (s);
+	ft_putendl(error);
+	ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
+	exit(1);
 }
 
 int		parse_int_value(char const *s)
@@ -62,23 +47,43 @@ float	parse_value(char const *s)
 	return (res);
 }
 
-void	parse_xyz(char s[], t_env *v)
+void	parse_xyz(char *s, t_env *v, t_file *file)
 {
 	int		i;
-	char	*res;
+	char	**res;
 
-	res = NULL;
 	i = 0;
-	res = ft_strtok(s, ",");
-	while (res != NULL)
+	//res = NULL;
+	if(!(res = ft_strsplit(s, ',')))
+			error_parser("Bad file: error in xyz", file);
+	while (res[++i] != NULL)
 	{
-		if (i == 0)
-			v->p.p_xyz.x = parse_value(res);
-		else if (i == 1)
-			v->p.p_xyz.y = parse_value(res);
-		else if (i == 2)
-			v->p.p_xyz.z = parse_value(res);
-		res = ft_strtok(NULL, ",");
-		i++;
+		i == 1 ? v->p.p_xyz.x = parse_value(res[i-1]) : 0;
+		i == 1 ? v->p.p_xyz.y = parse_value(res[i]) : 0;
+		i == 2 ? v->p.p_xyz.z = parse_value(res[i]) : 0;
+		ft_strdel(&res[i]);
+		ft_strdel(&res[i - 1]);
 	}
+	free(res);
 }
+
+// void	parse_xyz(char s[], t_env *v)
+// {
+// 	int		i;
+// 	char	*res;
+
+// 	res = NULL;
+// 	i = 0;
+// 	res = ft_strtok(s, ",");
+// 	while (res != NULL)
+// 	{
+// 		if (i == 0)
+// 			v->p.p_xyz.x = parse_value(res);
+// 		else if (i == 1)
+// 			v->p.p_xyz.y = parse_value(res);
+// 		else if (i == 2)
+// 			v->p.p_xyz.z = parse_value(res);
+// 		res = ft_strtok(NULL, ",");
+// 		i++;
+// 	}
+// }

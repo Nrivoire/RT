@@ -28,12 +28,17 @@ void		parse_scene(t_env *v, t_file *file)
 			!check_bracket(file))
 	{
 		tmp = ft_strdup(file->line);
-		if (ft_strncmp(tmp, "\twidth=", 7))
+		if (!ft_strncmp(tmp, "\twidth=", 7))
 			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 1280);
-		else if (ft_strncmp(tmp, "\theight=", 8))
+		else if (!ft_strncmp(tmp, "\theight=", 8))
 			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
-			v->p.sc.amb_light = parse_value(tmp);
+		{
+			parse_color(tmp, v, file);
+			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b, 255};
+		}
+		else if (!ft_strncmp(tmp, "\tintensity=", 11))
+			v->p.sc.intensity = parse_value(tmp);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
@@ -50,12 +55,12 @@ void		parse_cam(t_env *v, t_file *file)
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\tpos=", 5))
 		{
-			parse_xyz(tmp, v);
+			parse_xyz(tmp, v, file);
 			v->p.cam.pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 		}
 		else if (!ft_strncmp(tmp, "\tdir=", 5))
 		{
-			parse_xyz(tmp, v);
+			parse_xyz(tmp, v, file);
 			v->p.cam.dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 		}
 		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_int_value(tmp) : 0;
