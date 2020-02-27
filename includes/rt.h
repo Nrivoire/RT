@@ -48,6 +48,13 @@ typedef struct		s_color
 	int				a;
 }					t_color;
 
+/*
+typedef struct		s_tex
+{
+	char			*tex[4];
+}					t_tex;
+*/
+
 typedef struct		s_scene
 {
 	t_color			amb_light;
@@ -100,6 +107,7 @@ typedef struct		s_parsing
 	t_camera		cam;
 	t_light			*lg;
 	t_lst_obj		*ob;
+	//t_tex			tex;
 	t_color			p_col;
 	t_vec			p_xyz;
 	t_vec			ori;
