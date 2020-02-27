@@ -121,7 +121,7 @@ void			parse_color_scene(char *s, t_env *v, t_file *file)
 		{
 			i == 1 ? v->p.p_col.r = color_value_scene(res[i - 1]) : 0;
 			i == 1 ? v->p.p_col.g = color_value_scene(res[i]) : 0;
-			i == 2 ? v->p.p_col.b = color_value_scene(res[i]) : 0;
+			i == 2 ? v->p.p_col.b = color_value_scene(res[i]) * 10 : 0;
 			i == 3 ? v->p.p_col.a = color_int_value(res[i]) : 0;
 			ft_strdel(&res[i]);
 			ft_strdel(&res[i - 1]);
