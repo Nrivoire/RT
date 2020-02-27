@@ -20,7 +20,7 @@ object{
 	type= SPHERE
 	radius= 2.0
 	pos= {1, 1, 1}
-	color= {150, 258, 3}
+	color= {255, 255, 255}
 	reflect= 0
 	refract= 0
 	transparency= 0
