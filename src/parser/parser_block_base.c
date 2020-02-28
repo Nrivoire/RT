@@ -38,8 +38,6 @@ void		parse_scene(t_env *v, t_file *file)
 			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g,\
 										v->p.p_col.b, v->p.p_col.a};
 		}
-		else if (!ft_strncmp(tmp, "\tintensity=", 11))
-			v->p.sc.intensity = parse_value(tmp);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
