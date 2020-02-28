@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 19:25:40 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/28 15:34:30 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -168,7 +168,7 @@ typedef struct		s_tab_obj
 	float			diffuse;
 	float			specular;
 	float			shininess;
-	int				texture;
+	SDL_Surface		*texture;
 	t_quadric		q;
 	t_vec			point;
 	float			dist;
