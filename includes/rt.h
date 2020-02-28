@@ -101,13 +101,21 @@ typedef struct		s_lst_obj
 	struct s_lst_obj*next;
 }					t_lst_obj;
 
+typedef struct		s_texture
+{
+	SDL_Surface		*check;
+	SDL_Surface		*wood;
+	SDL_Surface		*brick;
+	//
+}					t_texture;
+
 typedef struct		s_parsing
 {
 	t_scene			sc;
 	t_camera		cam;
 	t_light			*lg;
 	t_lst_obj		*ob;
-	//t_tex			tex;
+	t_texture		tex;
 	t_color			p_col;
 	t_vec			p_xyz;
 	t_vec			ori;

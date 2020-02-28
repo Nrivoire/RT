@@ -31,5 +31,8 @@ int				parser_texture(t_env *v)
 
 void			init_texture(t_env *v)
 {
-	v->p.tex.tex[0] = IMG_Load("../textures/wood.xpm");
+	v->p.tex.check = IMG_Load("../textures/checkboard_test.jpg");
+	//v->p.tex.wood = SDL_LoadBMP("../textures/wood.bmp");
+	v->p.tex.brick = IMG_Load("../textures/brick.jpg");
+	
 }
