@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/28 16:24:35 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/28 16:33:56 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -195,7 +195,7 @@ void			make_texture_sphere(t_tab_obj *closest)
 	float	u;
 	float	v;
 	float	precision;
-	SDL_Color col = (SDL_Color){0, 0, 0, 255};;
+	SDL_Color col = (SDL_Color){0, 0, 0, 255};
 
 	vn = (t_vec){0, 1, 0};
 	ve = (t_vec){1, 0, 0};
@@ -219,6 +219,18 @@ void			make_texture_sphere(t_tab_obj *closest)
 	}
 }
 
+void			make_texture_cylinder(t_tab_obj *closest)
+{
+	t_vec	vp;
+	t_vec	ve;
+	float	phi;
+	float	theta;
+	float	u;
+	SDL_Color col = (SDL_Color){0, 0, 0, 255};
+
+	ve = (t_vec){1, 0, 0};
+}
+
 void		    bouclette(t_env *v)
 {
 	int		    x;
@@ -236,8 +248,13 @@ void		    bouclette(t_env *v)
 			ray = create_ray_cam(v, x, y);
 			if (closest_intersect(v, ray, &closest))
 			{
-				if (closest.texture && closest.type == SPHERE)
-					make_texture_sphere(&closest);
+				if (closest.texture)
+				{
+					if (closest.type == SPHERE)
+						make_texture_sphere(&closest);
+					if (closest.type == CYLINDER)
+						make_texture_cylinder(&closest);
+				}
 				px_color = (t_color) {0, 0, 0, 255};
 				calc_light(v, closest, &px_color);
 				pixel_put(v, x, y, px_color);
