@@ -41,7 +41,7 @@ void			hexa_value(char *s, t_env *v, char delim, t_file *file)
 
 	i = 0;
 	if (!(hexa = ft_strsplit(s, delim)))
-		error_parser("Bad file: color hexa must be -> 'RRGGBBAA'", file);
+		error_parser("Bad file: Echec de lecture du format hexa", file);
 	while (hexa[++i] != NULL)
 	{
 		if (!ft_strstr(hexa[i], &delim) && i < 2)

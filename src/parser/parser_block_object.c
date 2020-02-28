@@ -1,27 +1,37 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   parser_block_object.c                            .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/21 18:53:05 by vasalome     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 14:27:21 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_block_object.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
+/*   Updated: 2020/02/28 15:25:50 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/rt.h"
 
-static void		parse_texture_obj(char *tmp, t_lst_obj *content)
+static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 {
+	int		i;
+	char	**tex_path;
+
+	i = 0;
+	tex_path = NULL;
 	if (!ft_strncmp(tmp, "\ttexture=", 9))
 	{
-		ft_strstr(tmp, "WOOD") ? content->texture = WOOD : 0;
-		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
-		ft_strstr(tmp, "EARTH") ? content->texture = EARTH : 0;
-		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
-		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
-		ft_strstr(tmp, "BRICK") ? content->texture = BRICK : 0;
+		if (!(tex_path = ft_strsplit(tmp, '"')))
+			error_parser("Bad file: can't find the quotation marks", file);
+		while (tex_path[++i] != NULL)
+		{
+			if (i == 1)
+			{
+				if (!(content->texture = IMG_Load(tex_path[i])))
+					error_parser(my_strcat("Bad file: can't find the file ",\
+								tex_path[i]), file);
+			}
+		}
 	}
 }
 
@@ -45,7 +55,7 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 		c->specular = parse_value(tmp);
 	else if (!ft_strncmp(tmp, "\tshininess=", 11))
 		c->shininess = parse_value(tmp);
-	parse_texture_obj(tmp, c);
+	parse_texture_obj(tmp, c, f);
 }
 
 static void		parse_point_plan(t_env *v, char *tmp, t_lst_obj *c, t_file *f)

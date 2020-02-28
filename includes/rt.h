@@ -32,10 +32,6 @@
 # define DIRECTIONAL 11
 # define SPOT 12
 
-# define WOOD 21
-# define BRICK 22
-# define EARTH 23
-
 /*
 ** -----------------------------PARSING----------------------------
 */
@@ -47,13 +43,6 @@ typedef struct		s_color
 	float			b;
 	int				a;
 }					t_color;
-
-/*
-typedef struct		s_tex
-{
-	char			*tex[4];
-}					t_tex;
-*/
 
 typedef struct		s_scene
 {
@@ -97,17 +86,10 @@ typedef struct		s_lst_obj
 	float			diffuse;
 	float			specular;
 	float			shininess;
-	int				texture;
+	SDL_Surface		*texture;
+
 	struct s_lst_obj*next;
 }					t_lst_obj;
-
-typedef struct		s_texture
-{
-	SDL_Surface		*check;
-	SDL_Surface		*wood;
-	SDL_Surface		*brick;
-	//
-}					t_texture;
 
 typedef struct		s_parsing
 {
@@ -115,7 +97,6 @@ typedef struct		s_parsing
 	t_camera		cam;
 	t_light			*lg;
 	t_lst_obj		*ob;
-	t_texture		tex;
 	t_color			p_col;
 	t_vec			p_xyz;
 	t_vec			ori;

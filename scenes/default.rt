@@ -38,7 +38,7 @@ object{
 	diffuse= 0.2
 	specular= 0.2
 	shininess= 0.0
-	texture= ""
+	texture= "textures/brick.jpg"
 }
 
 object{
@@ -55,7 +55,6 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture= ""
 }
 
 object{
@@ -72,7 +71,6 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture= ""
 }
 
 object{
@@ -89,7 +87,6 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture= ""
 }
 
 object{
@@ -106,5 +103,4 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture= ""
 }
