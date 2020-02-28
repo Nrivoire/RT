@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/28 16:33:56 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/28 17:54:31 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -187,48 +187,43 @@ float			dot_product(t_vec u, t_vec v)
 
 void			make_texture_sphere(t_tab_obj *closest)
 {
-	t_vec	vp;
-	t_vec	vn;
-	t_vec	ve;
-	float	phi;
-	float	theta;
-	float	u;
-	float	v;
-	float	precision;
+	// t_vec	vp;
+	// t_vec	vn;
+	// t_vec	ve;
+	// float	phi;
+	// float	theta;
+	// float	u;
+	// float	v;
+	// float	precision;
 	SDL_Color col = (SDL_Color){0, 0, 0, 255};
 
-	vn = (t_vec){0, 1, 0};
-	ve = (t_vec){1, 0, 0};
+	// vn = (t_vec){0, 1, 0};
+	// ve = (t_vec){1, 0, 0};
+	// vp = vec_normalize(vec_sub(closest->point, closest->pos));
+	// phi = acos(dot_product(vn, vp));
+	// v = phi / M_PI;
+	// precision = dot_product(vp, ve) / sin(phi);
+	// if (precision <= -1)
+	// 	precision = -1.0f;
+	// if (precision >= 1)
+	// 	precision = 1.0f;
+	// theta = acos(precision) / (2 * M_PI);
+	// if (dot_product(vec_cross_product(vn, ve), vp) > 0)
+	// 	u = theta;
+	// else
+	// 	u = 1 - theta;
+	t_vec		vp;
+	float		u;
+	float		v;
+
 	vp = vec_normalize(vec_sub(closest->point, closest->pos));
-	phi = acos(dot_product(vn, vp));
-	v = phi / M_PI;
-	precision = dot_product(vp, ve) / sin(phi);
-	if (precision <= -1)
-		precision = -1.0f;
-	if (precision >= 1)
-		precision = 1.0f;
-	theta = acos(precision) / (2 * M_PI);
-	if (dot_product(vec_cross_product(vn, ve), vp) > 0)
-		u = theta;
-	else
-		u = 1 - theta;
+	u = .5 + atan2(vp.z, vp.x) / M_PI * 0.5;
+	v = .5 - asin(vp.y) / M_PI;
 	if (u >= 0 && v >= 0 && u <= 1 && v <= 1)
 	{
 		SDL_GetRGB(get_pixel(closest->texture, u * closest->texture->w, v * closest->texture->h), closest->texture->format, &col.r, &col.g, &col.b);
 		closest->color = (t_color){col.r / 255.0, col.g / 255.0, col.b / 255.0, 255};
 	}
-}
-
-void			make_texture_cylinder(t_tab_obj *closest)
-{
-	t_vec	vp;
-	t_vec	ve;
-	float	phi;
-	float	theta;
-	float	u;
-	SDL_Color col = (SDL_Color){0, 0, 0, 255};
-
-	ve = (t_vec){1, 0, 0};
 }
 
 void		    bouclette(t_env *v)
@@ -252,8 +247,8 @@ void		    bouclette(t_env *v)
 				{
 					if (closest.type == SPHERE)
 						make_texture_sphere(&closest);
-					if (closest.type == CYLINDER)
-						make_texture_cylinder(&closest);
+					//if (closest.type == CYLINDER)
+					//	make_texture_cylinder(&closest);
 				}
 				px_color = (t_color) {0, 0, 0, 255};
 				calc_light(v, closest, &px_color);
