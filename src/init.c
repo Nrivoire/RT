@@ -12,6 +12,16 @@
 
 #include "../includes/rt.h"
 
+void			put_icon(t_env *v)
+{
+	SDL_Surface		*icon;
+
+	if (!(icon = IMG_Load("textures/qpupier_icon.png")))
+		ft_putstr("Error: Can't find the icon\n");
+	SDL_SetWindowIcon(v->win, icon);
+	SDL_FreeSurface(icon);
+}
+
 void			init_value(t_env *v)
 {
 	v->w = 1280;

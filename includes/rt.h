@@ -268,5 +268,6 @@ void				error_parser(char *error, t_file *file);
 void				init_value(t_env *v);
 void				scene_value(t_env *v);
 void				restart_values(t_env *v);
+void				put_icon(t_env *v);
 
 #endif

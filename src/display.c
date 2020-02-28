@@ -67,6 +67,7 @@ void			display(t_env *v)
 	const Uint8	*keyboard_state;
 	uint32_t	mouse_state;
 
+	put_icon(v);
 	while (1)
 	{
 		keyboard_state = SDL_GetKeyboardState(NULL);
