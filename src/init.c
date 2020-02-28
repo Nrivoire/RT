@@ -6,7 +6,6 @@ void			init_value(t_env *v)
 	v->h = 720;
 	v->cam.fov = 60;
 	v->selected_obj = NULL;
-	// init list du parser pour le malloc
 	v->p.ob = NULL;
 	v->p.lg = NULL;
 }

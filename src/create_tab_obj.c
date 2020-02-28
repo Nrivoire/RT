@@ -13,9 +13,9 @@
 
 #include "../includes/rt.h"
 
-void	        create_lgt(t_env *v)
+void			create_lgt(t_env *v)
 {
-	t_light *tmp;
+	t_lst_lgt	*tmp;
 
 	tmp = v->p.lg;
 	while(tmp)

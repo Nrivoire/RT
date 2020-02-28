@@ -12,7 +12,7 @@
 
 #include "../includes/rt.h"
 
-static void		parse_material_lgt(t_env *v, char *tmp, t_light *c, t_file *f)
+static void		parse_material_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
@@ -24,7 +24,7 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_light *c, t_file *f)
 		c->intensity = parse_value(tmp);
 }
 
-static void		parse_xyz_lgt(t_env *v, char *tmp, t_light *c, t_file *f)
+static void		parse_xyz_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tpos=", 5))
 	{
@@ -41,8 +41,9 @@ static void		parse_xyz_lgt(t_env *v, char *tmp, t_light *c, t_file *f)
 void			parse_light(t_env *v, t_file *file)
 {
 	char		*tmp;
-	t_light		content;
+	t_lst_lgt	content;
 
+	init_value_light(&content);
 	ft_strdel(&file->line);
 	while (read_line(file) > 0 && ft_strncmp(file->line, "}", 1) != 0 &&\
 			!check_bracket(file))

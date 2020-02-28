@@ -39,11 +39,11 @@ void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 	*ob = new;
 }
 
-void	add_lst_lgt(t_light **lg, t_light content)
+void	add_lst_lgt(t_lst_lgt **lg, t_lst_lgt content)
 {
-	t_light		*new;
+	t_lst_lgt		*new;
 
-	if (!(new = malloc(sizeof(t_light))))
+	if (!(new = malloc(sizeof(t_lst_lgt))))
 		return ;
 	new->type = content.type;
 	new->pos = content.pos;

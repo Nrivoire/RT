@@ -144,7 +144,7 @@ int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest)
 
 void			calc_light(t_env *v, t_tab_obj closest, t_color *px_color)
 {
-	t_light		*tmp;
+	t_lst_lgt	*tmp;
 	float		dot_diffuse_light;
 
 	dot_diffuse_light = 0;
