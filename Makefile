@@ -32,6 +32,7 @@ SRC_NAME	+=	inter_ray_quadric.c
 SRC_NAME	+=	make_obj.c
 SRC_NAME	+=	usage.c
 SRC_NAME	+=	parser/parser.c
+SRC_NAME	+=	parser/parser_init_value.c
 SRC_NAME	+=	parser/parser_block_base.c
 SRC_NAME	+=	parser/parser_block_light.c
 SRC_NAME	+=	parser/parser_block_object.c

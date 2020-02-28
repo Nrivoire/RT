@@ -58,15 +58,15 @@ typedef struct		s_camera
 	int				fov;
 }					t_camera;
 
-typedef struct		s_light
+typedef struct		s_lst_lgt
 {
 	int				type;
 	t_vec			pos;
 	t_vec			dir;
 	t_color			color;
 	float			intensity;
-	struct s_light	*next;
-}					t_light;
+	struct s_lst_lgt*next;
+}					t_lst_lgt;
 
 typedef struct		s_lst_obj
 {
@@ -87,7 +87,6 @@ typedef struct		s_lst_obj
 	float			specular;
 	float			shininess;
 	SDL_Surface		*texture;
-
 	struct s_lst_obj*next;
 }					t_lst_obj;
 
@@ -95,7 +94,7 @@ typedef struct		s_parsing
 {
 	t_scene			sc;
 	t_camera		cam;
-	t_light			*lg;
+	t_lst_lgt		*lg;
 	t_lst_obj		*ob;
 	t_color			p_col;
 	t_vec			p_xyz;
@@ -250,6 +249,8 @@ void				parse_scene(t_env *v, t_file *file);
 void				parse_cam(t_env *v, t_file *file);
 void				parse_light(t_env *v, t_file *file);
 void				parse_obj(t_env *v, t_file *file);
+void				init_value_obj(t_lst_obj *content);
+void				init_value_light(t_lst_lgt *content);
 float				parse_value(char const *s);
 int					parse_int_value(char const *s);
 void				parse_color(char *s, t_env *v, t_file *file);
@@ -257,7 +258,7 @@ void				parse_color_scene(char *s, t_env *v, t_file *file);
 void				hexa_value(char *s, t_env *v, char delim, t_file *file);
 void				parse_xyz(char *s, t_env *v, t_file *file);
 void				add_lst_obj(t_lst_obj **ob, t_lst_obj content);
-void				add_lst_lgt(t_light **lg, t_light content);
+void				add_lst_lgt(t_lst_lgt **lg, t_lst_lgt content);
 int					check_bracket(t_file *file);
 int					read_line(t_file *file);
 char				*my_strcat(char *s1, char *s2);
