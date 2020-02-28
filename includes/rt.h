@@ -65,7 +65,7 @@ typedef struct		s_lst_lgt
 	t_vec			dir;
 	t_color			color;
 	float			intensity;
-	struct s_light	*next;
+	struct s_lst_lgt*next;
 }					t_lst_lgt;
 
 typedef struct		s_lst_obj
@@ -87,7 +87,6 @@ typedef struct		s_lst_obj
 	float			specular;
 	float			shininess;
 	SDL_Surface		*texture;
-
 	struct s_lst_obj*next;
 }					t_lst_obj;
 
