@@ -32,6 +32,9 @@ static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 								tex_path[i]), file);
 			}
 		}
+		while (i >= 0)
+			ft_strdel(&tex_path[i--]);
+		free(tex_path);
 	}
 }
 

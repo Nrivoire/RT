@@ -61,8 +61,8 @@ void	parse_xyz(char *s, t_env *v, t_file *file)
 		i == 1 ? v->p.p_xyz.x = parse_value(res[i - 1]) : 0;
 		i == 1 ? v->p.p_xyz.y = parse_value(res[i]) : 0;
 		i == 2 ? v->p.p_xyz.z = parse_value(res[i]) : 0;
-		ft_strdel(&res[i]);
-		ft_strdel(&res[i - 1]);
 	}
+	while (i >= 0)
+		ft_strdel(&res[i--]);
 	free(res);
 }

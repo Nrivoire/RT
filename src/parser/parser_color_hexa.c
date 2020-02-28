@@ -54,8 +54,8 @@ void			hexa_value(char *s, t_env *v, char delim, t_file *file)
 			v->p.p_col.b = (float)v->p.prev_b / 255;
 			v->p.p_col.a = get_hexa(hexa[1], file) & 0xFF;
 		}
-		ft_strdel(&hexa[i]);
-		ft_strdel(&hexa[i - 1]);
 	}
+	while (i >= 0)
+		ft_strdel(&hexa[i--]);
 	free(hexa);
 }
