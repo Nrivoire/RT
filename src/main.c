@@ -62,15 +62,13 @@ int				main(int argc, char **argv)
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
 	init_value(v);
-
 	check_options(v, argc, argv);
 	parser_file(v);
-
+	scene_value(v);
 	v->cam.angle_x = 0;
 	v->cam.angle_y = 0;
 	v->cam.fov_x = tan(v->cam.fov * M_PI / 180 * 0.5);
 	v->cam.fov_y = -tan(v->h * v->cam.fov / v->w * M_PI / 180 * 0.5);
-	scene_value(v);
 	if (!(v->tab_obj = (t_tab_obj *)malloc(sizeof(t_tab_obj) * v->nb_o)))
 		return (0);
 	t_lst_obj	*tmp;
@@ -82,7 +80,6 @@ int				main(int argc, char **argv)
 		i++;
 		tmp = tmp->next;
 	}
-
 	init_sdl(v);
 	display(v);
 	return (0);

@@ -47,8 +47,6 @@ typedef struct		s_color
 typedef struct		s_scene
 {
 	t_color			amb_light;
-	float			intensity;
-	// add autre params
 }					t_scene;
 
 typedef struct		s_camera
