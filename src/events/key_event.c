@@ -13,24 +13,26 @@
 
 #include "../../includes/rt.h"
 
-int         key_event(t_env *v, const Uint8 *keyboard_state)
+int			key_event(t_env *v, const Uint8 *keyboard_state)
 {
-    if (keyboard_state[SDL_SCANCODE_ESCAPE])
-        return (1);
-    if (v->selected_obj)
-    {
-        if (keyboard_state[SDL_SCANCODE_UP])
-            v->selected_obj->pos.y += .5;
-        if (keyboard_state[SDL_SCANCODE_DOWN])
-            v->selected_obj->pos.y -= .5;
-        if (keyboard_state[SDL_SCANCODE_RIGHT])
-            v->selected_obj->pos.x += .5;
-        if (keyboard_state[SDL_SCANCODE_LEFT])
-            v->selected_obj->pos.x -= .5;
-    }
-    if (keyboard_state[SDL_SCANCODE_KP_MINUS])
-        v->cam.ori.z--;
-    if (keyboard_state[SDL_SCANCODE_KP_PLUS])
-        v->cam.ori.z++;
-    return (0);
+	if (keyboard_state[SDL_SCANCODE_ESCAPE])
+		return (1);
+	if (v->selected_obj)
+	{
+		if (keyboard_state[SDL_SCANCODE_UP])
+			v->selected_obj->pos.y += .5;
+		if (keyboard_state[SDL_SCANCODE_DOWN])
+			v->selected_obj->pos.y -= .5;
+		if (keyboard_state[SDL_SCANCODE_RIGHT])
+			v->selected_obj->pos.x += .5;
+		if (keyboard_state[SDL_SCANCODE_LEFT])
+			v->selected_obj->pos.x -= .5;
+	}
+	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
+		v->cam.ori.z--;
+	if (keyboard_state[SDL_SCANCODE_KP_PLUS])
+		v->cam.ori.z++;
+	if (keyboard_state[SDL_SCANCODE_P])
+		screenshot(v);
+	return (0);
 }

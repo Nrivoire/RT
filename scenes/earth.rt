@@ -1,11 +1,9 @@
 scene{
-	width= 1280
-	height= 720
 	ambient-light= {0.6, 0.6, 0.6}
 }
 
 camera{
-	pos= {0, 0, 50}
+	pos= {0, 0, 200}
 	dir= {0, 0, 1}
 	fov= 60
 }
@@ -13,16 +11,16 @@ camera{
 light{
 	type= POINT
 	color= 0xFFFFFFFF
-	pos= {-3, 3, 3}
+	pos= {-70, 0, 0}
 	dir= {0, 0, 1}
-	intensity= 1
+	intensity= 4
 }
 
 object{
+	name= "earth"
 	type= SPHERE
-	radius= 6.0
+	radius= 12.756
 	pos= {0, 0, 0}
-	color= {255, 15, 120}
 	reflect= 0.2
 	refract= 0
 	transparency= 0
@@ -35,10 +33,10 @@ object{
 }
 
 object{
+	name= "moon"
 	type= SPHERE
-	radius= 1.5
-	pos= {9, 9, -1}
-	color= {255, 15, 120}
+	radius= 3.476
+	pos= {25.0, 15, 0}
 	reflect= 0.7
 	refract= 0
 	transparency= 0
@@ -51,10 +49,10 @@ object{
 }
 
 object{
+	name= "sun"
 	type= SPHERE
-	radius= 10
-	pos= {-65, 45, -270}
-	color= 0xFFFF00FF
+	radius= 1390.000
+	pos= {-1600.000, 0, 0}
 	reflect= 0.9
 	refract= 0
 	transparency= 0

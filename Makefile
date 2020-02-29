@@ -42,6 +42,7 @@ SRC_NAME	+=	parser/parser_color_hexa.c
 SRC_NAME	+=	parser/parser_list.c
 SRC_NAME	+=	init.c
 SRC_NAME	+=	create_tab_obj.c
+SRC_NAME	+=	bonus_tools.c
 
 #	Objects
 OBJ_PATH = .objects
