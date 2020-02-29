@@ -21,7 +21,7 @@ void	init_value_obj(t_lst_obj *content)
 	content->a = (t_vec){0.0, 0.0, 0.0};
 	content->b = (t_vec){0.0, 0.0, 0.0};
 	content->c = (t_vec){0.0, 0.0, 0.0};
-	content->color = (t_color){0.0, 0.0, 0.0, 255};
+	content->color = (t_color){255.0, 255.0, 255.0, 255};
 	content->reflect = 0.0;
 	content->refract = 0.0;
 	content->transparency = 0.0;
