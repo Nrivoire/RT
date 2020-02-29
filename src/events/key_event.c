@@ -34,5 +34,15 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 		v->cam.ori.z++;
 	if (keyboard_state[SDL_SCANCODE_P])
 		screenshot(v);
+	if (keyboard_state[SDL_SCANCODE_C])
+		v->filter = 0;
+	if (keyboard_state[SDL_SCANCODE_V])
+		v->filter = 1;
+	if (keyboard_state[SDL_SCANCODE_B])
+		v->filter = 2;
+	if (keyboard_state[SDL_SCANCODE_N])
+		v->filter = 3;
+	if (keyboard_state[SDL_SCANCODE_M])
+		v->filter = 4;
 	return (0);
 }

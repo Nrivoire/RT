@@ -32,6 +32,8 @@
 # define DIRECTIONAL 11
 # define SPOT 12
 
+# define CELSHADING 20
+
 /*
 ** -----------------------------PARSING----------------------------
 */
@@ -191,6 +193,7 @@ typedef struct		s_env
 	t_vec			light_ori;
 	t_cam			cam;
 	t_tab_obj		*selected_obj;
+	int				filter;
 }					t_env;
 
 /*
@@ -269,6 +272,14 @@ void				init_value(t_env *v);
 void				scene_value(t_env *v);
 void				restart_values(t_env *v);
 void				put_icon(t_env *v);
+
+/*
+** --post_process--
+*/
+int					cel_shading(int color);
+int					negative(int color);
+Uint32	greyscale(Uint32 pixel);
+
 
 void				screenshot(t_env *v);
 

@@ -28,8 +28,21 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 	if (color.g > 1)
 		color.g = 1;
 	if (color.b > 1)
-		color.b = 1;		
-	v->pixels[y * v->w + x] = get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a);
+		color.b = 1;
+	if (v->filter == 0)
+		v->pixels[y * v->w + x] = get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a);
+	else if (v->filter == 1)
+	{
+		v->pixels[y * v->w + x] = get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a);
+		v->pixels[y * v->w + x] = greyscale(v->pixels[y * v->w + x]);
+	}
+	else if (v->filter == 2)
+		v->pixels[y * v->w + x] = cel_shading(get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a));
+	else if (v->filter == 3)
+		v->pixels[y * v->w + x] = negative(get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a));
+	else if (v->filter == 4)
+		v->pixels[y * v->w + x] = get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a);
+
 }
 
 static void		quit(t_env *v)

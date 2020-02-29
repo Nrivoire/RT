@@ -19,7 +19,7 @@
 NAME		=	rt
 
 #	Sources
-SRC_SUP = {events,draw_tools,parser}
+SRC_SUP = {events,draw_tools,parser,post_process}
 SRC_PATH	=	src
 
 SRC_NAME	=	main.c
@@ -43,6 +43,8 @@ SRC_NAME	+=	parser/parser_list.c
 SRC_NAME	+=	init.c
 SRC_NAME	+=	create_tab_obj.c
 SRC_NAME	+=	bonus_tools.c
+SRC_NAME	+=	post_process/negative.c
+SRC_NAME	+=	post_process/cel_shading.c
 
 #	Objects
 OBJ_PATH = .objects
@@ -52,6 +54,7 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 #	Includes
 INC_PATH	=	includes
 INC_NAME	=	rt.h
+INC_NAME	+=	pp.h
 INC			=	$(addprefix $(INC_PATH)/,$(INC_NAME))
 
 CPPFLAGS	=	-I $(INC_PATH)
