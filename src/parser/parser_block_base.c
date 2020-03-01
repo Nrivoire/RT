@@ -19,6 +19,17 @@ static int	ft_clamp_to_max(int value, int min, int max)
 	return (value);
 }
 
+static void	option_scene(t_env *v, char *tmp)
+{
+	if (!ft_strncmp(tmp, "\tfilter=", 8))
+	{
+		ft_strstr(tmp, "greyscale") ? v->p.sc.filter = 1 : 0;
+		ft_strstr(tmp, "sepia") ? v->p.sc.filter = 2 : 0;
+		ft_strstr(tmp, "negative") ? v->p.sc.filter = 3 : 0;
+		ft_strstr(tmp, "cel-shading") ? v->p.sc.filter = 4 : 0;
+	}
+}
+
 void		parse_scene(t_env *v, t_file *file)
 {
 	char	*tmp;
@@ -38,6 +49,7 @@ void		parse_scene(t_env *v, t_file *file)
 			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g,\
 										v->p.p_col.b, v->p.p_col.a};
 		}
+		option_scene(v, tmp);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

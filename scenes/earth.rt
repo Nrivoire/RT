@@ -61,5 +61,5 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture= "textures/sun.jpg"
+	texture= "textures/8k_sun.jpg"
 }

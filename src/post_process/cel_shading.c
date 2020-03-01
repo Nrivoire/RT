@@ -10,31 +10,44 @@ int		cel_shading(int color)
 	r = color >> 24 & 0xFF;
 	g = color >> 16 & 0xFF;
 	b = color >> 8 & 0xFF;
-	if (r < 220 && g < 220 && b < 220)
-	{
-		r = ((int)(((color >> 24) & 0xFF) / CELSHADING) * CELSHADING << 24);
-		g = ((int)(((color >> 16) & 0xFF) / CELSHADING) * CELSHADING << 16);
-		b = ((int)(((color >> 8) & 0xFF) / CELSHADING) * CELSHADING << 8);
+	// if (r < 210 && g < 210 && b < 210)
+	// {
+		r = (int)((r / CELSHADING) * CELSHADING << 24);
+		g = (int)((g / CELSHADING) * CELSHADING << 16);
+		b = (int)((b / CELSHADING) * CELSHADING << 8);
 		return (r | g | b);
-	}
-	return (color);
+	// }
+	// return (color);
 }
-
-Uint32	greyscale(Uint32 pixel)
+/*
+int		scale(int col)
 {
-	Uint8	r;
-	Uint8	g;
-	Uint8	b;
-	Uint8	v;
-
-	r = pixel >> 24 & 0xFF;
-	g = pixel >> 16 & 0xFF;
-	b = pixel >> 8 & 0xFF;
-	v = (r + g + b) / 3;
-	//Uint32 px = 
-	//v = r * 0.212671 + g * 0.715160 * 0.072169 + b;
-	
-	Uint8 px = (0xFF << 24) | (v << 16) | (v << 8) | v;
-
-	return (px);
+	if (col <= 0)
+		return (0);
+	else if (col > 0 && col <= 50)
+		return (25);
+	else if (col > 50 && col <= 100)
+		return (75);
+	else if (col > 100 && col <= 200)
+		return (150);
+	else if (col > 200 && col < 250)
+		return (225);
+	else if (col >= 255)
+		return (255);
+	return (col);
 }
+
+int		cel_shading(int color)
+{
+	int		r;
+	int		g;
+	int		b;
+
+	r = scale(color >> 24 & 0xFF);
+	g = scale(color >> 16 & 0xFF);
+	b = scale(color >> 8 & 0xFF);
+
+	if (r != 0)
+		printf("%d de r", r);
+	return (r | g | b);
+}*/

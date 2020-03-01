@@ -32,8 +32,6 @@
 # define DIRECTIONAL 11
 # define SPOT 12
 
-# define CELSHADING 20
-
 /*
 ** -----------------------------PARSING----------------------------
 */
@@ -49,6 +47,7 @@ typedef struct		s_color
 typedef struct		s_scene
 {
 	t_color			amb_light;
+	int				filter;
 }					t_scene;
 
 typedef struct		s_camera
@@ -151,7 +150,7 @@ typedef struct		s_cam
 typedef struct		s_tab_obj
 {
 	int				i;
-	int				type;
+	short			type;
 	float			radius;
 	t_vec			pos;
 	t_vec			dir;
@@ -193,7 +192,6 @@ typedef struct		s_env
 	t_vec			light_ori;
 	t_cam			cam;
 	t_tab_obj		*selected_obj;
-	int				filter;
 }					t_env;
 
 /*
@@ -278,7 +276,8 @@ void				put_icon(t_env *v);
 */
 int					cel_shading(int color);
 int					negative(int color);
-Uint32	greyscale(Uint32 pixel);
+int					sepia(int color);
+int		greyscale(int color);
 
 
 void				screenshot(t_env *v);

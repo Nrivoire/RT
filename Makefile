@@ -45,6 +45,8 @@ SRC_NAME	+=	create_tab_obj.c
 SRC_NAME	+=	bonus_tools.c
 SRC_NAME	+=	post_process/negative.c
 SRC_NAME	+=	post_process/cel_shading.c
+SRC_NAME	+=	post_process/greyscale.c
+SRC_NAME	+=	post_process/sepia.c
 
 #	Objects
 OBJ_PATH = .objects

@@ -38,8 +38,17 @@ void		usage(char *error, int run)
 	ft_putendl("-f <file_path>		choose your file.");
 	ft_putendl("-w <width [0-1280]>	set your window's width.");
 	ft_putendl("-h <height [0-720]>	set your window's height.");
+	ft_putendl("filter:	--greyscale | --sepia | --negative | --celshading");
 	ft_putendl("--help			show help.\n");
 	!run ? exit(0) : 0;
+}
+
+static void	option_filter(t_env *v, char *option)
+{
+	!ft_strcmp(option, "--greyscale") ? v->p.sc.filter = 1 : 0;
+	!ft_strcmp(option, "--sepia") ? v->p.sc.filter = 2 : 0;
+	!ft_strcmp(option, "--negative") ? v->p.sc.filter = 3 : 0;
+	!ft_strcmp(option, "--celshading") ? v->p.sc.filter = 4 : 0;
 }
 
 void		check_options(t_env *v, int argc, char **argv)
@@ -65,6 +74,7 @@ void		check_options(t_env *v, int argc, char **argv)
 		}
 		else if (!ft_strcmp(argv[i], "-f") || !ft_strcmp(argv[i], "--file"))
 			i + 1 < argc ? v->file = ft_strdup(argv[i + 1]) : 0;
+		option_filter(v, argv[i]);
 	}
 	ft_strdel(&default_map);
 }
