@@ -68,9 +68,13 @@ void			draw_pro_frame(t_env *v)
 	clear_pixels(v);
 	create_tab_obj(v);
 	if (v->active_rpx == 1)
-		v->render_key > 0 || v->render_mouse > 0 ? bouclette_event(v) : bouclette(v);
-	else
-		bouclette(v);
+	{
+		if (v->render_key > 0 || v->render_mouse > 0)
+			v->render_size = 4;
+		else
+			v->render_size = 1;
+	}
+	bouclette(v);
 }
 
 void			display(t_env *v)

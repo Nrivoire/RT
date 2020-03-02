@@ -90,7 +90,7 @@ static void		big_pixel(t_env *v, int x, int y, t_color px_color)
 	pixel_put(v, x + 3, y + 3, px_color);
 }
 
-void		    bouclette(t_env *v)
+void			bouclette(t_env *v)
 {
 	int			x;
 	int			y;
@@ -98,11 +98,11 @@ void		    bouclette(t_env *v)
 	t_tab_obj	closest;
 	t_color		px_color;
 
-	y = -1;
-	while (++y <= v->h)
+	y = 0;
+	while (y <= v->h)
 	{
-		x = -1;
-		while (++x <= v->w)
+		x = 0;
+		while (x <= v->w)
 		{
 			ray = create_ray(v, x, y);
 			if (closest_intersect(v, ray, &closest))
@@ -111,11 +111,13 @@ void		    bouclette(t_env *v)
 				if (closest.texture)
 					generate_texture(&closest);
 				calc_light(v, closest, &px_color);
-				//pixel_put(v, x, y, px_color);
-				big_pixel(v, x, y, px_color);
+				if (v->render_size == 1)
+					pixel_put(v, x, y, px_color);
+				else if (v->render_size == 4)
+					big_pixel(v, x, y, px_color);
 			}
-			x = x + 4;
+			x = x + v->render_size;
 		}
-		y = y + 4;
+		y = y + v->render_size;
 	}
 }

@@ -54,6 +54,8 @@ SRC_NAME	+=	obj_generating/inter_ray_quadric.c
 SRC_NAME	+=	obj_generating/make_obj.c
 SRC_NAME	+=	obj_generating/create_tab_obj.c
 
+SRC_NAME	+=	closest_intersect.c
+
 #	Objects
 OBJ_PATH = .objects
 OBJ_NAME = $(SRC_NAME:.c=.o)

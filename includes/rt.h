@@ -195,7 +195,7 @@ typedef struct		s_env
 	int				render_key;
 	int				render_mouse;
 	int				active_rpx;
-	int				test;
+	int				render_size;
 }					t_env;
 
 /*
