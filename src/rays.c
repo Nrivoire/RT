@@ -226,11 +226,13 @@ void			make_texture_sphere(t_tab_obj *closest)
 	}
 }
 
-void		    bouclette(t_env *v)
+
+
+void			bouclette(t_env *v)
 {
-	int		    x;
-	int		    y;
-	t_ray	    ray;
+	int			x;
+	int			y;
+	t_ray		ray;
 	t_tab_obj	closest;
 	t_color		px_color;
 
@@ -255,5 +257,54 @@ void		    bouclette(t_env *v)
 				pixel_put(v, x, y, px_color);
 			}
 		}
+	}
+}
+
+void			bouclette_event(t_env *v)
+{
+	int			x;
+	int			y;
+	t_ray		ray;
+	t_tab_obj	closest;
+	t_color		px_color;
+
+	y = 0;
+	while (y <= v->h)
+	{
+		x = 0;
+		while (x <= v->w)
+		{
+			ray = create_ray_cam(v, x, y);
+			if (closest_intersect(v, ray, &closest))
+			{
+				if (closest.texture)
+				{
+					if (closest.type == SPHERE)
+						make_texture_sphere(&closest);
+					//if (closest.type == CYLINDER)
+					//	make_texture_cylinder(&closest);
+				}
+				px_color = (t_color) {0, 0, 0, 255};
+				calc_light(v, closest, &px_color);
+				pixel_put(v, x, y, px_color);
+				pixel_put(v, x, y + 1, px_color);
+				pixel_put(v, x, y + 2, px_color);
+				pixel_put(v, x, y + 3, px_color);
+				pixel_put(v, x + 1, y, px_color);
+				pixel_put(v, x + 2, y, px_color);
+				pixel_put(v, x + 3, y, px_color);
+				pixel_put(v, x + 1, y + 1, px_color);
+				pixel_put(v, x + 2, y + 1, px_color);
+				pixel_put(v, x + 3, y + 1, px_color);
+				pixel_put(v, x + 1, y + 2, px_color);
+				pixel_put(v, x + 2, y + 2, px_color);
+				pixel_put(v, x + 3, y + 2, px_color);
+				pixel_put(v, x + 1, y + 3, px_color);
+				pixel_put(v, x + 2, y + 3, px_color);
+				pixel_put(v, x + 3, y + 3, px_color);
+			}
+			x = x + 4;
+		}
+		y = y + 4;
 	}
 }
