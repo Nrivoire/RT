@@ -226,8 +226,6 @@ void			make_texture_sphere(t_tab_obj *closest)
 	}
 }
 
-
-
 void			bouclette(t_env *v)
 {
 	int			x;
@@ -260,6 +258,26 @@ void			bouclette(t_env *v)
 	}
 }
 
+static void		big_pixel(t_env *v, int x, int y, t_color px_color)
+{
+	pixel_put(v, x, y, px_color);
+	pixel_put(v, x, y + 1, px_color);
+	pixel_put(v, x, y + 2, px_color);
+	pixel_put(v, x, y + 3, px_color);
+	pixel_put(v, x + 1, y, px_color);
+	pixel_put(v, x + 2, y, px_color);
+	pixel_put(v, x + 3, y, px_color);
+	pixel_put(v, x + 1, y + 1, px_color);
+	pixel_put(v, x + 2, y + 1, px_color);
+	pixel_put(v, x + 3, y + 1, px_color);
+	pixel_put(v, x + 1, y + 2, px_color);
+	pixel_put(v, x + 2, y + 2, px_color);
+	pixel_put(v, x + 3, y + 2, px_color);
+	pixel_put(v, x + 1, y + 3, px_color);
+	pixel_put(v, x + 2, y + 3, px_color);
+	pixel_put(v, x + 3, y + 3, px_color);
+}
+
 void			bouclette_event(t_env *v)
 {
 	int			x;
@@ -286,22 +304,7 @@ void			bouclette_event(t_env *v)
 				}
 				px_color = (t_color) {0, 0, 0, 255};
 				calc_light(v, closest, &px_color);
-				pixel_put(v, x, y, px_color);
-				pixel_put(v, x, y + 1, px_color);
-				pixel_put(v, x, y + 2, px_color);
-				pixel_put(v, x, y + 3, px_color);
-				pixel_put(v, x + 1, y, px_color);
-				pixel_put(v, x + 2, y, px_color);
-				pixel_put(v, x + 3, y, px_color);
-				pixel_put(v, x + 1, y + 1, px_color);
-				pixel_put(v, x + 2, y + 1, px_color);
-				pixel_put(v, x + 3, y + 1, px_color);
-				pixel_put(v, x + 1, y + 2, px_color);
-				pixel_put(v, x + 2, y + 2, px_color);
-				pixel_put(v, x + 3, y + 2, px_color);
-				pixel_put(v, x + 1, y + 3, px_color);
-				pixel_put(v, x + 2, y + 3, px_color);
-				pixel_put(v, x + 3, y + 3, px_color);
+				big_pixel(v, x, y, px_color);
 			}
 			x = x + 4;
 		}
