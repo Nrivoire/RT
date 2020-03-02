@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/02/27 19:26:10 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/03/02 19:23:53 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,18 +19,21 @@
 NAME		=	rt
 
 #	Sources
-SRC_SUP = {events,draw_tools,parser,post_process}
+SRC_SUP = {events,draw_tools,parser,post_process,obj_generating}
 SRC_PATH	=	src
 
 SRC_NAME	=	main.c
-SRC_NAME	+=	display.c
+SRC_NAME	+=	rays.c
+SRC_NAME	+=	usage.c
+SRC_NAME	+=	init.c
+SRC_NAME	+=	bonus_tools.c
+
 SRC_NAME	+=	events/key_event.c
 SRC_NAME	+=	events/mouse_event.c
+
 SRC_NAME	+=	draw_tools/get_pixel.c
-SRC_NAME	+=	rays.c
-SRC_NAME	+=	inter_ray_quadric.c
-SRC_NAME	+=	make_obj.c
-SRC_NAME	+=	usage.c
+SRC_NAME	+=	draw_tools/display.c
+
 SRC_NAME	+=	parser/parser.c
 SRC_NAME	+=	parser/parser_init_value.c
 SRC_NAME	+=	parser/parser_block_base.c
@@ -40,13 +43,16 @@ SRC_NAME	+=	parser/parser_utils.c
 SRC_NAME	+=	parser/parser_color.c
 SRC_NAME	+=	parser/parser_color_hexa.c
 SRC_NAME	+=	parser/parser_list.c
-SRC_NAME	+=	init.c
-SRC_NAME	+=	create_tab_obj.c
-SRC_NAME	+=	bonus_tools.c
+
 SRC_NAME	+=	post_process/negative.c
 SRC_NAME	+=	post_process/cel_shading.c
 SRC_NAME	+=	post_process/greyscale.c
 SRC_NAME	+=	post_process/sepia.c
+
+SRC_NAME	+=	obj_generating/put_texture_on_surface.c
+SRC_NAME	+=	obj_generating/inter_ray_quadric.c
+SRC_NAME	+=	obj_generating/make_obj.c
+SRC_NAME	+=	obj_generating/create_tab_obj.c
 
 #	Objects
 OBJ_PATH = .objects

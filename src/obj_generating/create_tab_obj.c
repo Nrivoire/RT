@@ -6,27 +6,12 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 18:12:17 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 19:12:26 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/02 19:23:08 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-void			create_lgt(t_env *v)
-{
-	t_lst_lgt	*tmp;
-
-	tmp = v->p.lg;
-	while(tmp)
-	{
-		// if (tmp->type == POINT)
-		//	fonction point light;
-		// else if (tmp->type == SPOT)
-		//	fonction spot light;
-		tmp = tmp->next;
-	}
-}
 
 void			create_tab_obj(t_env *v)
 {

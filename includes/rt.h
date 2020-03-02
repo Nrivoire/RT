@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/28 15:34:30 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/02 19:33:21 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -225,13 +225,22 @@ t_quadric			make_plan(t_vec a, t_vec b, t_vec c);
 t_quadric			make_cylinder(t_vec a, t_vec v, float r);
 t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 
+
+/*
+** --textures--
+*/
+void				generate_texture(t_tab_obj *closest);
+void				make_texture_sphere(t_tab_obj *obj);
+void				make_texture_plan(t_tab_obj *obj);
+void            	make_texture_cone(t_tab_obj *obj);
+void            	make_texture_cylindre(t_tab_obj *obj);
+
 /*
 ** --rays--
 */
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
-void				create_lgt(t_env *v);
 void				create_tab_obj(t_env *v);
-t_ray				create_ray_cam(t_env *v, int x, int y);
+t_ray				create_ray(t_env *v, int x, int y);
 void				bouclette(t_env *v);
 
 /*
