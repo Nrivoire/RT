@@ -17,6 +17,7 @@ void		mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state)
 {
 	if (mouse_state == 1)
 	{
+		v->render_mouse = 1;
 		if (abs(event.motion.xrel) > abs(event.motion.yrel))
 			v->cam.angle_y -= (event.motion.xrel * 0.1) * (M_PI / 180);
 		else
@@ -25,13 +26,17 @@ void		mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state)
 	}
 	if (mouse_state == 4)
 	{
+		v->render_mouse = 1;
 		if (event.motion.xrel > 0 || event.motion.xrel < 0)
 			v->cam.ori.x -= event.motion.xrel * 0.02;
 		if (event.motion.yrel > 0 || event.motion.yrel < 0)
 			v->cam.ori.y += event.motion.yrel * 0.02;
 	}
 	if (mouse_state == 0)
+	{
+		v->render_mouse = 0;
 		SDL_SetRelativeMouseMode(SDL_FALSE);
+	}
 }
 
 void		mouse_button_event(SDL_Event e, t_env *v)
@@ -62,9 +67,18 @@ void		mouse_wheel_event(SDL_Event e, t_env *v)
 {
 	if (v->selected_obj)
 	{
+		
 		if (e.wheel.y > 0)
+		{
+			v->render_mouse = 1;
 			v->selected_obj->pos.z += e.wheel.y * 0.2;
+		}
 		if (e.wheel.y < 0)
+		{
+			v->render_mouse = 1;
 			v->selected_obj->pos.z += e.wheel.y * 0.2;
+		}
+		if (e.wheel.y == 0)
+		 	v->render_mouse = 0;
 	}
 }

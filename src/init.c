@@ -33,6 +33,7 @@ void			init_value(t_env *v)
 	v->cam.fov = v->p.cam.fov;
 	v->selected_obj = NULL;
 	v->p.sc.filter = 0;
+	v->active_rpx = 1;
 	v->p.ob = NULL;
 	v->p.lg = NULL;
 }

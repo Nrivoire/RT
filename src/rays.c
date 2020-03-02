@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/02 19:33:32 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/02 19:36:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,11 +70,31 @@ void			calc_light(t_env *v, t_tab_obj closest, t_color *px_color)
 	}
 }
 
+static void		big_pixel(t_env *v, int x, int y, t_color px_color)
+{
+	pixel_put(v, x, y, px_color);
+	pixel_put(v, x, y + 1, px_color);
+	pixel_put(v, x, y + 2, px_color);
+	pixel_put(v, x, y + 3, px_color);
+	pixel_put(v, x + 1, y, px_color);
+	pixel_put(v, x + 2, y, px_color);
+	pixel_put(v, x + 3, y, px_color);
+	pixel_put(v, x + 1, y + 1, px_color);
+	pixel_put(v, x + 2, y + 1, px_color);
+	pixel_put(v, x + 3, y + 1, px_color);
+	pixel_put(v, x + 1, y + 2, px_color);
+	pixel_put(v, x + 2, y + 2, px_color);
+	pixel_put(v, x + 3, y + 2, px_color);
+	pixel_put(v, x + 1, y + 3, px_color);
+	pixel_put(v, x + 2, y + 3, px_color);
+	pixel_put(v, x + 3, y + 3, px_color);
+}
+
 void		    bouclette(t_env *v)
 {
-	int		    x;
-	int		    y;
-	t_ray	    ray;
+	int			x;
+	int			y;
+	t_ray		ray;
 	t_tab_obj	closest;
 	t_color		px_color;
 
@@ -91,8 +111,11 @@ void		    bouclette(t_env *v)
 				if (closest.texture)
 					generate_texture(&closest);
 				calc_light(v, closest, &px_color);
-				pixel_put(v, x, y, px_color);
+				//pixel_put(v, x, y, px_color);
+				big_pixel(v, x, y, px_color);
 			}
+			x = x + 4;
 		}
+		y = y + 4;
 	}
 }

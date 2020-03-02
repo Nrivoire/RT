@@ -192,6 +192,10 @@ typedef struct		s_env
 	t_vec			light_ori;
 	t_cam			cam;
 	t_tab_obj		*selected_obj;
+	int				render_key;
+	int				render_mouse;
+	int				active_rpx;
+	int				test;
 }					t_env;
 
 /*
@@ -212,7 +216,7 @@ void				pixel_put(t_env *v, int x, int y, t_color color);
 ** --events--
 */
 void				button_down(SDL_Event e, t_env *v);
-void        		mouse_button_event(SDL_Event event, t_env *v);
+void				mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
@@ -242,6 +246,7 @@ int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
 void				bouclette(t_env *v);
+void				bouclette_event(t_env *v);
 
 /*
 ** --usage--

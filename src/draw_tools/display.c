@@ -67,14 +67,17 @@ void			draw_pro_frame(t_env *v)
 {
 	clear_pixels(v);
 	create_tab_obj(v);
-	bouclette(v);
+	if (v->active_rpx == 1)
+		v->render_key > 0 || v->render_mouse > 0 ? bouclette_event(v) : bouclette(v);
+	else
+		bouclette(v);
 }
 
 void			display(t_env *v)
 {
-	SDL_Event	e;
-	const Uint8	*keyboard_state;
-	uint32_t	mouse_state;
+	SDL_Event		e;
+	const Uint8		*keyboard_state;
+	uint32_t		mouse_state;
 
 	put_icon(v);
 	while (1)
