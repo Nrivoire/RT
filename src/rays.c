@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 19:03:46 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/02 19:36:10 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/03 11:51:37 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,12 +31,10 @@ t_ray				create_ray(t_env *v, int x, int y)
 float			diffuse_light(t_env *v, t_tab_obj px, t_vec pos_light)
 {
 	float		dot;
-	t_vec		norm;
 	t_vec		light;
 
-	norm = vec_normalize(vec_sub(px.pos, px.point));
-	light = vec_normalize(vec_sub(px.point, pos_light));
-	dot = vec_scale_product(light, norm);
+	light = vec_normalize(vec_sub(pos_light, px.point));
+	dot = vec_scale_product(light, px.normale);
 	return (dot);
 }
 

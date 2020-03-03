@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/02 19:33:21 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/03 11:27:11 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -170,6 +170,7 @@ typedef struct		s_tab_obj
 	t_quadric		q;
 	t_vec			point;
 	float			dist;
+	t_vec			normale;
 }					t_tab_obj;
 
 /*
@@ -203,6 +204,7 @@ typedef struct		s_env
 */
 
 void				display(t_env *v);
+t_vec				quadric_normal(t_quadric q, t_vec p, t_vec r);
 int					inter_ray_quadric(t_ray r, t_quadric q,
 					t_sol_2_vec *sol);
 

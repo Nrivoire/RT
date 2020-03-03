@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/03/02 19:11:49 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/02 19:30:11 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/03 11:44:02 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,6 @@ float			dot_product(t_vec u, t_vec v)
 
 void			make_texture_sphere(t_tab_obj *obj)
 {
-	t_vec	vp;
 	t_vec	vn;
 	t_vec	ve;
 	float	phi;
@@ -52,16 +51,15 @@ void			make_texture_sphere(t_tab_obj *obj)
 
 	vn = (t_vec){0, 1, 0};
 	ve = (t_vec){1, 0, 0};
-	vp = vec_normalize(vec_sub(obj->point, obj->pos));
-	phi = acos(dot_product(vn, vp));
+	phi = acos(dot_product(vn,  obj->normale));
 	v = phi / M_PI;
-	precision = dot_product(vp, ve) / sin(phi);
+	precision = dot_product( obj->normale, ve) / sin(phi);
 	if (precision <= -1)
 		precision = -1.0f;
 	if (precision >= 1)
 		precision = 1.0f;
 	theta = acos(precision) / (2 * M_PI);
-	if (dot_product(vec_cross_product(vn, ve), vp) > 0)
+	if (dot_product(vec_cross_product(vn, ve),  obj->normale) > 0)
 		u = theta;
 	else
 		u = 1 - theta;

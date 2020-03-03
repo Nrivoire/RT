@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/03/02 19:31:41 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/02 19:34:08 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/03 11:47:23 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,6 +62,17 @@ t_vec			closest_point(t_vec ori, t_sol_2_vec sol)
 	return (sol.v2);
 }
 
+t_vec				quadric_normal(t_quadric q, t_vec p, t_vec r)
+{
+	t_vec			n;
+
+	n = vec_normalize((t_vec){								\
+			2 * q.a * p.x + q.d * p.y + q.e * p.z + q.g, 	\
+			2 * q.b * p.y + q.d * p.x + q.f * p.z + q.h, 	\
+			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i});
+	return (vec_scale_product(n, r) > 0 ? vec_mult_float(n, -1) : n);
+}
+
 t_tab_obj		make_closest(t_tab_obj p, t_vec point, float dist, int i)
 {
 	t_tab_obj	closest;
@@ -86,6 +97,7 @@ t_tab_obj		make_closest(t_tab_obj p, t_vec point, float dist, int i)
 	closest.point = point;
 	closest.dist = dist;
 	closest.i = i;
+	closest.q = p.q;
 	return (closest);
 }
 
@@ -110,6 +122,7 @@ int				closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest)
 				dist = tmp;
 				*closest = make_closest(v->tab_obj[i],
                         closest_point(ray.o, sol), dist, i);
+				closest->normale = quadric_normal(closest->q, closest->point, ray.d);
 				state = 1;
 			}
 		}

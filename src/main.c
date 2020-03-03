@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/18 18:18:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/28 15:41:47 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/03 11:31:46 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,6 +53,18 @@ t_tab_obj		make_tab_obj(t_lst_obj *p)
 	data.texture = p->texture;
 	return (data);
 }
+
+// static void		on_activate (GtkApplication *app)
+// {
+//   // Create a new window
+//   GtkWidget *window = gtk_application_window_new (app);
+//   // Create a new button
+//   GtkWidget *button = gtk_button_new_with_label ("Hello, World!");
+//   // When the button is clicked, destroy the window passed as an argument
+//   g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
+//   gtk_container_add (GTK_CONTAINER (window), button);
+//   gtk_widget_show_all (window);
+// }
 
 int				main(int argc, char **argv)
 {
