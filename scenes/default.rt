@@ -1,10 +1,9 @@
 scene{
-	ambient-light= {0.5, 0.5, 0.5}
-	intensity= 1
+	ambient-light= {0.35, 0.35, 0.35}
 }
 
 camera{
-	pos= {0, 0, 10}
+	pos= {0, 0.5, 10}
 	dir= {0, 0, 0}
 	fov= 60
 }
@@ -12,15 +11,7 @@ camera{
 light{
 	type= POINT
 	color= 0xF5C7C2FF
-	pos= {5, 0, 10}
-	dir= {0, 0, 1}
-	intensity= 1.5
-}
-
-light{
-	type= POINT
-	color= 0xF5C7C2FF
-	pos= {-5, 20, 10}
+	pos= {1, 0, 5}
 	dir= {0, 0, 1}
 	intensity= 0.8
 }
@@ -44,8 +35,8 @@ object{
 object{
 	type= CONE
 	radius= 0.8
-	pos= {2, 0, 0.4}
-	dir= {-3, 3, -1}
+	pos= {1.2, 0.2, 0.4}
+	dir= {-0.8, 1, 0}
 	color= 0xFFFF00FF
 	reflect= 0
 	refract= 0
@@ -59,9 +50,9 @@ object{
 
 object{
 	type= CYLINDER
-	radius= 2.7
-	pos= {-1.2, 0, 0}
-	dir= {3, 3, 1}
+	radius= 0.8
+	pos= {-1, 0, 0}
+	dir= {1, 1, 0}
 	color= 0x00FF00FF
 	reflect= 0
 	refract= 0
