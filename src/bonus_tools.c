@@ -7,8 +7,10 @@ void			screenshot(t_env *v)
 	char		*open;
 	SDL_Surface	*save;
 
-	if (v->p.sc.filter == 0)
-	{
+	// if (v->p.sc.filter == 0)
+	// {	
+		if (!(save = malloc(sizeof(SDL_Surface *) * v->w * v->h + 1)))
+			return ;
 		id = time(NULL);
 		id = id - 1583000000;
 		name = my_strcat("screenshot/sshot_", ft_itoa(id));
@@ -18,8 +20,8 @@ void			screenshot(t_env *v)
 		system(open = my_strcat("open ", name));
 		SDL_FreeSurface(save);
 		free(open);
-	}
-	else
-		ft_putendl("Screenshot only without filter");
+	// }
+	// else
+	// 	ft_putendl("Screenshot only without filter");
 }
 //PERMETTRE LE SCREENSHOT AVEC FILTER A L'AVENIR
