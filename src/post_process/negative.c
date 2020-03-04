@@ -7,8 +7,8 @@ int		negative(int color)
 	int		g;
 	int		b;
 
-	r = (255 - ((color >> 8) & 0xFF)) << 8;
-	g = (255 - ((color >> 8) & 0xFF)) << 16;
-	b = (255 - ((color >> 16) & 0xFF)) << 24;
+	r = (255 - ((color >> 24) & 0xFF)) << 24;
+	g = (255 - ((color >> 16) & 0xFF)) << 16;
+	b = (255 - ((color >> 8) & 0xFF)) << 8;
 	return (r | g | b);
 }
