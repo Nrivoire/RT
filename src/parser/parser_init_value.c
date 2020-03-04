@@ -12,6 +12,10 @@
 
 #include "../includes/rt.h"
 
+/*
+** Initializes the values ​​of each node in the list.
+*/
+
 void	init_value_obj(t_lst_obj *content)
 {
 	content->type = 0;

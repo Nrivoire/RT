@@ -12,6 +12,10 @@
 
 #include "../includes/rt.h"
 
+/*
+** Add an object or a light to the list if necessary.
+*/
+
 void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 {
 	t_lst_obj	*new;

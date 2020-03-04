@@ -12,12 +12,21 @@
 
 #include "../includes/rt.h"
 
+/*
+** Allows to bring a value between two lower and upper limits,
+** and to assign the upper limit if the value exceeds.
+*/
+
 static int	ft_clamp_to_max(int value, int min, int max)
 {
 	value > max ? value = max : 0;
 	value < min ? value = max : 0;
 	return (value);
 }
+
+/*
+** Parse the values ​​of the scene in the file.
+*/
 
 static void	option_scene(t_env *v, char *tmp)
 {
@@ -54,6 +63,10 @@ void		parse_scene(t_env *v, t_file *file)
 		ft_strdel(&tmp);
 	}
 }
+
+/*
+** Parse the values ​​of the camera in the file.
+*/
 
 void		parse_cam(t_env *v, t_file *file)
 {

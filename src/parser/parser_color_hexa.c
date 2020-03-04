@@ -12,6 +12,10 @@
 
 #include "../includes/rt.h"
 
+/*
+** Retrieve the RGBA values ​​from an hexa color.
+*/
+
 static int		get_hexa(char *s, t_file *file)
 {
 	int		i;

@@ -12,6 +12,10 @@
 
 #include "../includes/rt.h"
 
+/*
+** Imitates strcat function with memory allocation.
+*/
+
 char			*my_strcat(char *s1, char *s2)
 {
 	char	*res;
@@ -31,6 +35,11 @@ char			*my_strcat(char *s1, char *s2)
 	return (res);
 }
 
+/*
+** Check that the previous block is closed,
+** before allowing the opening of the next one.
+*/
+
 int				check_bracket(t_file *file)
 {
 	char		*tmp;
@@ -48,6 +57,10 @@ int				check_bracket(t_file *file)
 	return (0);
 }
 
+/*
+** Allows file reading line by line and increments the line number.
+*/
+
 int				read_line(t_file *file)
 {
 	file->nb_line++;
@@ -56,6 +69,10 @@ int				read_line(t_file *file)
 	else
 		return (0);
 }
+
+/*
+** Detects the opening of the block to be parsed.
+*/
 
 static void		read_file(t_env *v, t_file *file)
 {
@@ -82,6 +99,10 @@ static void		read_file(t_env *v, t_file *file)
 		ft_strdel(&tmp);
 	}
 }
+
+/*
+** Allows the opening of the file passed in argument.
+*/
 
 int				parser_file(t_env *v)
 {

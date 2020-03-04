@@ -12,12 +12,20 @@
 
 #include "../includes/rt.h"
 
+/*
+** Displays an error message related to the file and the corresponding line.
+*/
+
 void	error_parser(char *error, t_file *file)
 {
 	ft_putendl(error);
 	ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
 	exit(1);
 }
+
+/*
+** Parse the necessary values ​​in int or float.
+*/
 
 int		parse_int_value(char const *s)
 {
@@ -46,6 +54,10 @@ float	parse_value(char const *s)
 	res = ft_atof(&s[i]);
 	return (res);
 }
+
+/*
+** Used to recover xyz coordinates.
+*/
 
 void	parse_xyz(char *s, t_env *v, t_file *file)
 {

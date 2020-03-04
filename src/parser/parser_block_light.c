@@ -12,6 +12,10 @@
 
 #include "../includes/rt.h"
 
+/*
+** Parse the values ​​of the lights in the file.
+*/
+
 static void		parse_material_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\tcolor=", 7))

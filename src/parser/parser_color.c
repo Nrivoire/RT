@@ -12,6 +12,10 @@
 
 #include "../includes/rt.h"
 
+/*
+** Retrieve the RGBA values ​​of object & light block.
+*/
+
 static int		color_int_value(char const *s)
 {
 	int		i;
@@ -78,6 +82,10 @@ void			parse_color(char *s, t_env *v, t_file *file)
 		free(res);
 	}
 }
+
+/*
+** Retrieve the RGB values ​​of scene block.
+*/
 
 static float	color_value_scene(char const *s)
 {

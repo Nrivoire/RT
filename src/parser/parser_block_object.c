@@ -12,6 +12,10 @@
 
 #include "../includes/rt.h"
 
+/*
+** Parse the values ​​of the objects in the file.
+*/
+
 static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 {
 	int		i;
