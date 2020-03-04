@@ -62,3 +62,19 @@ object{
 	shininess= 0
 	texture= "textures/8k_sun.jpg"
 }
+
+object{
+	name= "stars"
+	type= SPHERE
+	radius= 8000.000
+	pos= {0, 0, 0}
+	reflect= 0.9
+	refract= 0
+	transparency= 0
+	absorbtion= 0
+	ambient= 0
+	diffuse= 0
+	specular= 0
+	shininess= 0
+	texture= "textures/8k_stars.jpg"
+}
