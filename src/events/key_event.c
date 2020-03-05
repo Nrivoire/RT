@@ -21,26 +21,26 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 	{
 		if (keyboard_state[SDL_SCANCODE_UP])
 		{
-			v->render_key = 1;
+			v->ppc.render_key = 1;
 			v->selected_obj->pos.y += .5;
 		}
 		if (keyboard_state[SDL_SCANCODE_DOWN])
 		{
-			v->render_key = 1;
+			v->ppc.render_key = 1;
 			v->selected_obj->pos.y -= .5;
 		}
 		if (keyboard_state[SDL_SCANCODE_RIGHT])
 		{
-			v->render_key = 1;
+			v->ppc.render_key = 1;
 			v->selected_obj->pos.x += .5;
 		}
 		if (keyboard_state[SDL_SCANCODE_LEFT])
 		{
-			v->render_key = 1;
+			v->ppc.render_key = 1;
 			v->selected_obj->pos.x -= .5;
 		}
 		if (!keyboard_state[SDL_SCANCODE_LEFT] && !keyboard_state[SDL_SCANCODE_RIGHT] && !keyboard_state[SDL_SCANCODE_DOWN] && !keyboard_state[SDL_SCANCODE_UP])
-			v->render_key = 0;
+			v->ppc.render_key = 0;
 	}
 	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
 		v->cam.ori.z--;
@@ -59,8 +59,12 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 	if (keyboard_state[SDL_SCANCODE_M])
 		v->p.sc.filter = 4;
 	if (keyboard_state[SDL_SCANCODE_R])
-		v->active_rpx = 1;
+		v->ppc.active_rpx = 1;
 	if (keyboard_state[SDL_SCANCODE_T])
-		v->active_rpx = 0;
+		v->ppc.active_rpx = 0;
+	if (keyboard_state[SDL_SCANCODE_Y])
+		v->ppc.ssp = 0;
+	if (keyboard_state[SDL_SCANCODE_U])
+		v->ppc.ssp = 1;
 	return (0);
 }
