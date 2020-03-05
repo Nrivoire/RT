@@ -28,7 +28,7 @@ Partie Obligatoire
 	- Lumiere
 
 		-	L'ombre des Objets										[/]
-		-	L'ombre multi-spot										[ ]
+		-	L'ombre multi-spot										[/]
 		-	La Brillance											[ ]
 		-	Le Multi-spot											[/]
 
@@ -54,8 +54,8 @@ Partie Optionnelle
 
 		-	Normal	--->	"impression d'avoir des vaguelettes"	[ ]
 		-	Couleur	--->	"Le Damier"								[ ]
-		-	Couleur	--->	"Texture Procedurale"					[ ]
-		-	Couleur	--->	"Bruit de Perlin"						[ ]
+		-	Couleur	--->	"Texture Procedurale"					[/]
+		-	Couleur	--->	"Bruit de Perlin"						[/]
 
 	- Lumiere Directe												[ ]
 
@@ -74,7 +74,7 @@ Partie Optionnelle
 	- Textures I
 
 		-	Applique une texture au moins sur 1 Objet				[X]
-		-	Applique une texture sur les 4 Objets de base			[ ]
+		-	Applique une texture sur les 4 Objets de base			[/]
 		-	Etire ou Contracte une Texture							[ ]
 		-	Faire bouge la texture sur l'Objet						[ ]
 		-	Texture au format jpeg, png, ...						[X]
@@ -98,7 +98,7 @@ Partie Optionnelle
 
 	- Effet visuel classique
 
-		-	Anti-aliasing "Super-sampling"							[/]
+		-	Anti-aliasing "Super-sampling"							[X]
 		-	Effet Cartoon											[X]
 		-	Motion Blur ou Blur										[ ]
 		-	Filtre sepia ou autre filtre de couleur					[X]
@@ -109,7 +109,7 @@ Partie Optionnelle
 		-	Calculs en Cluster										[ ]
 		-	Calculs multi-tread										[ ]
 		-	GPU														[ ]
-		-	Sauvegarde d'une Image dans RT							[ ]
+		-	Sauvegarde d'une Image dans RT							[X]
 
 	- Environnement
 
@@ -119,7 +119,7 @@ Partie Optionnelle
 		-	Paramettre plusieurs rendus								[ ]
 		-	Ajoute des Objets dans la scene							[ ]
 
-	- Travaille en Groupe											[ ]
+	- Travaille en Groupe											[X]
 
 	- Les Objets Exotique
 
