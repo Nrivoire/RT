@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sepia.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/05 19:34:26 by vasalome          #+#    #+#             */
+/*   Updated: 2020/03/05 19:34:27 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/rt.h"
 #include "pp.h"
 
@@ -15,5 +27,8 @@ int		sepia(int color)
 	sepia.r = MIN(255, sepia.r);
 	sepia.g = MIN(255, sepia.g);
 	sepia.b = MIN(255, sepia.b);
-	return (((int)sepia.r << 24) | ((int)sepia.g << 16) | ((int)sepia.b << 8) | (color & 0xFF));
+	return (((int)sepia.r << 24)\
+		| ((int)sepia.g << 16)\
+		| ((int)sepia.b << 8)\
+		| (color & 0xFF));
 }
