@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 18:12:17 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/05 12:23:38 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/05 13:35:10 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,6 +29,9 @@ void			create_tab_obj(t_env *v)
 			v->tab_obj[i].q = make_cone(v->tab_obj[i].pos, v->tab_obj[i].dir, v->tab_obj[i].radius);
 		else if (v->tab_obj[i].type == CYLINDER)
 			v->tab_obj[i].q = make_cylinder(v->tab_obj[i].pos, v->tab_obj[i].dir, v->tab_obj[i].radius);
+		//printf("pos: %f %f %f\n", v->tab_obj[i].pos.x, v->tab_obj[i].pos.y, v->tab_obj[i].pos.z);
+		//printf("dir: %f %f %f\n", v->tab_obj[i].dir.x, v->tab_obj[i].dir.y, v->tab_obj[i].dir.z);
+		//printf("%f\n", v->tab_obj[i].radius);
 		//res = v->tab_obj[i].q;
 		//printf("%fx^2 + %fy^2 + %fz^2 + %fxy + %fxz + %fyz + %fx + %fy + %fz + %f = 0\n", res.a, res.b, res.c, res.d, res.e, res.f, res.g, res.h, res.i, res.j);
 		//exit(0);

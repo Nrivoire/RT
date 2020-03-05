@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/03/02 19:11:49 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/05 12:22:00 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/05 13:35:48 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,7 +114,7 @@ void            make_texture_cylinder(t_tab_obj *obj)
 	t_matrix_3_3 rot;
 	matrix_rotation(ax, ay, az, rot);
 	t_vec ref = matrix_mult_vec(rot, (t_vec){1,0,0});
-	printf("%f %f %f\n", ref.x, ref.y, ref.z);
+	//printf("%f %f %f\n", ref.x, ref.y, ref.z);
 }
 
 void            make_texture_cone(t_tab_obj *obj)
