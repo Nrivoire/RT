@@ -40,6 +40,8 @@ static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 			ft_strdel(&tex_path[i--]);
 		free(tex_path);
 	}
+	else if (!ft_strncmp(tmp, "\ttexture-procedural=", 20))
+		content->procedural = parse_int_value(tmp);
 }
 
 static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)

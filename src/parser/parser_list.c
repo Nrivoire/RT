@@ -39,6 +39,7 @@ void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 	new->specular = content.specular;
 	new->shininess = content.shininess;
 	new->texture = content.texture;
+	new->procedural = content.procedural;
 	new->next = (!*ob) ? NULL : *ob;
 	*ob = new;
 }

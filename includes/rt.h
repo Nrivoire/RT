@@ -86,6 +86,7 @@ typedef struct		s_lst_obj
 	float			diffuse;
 	float			specular;
 	float			shininess;
+	int				procedural;
 	SDL_Surface		*texture;
 	struct s_lst_obj*next;
 }					t_lst_obj;
@@ -304,10 +305,12 @@ void				put_icon(t_env *v);
 int					cel_shading(int color);
 int					negative(int color);
 int					sepia(int color);
-int		greyscale(int color);
-void			supersampling(t_env *v);
+int					greyscale(int color);
+void				supersampling(t_env *v);
 
-
+/*
+** --bonus_tools--
+*/
 void				screenshot(t_env *v);
 
 #endif
