@@ -3,17 +3,13 @@
 
 int		greyscale(int color)
 {
-	int				r;
-	int				g;
-	int				b;
+	t_color			rgb;
 	unsigned int	v;
 
-	r = color >> 24 & 0xFF;
-	g = color >> 16 & 0xFF;
-	b = color >> 8 & 0xFF;
-	v = r * 0.212671 + g * 0.715160 * 0.072169 + b;
-	// v is the reel good value. NEED TO FIX IT
-	//return (int)((MIN(MIN(b, g), r + MAX(MAX(b, g), r)) / 2 * (1 + 256 + 256 * 256)) << 8);
-	//return (int)((MAX(MAX(b, g), r + MAX(MAX(b, g), r)) / 2 * (1 + 256 + 256 * 256)) << 8);
-	return (int)((MIN(MAX(b, g), r + MAX(MAX(b, g), r)) / 2 * (1 + 256 + 256 * 256)) << 8);
+	rgb.r = color >> 24 & 0xFF;
+	rgb.g = color >> 16 & 0xFF;
+	rgb.b = color >> 8 & 0xFF;
+	v = rgb.r * 0.212671 + rgb.g * 0.715160 + rgb.b * 0.072169;
+
+	return (((int)v << 24) | ((int)v << 16) | (int)v << 8 | (color & 0xFF));
 }
