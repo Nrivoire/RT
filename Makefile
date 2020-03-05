@@ -48,6 +48,7 @@ SRC_NAME	+=	post_process/negative.c
 SRC_NAME	+=	post_process/cel_shading.c
 SRC_NAME	+=	post_process/greyscale.c
 SRC_NAME	+=	post_process/sepia.c
+SRC_NAME	+=	post_process/post_process.c
 
 SRC_NAME	+=	obj_generating/put_texture_on_surface.c
 SRC_NAME	+=	obj_generating/inter_ray_quadric.c

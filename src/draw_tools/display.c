@@ -67,14 +67,15 @@ void			draw_pro_frame(t_env *v)
 {
 	clear_pixels(v);
 	create_tab_obj(v);
-	if (v->active_rpx == 1)
+	if (v->ppc.active_rpx == 1)
 	{
-		if (v->render_key > 0 || v->render_mouse > 0)
-			v->render_size = 4;
+		if (v->ppc.render_key > 0 || v->ppc.render_mouse > 0)
+			v->ppc.render_size = 4;
 		else
-			v->render_size = 1;
+			v->ppc.render_size = 1;
 	}
 	bouclette(v);
+	v->ppc.ssp == 1 ? supersampling(v) : 0;
 }
 
 void			display(t_env *v)

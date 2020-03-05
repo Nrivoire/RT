@@ -168,13 +168,13 @@ void			bouclette(t_env *v)
 				if (closest.texture)
 					generate_texture(&closest);
 				calc_light(v, closest, &px_color);
-				if (v->render_size == 1)
+				if (v->ppc.render_size == 1)
 					pixel_put(v, x, y, px_color);
-				else if (v->render_size == 4)
+				else if (v->ppc.render_size == 4)
 					big_pixel(v, x, y, px_color);
 			}
-			x = x + v->render_size;
+			x = x + v->ppc.render_size;
 		}
-		y = y + v->render_size;
+		y = y + v->ppc.render_size;
 	}
 }

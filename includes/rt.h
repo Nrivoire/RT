@@ -175,6 +175,19 @@ typedef struct		s_tab_obj
 }					t_tab_obj;
 
 /*
+** -----------------------------POST-PROCESS----------------------------
+*/
+
+typedef struct		s_ppc
+{
+	int				render_key;
+	int				render_mouse;
+	int				active_rpx;
+	int				render_size;
+	int				ssp;
+}					t_ppc;
+
+/*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
@@ -194,10 +207,7 @@ typedef struct		s_env
 	t_vec			light_ori;
 	t_cam			cam;
 	t_tab_obj		*selected_obj;
-	int				render_key;
-	int				render_mouse;
-	int				active_rpx;
-	int				render_size;
+	t_ppc			ppc;
 }					t_env;
 
 /*
@@ -295,6 +305,7 @@ int					cel_shading(int color);
 int					negative(int color);
 int					sepia(int color);
 int		greyscale(int color);
+void			supersampling(t_env *v);
 
 
 void				screenshot(t_env *v);
