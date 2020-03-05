@@ -91,7 +91,7 @@ double			fade(double t)
 {
 	return (t * t * t * (t * (t * 6 - 15) + 10));	
 }
-
+/*
 void			bruit_de_perlin(double x, double y, double z)
 {
 	int		permutation[256] = 
@@ -146,7 +146,7 @@ void			bruit_de_perlin(double x, double y, double z)
     bab = p[p[p[inc(xi)]+    yi ]+inc(zi)];
     bbb = p[p[p[inc(xi)]+inc(yi)]+inc(zi)];
 }
-
+*/
 void			bouclette(t_env *v)
 {
 	int			x;
