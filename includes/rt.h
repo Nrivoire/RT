@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/03 11:27:11 by nrivoire    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/05 12:20:41 by nrivoire    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@
 # include "../SDL_include/SDL.h"
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
+//# include "ui.h"
 # include <stdio.h>
 
 # define SPHERE 1
@@ -239,7 +240,7 @@ void				generate_texture(t_tab_obj *closest);
 void				make_texture_sphere(t_tab_obj *obj);
 void				make_texture_plan(t_tab_obj *obj);
 void            	make_texture_cone(t_tab_obj *obj);
-void            	make_texture_cylindre(t_tab_obj *obj);
+void    	        make_texture_cylindre(t_tab_obj *obj);
 
 /*
 ** --rays--

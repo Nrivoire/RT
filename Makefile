@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/03/02 19:23:53 by nrivoire    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/03/05 10:42:16 by nrivoire    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -65,6 +65,7 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 INC_PATH	=	includes
 INC_NAME	=	rt.h
 INC_NAME	+=	pp.h
+INC_NAME	+=	ui.h
 INC			=	$(addprefix $(INC_PATH)/,$(INC_NAME))
 
 CPPFLAGS	=	-I $(INC_PATH)
@@ -117,6 +118,8 @@ SUR=$ \x1b[7m
 # $@ -> nom de la règle
 # $^ -> représente tout ce qui est apres le :
 # $< -> nom de la dependance
+
+#gtk : `pkg-config --cflags --libs gtk+-2.0`
 
 # empêche le Makefile de confondre un fichier et une règle en cas de même nom
 .PHONY: all clean fclean re sdl

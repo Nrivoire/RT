@@ -1,7 +1,7 @@
 #ifndef UI_H
 # define UI_H
 
-# include <gtk/gtk.h>
+# include "gtk/gtk.h"
 
 typedef struct		s_ui
 {

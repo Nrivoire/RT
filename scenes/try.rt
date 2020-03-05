@@ -16,10 +16,11 @@ light{
 }
 
 object{
-	type= SPHERE
-	radius= 2.0
-	pos= {-5, 1, 1}
-	color= {255, 255, 255}
+	type= CYLINDER
+	radius= 2
+	pos= {2, 3, 1}
+	dir= {1, 2, 3}
+	color= 0x00FF00FF
 	reflect= 0
 	refract= 0
 	transparency= 0
@@ -28,24 +29,40 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture= "./textures/moon_8k.jpg"
+	texture= "./textures/brick.jpg"
 }
 
-object{
-	type= SPHERE
-	radius= 6.0
-	pos= {5, 15, 1}
-	color= {255, 255, 255}
-	reflect= 0
-	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
-	shininess= 0
-	texture= "./textures/8k_sun.jpg"
-}
+# object{
+# 	type= SPHERE
+# 	radius= 2.0
+# 	pos= {-5, 1, 1}
+# 	color= {255, 255, 255}
+# 	reflect= 0
+# 	refract= 0
+# 	transparency= 0
+# 	absorbtion= 0
+# 	ambient= 0
+# 	diffuse= 0
+# 	specular= 0
+# 	shininess= 0
+# 	texture= "./textures/moon_8k.jpg"
+# }
+
+# object{
+# 	type= SPHERE
+# 	radius= 6.0
+# 	pos= {5, 15, 1}
+# 	color= {255, 255, 255}
+# 	reflect= 0
+# 	refract= 0
+# 	transparency= 0
+# 	absorbtion= 0
+# 	ambient= 0
+# 	diffuse= 0
+# 	specular= 0
+# 	shininess= 0
+# 	texture= "./textures/8k_sun.jpg"
+# }
 
 # object{
 # 	type= PLAN
