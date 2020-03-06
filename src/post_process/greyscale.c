@@ -13,6 +13,10 @@
 #include "../includes/rt.h"
 #include "pp.h"
 
+/*
+** Apply a filter to each pixel: greyscale.
+*/
+
 int		greyscale(int color)
 {
 	t_color			rgb;

@@ -13,6 +13,10 @@
 #include "../includes/rt.h"
 #include "pp.h"
 
+/*
+** Apply anti-alising supersampling / SSAA.
+*/
+
 static int		get_hex(int r, int g, int b, int a)
 {
 	return ((r << 24) | (g << 16) | (b << 8) | (a));
@@ -59,5 +63,9 @@ void			supersampling(t_env *v)
 		}
 	}
 }
+
+/*
+** 
+*/
 
 // motion blur

@@ -13,6 +13,10 @@
 #include "../includes/rt.h"
 #include "pp.h"
 
+/*
+** Apply a filter to each pixel: cel-shading / cartoon.
+*/
+
 int		cel_shading(int color)
 {
 	int		r;

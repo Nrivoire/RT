@@ -1,5 +1,9 @@
 #include "../includes/rt.h"
 
+/*
+** Take a screenshot of the window.
+*/
+
 void			screenshot(t_env *v)
 {
 	long		id;
@@ -19,6 +23,11 @@ void			screenshot(t_env *v)
 	SDL_FreeSurface(save);
 	free(open);
 }
+
+/*
+** 
+*/
+
 /*
 void			music(t_env *v)
 {

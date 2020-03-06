@@ -13,6 +13,10 @@
 #include "../includes/rt.h"
 #include "pp.h"
 
+/*
+** Apply a filter to each pixel: negative.
+*/
+
 int		negative(int color)
 {
 	int		r;

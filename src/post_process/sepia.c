@@ -13,6 +13,10 @@
 #include "../includes/rt.h"
 #include "pp.h"
 
+/*
+** Apply a filter to each pixel: sepia.
+*/
+
 int		sepia(int color)
 {
 	t_color				rgb;
