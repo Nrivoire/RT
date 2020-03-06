@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   rt.h                                             .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/19 11:56:50 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/05 12:20:41 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rt.h                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
+/*   Updated: 2020/03/06 16:06:56 by nrivoire         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef RT_H
 # define RT_H
@@ -176,6 +176,14 @@ typedef struct		s_tab_obj
 	t_vec			normale;
 }					t_tab_obj;
 
+typedef struct		s_mapping
+{
+	double			start1;
+	double			stop1;
+	double			start2;
+	double			stop2;
+}					t_mapping;
+
 /*
 ** -----------------------------POST-PROCESS----------------------------
 */
@@ -225,6 +233,8 @@ typedef struct		s_env
 /*
 ** ----------------------------------------------------------------------
 */
+
+void				create_texture_procedural(t_tab_obj *obj);
 
 void				display(t_env *v);
 t_vec				quadric_normal(t_quadric q, t_vec p, t_vec r);
