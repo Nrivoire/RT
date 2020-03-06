@@ -323,6 +323,12 @@ void				supersampling(t_env *v);
 ** --bonus_tools--
 */
 void				screenshot(t_env *v);
-void	display_stats(t_env *v);
+void			display_stats(t_env *v);
+
+
+/*
+** --menu--
+*/
+void			menu(t_env *v);
 
 #endif
