@@ -21,6 +21,7 @@
 # include "../SDL_include/SDL.h"
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
+# include "../SDL_include/SDL_mixer.h"
 //# include "ui.h"
 # include <stdio.h>
 

@@ -19,3 +19,15 @@ void			screenshot(t_env *v)
 	SDL_FreeSurface(save);
 	free(open);
 }
+/*
+void			music(t_env *v)
+{
+	Mix_Chunk		*son;
+
+	Mix_AllocateChannels(2);
+	Mix_Volume(1, MIX_MAX_VOLUME/2);
+	son = Mix_LoadWAV("star_wars_imperial_march.wav");
+	Mix_VolumeChunk(son, MIX_MAX_VOLUME/2);
+	Mix_PlayChannel(1, son, 0);
+	Mix_FreeChunk(son);
+}*/
