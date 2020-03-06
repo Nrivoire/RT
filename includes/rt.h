@@ -21,6 +21,7 @@
 # include "../SDL_include/SDL.h"
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
+# include "../SDL_include/SDL_mixer.h"
 //# include "ui.h"
 # include <stdio.h>
 
@@ -86,6 +87,7 @@ typedef struct		s_lst_obj
 	float			diffuse;
 	float			specular;
 	float			shininess;
+	int				procedural;
 	SDL_Surface		*texture;
 	struct s_lst_obj*next;
 }					t_lst_obj;
@@ -195,6 +197,15 @@ typedef struct		s_ppc
 	int				ssp;
 }					t_ppc;
 
+typedef struct		s_stats
+{
+	clock_t			current;
+	clock_t			last;
+	clock_t			frame_start;
+	double			frame;
+	int				fps;
+}					t_stats;
+
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
@@ -216,6 +227,7 @@ typedef struct		s_env
 	t_cam			cam;
 	t_tab_obj		*selected_obj;
 	t_ppc			ppc;
+	t_stats			stats;
 }					t_env;
 
 /*
@@ -314,10 +326,13 @@ void				put_icon(t_env *v);
 int					cel_shading(int color);
 int					negative(int color);
 int					sepia(int color);
-int		greyscale(int color);
-void			supersampling(t_env *v);
+int					greyscale(int color);
+void				supersampling(t_env *v);
 
-
+/*
+** --bonus_tools--
+*/
 void				screenshot(t_env *v);
+void	display_stats(t_env *v);
 
 #endif

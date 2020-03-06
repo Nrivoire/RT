@@ -96,7 +96,7 @@ void			make_texture_sphere(t_tab_obj *obj)
 	}
 }
 
-void            make_texture_cylinder(t_tab_obj *obj)
+void			make_texture_cylinder(t_tab_obj *obj)
 {
 	t_real		rx;
 	t_real		ry;
@@ -117,9 +117,9 @@ void            make_texture_cylinder(t_tab_obj *obj)
 	//printf("%f %f %f\n", ref.x, ref.y, ref.z);
 }
 
-void            make_texture_cone(t_tab_obj *obj)
+void			make_texture_cone(t_tab_obj *obj)
 {
-    
+	
 }
 
 void			generate_texture(t_tab_obj *closest)

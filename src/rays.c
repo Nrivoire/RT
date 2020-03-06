@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/06 16:07:45 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/06 16:10:04 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,5 @@ void			bouclette(t_env *v)
 		}
 		y = y + v->ppc.render_size;
 	}
+	v->stats.fps++;
 }

@@ -32,7 +32,7 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 	if (v->p.sc.filter == 0)
 		v->pixels[y * v->w + x] = get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a);
 	else if (v->p.sc.filter == 1)
-		v->pixels[y * v->w + x] = (Uint32)greyscale(get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a));
+		v->pixels[y * v->w + x] = greyscale(get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a));
 	else if (v->p.sc.filter == 2)
 		v->pixels[y * v->w + x] = sepia(get_hex_rgba(color.r * 255, color.g * 255, color.b * 255, color.a));
 	else if (v->p.sc.filter == 3)
@@ -102,7 +102,10 @@ void			display(t_env *v)
 		}
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
+		v->stats.frame_start = clock();
 		draw_pro_frame(v);
+		display_stats(v);
+		v->stats.frame = (clock() - v->stats.frame_start) / (float)CLOCKS_PER_SEC;
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);
