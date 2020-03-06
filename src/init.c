@@ -35,6 +35,8 @@ void			init_value(t_env *v)
 	v->p.sc.filter = 0;
 	v->ppc.active_rpx = 1;
 	v->ppc.ssp = 0;
+	v->stats.last = clock();
+	v->stats.fps = 0;
 	v->p.ob = NULL;
 	v->p.lg = NULL;
 }

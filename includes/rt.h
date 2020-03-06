@@ -188,6 +188,15 @@ typedef struct		s_ppc
 	int				ssp;
 }					t_ppc;
 
+typedef struct		s_stats
+{
+	clock_t			current;
+	clock_t			last;
+	clock_t			frame_start;
+	double			frame;
+	int				fps;
+}					t_stats;
+
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
@@ -209,6 +218,7 @@ typedef struct		s_env
 	t_cam			cam;
 	t_tab_obj		*selected_obj;
 	t_ppc			ppc;
+	t_stats			stats;
 }					t_env;
 
 /*
@@ -312,5 +322,6 @@ void				supersampling(t_env *v);
 ** --bonus_tools--
 */
 void				screenshot(t_env *v);
+void	display_stats(t_env *v);
 
 #endif

@@ -19,14 +19,13 @@
 NAME		=	rt
 
 #	Sources
-SRC_SUP = {events,draw_tools,parser,post_process,obj_generating}
+SRC_SUP = {events,draw_tools,parser,post_process,obj_generating,ui}
 SRC_PATH	=	src
 
 SRC_NAME	=	main.c
 SRC_NAME	+=	rays.c
 SRC_NAME	+=	usage.c
 SRC_NAME	+=	init.c
-SRC_NAME	+=	bonus_tools.c
 
 SRC_NAME	+=	events/key_event.c
 SRC_NAME	+=	events/mouse_event.c
@@ -56,6 +55,9 @@ SRC_NAME	+=	obj_generating/make_obj.c
 SRC_NAME	+=	obj_generating/create_tab_obj.c
 
 SRC_NAME	+=	closest_intersect.c
+
+SRC_NAME	+=	bonus_tools.c
+SRC_NAME	+=	ui/stats.c
 
 #	Objects
 OBJ_PATH = .objects

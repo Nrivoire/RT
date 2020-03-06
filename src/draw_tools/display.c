@@ -102,7 +102,10 @@ void			display(t_env *v)
 		}
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
+		v->stats.frame_start = clock();
 		draw_pro_frame(v);
+		display_stats(v);
+		v->stats.frame = (clock() - v->stats.frame_start) / (float)CLOCKS_PER_SEC;
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);

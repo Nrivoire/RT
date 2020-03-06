@@ -177,4 +177,5 @@ void			bouclette(t_env *v)
 		}
 		y = y + v->ppc.render_size;
 	}
+	v->stats.fps++;
 }
