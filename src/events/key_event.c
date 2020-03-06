@@ -43,9 +43,17 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 			v->ppc.render_key = 0;
 	}
 	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
+	{
+		v->ppc.render_key = 1;
 		v->cam.ori.z--;
-	if (keyboard_state[SDL_SCANCODE_KP_PLUS])
+	}
+	else if (keyboard_state[SDL_SCANCODE_KP_PLUS])
+	{
+		v->ppc.render_key = 1;
 		v->cam.ori.z++;
+	}
+	else
+		v->ppc.render_key = 0;
 	if (keyboard_state[SDL_SCANCODE_P])
 		screenshot(v);
 	if (keyboard_state[SDL_SCANCODE_C])
