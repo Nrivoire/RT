@@ -16,7 +16,7 @@ void			put_icon(t_env *v)
 {
 	SDL_Surface		*icon;
 
-	if (!(icon = IMG_Load("textures/qpupier_icon.png")))
+	if (!(icon = IMG_Load("textures/icon.png")))
 		ft_putstr("Error: Can't find the icon\n");
 	SDL_SetWindowIcon(v->win, icon);
 	SDL_FreeSurface(icon);
