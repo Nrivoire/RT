@@ -44,7 +44,9 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 static void		quit(t_env *v)
 {
 	SDL_DestroyRenderer(v->ren);
+	SDL_DestroyRenderer(v->ui.m_ren);
 	SDL_DestroyWindow(v->win);
+	SDL_DestroyWindow(v->ui.m_win);
 	SDL_Quit();
 	TTF_Quit();
 }
@@ -105,11 +107,14 @@ void			display(t_env *v)
 		v->stats.frame_start = clock();
 		draw_pro_frame(v);
 		display_stats(v);
-		//menu(v);
 		v->stats.frame = (clock() - v->stats.frame_start) / (float)CLOCKS_PER_SEC;
+		menu(v);
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
+		SDL_UpdateTexture(v->ui.m_tex, NULL, v->ui.m_pixels, sizeof(uint32_t) * v->ui.m_w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
+		SDL_RenderCopy(v->ui.m_ren, v->ui.m_tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);
+		SDL_RenderPresent(v->ui.m_ren);
 	}
 	quit(v);
 }

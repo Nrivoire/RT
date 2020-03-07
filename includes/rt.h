@@ -22,7 +22,7 @@
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
 # include "../SDL_include/SDL_mixer.h"
-//# include "ui.h"
+# include "ui.h"
 # include <stdio.h>
 
 # define SPHERE 1
@@ -210,6 +210,16 @@ typedef struct		s_stats
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
+typedef struct		s_ui
+{
+	SDL_Window		*m_win;
+	SDL_Renderer	*m_ren;
+	SDL_Texture		*m_tex;
+	Uint32			*m_pixels;
+	int				m_w;
+	int				m_h;
+}					t_ui;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -228,6 +238,7 @@ typedef struct		s_env
 	t_tab_obj		*selected_obj;
 	t_ppc			ppc;
 	t_stats			stats;
+	t_ui			ui;
 }					t_env;
 
 /*
@@ -340,5 +351,7 @@ void			display_stats(t_env *v);
 ** --menu--
 */
 void			menu(t_env *v);
+void		load_menu(t_env *v);
+void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 
 #endif

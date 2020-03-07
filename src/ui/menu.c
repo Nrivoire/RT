@@ -1,7 +1,7 @@
 #include "../includes/rt.h"
 #include "../includes/ui.h"
 
-void	menu_text(t_env *v, int x)
+void	menu_text(t_env *v)
 {
 	char	*scene;
 	char	*camera[3];
@@ -15,11 +15,11 @@ void	menu_text(t_env *v, int x)
 	camera[0] = my_strcat("pos x:  ", ori[0]);
 	camera[1] = my_strcat("pos y:  ", ori[1]);
 	camera[2] = my_strcat("pos z:  ", ori[2]);
-	put_text(v, write_text_menu("MENU", 18), x + 5, 10);
-	put_text(v, write_text_menu2(scene, 18), x + 10, 60);
-	put_text(v, write_text_menu2(camera[0], 18), x + 30, 120);
-	put_text(v, write_text_menu2(camera[1], 18), x + 30, 140);
-	put_text(v, write_text_menu2(camera[2], 18), x + 30, 160);
+	put_text(v, write_text_menu("TITRE", 18), 15, 10);
+	put_text(v, write_text_menu2(scene, 18), 30, 60);
+	put_text(v, write_text_menu2(camera[0], 18), 60, 120);
+	put_text(v, write_text_menu2(camera[1], 18), 60, 140);
+	put_text(v, write_text_menu2(camera[2], 18), 60, 160);
 	free(camera[0]);
 	free(camera[1]);
 	free(camera[2]);
@@ -29,9 +29,9 @@ void	menu_text(t_env *v, int x)
 	camera[0] = my_strcat("dir x:  ", dir[0]);
 	camera[1] = my_strcat("dir y:  ", dir[1]);
 	camera[2] = my_strcat("dir z:  ", dir[2]);
-	put_text(v, write_text_menu2(camera[0], 18), x + 200, 120);
-	put_text(v, write_text_menu2(camera[1], 18), x + 200, 140);
-	put_text(v, write_text_menu2(camera[2], 18), x + 200, 160);
+	put_text(v, write_text_menu2(camera[0], 18), 250, 120);
+	put_text(v, write_text_menu2(camera[1], 18), 250, 140);
+	put_text(v, write_text_menu2(camera[2], 18), 250, 160);
 	free(scene);
 	free(camera[0]);
 	free(camera[1]);
@@ -48,22 +48,22 @@ void	background_menu(t_env *v)
 {
 	int		size_x;
 	int		size_y;
-	int		cx;
 
-	cx = v->w - (v->w / 3);
-	size_y = 5;
-	while (++size_y < v->h - 5)
+	size_y = -1;
+	while (++size_y < v->ui.m_h)
 	{
-		size_x = v->w - (v->w / 3);
-		while (++size_x < v->w - 5)
+		size_x = -1;
+		while (++size_x < v->ui.m_w)
 		{
-			if (size_y < (v->h - 20) && size_y > (v->h - (v->h / 3)) && size_x > cx + 20 && size_x < v->w - 20)
-				v->pixels[size_y * v->w + size_x] = get_hex_menu(0, 0, 0, 255);
+			if (size_y < (v->ui.m_h - 20) && size_y > 450 && size_x > 20 && size_x < v->ui.m_w - 20)
+				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
+			// else if (size_y < (v->ui.m_h - 290) && size_y > 20 && size_x > 20 && size_x < v->ui.m_w - 20)
+			// 	v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
 			else
-				v->pixels[size_y * v->w + size_x] = get_hex_menu(255, 255, 255, 255);
+				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(255, 255, 255, 255);
 		}
 	}
-	menu_text(v, cx);
+	menu_text(v);
 }
 
 void	menu(t_env *v)

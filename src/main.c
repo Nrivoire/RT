@@ -13,6 +13,23 @@
 
 #include "../includes/rt.h"
 
+static void		init_menu(t_env *v)
+{
+	v->ui.m_h = 720;
+	v->ui.m_w = 500;
+
+	if (!(v->ui.m_win = SDL_CreateWindow("menu", SDL_WINDOWPOS_UNDEFINED,
+			SDL_WINDOWPOS_UNDEFINED, v->ui.m_w, v->ui.m_h, 0)))
+		ft_error("Could not create the window");
+	if (!(v->ui.m_ren = SDL_CreateRenderer(v->ui.m_win, -1, SDL_RENDERER_SOFTWARE)))
+		ft_error("Could not create a renderer");
+	if (!(v->ui.m_tex = SDL_CreateTexture(v->ui.m_ren, SDL_PIXELFORMAT_RGBA8888,
+			SDL_TEXTUREACCESS_STREAMING, v->ui.m_w, v->ui.m_h)))
+		ft_error("Could not create a texture");
+	if (!(v->ui.m_pixels = malloc(sizeof(uint32_t) * (v->ui.m_h * v->ui.m_w))))
+		ft_error("Pixels malloc error");
+}
+
 static void		init_sdl(t_env *v)
 {
 	if (SDL_Init(SDL_INIT_VIDEO))
@@ -27,6 +44,7 @@ static void		init_sdl(t_env *v)
 		ft_error("Could not create a texture");
 	if (!(v->pixels = malloc(sizeof(uint32_t) * (v->h * v->w))))
 		ft_error("Pixels malloc error");
+	init_menu(v);
 	if (TTF_Init() == -1)
 		ft_error("Initialisation error of TFT_Init");
 }
@@ -69,7 +87,7 @@ int				main(int argc, char **argv)
 // gtk_widget_show_all(window);
 // gtk_main();
 // return (0);
-	argc < 2 || !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
+	!ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
 	init_value(v);

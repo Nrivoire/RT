@@ -57,6 +57,22 @@ SDL_Surface		*write_text_stats(char *text, int size_font)
 	return (sur);
 }
 
+void			pixel_put_menu(t_env *v, int x, int y, t_color color)
+{
+	if (x >= v->w || y >= v->h || x < 0 || y < 0)
+		return ;
+
+	if (color.r > 1)
+		color.r = 1;
+	if (color.g > 1)
+		color.g = 1;
+	if (color.b > 1)
+		color.b = 1;
+	if (v->p.sc.filter == 0)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(color.r * 255, color.g * 255, color.b * 255, color.a);
+
+}
+
 void			put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y)
 {
 	SDL_Color	col;
@@ -72,7 +88,7 @@ void			put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y)
 			SDL_GetRGBA(get_pixel(sur, x, y),
 					sur->format, &col.r, &col.g, &col.b, &col.a);
 			if (col.a != 0)
-				pixel_put(v, x + s_x, y + s_y,
+				pixel_put_menu(v, x + s_x, y + s_y,
 						(t_color){col.r, col.g, col.b, col.a});
 		}
 	}

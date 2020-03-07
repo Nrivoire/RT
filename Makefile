@@ -60,6 +60,7 @@ SRC_NAME	+=	bonus_tools.c
 SRC_NAME	+=	ui/stats.c
 SRC_NAME	+=	ui/menu.c
 SRC_NAME	+=	ui/ui_utils.c
+SRC_NAME	+=	ui/init_menu.c
 
 #	Objects
 OBJ_PATH = .objects
