@@ -45,12 +45,12 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
 	{
 		v->ppc.render_key = 1;
-		v->cam.ori.z--;
+		v->selected_obj->pos.z -= .5;
 	}
 	else if (keyboard_state[SDL_SCANCODE_KP_PLUS])
 	{
 		v->ppc.render_key = 1;
-		v->cam.ori.z++;
+		v->selected_obj->pos.z += .5;
 	}
 	else
 		v->ppc.render_key = 0;

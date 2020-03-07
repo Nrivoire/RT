@@ -71,14 +71,14 @@ void		mouse_wheel_event(SDL_Event e, t_env *v)
 		if (e.wheel.y > 0)
 		{
 			v->ppc.render_mouse = 1;
-			v->selected_obj->pos.z += e.wheel.y * 0.2;
+			v->cam.ori.z += e.wheel.y * 0.5;
 		}
-		if (e.wheel.y < 0)
+		else if (e.wheel.y < 0)
 		{
 			v->ppc.render_mouse = 1;
-			v->selected_obj->pos.z += e.wheel.y * 0.2;
+			v->cam.ori.z += e.wheel.y * 0.5;
 		}
-		if (e.wheel.y == 0)
+		else if (e.wheel.y == 0)
 		 	v->ppc.render_mouse = 0;
 	}
 }
