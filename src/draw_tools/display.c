@@ -104,6 +104,8 @@ void			display(t_env *v)
 		}
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
+		// if (e.type == SDL_WINDOWEVENT)
+		// 	close_by_cross(v, e);   TRY TO CLOSE WITH CROSS - MULTIPLE WINDOWS
 		v->stats.frame_start = clock();
 		draw_pro_frame(v);
 		display_stats(v);

@@ -29,6 +29,7 @@ SRC_NAME	+=	init.c
 
 SRC_NAME	+=	events/key_event.c
 SRC_NAME	+=	events/mouse_event.c
+SRC_NAME	+=	events/window_event.c
 
 SRC_NAME	+=	draw_tools/get_pixel.c
 SRC_NAME	+=	draw_tools/display.c

@@ -8,7 +8,7 @@ void	menu_text(t_env *v)
 	char	*ori[3];
 	char	*dir[3];
 
-	scene = my_strcat("scene:  ./",v->file);
+	scene = my_strcat("scene :  ./",v->file);
 	ori[0] = ft_ftoa(v->cam.ori.x, 3);
 	ori[1] = ft_ftoa(v->cam.ori.y, 3);
 	ori[2] = ft_ftoa(v->cam.ori.z, 3);
@@ -57,13 +57,15 @@ void	background_menu(t_env *v)
 		{
 			if (size_y < (v->ui.m_h - 20) && size_y > 450 && size_x > 20 && size_x < v->ui.m_w - 20)
 				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
+			else if (size_y < 50 && size_y > 20 && size_x > 20 && size_x < v->ui.m_w - 20)
+				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
 			// else if (size_y < (v->ui.m_h - 290) && size_y > 20 && size_x > 20 && size_x < v->ui.m_w - 20)
 			// 	v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
 			else
 				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(255, 255, 255, 255);
 		}
 	}
-	menu_text(v);
+	//menu_text(v);
 }
 
 void	menu(t_env *v)
