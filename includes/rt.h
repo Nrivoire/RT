@@ -354,7 +354,4 @@ void			menu(t_env *v);
 void		load_menu(t_env *v);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 
-
-void		close_by_cross(t_env *v, SDL_Event e);
-
 #endif

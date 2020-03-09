@@ -13,47 +13,56 @@
 
 #include "../../includes/rt.h"
 
-int			key_event(t_env *v, const Uint8 *keyboard_state)
+static void	obj_event_z(t_env *v, const Uint8 *keyboard_state)
 {
-	if (keyboard_state[SDL_SCANCODE_ESCAPE])
-		return (1);
-	if (v->selected_obj)
-	{
-		if (keyboard_state[SDL_SCANCODE_UP])
-		{
-			v->ppc.render_key = 1;
-			v->selected_obj->pos.y += .5;
-		}
-		if (keyboard_state[SDL_SCANCODE_DOWN])
-		{
-			v->ppc.render_key = 1;
-			v->selected_obj->pos.y -= .5;
-		}
-		if (keyboard_state[SDL_SCANCODE_RIGHT])
-		{
-			v->ppc.render_key = 1;
-			v->selected_obj->pos.x += .5;
-		}
-		if (keyboard_state[SDL_SCANCODE_LEFT])
-		{
-			v->ppc.render_key = 1;
-			v->selected_obj->pos.x -= .5;
-		}
-		if (!keyboard_state[SDL_SCANCODE_LEFT] && !keyboard_state[SDL_SCANCODE_RIGHT] && !keyboard_state[SDL_SCANCODE_DOWN] && !keyboard_state[SDL_SCANCODE_UP])
-			v->ppc.render_key = 0;
-	}
 	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
 	{
 		v->ppc.render_key = 1;
 		v->selected_obj->pos.z -= .5;
 	}
-	else if (keyboard_state[SDL_SCANCODE_KP_PLUS])
+	if (keyboard_state[SDL_SCANCODE_KP_PLUS])
 	{
 		v->ppc.render_key = 1;
 		v->selected_obj->pos.z += .5;
 	}
-	else
+	if(!keyboard_state[SDL_SCANCODE_LEFT] && !keyboard_state[SDL_SCANCODE_RIGHT]\
+		&& !keyboard_state[SDL_SCANCODE_DOWN] && !keyboard_state[SDL_SCANCODE_UP]\
+		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]\
+		&& !keyboard_state[SDL_SCANCODE_KP_MINUS])
 		v->ppc.render_key = 0;
+}
+
+static void	obj_event(t_env *v, const Uint8 *keyboard_state)
+{
+	if (keyboard_state[SDL_SCANCODE_UP])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->pos.y += .5;
+	}
+	if (keyboard_state[SDL_SCANCODE_DOWN])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->pos.y -= .5;
+	}
+	if (keyboard_state[SDL_SCANCODE_RIGHT])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->pos.x += .5;
+	}
+	if (keyboard_state[SDL_SCANCODE_LEFT])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->pos.x -= .5;
+	}
+	obj_event_z(v, keyboard_state);
+}
+
+int			key_event(t_env *v, const Uint8 *keyboard_state)
+{
+	if (keyboard_state[SDL_SCANCODE_ESCAPE])
+		return (1);
+	if (v->selected_obj)
+		obj_event(v, keyboard_state);
 	if (keyboard_state[SDL_SCANCODE_P])
 		screenshot(v);
 	if (keyboard_state[SDL_SCANCODE_C])

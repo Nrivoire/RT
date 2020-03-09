@@ -22,7 +22,6 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 {
 	if (x >= v->w || y >= v->h || x < 0 || y < 0)
 		return ;
-
 	if (color.r > 1)
 		color.r = 1;
 	if (color.g > 1)
@@ -93,6 +92,14 @@ void			display(t_env *v)
 		mouse_state = SDL_GetMouseState(NULL, NULL);
 		while (SDL_PollEvent(&e))
 		{
+			if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_CLOSE)
+			{
+				if (SDL_GetWindowID(v->win) == e.window.windowID || SDL_GetWindowID(v->ui.m_win) == e.window.windowID)
+				{
+					quit(v);
+					exit(0);
+				}
+			}
 			if (e.type == SDL_KEYDOWN)
 				key_event(v, keyboard_state);
 			if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
@@ -104,8 +111,6 @@ void			display(t_env *v)
 		}
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
-		// if (e.type == SDL_WINDOWEVENT)
-		// 	close_by_cross(v, e);   TRY TO CLOSE WITH CROSS - MULTIPLE WINDOWS
 		v->stats.frame_start = clock();
 		draw_pro_frame(v);
 		display_stats(v);
