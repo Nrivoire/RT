@@ -1,67 +1,26 @@
-#include "../includes/rt.h"
-#include "../includes/ui.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ui_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/11 15:25:42 by vasalome          #+#    #+#             */
+/*   Updated: 2020/03/11 15:25:44 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
-int		get_hex_menu(int r, int g, int b, int a)
+#include "../includes/rt.h"
+
+int			get_hex_menu(int r, int g, int b, int a)
 {
 	return ((r << 24) | (g << 16) | (b << 8) | (a));
 }
 
-SDL_Surface		*write_text_menu2(char *text, int size_font)
-{
-	TTF_Font	*font;
-	SDL_Surface	*sur;
-
-	if (TTF_Init() == -1)
-		ft_error("Initialisation error of TFT_Init");
-	font = NULL;
-	font = TTF_OpenFont("./src/ui/ttf/OpenSans-Regular.ttf", size_font);
-	if (!font)
-		ft_error("font error");
-	sur = TTF_RenderText_Blended(font, text, (SDL_Color){255, 255, 255, 0});
-	TTF_CloseFont(font);
-	TTF_Quit();
-	return (sur);
-}
-
-SDL_Surface		*write_text_menu(char *text, int size_font)
-{
-	TTF_Font	*font;
-	SDL_Surface	*sur;
-
-	if (TTF_Init() == -1)
-		ft_error("Initialisation error of TFT_Init");
-	font = NULL;
-	font = TTF_OpenFont("./src/ui/ttf/OpenSans-Bold.ttf", size_font);
-	if (!font)
-		ft_error("font error");
-	sur = TTF_RenderText_Blended(font, text, (SDL_Color){255, 255, 255, 0});
-	TTF_CloseFont(font);
-	TTF_Quit();
-	return (sur);
-}
-
-SDL_Surface		*write_text_stats(char *text, int size_font)
-{
-	TTF_Font	*font;
-	SDL_Surface	*sur;
-
-	if (TTF_Init() == -1)
-		ft_error("Initialisation error of TFT_Init");
-	font = NULL;
-	font = TTF_OpenFont("./src/ui/ttf/OpenSans-Bold.ttf", size_font);
-	if (!font)
-		ft_error("font error");
-	sur = TTF_RenderText_Solid(font, text, (SDL_Color){255, 255, 255, 0});
-	TTF_CloseFont(font);
-	TTF_Quit();
-	return (sur);
-}
-
-void			pixel_put_menu(t_env *v, int x, int y, t_color color)
+void		pixel_put_menu(t_env *v, int x, int y, t_color color)
 {
 	if (x >= v->w || y >= v->h || x < 0 || y < 0)
 		return ;
-
 	if (color.r > 1)
 		color.r = 1;
 	if (color.g > 1)
@@ -69,11 +28,11 @@ void			pixel_put_menu(t_env *v, int x, int y, t_color color)
 	if (color.b > 1)
 		color.b = 1;
 	if (v->p.sc.filter == 0)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(color.r * 255, color.g * 255, color.b * 255, color.a);
-
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(color.r * 255, \
+				color.g * 255, color.b * 255, color.a);
 }
 
-void			put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y)
+void		put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y)
 {
 	SDL_Color	col;
 	int			x;

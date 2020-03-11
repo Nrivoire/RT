@@ -22,7 +22,6 @@
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
 # include "../SDL_include/SDL_mixer.h"
-# include "ui.h"
 # include <stdio.h>
 
 # define SPHERE 1
@@ -344,14 +343,22 @@ void				supersampling(t_env *v);
 ** --bonus_tools--
 */
 void				screenshot(t_env *v);
-void			display_stats(t_env *v);
+void				display_stats(t_env *v);
 
 
 /*
 ** --menu--
 */
-void			menu(t_env *v);
-void		load_menu(t_env *v);
+void				menu(t_env *v);
+void				load_menu(t_env *v);
+void				selected_sphere(t_env *v);
+void				selected_plan(t_env *v);
+void				selected_cone(t_env *v);
+void				selected_cylinder(t_env *v);
+SDL_Surface			*write_text_stats(char *text, int size_font);
+SDL_Surface			*write_text_menu(char *text, int size_font);
+SDL_Surface			*write_text_menu2(char *text, int size_font);
+int					get_hex_menu(int r, int g, int b, int a);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 
 #endif

@@ -1,5 +1,4 @@
 #include "../includes/rt.h"
-#include "../includes/ui.h"
 
 void			display_stats(t_env *v)
 {
@@ -16,8 +15,8 @@ void			display_stats(t_env *v)
 		count = v->stats.fps;
 		v->stats.fps = 0;
 	}
-	put_text(v, write_text_stats(" FPS:       ", 18), 10, 10);
-	put_text(v, write_text_stats(c_fps, 18), 60, 10);
+	put_text(v, write_text_menu2(" FPS:       ", 18), 10, 10);
+	put_text(v, write_text_menu2(c_fps, 18), 60, 10);
 	free(fps);
 	free(c_fps);
 }

@@ -1,96 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
+/*   Updated: 2020/03/11 15:21:17 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/rt.h"
-#include "../includes/ui.h"
 
-void	selected_cylinder(t_env *v)
-{
-	char	*info;
-
-	put_text(v, write_text_menu2("CYLINDER", 20), 50, 455);
-	info = ft_ftoa(v->selected_obj->radius, 3);
-	put_text(v, write_text_menu2("radius =", 20), 50, 500);
-	put_text(v, write_text_menu2(info, 20), 140, 500);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.x, 3);
-	put_text(v, write_text_menu2("pos x =", 20), 50, 530);
-	put_text(v, write_text_menu2(info, 20), 140, 530);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.y, 3);
-	put_text(v, write_text_menu2("pos y =", 20), 50, 550);
-	put_text(v, write_text_menu2(info, 20), 140, 550);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.z, 3);
-	put_text(v, write_text_menu2("pos z =", 20), 50, 570);
-	put_text(v, write_text_menu2(info, 20), 140, 570);
-	free(info);
-}
-
-void	selected_cone(t_env *v)
-{
-	char	*info;
-
-	put_text(v, write_text_menu2("CONE", 20), 50, 455);
-	info = ft_ftoa(v->selected_obj->radius, 3);
-	put_text(v, write_text_menu2("radius =", 20), 50, 500);
-	put_text(v, write_text_menu2(info, 20), 140, 500);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.x, 3);
-	put_text(v, write_text_menu2("pos x =", 20), 50, 530);
-	put_text(v, write_text_menu2(info, 20), 140, 530);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.y, 3);
-	put_text(v, write_text_menu2("pos y =", 20), 50, 550);
-	put_text(v, write_text_menu2(info, 20), 140, 550);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.z, 3);
-	put_text(v, write_text_menu2("pos z =", 20), 50, 570);
-	put_text(v, write_text_menu2(info, 20), 140, 570);
-	free(info);
-}
-
-void	selected_plan(t_env *v)
-{
-	char	*info;
-
-	put_text(v, write_text_menu2("PLAN", 20), 50, 455);
-	info = ft_ftoa(v->selected_obj->point.x, 3);
-	info = ft_ftoa(v->selected_obj->point.x, 3);
-	put_text(v, write_text_menu2("point A =", 20), 50, 530);
-	put_text(v, write_text_menu2(info, 20), 140, 530);
-	free(info);
-	info = ft_ftoa(v->selected_obj->point.y, 3);
-	put_text(v, write_text_menu2("point B =", 20), 50, 550);
-	put_text(v, write_text_menu2(info, 20), 140, 550);
-	free(info);
-	info = ft_ftoa(v->selected_obj->point.z, 3);
-	put_text(v, write_text_menu2("point C =", 20), 50, 570);
-	put_text(v, write_text_menu2(info, 20), 140, 570);
-	free(info);
-}
-
-void	selected_sphere(t_env *v)
-{
-	char	*info;
-
-	put_text(v, write_text_menu2("SPHERE", 20), 50, 455);
-	info = ft_ftoa(v->selected_obj->radius, 3);
-	put_text(v, write_text_menu2("radius =", 20), 50, 500);
-	put_text(v, write_text_menu2(info, 20), 140, 500);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.x, 3);
-	put_text(v, write_text_menu2("pos x =", 20), 50, 530);
-	put_text(v, write_text_menu2(info, 20), 140, 530);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.y, 3);
-	put_text(v, write_text_menu2("pos y =", 20), 50, 550);
-	put_text(v, write_text_menu2(info, 20), 140, 550);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.z, 3);
-	put_text(v, write_text_menu2("pos z =", 20), 50, 570);
-	put_text(v, write_text_menu2(info, 20), 140, 570);
-	free(info);
-}
-
-void	selected_menu(t_env *v)
+void		selected_menu(t_env *v)
 {
 	if (v->selected_obj)
 	{
@@ -105,92 +27,84 @@ void	selected_menu(t_env *v)
 	}
 }
 
-void	menu_text(t_env *v)
+static void	menu_text_2(t_env *v)
 {
-	char	*scene;
-	char	*camera[3];
-	char	*ori[3];
-	char	*dir[3];
+	char	*info[3];
 
-	scene = my_strcat("scene :  ./",v->file);
-	
-	ori[0] = ft_ftoa(v->cam.ori.x, 3);
-	ori[1] = ft_ftoa(v->cam.ori.y, 3);
-	ori[2] = ft_ftoa(v->cam.ori.z, 3);
-	camera[0] = my_strcat("X:  ", ori[0]);
-	camera[1] = my_strcat("Y:  ", ori[1]);
-	camera[2] = my_strcat("Z:  ", ori[2]);
-	put_text(v, write_text_menu2(scene, 18), 30, 22);
-	put_text(v, write_text_menu2(camera[0], 20), 150, 70);
-	put_text(v, write_text_menu2(camera[1], 20), 150, 105);
-	put_text(v, write_text_menu2(camera[2], 20), 150, 140);
-	free(camera[0]);
-	free(camera[1]);
-	free(camera[2]);
-
-	dir[0] = ft_ftoa(v->cam.angle_x, 3);
-	dir[1] = ft_ftoa(v->cam.angle_y, 3);
-	dir[2] = ft_ftoa(v->cam.dir.z, 3);
-	camera[0] = my_strcat("X:  ", dir[0]);
-	camera[1] = my_strcat("Y:  ", dir[1]);
-	camera[2] = my_strcat("Z:  ", dir[2]);
-	put_text(v, write_text_menu2(camera[0], 20), 320, 70);
-	put_text(v, write_text_menu2(camera[1], 20), 320, 105);
-	put_text(v, write_text_menu2(camera[2], 20), 320, 140);
-
-	free(scene);
-	free(camera[0]);
-	free(camera[1]);
-	free(camera[2]);
-	free(ori[0]);
-	free(ori[1]);
-	free(ori[2]);
-	free(dir[0]);
-	free(dir[1]);
-	free(dir[2]);
-
-	selected_menu(v);
-
+	info[0] = ft_ftoa(v->cam.angle_x, 3);
+	info[1] = ft_ftoa(v->cam.angle_y, 3);
+	info[2] = ft_ftoa(v->cam.fov, 0);
+	put_text(v, write_text_menu2("AngleX:", 20), 320, 70);
+	put_text(v, write_text_menu2(info[0], 20), 395, 70);
+	put_text(v, write_text_menu2("AngleY:", 20), 320, 105);
+	put_text(v, write_text_menu2(info[1], 20), 395, 105);
+	put_text(v, write_text_menu2("FOV:", 20), 320, 140);
+	put_text(v, write_text_menu2(info[2], 20), 370, 140);
+	free(info[0]);
+	free(info[1]);
+	free(info[2]);
 }
 
-void	base_menu(t_env *v)
+void		menu_text(t_env *v)
 {
-	int		size_x;
-	int		size_y;
+	char	*info[3];
 
-	size_y = -1;
-	while (++size_y < v->ui.m_h)
+	put_text(v, write_text_menu2("scene :", 18), 30, 22);
+	put_text(v, write_text_menu2(v->file, 18), 112, 22);
+	info[0] = ft_ftoa(v->cam.ori.x, 3);
+	info[1] = ft_ftoa(v->cam.ori.y, 3);
+	info[2] = ft_ftoa(v->cam.ori.z, 3);
+	put_text(v, write_text_menu2("X:", 20), 150, 70);
+	put_text(v, write_text_menu2(info[0], 20), 175, 70);
+	put_text(v, write_text_menu2("Y:", 20), 150, 105);
+	put_text(v, write_text_menu2(info[1], 20), 175, 105);
+	put_text(v, write_text_menu2("Z:", 20), 150, 140);
+	put_text(v, write_text_menu2(info[2], 20), 175, 140);
+	free(info[0]);
+	free(info[1]);
+	free(info[2]);
+	menu_text_2(v);
+	selected_menu(v);
+}
+
+static void	menu_2(t_env *v, int x, int y)
+{
+	if (y < (v->ui.m_h - 20) && y > 450 && x > 20 && x < v->ui.m_w - 20)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else if (y < 50 && y > 20 && x > 20 && x < v->ui.m_w - 20)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else if (y < 100 && y > 70 && x > 140 && x < v->ui.m_w - 200)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else if (y < 100 && y > 70 && x > (v->ui.m_w / 2) + 60 \
+			&& x < v->ui.m_w - 20)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else if (y < 135 && y > 105 && x > 140 && x < v->ui.m_w - 200)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else if (y < 135 && y > 105 && x > (v->ui.m_w / 2) + 60 \
+			&& x < v->ui.m_w - 20)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else if (y < 170 && y > 140 && x > 140 && x < v->ui.m_w - 200)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else if (y < 170 && y > 140 && x > (v->ui.m_w / 2) + 60 \
+			&& x < v->ui.m_w - 20)
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+	else
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(255, 255, 255, 255);
+}
+
+void		menu(t_env *v)
+{
+	int		x;
+	int		y;
+
+	y = -1;
+	while (++y < v->ui.m_h)
 	{
-		size_x = -1;
-		while (++size_x < v->ui.m_w)
+		x = -1;
+		while (++x < v->ui.m_w)
 		{
-			if (size_y < (v->ui.m_h - 20) && size_y > 450 && size_x > 20 && size_x < v->ui.m_w - 20)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else if (size_y < 50 && size_y > 20 && size_x > 20 && size_x < v->ui.m_w - 20)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else if (size_y < 100 && size_y > 70 && size_x > 140 && size_x < v->ui.m_w - 200)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else if (size_y < 100 && size_y > 70 && size_x > (v->ui.m_w / 2) + 60 && size_x < v->ui.m_w - 20)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else if (size_y < 135 && size_y > 105 && size_x > 140 && size_x < v->ui.m_w - 200)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else if (size_y < 135 && size_y > 105 && size_x > (v->ui.m_w / 2) + 60 && size_x < v->ui.m_w - 20)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else if (size_y < 170 && size_y > 140 && size_x > 140 && size_x < v->ui.m_w - 200)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else if (size_y < 170 && size_y > 140 && size_x > (v->ui.m_w / 2) + 60 && size_x < v->ui.m_w - 20)
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			// else if (size_y < (v->ui.m_h - 290) && size_y > 20 && size_x > 20 && size_x < v->ui.m_w - 20)
-			// 	v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(0, 0, 0, 255);
-			else
-				v->ui.m_pixels[size_y * v->ui.m_w + size_x] = get_hex_menu(255, 255, 255, 255);
+			menu_2(v, x, y);
 		}
 	}
 	menu_text(v);
-}
-
-void	menu(t_env *v)
-{
-	base_menu(v);
-
 }

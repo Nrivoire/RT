@@ -56,22 +56,22 @@ SRC_NAME	+=	obj_generating/create_tab_obj.c
 
 SRC_NAME	+=	closest_intersect.c
 
-SRC_NAME	+=	bonus_tools.c
-SRC_NAME	+=	ui/stats.c
 SRC_NAME	+=	ui/menu.c
+SRC_NAME	+=	ui/menu_selected.c
+SRC_NAME	+=	ui/write_text_menu.c
 SRC_NAME	+=	ui/ui_utils.c
-SRC_NAME	+=	ui/init_menu.c
+SRC_NAME	+=	ui/stats.c
+SRC_NAME	+=	bonus_tools.c
 
 #	Objects
-OBJ_PATH = .objects
-OBJ_NAME = $(SRC_NAME:.c=.o)
-OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+OBJ_PATH	=	.objects
+OBJ_NAME	=	$(SRC_NAME:.c=.o)
+OBJ			=	$(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 #	Includes
 INC_PATH	=	includes
 INC_NAME	=	rt.h
 INC_NAME	+=	pp.h
-INC_NAME	+=	ui.h
 INC			=	$(addprefix $(INC_PATH)/,$(INC_NAME))
 
 CPPFLAGS	=	-I $(INC_PATH)
@@ -88,7 +88,7 @@ INC_SDL		+=	-I ./frameworks/SDL2_image.framework/Versions/A/Headers
 INC_SDL		+=	-I ./frameworks/SDL2_net.framework/Headers
 INC_SDL		+=	-F ./frameworks
 FRAMEWORKSDIR := ./frameworks
-SDL 		= -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR)
+SDL 		=	-F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR)
 
 #	Compiler
 CC			=	clang
