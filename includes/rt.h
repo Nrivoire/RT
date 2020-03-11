@@ -22,7 +22,6 @@
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
 # include "../SDL_include/SDL_mixer.h"
-//# include "ui.h"
 # include <stdio.h>
 
 # define SPHERE 1
@@ -225,6 +224,16 @@ typedef struct		s_noise
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
+typedef struct		s_ui
+{
+	SDL_Window		*m_win;
+	SDL_Renderer	*m_ren;
+	SDL_Texture		*m_tex;
+	Uint32			*m_pixels;
+	int				m_w;
+	int				m_h;
+}					t_ui;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -243,6 +252,7 @@ typedef struct		s_env
 	t_tab_obj		*selected_obj;
 	t_ppc			ppc;
 	t_stats			stats;
+	t_ui			ui;
 }					t_env;
 
 /*
@@ -352,6 +362,22 @@ void				supersampling(t_env *v);
 ** --bonus_tools--
 */
 void				screenshot(t_env *v);
-void	display_stats(t_env *v);
+void				display_stats(t_env *v);
+
+
+/*
+** --menu--
+*/
+void				menu(t_env *v);
+void				load_menu(t_env *v);
+void				selected_sphere(t_env *v);
+void				selected_plan(t_env *v);
+void				selected_cone(t_env *v);
+void				selected_cylinder(t_env *v);
+SDL_Surface			*write_text_stats(char *text, int size_font);
+SDL_Surface			*write_text_menu(char *text, int size_font);
+SDL_Surface			*write_text_menu2(char *text, int size_font);
+int					get_hex_menu(int r, int g, int b, int a);
+void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 
 #endif

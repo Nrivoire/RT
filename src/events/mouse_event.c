@@ -65,20 +65,11 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 
 void		mouse_wheel_event(SDL_Event e, t_env *v)
 {
-	if (v->selected_obj)
+	if (e.wheel.y != 0)
 	{
-		
-		if (e.wheel.y > 0)
-		{
-			v->ppc.render_mouse = 1;
-			v->selected_obj->pos.z += e.wheel.y * 0.2;
-		}
-		if (e.wheel.y < 0)
-		{
-			v->ppc.render_mouse = 1;
-			v->selected_obj->pos.z += e.wheel.y * 0.2;
-		}
-		if (e.wheel.y == 0)
-		 	v->ppc.render_mouse = 0;
+		v->ppc.render_mouse = 1;
+		v->cam.ori.z -= e.wheel.y * 0.1;
 	}
+	else
+		v->ppc.render_mouse = 0;
 }

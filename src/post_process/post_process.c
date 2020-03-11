@@ -63,9 +63,3 @@ void			supersampling(t_env *v)
 		}
 	}
 }
-
-/*
-** 
-*/
-
-// motion blur

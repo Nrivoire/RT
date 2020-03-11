@@ -22,7 +22,6 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 {
 	if (x >= v->w || y >= v->h || x < 0 || y < 0)
 		return ;
-
 	if (color.r > 1)
 		color.r = 1;
 	if (color.g > 1)
@@ -44,7 +43,9 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 static void		quit(t_env *v)
 {
 	SDL_DestroyRenderer(v->ren);
+	SDL_DestroyRenderer(v->ui.m_ren);
 	SDL_DestroyWindow(v->win);
+	SDL_DestroyWindow(v->ui.m_win);
 	SDL_Quit();
 	TTF_Quit();
 }
@@ -91,6 +92,14 @@ void			display(t_env *v)
 		mouse_state = SDL_GetMouseState(NULL, NULL);
 		while (SDL_PollEvent(&e))
 		{
+			if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_CLOSE)
+			{
+				if (SDL_GetWindowID(v->win) == e.window.windowID || SDL_GetWindowID(v->ui.m_win) == e.window.windowID)
+				{
+					quit(v);
+					exit(0);
+				}
+			}
 			if (e.type == SDL_KEYDOWN)
 				key_event(v, keyboard_state);
 			if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
@@ -106,9 +115,13 @@ void			display(t_env *v)
 		draw_pro_frame(v);
 		display_stats(v);
 		v->stats.frame = (clock() - v->stats.frame_start) / (float)CLOCKS_PER_SEC;
+		menu(v);
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);
+		SDL_UpdateTexture(v->ui.m_tex, NULL, v->ui.m_pixels, sizeof(uint32_t) * v->ui.m_w);
 		SDL_RenderCopy(v->ren, v->tex, NULL, NULL);
+		SDL_RenderCopy(v->ui.m_ren, v->ui.m_tex, NULL, NULL);
 		SDL_RenderPresent(v->ren);
+		SDL_RenderPresent(v->ui.m_ren);
 	}
 	quit(v);
 }
