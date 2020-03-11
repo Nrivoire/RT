@@ -6,10 +6,9 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/07 18:34:53 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 19:24:18 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/rt.h"
 

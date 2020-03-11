@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/03/06 16:13:09 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/03/11 19:25:43 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@
 NAME		=	rt
 
 #	Sources
-SRC_SUP		=	{events,draw_tools,parser,post_process,obj_generating,ui}
+SRC_SUP		=	{events,draw_tools,parser,post_process,obj_generating,ui,procedural_texture}
 SRC_PATH	=	src
 
 SRC_NAME	=	main.c
@@ -54,8 +54,10 @@ SRC_NAME	+=	obj_generating/inter_ray_quadric.c
 SRC_NAME	+=	obj_generating/make_obj.c
 SRC_NAME	+=	obj_generating/create_tab_obj.c
 
+SRC_NAME	+=	procedural_texture/noise.c
+SRC_NAME	+=	procedural_texture/perlin_noise.c
+
 SRC_NAME	+=	closest_intersect.c
-SRC_NAME	+=	perlin_noise.c
 
 SRC_NAME	+=	ui/menu.c
 SRC_NAME	+=	ui/menu_selected.c
