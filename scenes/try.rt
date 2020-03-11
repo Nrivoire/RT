@@ -1,5 +1,5 @@
 scene{
-	ambient-light= {0.2, 0.2, 0.2}
+	ambient-light= {0.5, 0.5, 0.5}
 }
 
 camera{
@@ -19,7 +19,7 @@ object{
 	type= SPHERE
 	radius= 2.0
 	pos= {-5, 1, 1}
-	color= {0, 255, 255}
+	color= {103, 76, 61}
 	reflect= 0
 	refract= 0
 	transparency= 0
@@ -28,12 +28,13 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
+	texture-procedural= 1
 }
 
 # object{
 # 	type= SPHERE
-# 	radius= 6.0
-# 	pos= {5, 15, 1}
+# 	radius= 2
+# 	pos= {0, 0, 0}
 # 	color= {255, 255, 255}
 # 	reflect= 0
 # 	refract= 0
@@ -43,7 +44,7 @@ object{
 # 	diffuse= 0
 # 	specular= 0
 # 	shininess= 0
-# 	texture= "./textures/8k_sun.jpg"
+# 	texture= "./textures/brick.jpg"
 # }
 
 # object{

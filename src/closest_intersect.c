@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   closest_intersect.c                              .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/03/02 19:31:41 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/03 11:47:23 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   closest_intersect.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/02 19:31:41 by nrivoire          #+#    #+#             */
+/*   Updated: 2020/03/06 16:11:17 by nrivoire         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/rt.h"
 
@@ -98,6 +98,7 @@ t_tab_obj		make_closest(t_tab_obj p, t_vec point, float dist, int i)
 	closest.dist = dist;
 	closest.i = i;
 	closest.q = p.q;
+	closest.procedural = p.procedural;
 	return (closest);
 }
 

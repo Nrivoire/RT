@@ -1,15 +1,15 @@
 # **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    Makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2020/02/14 19:04:17 by nrivoire     #+#   ##    ##    #+#        #
-#    Updated: 2020/03/05 10:42:16 by nrivoire    ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
+#    Updated: 2020/03/06 16:13:09 by nrivoire         ###   ########lyon.fr    #
+#                                                                              #
 # **************************************************************************** #
+
 
 #################
 ##  VARIABLES  ##
@@ -55,6 +55,7 @@ SRC_NAME	+=	obj_generating/make_obj.c
 SRC_NAME	+=	obj_generating/create_tab_obj.c
 
 SRC_NAME	+=	closest_intersect.c
+SRC_NAME	+=	perlin_noise.c
 
 SRC_NAME	+=	bonus_tools.c
 SRC_NAME	+=	ui/stats.c

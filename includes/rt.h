@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/06 16:06:56 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 19:10:34 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ typedef struct		s_tab_obj
 	float			diffuse;
 	float			specular;
 	float			shininess;
+	int				procedural;
 	SDL_Surface		*texture;
 	t_quadric		q;
 	t_vec			point;
@@ -207,6 +208,20 @@ typedef struct		s_stats
 }					t_stats;
 
 /*
+** ---------------------------------PERLIN--------------------------------
+*/
+
+typedef struct		s_noise
+{
+	int				xi;
+	int				yi;
+	int				zi;
+	float			u;
+	float			v;
+	float			w;
+}					t_noise;
+
+/*
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
@@ -233,8 +248,6 @@ typedef struct		s_env
 /*
 ** ----------------------------------------------------------------------
 */
-
-void				create_texture_procedural(t_tab_obj *obj);
 
 void				display(t_env *v);
 t_vec				quadric_normal(t_quadric q, t_vec p, t_vec r);
@@ -273,6 +286,12 @@ void				make_texture_sphere(t_tab_obj *obj);
 void				make_texture_plan(t_tab_obj *obj);
 void            	make_texture_cone(t_tab_obj *obj);
 void    	        make_texture_cylindre(t_tab_obj *obj);
+
+/*
+** --procedural_textures--
+*/
+float				noise(float x, float y, float z);
+void				create_texture_procedural(t_tab_obj *obj);
 
 /*
 ** --rays--
