@@ -29,7 +29,7 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture-procedural= 1
+	texture= "./textures/brick.jpg"
 }
 
 # object{
@@ -46,24 +46,4 @@ object{
 # 	specular= 0
 # 	shininess= 0
 # 	texture= "./textures/brick.jpg"
-# }
-
-# object{
-# 	type= PLAN
-# 	point_a= {0, -0.78, 10}
-# 	point_b= {10, -0.8, -10}
-# 	point_c= {-10, -0.78, 10}
-# 	#point_a= {3.72, -7.13, -6}
-# 	#point_b= {-1.16, 0.18, 9}
-# 	#point_c= {-4.5, -2.59, 9}
-# 	color= {255, 255, 255}
-# 	reflect= 0
-# 	refract= 0
-# 	transparency= 0
-# 	absorbtion= 0
-# 	ambient= 0
-# 	diffuse= 0
-# 	specular= 0
-# 	shininess= 0
-# 	texture= ""
 # }

@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   mouse_event.c                                    .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 17:58:38 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/02 19:33:48 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse_event.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
+/*   Updated: 2020/03/12 20:06:44 by nrivoire         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/rt.h"
@@ -47,7 +46,8 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 	{
 		if (e.button.button == SDL_BUTTON_LEFT)
 		{
-			if (closest_intersect(v, create_ray(v, e.button.x, e.button.y), &tmp))
+			if (closest_intersect(v, create_ray(v, e.button.x, e.button.y),
+					&tmp))
 			{
 				if (v->selected_obj && v->selected_obj->i == tmp.i)
 					v->selected_obj = NULL;

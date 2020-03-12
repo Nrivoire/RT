@@ -6,10 +6,9 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/11 19:10:34 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 20:04:34 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef RT_H
 # define RT_H
@@ -271,6 +270,7 @@ int					inter_ray_quadric(t_ray r, t_quadric q,
 /*
 ** --draw_tools--
 */
+void				clear_pixels(t_env *v);
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_color color);
 
@@ -279,7 +279,8 @@ void				pixel_put(t_env *v, int x, int y, t_color color);
 */
 void				button_down(SDL_Event e, t_env *v);
 void				mouse_button_event(SDL_Event event, t_env *v);
-void				mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state);
+void				mouse_motion_event(SDL_Event event, t_env *v,
+		uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
 
@@ -291,15 +292,14 @@ t_quadric			make_plan(t_vec a, t_vec b, t_vec c);
 t_quadric			make_cylinder(t_vec a, t_vec v, float r);
 t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 
-
 /*
 ** --textures--
 */
 void				generate_texture(t_tab_obj *closest);
 void				make_texture_sphere(t_tab_obj *obj);
 void				make_texture_plan(t_tab_obj *obj);
-void            	make_texture_cone(t_tab_obj *obj);
-void    	        make_texture_cylindre(t_tab_obj *obj);
+void				make_texture_cone(t_tab_obj *obj);
+void				make_texture_cylindre(t_tab_obj *obj);
 
 /*
 ** --procedural_textures--
@@ -367,7 +367,6 @@ void				supersampling(t_env *v);
 */
 void				screenshot(t_env *v);
 void				display_stats(t_env *v);
-
 
 /*
 ** --menu--

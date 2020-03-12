@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   key_event.c                                      .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 18:05:31 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/27 19:00:50 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_event.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
+/*   Updated: 2020/03/12 20:06:26 by nrivoire         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/rt.h"
@@ -25,9 +24,11 @@ static void	obj_event_z(t_env *v, const Uint8 *keyboard_state)
 		v->ppc.render_key = 1;
 		v->selected_obj->pos.z += .5;
 	}
-	if(!keyboard_state[SDL_SCANCODE_LEFT] && !keyboard_state[SDL_SCANCODE_RIGHT]\
-		&& !keyboard_state[SDL_SCANCODE_DOWN] && !keyboard_state[SDL_SCANCODE_UP]\
-		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]\
+	if (!keyboard_state[SDL_SCANCODE_LEFT]
+		&& !keyboard_state[SDL_SCANCODE_RIGHT]
+		&& !keyboard_state[SDL_SCANCODE_DOWN]
+		&& !keyboard_state[SDL_SCANCODE_UP]
+		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
 		&& !keyboard_state[SDL_SCANCODE_KP_MINUS])
 		v->ppc.render_key = 0;
 }

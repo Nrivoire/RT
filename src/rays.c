@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/09 12:23:55 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 19:54:54 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,24 @@ t_ray				create_ray(t_env *v, int x, int y)
 	return (ray);
 }
 
-float			diffuse_light(t_env *v, t_tab_obj px, t_vec pos_light)
+float				diffuse_light(t_env *v, t_tab_obj px, t_vec pos_light)
 {
-	float		dot;
-	t_vec		light;
+	float			dot;
+	t_vec			light;
 
 	light = vec_normalize(vec_sub(pos_light, px.point));
 	dot = vec_scale_product(light, px.normale);
 	return (dot);
 }
 
-void			calc_light(t_env *v, t_tab_obj closest, t_color *px_color)
+void				calc_light(t_env *v, t_tab_obj closest, t_color *px_color)
 {
-	t_lst_lgt	*tmp;
-	float		dot_diffuse_light;
+	t_lst_lgt		*tmp;
+	float			dot_diffuse_light;
+	float			intensity;
 
 	dot_diffuse_light = 0;
-	float intensity = 0;
+	intensity = 0;
 	tmp = v->p.lg;
 	while (tmp)
 	{
@@ -67,7 +68,7 @@ void			calc_light(t_env *v, t_tab_obj closest, t_color *px_color)
 	}
 }
 
-static void		big_pixel(t_env *v, int x, int y, t_color px_color)
+static void			big_pixel(t_env *v, int x, int y, t_color px_color)
 {
 	pixel_put(v, x, y, px_color);
 	pixel_put(v, x, y + 1, px_color);
@@ -87,13 +88,13 @@ static void		big_pixel(t_env *v, int x, int y, t_color px_color)
 	pixel_put(v, x + 3, y + 3, px_color);
 }
 
-void			bouclette(t_env *v)
+void				bouclette(t_env *v)
 {
-	int			x;
-	int			y;
-	t_ray		ray;
-	t_tab_obj	closest;
-	t_color		px_color;
+	int				x;
+	int				y;
+	t_ray			ray;
+	t_tab_obj		closest;
+	t_color			px_color;
 
 	y = 0;
 	while (y <= v->h)
@@ -107,10 +108,9 @@ void			bouclette(t_env *v)
 				px_color = (t_color) {0, 0, 0, 255};
 				if (closest.texture)
 					generate_texture(&closest);
-				if (closest.procedural == 1)
-				{
+				if (closest.procedural == PERLIN || closest.procedural == WOOD
+						|| closest.procedural == MARBLE)
 					create_texture_procedural(&closest);
-				}
 				calc_light(v, closest, &px_color);
 				if (v->ppc.render_size == 1)
 					pixel_put(v, x, y, px_color);
