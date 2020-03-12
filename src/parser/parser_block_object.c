@@ -16,6 +16,16 @@
 ** Parse the values ​​of the objects in the file.
 */
 
+static void		parse_tex_pro(char *tmp, t_lst_obj *content, t_file *file)
+{
+	if (!ft_strncmp(tmp, "\ttexture-procedural=", 20))
+	{
+		ft_strstr(tmp, "PERLIN") ? content->procedural = PERLIN : 0;
+		ft_strstr(tmp, "WOOD") ? content->procedural = WOOD : 0;
+		ft_strstr(tmp, "MARBLE") ? content->procedural = MARBLE : 0;
+	}
+}
+
 static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 {
 	int		i;
@@ -40,8 +50,7 @@ static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 			ft_strdel(&tex_path[i--]);
 		free(tex_path);
 	}
-	else if (!ft_strncmp(tmp, "\ttexture-procedural=", 20))
-		content->procedural = parse_int_value(tmp);
+	parse_tex_pro(tmp, content, file);
 }
 
 static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
@@ -67,9 +76,19 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 	parse_texture_obj(tmp, c, f);
 }
 
-static void		parse_point_plan(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
+static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
-	if (!ft_strncmp(tmp, "\tpoint_a=", 9))
+	if (!ft_strncmp(tmp, "\tpos=", 5))
+	{
+		parse_xyz(tmp, v, f);
+		c->pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+	}
+	else if (!ft_strncmp(tmp, "\tdir=", 5))
+	{
+		parse_xyz(tmp, v, f);
+		c->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+	}
+	else if (!ft_strncmp(tmp, "\tpoint_a=", 9))
 	{
 		parse_xyz(tmp, v, f);
 		c->a = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
@@ -83,20 +102,6 @@ static void		parse_point_plan(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 	{
 		parse_xyz(tmp, v, f);
 		c->c = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
-	}
-}
-
-static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
-{
-	if (!ft_strncmp(tmp, "\tpos=", 5))
-	{
-		parse_xyz(tmp, v, f);
-		c->pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
-	}
-	else if (!ft_strncmp(tmp, "\tdir=", 5))
-	{
-		parse_xyz(tmp, v, f);
-		c->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 }
 
@@ -121,7 +126,6 @@ void			parse_obj(t_env *v, t_file *file)
 		else if (!ft_strncmp(tmp, "\tradius=", 8))
 			content.radius = parse_value(tmp);
 		parse_xyz_obj(v, tmp, &content, file);
-		parse_point_plan(v, tmp, &content, file);
 		parse_material_obj(v, tmp, &content, file);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
