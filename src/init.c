@@ -46,10 +46,8 @@ void			scene_value(t_env *v)
 	v->cam.fov = v->p.cam.fov;
 	v->cam.ori = v->p.cam.pos;
 	v->cam.dir = v->p.cam.dir;
-}
-
-void			restart_values(t_env *v)
-{
-	init_value(v);
-	scene_value(v);
+	v->cam.angle_x = 0;
+	v->cam.angle_y = 0;
+	v->cam.fov_x = tan(v->cam.fov * M_PI / 180 * 0.5);
+	v->cam.fov_y = -tan(v->h * v->cam.fov / v->w * M_PI / 180 * 0.5);
 }

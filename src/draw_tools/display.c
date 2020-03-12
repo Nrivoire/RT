@@ -108,7 +108,6 @@ void			display(t_env *v)
 			break ;
 		v->stats.frame_start = clock();
 		draw_pro_frame(v);
-		display_stats(v);
 		v->stats.frame = (clock() - v->stats.frame_start) / (float)CLOCKS_PER_SEC;
 		menu(v);
 		SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);

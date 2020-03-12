@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stats.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/12 18:12:27 by vasalome          #+#    #+#             */
+/*   Updated: 2020/03/12 18:12:30 by vasalome         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/rt.h"
 
 void			display_stats(t_env *v)
 {
 	static char	*fps;
 	static int	count = 0;
-	char		*c_fps = ft_itoa(count);
+	char		*c_fps;
 
 	v->stats.current = clock();
 	fps = NULL;
+	c_fps = ft_itoa(count);
 	if (v->stats.current - v->stats.last >= CLOCKS_PER_SEC)
 	{
 		v->stats.last = v->stats.current;
@@ -15,8 +28,8 @@ void			display_stats(t_env *v)
 		count = v->stats.fps;
 		v->stats.fps = 0;
 	}
-	put_text(v, write_text_menu2(" FPS:       ", 18), 10, 10);
-	put_text(v, write_text_menu2(c_fps, 18), 60, 10);
+	put_text(v, write_text_menu(" FPS:       ", 18), 30, 70);
+	put_text(v, write_text_menu(c_fps, 18), 80, 70);
 	free(fps);
 	free(c_fps);
 }

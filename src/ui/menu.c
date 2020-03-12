@@ -64,6 +64,7 @@ void		menu_text(t_env *v)
 	free(info[1]);
 	free(info[2]);
 	menu_text_2(v);
+	display_stats(v);
 	selected_menu(v);
 }
 

@@ -40,7 +40,7 @@ SDL_Surface		*write_text_menu(char *text, int size_font)
 	font = TTF_OpenFont("./src/ui/ttf/OpenSans-Bold.ttf", size_font);
 	if (!font)
 		ft_error("font error");
-	sur = TTF_RenderText_Blended(font, text, (SDL_Color){255, 255, 255, 0});
+	sur = TTF_RenderText_Blended(font, text, (SDL_Color){0, 0, 0, 0});
 	TTF_CloseFont(font);
 	TTF_Quit();
 	return (sur);

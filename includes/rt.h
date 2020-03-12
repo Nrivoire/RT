@@ -33,6 +33,10 @@
 # define DIRECTIONAL 11
 # define SPOT 12
 
+# define PERLIN 1
+# define WOOD 2
+# define MARBLE 3
+
 /*
 ** -----------------------------PARSING----------------------------
 */
