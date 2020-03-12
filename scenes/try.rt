@@ -29,7 +29,7 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture-procedural= WOOD
+	texture= "./textures/brick.jpg"
 }
 
 # object{

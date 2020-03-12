@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/03/11 19:25:43 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/03/12 20:27:32 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@
 NAME		=	rt
 
 #	Sources
-SRC_SUP		=	{events,draw_tools,parser,post_process,obj_generating,ui,procedural_texture}
+SRC_SUP		=	{events,draw_tools,parser,post_process,obj_generating,ui,texture}
 SRC_PATH	=	src
 
 SRC_NAME	=	main.c
@@ -32,6 +32,7 @@ SRC_NAME	+=	events/mouse_event.c
 
 SRC_NAME	+=	draw_tools/get_pixel.c
 SRC_NAME	+=	draw_tools/display.c
+SRC_NAME	+=	draw_tools/pixel_put.c
 
 SRC_NAME	+=	parser/parser.c
 SRC_NAME	+=	parser/parser_init_value.c
@@ -49,13 +50,15 @@ SRC_NAME	+=	post_process/greyscale.c
 SRC_NAME	+=	post_process/sepia.c
 SRC_NAME	+=	post_process/post_process.c
 
-SRC_NAME	+=	obj_generating/put_texture_on_surface.c
 SRC_NAME	+=	obj_generating/inter_ray_quadric.c
 SRC_NAME	+=	obj_generating/make_obj.c
 SRC_NAME	+=	obj_generating/create_tab_obj.c
 
-SRC_NAME	+=	procedural_texture/noise.c
-SRC_NAME	+=	procedural_texture/perlin_noise.c
+SRC_NAME	+=	texture/noise.c
+SRC_NAME	+=	texture/perlin_noise.c
+SRC_NAME	+=	texture/put_texture_on_surface.c
+SRC_NAME	+=	texture/make_texture_plan.c
+SRC_NAME	+=	texture/make_texture_sphere.c
 
 SRC_NAME	+=	closest_intersect.c
 

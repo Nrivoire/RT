@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 19:29:54 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 20:04:34 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,7 @@ int					inter_ray_quadric(t_ray r, t_quadric q,
 /*
 ** --draw_tools--
 */
+void				clear_pixels(t_env *v);
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_color color);
 

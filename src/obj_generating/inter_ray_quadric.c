@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   inter_ray_quadric.c                              .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/13 12:31:29 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/21 16:14:05 by qpupier     ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inter_ray_quadric.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/13 12:31:29 by nrivoire          #+#    #+#             */
+/*   Updated: 2020/03/12 20:09:08 by nrivoire         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
@@ -17,7 +16,7 @@ static int	inter_ray_quadric_create_equ(t_ray r, t_quadric q, 	\
 		t_sys_sol_1var_deg2 *sol)
 {
 	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)				\
-			{														\
+	{																\
 				.a = q.a * r.d.x * r.d.x 							\
 					+ q.b * r.d.y * r.d.y 							\
 					+ q.c * r.d.z * r.d.z 							\
@@ -39,11 +38,11 @@ static int	inter_ray_quadric_create_equ(t_ray r, t_quadric q, 	\
 					+ q.f * r.o.y * r.o.z 							\
 					+ q.g * r.o.x + q.h * r.o.y + q.i * r.o.z 		\
 					+ q.j											\
-			}, 														\
-			sol));
+	}, 																\
+	sol));
 }
 
-int		inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
+int			inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
 {
 	t_sys_sol_1var_deg2	res;
 	int					inter;
