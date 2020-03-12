@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/11 19:33:14 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 13:14:28 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ void		create_texture_procedural(t_tab_obj *obj)
 	//obj->normale.x = obj->normale.x * t.x;
 	//obj->normale.y = obj->normale.y * t.y;
 	//obj->normale.z = obj->normale.z * t.z;
-	time = perlin_noise(3, 12, 12, *obj);
+	time = perlin_noise(1, 7, 2, *obj);
+	//if (obj->texture == WOOD)
+	//	time = (1. + sin((time / 2.) * 150.)) / 2;
+	//if (obj->texture == MARBRE)
+	//time = sin(obj->normale.x + 1. / time);
 	if (time >= 0)
 		obj->color = (t_color){obj->color.r * time, obj->color.g * time, obj->color.b * time, 255};
 }

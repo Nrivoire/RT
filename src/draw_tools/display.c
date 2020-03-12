@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   display.c                                        .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 17:54:32 by nrivoire     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/05 13:43:57 by nrivoire    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/10 17:54:32 by nrivoire          #+#    #+#             */
+/*   Updated: 2020/03/12 10:19:28 by nrivoire         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/rt.h"
 
@@ -92,14 +92,6 @@ void			display(t_env *v)
 		mouse_state = SDL_GetMouseState(NULL, NULL);
 		while (SDL_PollEvent(&e))
 		{
-			if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_CLOSE)
-			{
-				if (SDL_GetWindowID(v->win) == e.window.windowID || SDL_GetWindowID(v->ui.m_win) == e.window.windowID)
-				{
-					quit(v);
-					exit(0);
-				}
-			}
 			if (e.type == SDL_KEYDOWN)
 				key_event(v, keyboard_state);
 			if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
@@ -109,6 +101,9 @@ void			display(t_env *v)
 			if (e.type == SDL_MOUSEWHEEL)
 				mouse_wheel_event(e, v);
 		}
+		if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_CLOSE)
+			if (SDL_GetWindowID(v->win) == e.window.windowID || SDL_GetWindowID(v->ui.m_win) == e.window.windowID)
+				break;
 		if (e.type == SDL_QUIT || key_event(v, keyboard_state))
 			break ;
 		v->stats.frame_start = clock();

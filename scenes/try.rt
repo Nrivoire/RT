@@ -19,7 +19,8 @@ object{
 	type= SPHERE
 	radius= 2.0
 	pos= {-5, 1, 1}
-	color= {103, 76, 61}
+	#color= {103, 76, 61}
+	color= {255, 255, 255}
 	reflect= 0
 	refract= 0
 	transparency= 0
