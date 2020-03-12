@@ -52,8 +52,8 @@ Partie Optionnelle
 
 		-	Normal	--->	"impression d'avoir des vaguelettes"	[ ]
 		-	Couleur	--->	"Le Damier"								[ ]
-		-	Couleur	--->	"Texture Procedurale"					[/]
-		-	Couleur	--->	"Bruit de Perlin"						[/]
+		-	Couleur	--->	"Texture Procedurale"					[X]
+		-	Couleur	--->	"Bruit de Perlin"						[X]
 
 	- Lumiere Directe												[ ]
 
@@ -115,7 +115,7 @@ Partie Optionnelle
 		-	Interface Chiade en GTK, QT ...							[ ]
 		-	Modifie les variables de la scene						[ ]
 		-	Paramettre plusieurs rendus								[ ]
-		-	Ajoute des Objets dans la scene							[ ]
+		-	Ajoute des Objets dans la scene							[/]
 
 	- Travaille en Groupe											[X]
 

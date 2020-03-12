@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/09 12:23:55 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 19:06:22 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,9 @@ void			bouclette(t_env *v)
 				px_color = (t_color) {0, 0, 0, 255};
 				if (closest.texture)
 					generate_texture(&closest);
-				if (closest.procedural == 1)
-				{
+				if (closest.procedural == PERLIN || closest.procedural == WOOD
+						|| closest.procedural == MARBLE)
 					create_texture_procedural(&closest);
-				}
 				calc_light(v, closest, &px_color);
 				if (v->ppc.render_size == 1)
 					pixel_put(v, x, y, px_color);
