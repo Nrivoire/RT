@@ -105,7 +105,9 @@ void		menu(t_env *v)
 		while (++x < v->ui.m_w)
 		{
 			menu_2(v, x, y);
+			menu_bouton(v, x, y);
 		}
 	}
 	menu_text(v);
+	menu_bouton_text(v);
 }

@@ -374,6 +374,8 @@ void				display_stats(t_env *v);
 */
 void				menu(t_env *v);
 void				load_menu(t_env *v);
+void				menu_bouton(t_env *v, int x, int y);
+void				menu_bouton_text(t_env *v);
 void				selected_sphere(t_env *v);
 void				selected_plan(t_env *v);
 void				selected_cone(t_env *v);
