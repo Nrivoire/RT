@@ -49,9 +49,9 @@ object{
 
 object{
 	type= CYLINDER
-	radius= 0.8
+	radius= 1.2
 	pos= {-1, 0, 0}
-	dir= {1, 1, 0}
+	dir= {1, 1, -1}
 	color= 0x00FF00FF
 	reflect= 0
 	refract= 0

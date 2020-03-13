@@ -81,13 +81,14 @@ t_quadric		make_cylinder(t_vec a, t_vec v, float r)
 	res.f = -2 * v.y * v.z;
 	res.g = 2 * (v.z * (v.x * a.z - v.z * a.x) + v.y * (v.x * a.y - v.y * a.x));
 	res.h = 2 * (v.x * (v.y * a.x - v.x * a.y) + v.z * (v.y * a.z - v.z * a.y));
-	res.i = 2 * (v.x * (v.z * a.z - v.x * a.z) + v.y * (v.z * a.y - v.y * a.z));
-	res.j = v.z * v.z * a.y * a.y + v.z * v.z * a.x * a.x +
-			v.x * v.x * a.z * a.z + v.x * v.x * a.y * a.y +
-			v.y * v.y * a.z * a.z + v.y * v.y * a.x * a.x - 2 * (
-			v.y * v.z * a.y * a.z +
-			v.x * v.z * a.x * a.z +
-			v.x * v.y * a.x * a.y) - r * r;
+	res.i = 2 * (v.x * (v.z * a.x - v.x * a.z) + v.y * (v.z * a.y - v.y * a.z));
+	res.j = v.x * v.x * (a.y * a.y + a.z * a.z) +
+			v.y * v.y * (a.x * a.x + a.z * a.z) +
+			v.z * v.z * (a.x * a.x + a.y * a.y)
+			- 2 * (v.x * v.y * a.x * a.y
+				+ v.x * v.z * a.x * a.z
+				+ v.y * v.z * a.y * a.z)
+			- r * r;
 	return (res);
 }
 
@@ -121,7 +122,7 @@ static void		make_cone_surface(t_quadric *q, t_vec a, t_vec v, float sin_2)
 			+ v.z * (v.x * a.z - v.z * a.x) + sin_2 * a.x);
 	q->h = 2 * (v.x * (v.y * a.x - v.x * a.y) 		\
 			+ v.z * (v.y * a.z - v.z * a.y) + sin_2 * a.y);
-	q->i = 2 * (v.x * (v.z * a.z - v.x * a.z) 		\
+	q->i = 2 * (v.x * (v.z * a.x - v.x * a.z) 		\
 			+ v.y * (v.z * a.y - v.y * a.z) + sin_2 * a.z);
 	q->j = a.x * a.x * (vy_2 + vz_2 - sin_2) 		\
 			+ a.y * a.y * (vx_2 + vz_2 - sin_2) 	\
