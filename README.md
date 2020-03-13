@@ -92,7 +92,7 @@ Partie Optionnelle
 
 	- Objets simpe suplementaire
 
-		-	Une autre primitive										[ ]
+		-	Une autre primitive										[ ] ! 
 
 	- Effet visuel classique
 
@@ -111,10 +111,10 @@ Partie Optionnelle
 
 	- Environnement
 
-		-	Interface Sommaire "Bare de Progression"				[ ]
+		-	Interface Sommaire "Bare de Progression"				[X]
 		-	Interface Chiade en GTK, QT ...							[ ]
-		-	Modifie les variables de la scene						[ ]
-		-	Paramettre plusieurs rendus								[ ]
+		-	Modifie les variables de la scene						[X]
+		-	Paramettre plusieurs rendus								[X]
 		-	Ajoute des Objets dans la scene							[/]
 
 	- Travaille en Groupe											[X]
@@ -129,13 +129,13 @@ Partie Optionnelle
 
 	- En vrac
 
-		-	Sequence video du RT									[ ]
-		-	Gestion du Fichier .pov, .3ds, .obj						[ ]
+		-	Sequence video du RT									[ ] !!!!!!!
+		-	Gestion du Fichier .pov, .3ds, .obj						[ ] !!!
 		-	Enrelief sur TV 3D ou Oculuse Rift						[ ]
-		-	Spot non Ponctuel										[ ]
-		-	Autre "Au choix"										[ ]
+		-	Spot non Ponctuel										[ ] !!
+		-	Autre "Au choix"										[ ] !!!!!
 
-	- Ruban de Moebius												[ ]
+	- Ruban de Moebius												[ ] !!
 
 	- Caustics et/ou Global illumination							[ ]
 
