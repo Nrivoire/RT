@@ -43,6 +43,8 @@ static void	menu_text_2(t_env *v)
 	free(info[0]);
 	free(info[1]);
 	free(info[2]);
+	if (v->ppc.render_size == 4)
+		put_text(v, write_text_menu("Loading...", 20), 370, 180);
 }
 
 void		menu_text(t_env *v)
