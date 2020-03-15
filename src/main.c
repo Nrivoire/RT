@@ -12,12 +12,10 @@
 
 #include "../includes/rt.h"
 
-static void		init_menu(t_env *v)
+static void		init_menu(t_env *v, int scale)
 {
-	v->ui.m_h = 720;
-	v->ui.m_w = 500;
-	if (!(v->ui.m_win = SDL_CreateWindow("menu", SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED, v->ui.m_w, v->ui.m_h, 0)))
+	if (!(v->ui.m_win = SDL_CreateWindow("menu", v->w + scale,
+			SDL_WINDOWPOS_CENTERED, v->ui.m_w, v->ui.m_h, 0)))
 		ft_error("Could not create the window");
 	if (!(v->ui.m_ren = SDL_CreateRenderer(v->ui.m_win, -1, \
 						SDL_RENDERER_SOFTWARE)))
@@ -31,10 +29,13 @@ static void		init_menu(t_env *v)
 
 static void		init_sdl(t_env *v)
 {
+	int		scale;
+
+	scale = (1920 - (v->w + v->ui.m_w)) / 2;
 	if (SDL_Init(SDL_INIT_VIDEO))
 		ft_error("Couldn't initialize SDL");
-	if (!(v->win = SDL_CreateWindow("rt", SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED, v->w, v->h, 0)))
+	if (!(v->win = SDL_CreateWindow("rt", scale,
+			SDL_WINDOWPOS_CENTERED, v->w, v->h, 0)))
 		ft_error("Could not create the window");
 	if (!(v->ren = SDL_CreateRenderer(v->win, -1, SDL_RENDERER_SOFTWARE)))
 		ft_error("Could not create a renderer");
@@ -43,7 +44,7 @@ static void		init_sdl(t_env *v)
 		ft_error("Could not create a texture");
 	if (!(v->pixels = malloc(sizeof(uint32_t) * (v->h * v->w))))
 		ft_error("Pixels malloc error");
-	init_menu(v);
+	init_menu(v, scale);
 	if (TTF_Init() == -1)
 		ft_error("Initialisation error of TFT_Init");
 }

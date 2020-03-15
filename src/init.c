@@ -39,6 +39,8 @@ void			init_value(t_env *v)
 	v->stats.fps = 0;
 	v->p.ob = NULL;
 	v->p.lg = NULL;
+	v->ui.m_h = 720;
+	v->ui.m_w = 500;
 }
 
 void			scene_value(t_env *v)
