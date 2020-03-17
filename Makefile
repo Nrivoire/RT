@@ -64,6 +64,7 @@ SRC_NAME	+=	closest_intersect.c
 
 SRC_NAME	+=	ui/menu.c
 SRC_NAME	+=	ui/menu_selected.c
+SRC_NAME	+=	ui/menu_selected_utils.c
 SRC_NAME	+=	ui/menu_bouton.c
 SRC_NAME	+=	ui/write_text_menu.c
 SRC_NAME	+=	ui/ui_utils.c

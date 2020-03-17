@@ -379,6 +379,8 @@ void				selected_sphere(t_env *v);
 void				selected_plan(t_env *v);
 void				selected_cone(t_env *v);
 void				selected_cylinder(t_env *v);
+void				selected_pos(t_env *v);
+void				selected_dir(t_env *v);
 SDL_Surface			*write_text_stats(char *text, int size_font);
 SDL_Surface			*write_text_menu(char *text, int size_font);
 SDL_Surface			*write_text_menu2(char *text, int size_font);
