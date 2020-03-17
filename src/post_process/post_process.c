@@ -46,7 +46,7 @@ void			supersampling(t_env *v)
 	int			y;
 
 	y = -1;
-	while (++y < v->h)
+	while (++y < v->h - 1)
 	{
 		x = -1;
 		while (++x < v->w)
