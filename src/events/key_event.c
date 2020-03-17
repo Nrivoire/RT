@@ -12,6 +12,64 @@
 
 #include "../../includes/rt.h"
 
+static void	plane_event_z(t_env *v, const Uint8 *keyboard_state)
+{
+	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->a.z -= .1;
+		v->selected_obj->b.z -= .1;
+		v->selected_obj->c.z -= .1;
+	}
+	if (keyboard_state[SDL_SCANCODE_KP_PLUS])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->a.z += .1;
+		v->selected_obj->b.z += .1;
+		v->selected_obj->c.z += .1;
+	}
+	if (!keyboard_state[SDL_SCANCODE_LEFT]
+		&& !keyboard_state[SDL_SCANCODE_RIGHT]
+		&& !keyboard_state[SDL_SCANCODE_DOWN]
+		&& !keyboard_state[SDL_SCANCODE_UP]
+		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
+		&& !keyboard_state[SDL_SCANCODE_KP_MINUS])
+		v->ppc.render_key = 0;
+}
+
+static void	plane_event(t_env *v, const Uint8 *keyboard_state)
+{
+	if (keyboard_state[SDL_SCANCODE_UP])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->a.y += .1;
+		v->selected_obj->b.y += .1;
+		v->selected_obj->c.y += .1;
+	}
+	if (keyboard_state[SDL_SCANCODE_DOWN])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->a.y -= .1;
+		v->selected_obj->b.y -= .1;
+		v->selected_obj->c.y -= .1;
+	}
+	if (keyboard_state[SDL_SCANCODE_RIGHT])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->a.x += .1;
+		v->selected_obj->b.x += .1;
+		v->selected_obj->c.x += .1;
+	}
+	if (keyboard_state[SDL_SCANCODE_LEFT])
+	{
+		v->ppc.render_key = 1;
+		v->selected_obj->a.x -= .1;
+		v->selected_obj->b.x -= .1;
+		v->selected_obj->c.x -= .1;
+	}
+	plane_event_z(v, keyboard_state);
+}
+
 static void	obj_event_z(t_env *v, const Uint8 *keyboard_state)
 {
 	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
@@ -35,27 +93,32 @@ static void	obj_event_z(t_env *v, const Uint8 *keyboard_state)
 
 static void	obj_event(t_env *v, const Uint8 *keyboard_state)
 {
-	if (keyboard_state[SDL_SCANCODE_UP])
+	if (v->selected_obj->type != PLAN)
 	{
-		v->ppc.render_key = 1;
-		v->selected_obj->pos.y += .5;
+		if (keyboard_state[SDL_SCANCODE_UP])
+		{
+			v->ppc.render_key = 1;
+			v->selected_obj->pos.y += .5;
+		}
+		if (keyboard_state[SDL_SCANCODE_DOWN])
+		{
+			v->ppc.render_key = 1;
+			v->selected_obj->pos.y -= .5;
+		}
+		if (keyboard_state[SDL_SCANCODE_RIGHT])
+		{
+			v->ppc.render_key = 1;
+			v->selected_obj->pos.x += .5;
+		}
+		if (keyboard_state[SDL_SCANCODE_LEFT])
+		{
+			v->ppc.render_key = 1;
+			v->selected_obj->pos.x -= .5;
+		}
+		obj_event_z(v, keyboard_state);
 	}
-	if (keyboard_state[SDL_SCANCODE_DOWN])
-	{
-		v->ppc.render_key = 1;
-		v->selected_obj->pos.y -= .5;
-	}
-	if (keyboard_state[SDL_SCANCODE_RIGHT])
-	{
-		v->ppc.render_key = 1;
-		v->selected_obj->pos.x += .5;
-	}
-	if (keyboard_state[SDL_SCANCODE_LEFT])
-	{
-		v->ppc.render_key = 1;
-		v->selected_obj->pos.x -= .5;
-	}
-	obj_event_z(v, keyboard_state);
+	else
+		plane_event(v, keyboard_state);
 }
 
 int			key_event(t_env *v, const Uint8 *keyboard_state)
