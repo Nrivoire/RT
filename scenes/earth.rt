@@ -20,14 +20,6 @@ object{
 	type= SPHERE
 	radius= 12.756
 	pos= {0, 0, 0}
-	reflect= 0.2
-	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
-	shininess= 0
 	texture= "textures/earth.jpg"
 }
 
@@ -36,14 +28,6 @@ object{
 	type= SPHERE
 	radius= 3.476
 	pos= {25.0, 15, 0}
-	reflect= 0.7
-	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
-	shininess= 0
 	texture= "textures/moon.jpg"
 }
 
@@ -52,14 +36,6 @@ object{
 	type= SPHERE
 	radius= 1390.000
 	pos= {-1600.000, 0, 0}
-	reflect= 0.9
-	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
-	shininess= 0
 	texture= "textures/8k_sun.jpg"
 }
 
@@ -68,13 +44,5 @@ object{
 	type= SPHERE
 	radius= 8000.000
 	pos= {0, 0, 0}
-	reflect= 0.9
-	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
-	shininess= 0
 	texture= "textures/8k_stars.jpg"
 }
