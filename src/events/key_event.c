@@ -12,21 +12,21 @@
 
 #include "../../includes/rt.h"
 
-static void	plane_event_z(t_env *v, const Uint8 *keyboard_state)
+static void	plane_event_z(t_env *v, const Uint8 *keyboard_state, float scale)
 {
 	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->a.z -= .1;
-		v->selected_obj->b.z -= .1;
-		v->selected_obj->c.z -= .1;
+		v->selected_obj->a.z -= scale * v->scale_mult;
+		v->selected_obj->b.z -= scale * v->scale_mult;
+		v->selected_obj->c.z -= scale * v->scale_mult;
 	}
 	if (keyboard_state[SDL_SCANCODE_KP_PLUS])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->a.z += .1;
-		v->selected_obj->b.z += .1;
-		v->selected_obj->c.z += .1;
+		v->selected_obj->a.z += scale * v->scale_mult;
+		v->selected_obj->b.z += scale * v->scale_mult;
+		v->selected_obj->c.z += scale * v->scale_mult;
 	}
 	if (!keyboard_state[SDL_SCANCODE_LEFT]
 		&& !keyboard_state[SDL_SCANCODE_RIGHT]
@@ -37,50 +37,50 @@ static void	plane_event_z(t_env *v, const Uint8 *keyboard_state)
 		v->ppc.render_key = 0;
 }
 
-static void	plane_event(t_env *v, const Uint8 *keyboard_state)
+static void	plane_event(t_env *v, const Uint8 *keyboard_state, float scale)
 {
 	if (keyboard_state[SDL_SCANCODE_UP])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->a.y += .1;
-		v->selected_obj->b.y += .1;
-		v->selected_obj->c.y += .1;
+		v->selected_obj->a.y += scale * v->scale_mult;
+		v->selected_obj->b.y += scale * v->scale_mult;
+		v->selected_obj->c.y += scale * v->scale_mult;
 	}
 	if (keyboard_state[SDL_SCANCODE_DOWN])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->a.y -= .1;
-		v->selected_obj->b.y -= .1;
-		v->selected_obj->c.y -= .1;
+		v->selected_obj->a.y -= scale * v->scale_mult;
+		v->selected_obj->b.y -= scale * v->scale_mult;
+		v->selected_obj->c.y -= scale * v->scale_mult;
 	}
 	if (keyboard_state[SDL_SCANCODE_RIGHT])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->a.x += .1;
-		v->selected_obj->b.x += .1;
-		v->selected_obj->c.x += .1;
+		v->selected_obj->a.x += scale * v->scale_mult;
+		v->selected_obj->b.x += scale * v->scale_mult;
+		v->selected_obj->c.x += scale * v->scale_mult;
 	}
 	if (keyboard_state[SDL_SCANCODE_LEFT])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->a.x -= .1;
-		v->selected_obj->b.x -= .1;
-		v->selected_obj->c.x -= .1;
+		v->selected_obj->a.x -= scale * v->scale_mult;
+		v->selected_obj->b.x -= scale * v->scale_mult;
+		v->selected_obj->c.x -= scale * v->scale_mult;
 	}
-	plane_event_z(v, keyboard_state);
+	plane_event_z(v, keyboard_state, scale);
 }
 
-static void	obj_event_z(t_env *v, const Uint8 *keyboard_state)
+static void	obj_event_z(t_env *v, const Uint8 *keyboard_state, float scale)
 {
 	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->pos.z -= .5;
+		v->selected_obj->pos.z -= scale * v->scale_mult;
 	}
 	if (keyboard_state[SDL_SCANCODE_KP_PLUS])
 	{
 		v->ppc.render_key = 1;
-		v->selected_obj->pos.z += .5;
+		v->selected_obj->pos.z += scale * v->scale_mult;
 	}
 	if (!keyboard_state[SDL_SCANCODE_LEFT]
 		&& !keyboard_state[SDL_SCANCODE_RIGHT]
@@ -91,34 +91,34 @@ static void	obj_event_z(t_env *v, const Uint8 *keyboard_state)
 		v->ppc.render_key = 0;
 }
 
-static void	obj_event(t_env *v, const Uint8 *keyboard_state)
+static void	obj_event(t_env *v, const Uint8 *keyboard_state, float scale)
 {
 	if (v->selected_obj->type != PLAN)
 	{
 		if (keyboard_state[SDL_SCANCODE_UP])
 		{
 			v->ppc.render_key = 1;
-			v->selected_obj->pos.y += .5;
+			v->selected_obj->pos.y += scale * v->scale_mult;
 		}
 		if (keyboard_state[SDL_SCANCODE_DOWN])
 		{
 			v->ppc.render_key = 1;
-			v->selected_obj->pos.y -= .5;
+			v->selected_obj->pos.y -= scale * v->scale_mult;
 		}
 		if (keyboard_state[SDL_SCANCODE_RIGHT])
 		{
 			v->ppc.render_key = 1;
-			v->selected_obj->pos.x += .5;
+			v->selected_obj->pos.x += scale * v->scale_mult;
 		}
 		if (keyboard_state[SDL_SCANCODE_LEFT])
 		{
 			v->ppc.render_key = 1;
-			v->selected_obj->pos.x -= .5;
+			v->selected_obj->pos.x -= scale * v->scale_mult;
 		}
-		obj_event_z(v, keyboard_state);
+		obj_event_z(v, keyboard_state, scale);
 	}
 	else
-		plane_event(v, keyboard_state);
+		plane_event(v, keyboard_state, scale);
 }
 
 int			key_event(t_env *v, const Uint8 *keyboard_state)
@@ -126,7 +126,11 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 	if (keyboard_state[SDL_SCANCODE_ESCAPE])
 		return (1);
 	if (v->selected_obj)
-		obj_event(v, keyboard_state);
+		obj_event(v, keyboard_state, .025);
+	if (keyboard_state[SDL_SCANCODE_LSHIFT])
+		v->scale_mult = 6;
+	if (!keyboard_state[SDL_SCANCODE_LSHIFT])
+		v->scale_mult = 1;
 	if (keyboard_state[SDL_SCANCODE_P])
 		screenshot(v);
 	if (keyboard_state[SDL_SCANCODE_C])

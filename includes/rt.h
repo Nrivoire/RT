@@ -256,6 +256,7 @@ typedef struct		s_env
 	t_ppc			ppc;
 	t_stats			stats;
 	t_ui			ui;
+	float			scale_mult;
 }					t_env;
 
 /*
