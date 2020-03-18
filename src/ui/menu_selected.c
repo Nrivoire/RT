@@ -12,50 +12,42 @@
 
 #include "../includes/rt.h"
 
-void	selected_cylinder(t_env *v)
+void	selected_sphere(t_env *v)
 {
 	char	*info;
 
-	put_text(v, write_text_menu2("CYLINDER", 20), 50, 455);
+	put_text(v, write_text_menu2("SPHERE", 22), 50, 455);
 	info = ft_ftoa(v->selected_obj->radius, 3);
 	put_text(v, write_text_menu2("radius =", 20), 50, 500);
 	put_text(v, write_text_menu2(info, 20), 140, 500);
 	free(info);
-	info = ft_ftoa(v->selected_obj->pos.x, 3);
-	put_text(v, write_text_menu2("pos x =", 20), 50, 530);
-	put_text(v, write_text_menu2(info, 20), 140, 530);
+	selected_pos(v);
+}
+
+void	selected_cylinder(t_env *v)
+{
+	char	*info;
+
+	put_text(v, write_text_menu2("CYLINDER", 22), 50, 455);
+	info = ft_ftoa(v->selected_obj->radius, 3);
+	put_text(v, write_text_menu2("radius =", 20), 50, 500);
+	put_text(v, write_text_menu2(info, 20), 140, 500);
 	free(info);
-	info = ft_ftoa(v->selected_obj->pos.y, 3);
-	put_text(v, write_text_menu2("pos y =", 20), 50, 550);
-	put_text(v, write_text_menu2(info, 20), 140, 550);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.z, 3);
-	put_text(v, write_text_menu2("pos z =", 20), 50, 570);
-	put_text(v, write_text_menu2(info, 20), 140, 570);
-	free(info);
+	selected_pos(v);
+	selected_dir(v);
 }
 
 void	selected_cone(t_env *v)
 {
 	char	*info;
 
-	put_text(v, write_text_menu2("CONE", 20), 50, 455);
+	put_text(v, write_text_menu2("CONE", 22), 50, 455);
 	info = ft_ftoa(v->selected_obj->radius, 3);
 	put_text(v, write_text_menu2("radius =", 20), 50, 500);
 	put_text(v, write_text_menu2(info, 20), 140, 500);
 	free(info);
-	info = ft_ftoa(v->selected_obj->pos.x, 3);
-	put_text(v, write_text_menu2("pos x =", 20), 50, 530);
-	put_text(v, write_text_menu2(info, 20), 140, 530);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.y, 3);
-	put_text(v, write_text_menu2("pos y =", 20), 50, 550);
-	put_text(v, write_text_menu2(info, 20), 140, 550);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.z, 3);
-	put_text(v, write_text_menu2("pos z =", 20), 50, 570);
-	put_text(v, write_text_menu2(info, 20), 140, 570);
-	free(info);
+	selected_pos(v);
+	selected_dir(v);
 }
 
 void	selected_plan_2(t_env *v)
@@ -78,7 +70,7 @@ void	selected_plan(t_env *v)
 {
 	char	*info;
 
-	put_text(v, write_text_menu2("PLAN", 20), 50, 455);
+	put_text(v, write_text_menu2("PLAN", 22), 50, 455);
 	info = ft_ftoa(v->selected_obj->a.x, 3);
 	put_text(v, write_text_menu2("point A =", 20), 50, 530);
 	put_text(v, write_text_menu2(info, 20), 140, 530);
@@ -100,27 +92,4 @@ void	selected_plan(t_env *v)
 	put_text(v, write_text_menu2(info, 20), 140, 640);
 	free(info);
 	selected_plan_2(v);
-}
-
-void	selected_sphere(t_env *v)
-{
-	char	*info;
-
-	put_text(v, write_text_menu2("SPHERE", 20), 50, 455);
-	info = ft_ftoa(v->selected_obj->radius, 3);
-	put_text(v, write_text_menu2("radius =", 20), 50, 500);
-	put_text(v, write_text_menu2(info, 20), 140, 500);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.x, 3);
-	put_text(v, write_text_menu2("pos x =", 20), 50, 530);
-	put_text(v, write_text_menu2(info, 20), 140, 530);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.y, 3);
-	put_text(v, write_text_menu2("pos y =", 20), 50, 550);
-	put_text(v, write_text_menu2(info, 20), 140, 550);
-	free(info);
-	info = ft_ftoa(v->selected_obj->pos.z, 3);
-	put_text(v, write_text_menu2("pos z =", 20), 50, 570);
-	put_text(v, write_text_menu2(info, 20), 140, 570);
-	free(info);
 }
