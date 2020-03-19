@@ -98,7 +98,7 @@ Partie Optionnelle
 
 		-	Anti-aliasing "Super-sampling"							[X]
 		-	Effet Cartoon											[X]
-		-	Motion Blur ou Blur										[ ]
+		-	Motion Blur ou Blur										[X]
 		-	Filtre sepia ou autre filtre de couleur					[X]
 		-	Stereoscopie Simple										[ ]
 

@@ -48,7 +48,10 @@ SRC_NAME	+=	post_process/negative.c
 SRC_NAME	+=	post_process/cel_shading.c
 SRC_NAME	+=	post_process/greyscale.c
 SRC_NAME	+=	post_process/sepia.c
-SRC_NAME	+=	post_process/post_process.c
+SRC_NAME	+=	post_process/supersampling.c
+SRC_NAME	+=	post_process/blur.c
+SRC_NAME	+=	post_process/blur_utils.c
+SRC_NAME	+=	post_process/post_process_utils.c
 
 SRC_NAME	+=	obj_generating/inter_ray_quadric.c
 SRC_NAME	+=	obj_generating/make_obj.c

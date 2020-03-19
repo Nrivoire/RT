@@ -151,5 +151,7 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 		v->ppc.ssp = 0;
 	if (keyboard_state[SDL_SCANCODE_U])
 		v->ppc.ssp = 1;
+	if (keyboard_state[SDL_SCANCODE_I])
+		v->ppc.ssp = 2;
 	return (0);
 }

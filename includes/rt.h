@@ -198,6 +198,8 @@ typedef struct		s_ppc
 	int				active_rpx;
 	int				render_size;
 	int				ssp;
+	t_color			ssaa[5];
+	t_color			blur[21];
 }					t_ppc;
 
 typedef struct		s_stats
@@ -290,7 +292,7 @@ void				pixel_put(t_env *v, int x, int y, t_color color);
 void				button_down(SDL_Event e, t_env *v);
 void				mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v,
-		uint32_t mouse_state);
+					uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
 
@@ -371,6 +373,13 @@ int					negative(int color);
 int					sepia(int color);
 int					greyscale(int color);
 void				supersampling(t_env *v);
+void				blur(t_env *v);
+int					blur_calc_r(t_env *v);
+int					blur_calc_g(t_env *v);
+int					blur_calc_b(t_env *v);
+int					blur_calc_a(t_env *v);
+t_color				color_ssp(Uint32 pixel);
+int					get_hex(int r, int g, int b, int a);
 
 /*
 ** --bonus_tools--

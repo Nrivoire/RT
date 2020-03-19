@@ -35,6 +35,7 @@ void			draw_pro_frame(t_env *v)
 	}
 	bouclette(v);
 	v->ppc.ssp == 1 ? supersampling(v) : 0;
+	v->ppc.ssp == 2 ? blur(v) : 0;
 }
 
 void			display_two(t_env *v)
