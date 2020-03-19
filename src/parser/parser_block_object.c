@@ -23,6 +23,7 @@ static void		parse_tex_pro(char *tmp, t_lst_obj *content)
 		ft_strstr(tmp, "PERLIN") ? content->procedural = PERLIN : 0;
 		ft_strstr(tmp, "WOOD") ? content->procedural = WOOD : 0;
 		ft_strstr(tmp, "MARBLE") ? content->procedural = MARBLE : 0;
+		ft_strstr(tmp, "CHESS") ? content->procedural = CHESS : 0;
 	}
 }
 

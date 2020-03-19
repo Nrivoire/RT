@@ -108,8 +108,7 @@ void				bouclette(t_env *v)
 				px_color = (t_color) {0, 0, 0, 255};
 				if (closest.texture)
 					generate_texture(&closest);
-				if (closest.procedural == PERLIN || closest.procedural == WOOD
-						|| closest.procedural == MARBLE)
+				if (closest.procedural)
 					create_texture_procedural(&closest);
 				calc_light(v, closest, &px_color);
 				if (v->ppc.render_size == 1)

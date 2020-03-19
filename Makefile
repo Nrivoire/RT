@@ -62,6 +62,7 @@ SRC_NAME	+=	texture/perlin_noise.c
 SRC_NAME	+=	texture/put_texture_on_surface.c
 SRC_NAME	+=	texture/make_texture_plan.c
 SRC_NAME	+=	texture/make_texture_sphere.c
+SRC_NAME	+=	texture/checkboard.c
 
 SRC_NAME	+=	closest_intersect.c
 

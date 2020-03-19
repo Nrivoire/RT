@@ -50,6 +50,8 @@ void		create_texture_procedural(t_tab_obj *obj)
 		time = perlin_noise(1, 7, 2, *obj);
 		time = sin(obj->normale.x + time * 12) / 24;
 	}
+	else if (obj->procedural == CHESS)
+		time = checkboard(*obj);
 	if (time >= 0)
 		obj->color = (t_color){obj->color.r * time, obj->color.g * time,
 				obj->color.b * time, 255};

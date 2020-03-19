@@ -35,6 +35,7 @@
 # define PERLIN 1
 # define WOOD 2
 # define MARBLE 3
+# define CHESS 4
 
 /*
 ** -----------------------------PARSING----------------------------
@@ -318,6 +319,7 @@ void				make_texture_cylindre(t_tab_obj *obj);
 */
 float				noise(float x, float y, float z);
 void				create_texture_procedural(t_tab_obj *obj);
+float		checkboard(t_tab_obj obj);
 
 /*
 ** --rays--
