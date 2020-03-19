@@ -16,7 +16,7 @@
 ** Parse the values ​​of the objects in the file.
 */
 
-static void		parse_tex_pro(char *tmp, t_lst_obj *content, t_file *file)
+static void		parse_tex_pro(char *tmp, t_lst_obj *content)
 {
 	if (!ft_strncmp(tmp, "\ttexture-procedural=", 20))
 	{
@@ -50,7 +50,7 @@ static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 			ft_strdel(&tex_path[i--]);
 		free(tex_path);
 	}
-	parse_tex_pro(tmp, content, file);
+	parse_tex_pro(tmp, content);
 }
 
 static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
