@@ -54,14 +54,14 @@ void	selected_plan_2(t_env *v)
 {
 	char	*info;
 
-	info = ft_ftoa(v->selected_obj->b.x, 3);
+	info = ft_ftoa(v->selected_obj->c.x, 3);
 	put_text(v, write_text_menu2("point C =", 20), 250, 530);
 	put_text(v, write_text_menu2(info, 20), 340, 530);
 	free(info);
-	info = ft_ftoa(v->selected_obj->b.y, 3);
+	info = ft_ftoa(v->selected_obj->c.y, 3);
 	put_text(v, write_text_menu2(info, 20), 340, 550);
 	free(info);
-	info = ft_ftoa(v->selected_obj->b.z, 3);
+	info = ft_ftoa(v->selected_obj->c.z, 3);
 	put_text(v, write_text_menu2(info, 20), 340, 570);
 	free(info);
 }
