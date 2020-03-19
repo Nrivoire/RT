@@ -80,7 +80,8 @@ int				main(int argc, char **argv)
 	t_lst_obj	*tmp;
 	int			i;
 
-	!ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
+	argc > 1 && !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
+	argc == 1 ? usage("You can also use options.", 1) : 0;
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
 	init_value(v);
