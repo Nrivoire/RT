@@ -46,19 +46,24 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 	{
 		if (e.button.button == SDL_BUTTON_LEFT)
 		{
-			if (closest_intersect(v, create_ray(v, e.button.x, e.button.y),
-					&tmp))
+			if (SDL_GetMouseFocus() == v->win)
 			{
-				if (v->selected_obj && v->selected_obj->i == tmp.i)
-					v->selected_obj = NULL;
-				else
+				if (closest_intersect(v, create_ray(v, e.button.x, e.button.y),
+						&tmp))
 				{
-					v->selected_obj = &v->tab_obj[tmp.i];
-					v->selected_obj->i = tmp.i;
+					if (v->selected_obj && v->selected_obj->i == tmp.i)
+						v->selected_obj = NULL;
+					else
+					{
+						v->selected_obj = &v->tab_obj[tmp.i];
+						v->selected_obj->i = tmp.i;
+					}
 				}
+				else
+					v->selected_obj = NULL;
 			}
-			else
-				v->selected_obj = NULL;
+			else if (SDL_GetMouseFocus() == v->ui.m_win)
+				is_it_a_button(v, e);
 		}
 	}
 }

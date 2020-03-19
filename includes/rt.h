@@ -237,6 +237,14 @@ typedef struct		s_ui
 	int				m_h;
 }					t_ui;
 
+typedef struct		s_between
+{
+	int				min_x;
+	int				max_x;
+	int				min_y;
+	int				max_y;
+}					t_between;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -257,6 +265,7 @@ typedef struct		s_env
 	t_stats			stats;
 	t_ui			ui;
 	float			scale_mult;
+	Uint32			hover[4];
 }					t_env;
 
 /*
@@ -387,5 +396,11 @@ SDL_Surface			*write_text_menu(char *text, int size_font);
 SDL_Surface			*write_text_menu2(char *text, int size_font);
 int					get_hex_menu(int r, int g, int b, int a);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
+void				is_it_a_button(t_env *v, SDL_Event e);
+void				over_a_button(t_env *v, SDL_Event e);
+
+
+
+
 
 #endif

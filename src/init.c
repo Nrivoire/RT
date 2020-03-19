@@ -41,6 +41,10 @@ void			init_value(t_env *v)
 	v->p.lg = NULL;
 	v->ui.m_h = 720;
 	v->ui.m_w = 500;
+	v->hover[0] = get_hex_menu(218, 112, 214, 255);
+	v->hover[1] = v->hover[0];
+	v->hover[2] = v->hover[0];
+	v->hover[3] = v->hover[0];
 }
 
 void			scene_value(t_env *v)
