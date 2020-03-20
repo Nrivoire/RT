@@ -5,7 +5,7 @@
 
 
 // EXEMPLE TROUVÉ / INSPIRATION
-void		checkboard(t_tab_obj obj)
+/*void		checkboard(t_tab_obj obj)
 {
 	int		xStep, yStep, zStep, sumStep;
 
@@ -26,4 +26,4 @@ void		checkboard(t_tab_obj obj)
 			}
 		}
 	}
-}
+}*/
