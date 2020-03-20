@@ -9,134 +9,134 @@ sphere: (x-a)2 + (y-b)2 + (z-c)2 = r2 <br>
 
 # To-do
 
-Préliminaire														[X]
+- [X] Préliminaire
 
 Partie Obligatoire
 
-	- Exopose sans recalcule										[X]
+	- [X] Expose sans recalcule
 
-	- Les Objets
+	- [X] Les Objets
 
-		-	4 Objets simple											[X]
-		-	translation des Objets									[X]
-		-	Rotation des Objets										[X]
+		- [X] 4 Objets simple
+		- [X] Translation des Objets
+		- [X] Rotation des Objets
 
-	- REM : Rapide Eye Movement										[X]
+	- [X] REM : Rapide Eye Movement
 
-	- Lumiere
+	- [ ] Lumiere
 
-		-	L'ombre des Objets										[/]
-		-	L'ombre multi-spot										[/]
-		-	La Brillance											[ ]
-		-	Le Multi-spot											[/]
+		- [/] L'ombre des Objets
+		- [/] L'ombre multi-spot
+		- [ ] La Brillance
+		- [/] Le Multi-spot
 
 Partie Optionnelle
 
-	- Fichier de scene												[X]
+	- [X] Fichier de scene
 
-	- Fichier de scene ++											[X]
+	- [X] Fichier de scene ++
 
-	- Lumiere ambiante												[X]
+	- [X] Lumiere ambiante
 
-	- Ambiante ++													[X]
+	- [X] Ambiante ++
 
-	- Objets limites
+	- [ ] Objets limites
 
-		-	Decoupe basique d'un Objet en XYZ						[ ]
-		-	Choix de l'axe de decoupe								[ ]
-		-	Rotation et Translation de l'Objet decouper				[ ]
-		-	Decoupe unique a chaque Objet							[ ]
-		-	Decoupe du Plan											[ ]
+		- [ ] Decoupe basique d'un Objet en XYZ
+		- [ ] Choix de l'axe de decoupe
+		- [ ] Rotation et Translation de l'Objet decouper
+		- [ ] Decoupe unique a chaque Objet
+		- [ ] Decoupe du Plan
 
-	- Perturbations
+	- [ ] Perturbations
 
-		-	Normal	--->	"impression d'avoir des vaguelettes"	[ ]
-		-	Couleur	--->	"Le Damier"								[ ]
-		-	Couleur	--->	"Texture Procedurale"					[X]
-		-	Couleur	--->	"Bruit de Perlin"						[X]
+		- [ ] Normal	--->	"impression d'avoir des vaguelettes"
+		- [ ] Couleur	--->	"Le Damier"
+		- [X] Couleur	--->	"Texture Procedurale"
+		- [X] Couleur	--->	"Bruit de Perlin"
 
-	- Lumiere Directe												[ ]
+	- [ ] Lumiere Directe
 
-	- Lumiere Paralelle --->	"Lumiere Directionnel"				[ ]
+	- [ ] Lumiere Paralelle --->	"Lumiere Directionnel"
 
-	- Reflexion & Transparence
+	- [ ] Reflexion & Transparence
 
-		-	Reflexion	--->	"Effet Miroir"						[ ]
-		-	Change % de reflexion									[ ]
-		-	La Transparence											[ ]
-		-	Indice de refraction									[ ]
-		-	Change le % de transparence								[ ]
+		- [ ] Reflexion	--->	"Effet Miroir"
+		- [ ] Change % de reflexion
+		- [ ] La Transparence
+		- [ ] Indice de refraction
+		- [ ] Change le % de transparence
 
-	- Ombres de l'Objet Transparent									[ ]
+	- [ ] Ombres de l'Objet Transparent
 
-	- Textures I
+	- [ ] Textures I
 
-		-	Applique une texture au moins sur 1 Objet				[X]
-		-	Applique une texture sur les 4 Objets de base			[/]
-		-	Etire ou Contracte une Texture							[ ]
-		-	Faire bouge la texture sur l'Objet						[ ]
-		-	Texture au format jpeg, png, ...						[X]
+		- [X] Applique une texture au moins sur 1 Objet
+		- [/] Applique une texture sur les 4 Objets de base
+		- [ ] Etire ou Contracte une Texture
+		- [ ] Faire bouge la texture sur l'Objet
+		- [X] Texture au format jpeg, png, ...
 
-	- Texture II
+	- [ ] Texture II
 
-		-	La Texture sert a modifier la normal					[ ]
-		-	La Texture sert a la transparence de l'objet			[ ]
-		-	La Texture sert a la limite de decoupe de l'Objet		[ ]
-		-	La Texture sert de diapositive							[ ]
+		- [ ] La Texture sert a modifier la normal
+		- [ ] La Texture sert a la transparence de l'objet
+		- [ ] La Texture sert a la limite de decoupe de l'Objet
+		- [ ] La Texture sert de diapositive
 
-	- Objets Compose
+	- [ ] Objets Compose
 
-		-	Un Cube													[ ]
-		-	Un Verre												[ ]
-		-	Bouge les Objets compose								[ ]
+		- [ ] Un Cube
+		- [ ] Un Verre
+		- [ ] Bouge les Objets compose
 
-	- Objets simpe suplementaire
+	- [ ] Objets simpe suplementaire
 
-		-	Une autre primitive										[ ] ! 
+		- [ ] Une autre primitive => A FAIRE
 
-	- Effet visuel classique
+	- [ ] Effet visuel classique
 
-		-	Anti-aliasing "Super-sampling"							[X]
-		-	Effet Cartoon											[X]
-		-	Motion Blur ou Blur										[X]
-		-	Filtre sepia ou autre filtre de couleur					[X]
-		-	Stereoscopie Simple										[ ]
+		- [X] Anti-aliasing "Super-sampling"
+		- [X] Effet Cartoon
+		- [X] Motion Blur ou Blur
+		- [X] Filtre sepia ou autre filtre de couleur
+		- [ ] Stereoscopie Simple
 
-	- Effets Technique
+	- [ ] Effets Technique
 
-		-	Calculs en Cluster										[ ]
-		-	Calculs multi-tread										[ ]
-		-	GPU														[ ]
-		-	Sauvegarde d'une Image dans RT							[X]
+		- [ ] Calculs en Cluster
+		- [ ] Calculs multi-tread
+		- [ ] GPU
+		- [X] Sauvegarde d'une Image dans RT
 
-	- Environnement
+	- [ ] Environnement
 
-		-	Interface Sommaire "Bare de Progression"				[X]
-		-	Interface Chiade en GTK, QT ...							[ ]
-		-	Modifie les variables de la scene						[X]
-		-	Paramettre plusieurs rendus								[X]
-		-	Ajoute des Objets dans la scene							[/]
+		- [X] Interface Sommaire "Bare de Progression"
+		- [ ] Interface Chiade en GTK, QT ...
+		- [X] Modifie les variables de la scene
+		- [X] Paramettre plusieurs rendus
+		- [/] Ajoute des Objets dans la scene
 
-	- Travaille en Groupe											[X]
+	- [X] Travaille en Groupe
 
-	- Les Objets Exotique
+	- [ ] Les Objets Exotique
 
-		-	Cube Troue												[ ]
-		-	Une Nappe												[ ]
-		-	Le Tore													[ ]
-		-	Resolution d'equation									[ ]
-		-	Fractal													[ ]
+		- [ ] Cube Troue
+		- [ ] Une Nappe
+		- [ ] Le Tore
+		- [ ] Resolution d'equation
+		- [ ] Fractal
 
-	- En vrac
+	- [ ] En vrac
 
-		-	Sequence video du RT									[ ] !!!!!!!
-		-	Gestion du Fichier .pov, .3ds, .obj						[ ] !!!
-		-	Enrelief sur TV 3D ou Oculuse Rift						[ ]
-		-	Spot non Ponctuel										[ ] !!
-		-	Autre "Au choix"										[ ] !!!!!
+		- [ ] Sequence video du RT => !!!!!!!
+		- [ ] Gestion du Fichier .pov, .3ds, .obj => !!!
+		- [ ] Enrelief sur TV 3D ou Oculuse Rift
+		- [ ] Spot non Ponctuel => !!
+		- [ ] Autre "Au choix" => !!!!!
 
-	- Ruban de Moebius												[ ] !!
+	- [ ] Ruban de Moebius => !!
 
-	- Caustics et/ou Global illumination							[ ]
+	- [ ] Caustics et/ou Global illumination
 
-	- Rendu Magnifique												[?]
+	- [?] Rendu Magnifique
