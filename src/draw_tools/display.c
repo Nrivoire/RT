@@ -63,7 +63,7 @@ void			event_management(SDL_Event e, t_env *v, const Uint8 *key_state,
 	if (e.type == SDL_MOUSEMOTION)
 		if (SDL_GetMouseFocus() == v->win)
 			mouse_motion_event(e, v, mouse_state);
-		else if (SDL_GetMouseFocus() == v->ui.m_win)
+		if (SDL_GetMouseFocus() == v->ui.m_win)
 			over_a_button(v, e);
 	if (e.type == SDL_MOUSEWHEEL)
 		mouse_wheel_event(e, v);
