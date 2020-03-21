@@ -32,6 +32,7 @@ SRC_NAME	+=	events/mouse_event.c
 SRC_NAME	+=	events/rotate_x.c
 SRC_NAME	+=	events/rotate_y.c
 SRC_NAME	+=	events/rotate_z.c
+SRC_NAME	+=	events/event_render.c
 
 SRC_NAME	+=	draw_tools/get_pixel.c
 SRC_NAME	+=	draw_tools/display.c

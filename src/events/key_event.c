@@ -26,15 +26,6 @@ static void	plane_event_z(t_env *v, const Uint8 *keyboard_state, float scale)
 		v->selected_obj->b.z += scale * v->sc_m;
 		v->selected_obj->c.z += scale * v->sc_m;
 	}
-	if (!keyboard_state[SDL_SCANCODE_LEFT]
-		&& !keyboard_state[SDL_SCANCODE_RIGHT]
-		&& !keyboard_state[SDL_SCANCODE_DOWN]
-		&& !keyboard_state[SDL_SCANCODE_UP]
-		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
-		&& !keyboard_state[SDL_SCANCODE_KP_MINUS])
-		v->ppc.render_key = 0;
-	else
-		v->ppc.render_key = 1;
 }
 
 static void	plane_event(t_env *v, const Uint8 *keyboard_state, float scale)
@@ -64,11 +55,12 @@ static void	plane_event(t_env *v, const Uint8 *keyboard_state, float scale)
 		v->selected_obj->c.x -= scale * v->sc_m;
 	}
 	plane_event_z(v, keyboard_state, scale);
+	render_plane(v, keyboard_state);
 }
 
 static void	obj_event_rotate(t_env *v, const Uint8 *keyboard_state)
 {
-	// CHANGER LES BOUTONS SUIVANT POUR LE PAVE NUMERIQUE APRES
+	// CHANGER LES BOUTONS SUIVANT POUR LE PAVE NUMERIQUE APRES ?
 	if (keyboard_state[SDL_SCANCODE_W])
 		v->selected_obj->dir = rot_axe_x_r(v->selected_obj->dir, .01 * v->sc_m);
 	if (keyboard_state[SDL_SCANCODE_D])
@@ -81,22 +73,6 @@ static void	obj_event_rotate(t_env *v, const Uint8 *keyboard_state)
 		v->selected_obj->dir = rot_axe_y_l(v->selected_obj->dir, .01 * v->sc_m);
 	if (keyboard_state[SDL_SCANCODE_E])
 		v->selected_obj->dir = rot_axe_z_l(v->selected_obj->dir, .01 * v->sc_m);
-	
-	if (!keyboard_state[SDL_SCANCODE_LEFT]
-		&& !keyboard_state[SDL_SCANCODE_RIGHT]
-		&& !keyboard_state[SDL_SCANCODE_DOWN]
-		&& !keyboard_state[SDL_SCANCODE_UP]
-		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
-		&& !keyboard_state[SDL_SCANCODE_KP_MINUS]
-		&& !keyboard_state[SDL_SCANCODE_W]
-		&& !keyboard_state[SDL_SCANCODE_D]
-		&& !keyboard_state[SDL_SCANCODE_Q]
-		&& !keyboard_state[SDL_SCANCODE_S]
-		&& !keyboard_state[SDL_SCANCODE_A]
-		&& !keyboard_state[SDL_SCANCODE_E])
-		v->ppc.render_key = 0;
-	else
-		v->ppc.render_key = 1;
 }
 
 static void	obj_event(t_env *v, const Uint8 *keyboard_state, float scale)
@@ -116,6 +92,7 @@ static void	obj_event(t_env *v, const Uint8 *keyboard_state, float scale)
 		if (keyboard_state[SDL_SCANCODE_KP_PLUS])
 			v->selected_obj->pos.z += scale * v->sc_m;
 		obj_event_rotate(v, keyboard_state);
+		render_obj(v, keyboard_state);
 	}
 	else
 		plane_event(v, keyboard_state, scale);

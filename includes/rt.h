@@ -302,6 +302,8 @@ t_vec				rot_axe_y_l(t_vec point, float angle);
 t_vec				rot_axe_y_r(t_vec point, float angle);
 t_vec				rot_axe_z_l(t_vec point, float angle);
 t_vec				rot_axe_z_r(t_vec point, float angle);
+void				render_obj(t_env *v, const Uint8 *keyboard_state);
+void				render_plane(t_env *v, const Uint8 *keyboard_state);
 
 /*
 ** --form--
