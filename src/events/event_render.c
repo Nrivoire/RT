@@ -38,7 +38,13 @@ void	render_plane(t_env *v, const Uint8 *keyboard_state)
 		&& !keyboard_state[SDL_SCANCODE_DOWN]
 		&& !keyboard_state[SDL_SCANCODE_UP]
 		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
-		&& !keyboard_state[SDL_SCANCODE_KP_MINUS])
+		&& !keyboard_state[SDL_SCANCODE_KP_MINUS]
+		&& !keyboard_state[SDL_SCANCODE_W]
+		&& !keyboard_state[SDL_SCANCODE_D]
+		&& !keyboard_state[SDL_SCANCODE_Q]
+		&& !keyboard_state[SDL_SCANCODE_S]
+		&& !keyboard_state[SDL_SCANCODE_A]
+		&& !keyboard_state[SDL_SCANCODE_E])
 		v->ppc.render_key = 0;
 	else
 		v->ppc.render_key = 1;

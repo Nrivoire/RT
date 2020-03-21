@@ -29,6 +29,8 @@ SRC_NAME	+=	init.c
 
 SRC_NAME	+=	events/key_event.c
 SRC_NAME	+=	events/mouse_event.c
+SRC_NAME	+=	events/obj_event.c
+SRC_NAME	+=	events/plane_event.c
 SRC_NAME	+=	events/rotate_x.c
 SRC_NAME	+=	events/rotate_y.c
 SRC_NAME	+=	events/rotate_z.c

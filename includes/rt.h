@@ -296,12 +296,15 @@ void				mouse_motion_event(SDL_Event event, t_env *v,
 					uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
+void				obj_event(t_env *v, const Uint8 *keyboard_state, float scale);
+void				plane_event(t_env *v, const Uint8 *keyboard_state, float scale);
 t_vec				rot_axe_x_l(t_vec point, float angle);
 t_vec				rot_axe_x_r(t_vec point, float angle);
 t_vec				rot_axe_y_l(t_vec point, float angle);
 t_vec				rot_axe_y_r(t_vec point, float angle);
 t_vec				rot_axe_z_l(t_vec point, float angle);
 t_vec				rot_axe_z_r(t_vec point, float angle);
+void				plane_rotate(t_env *v, const Uint8 *keyboard_state);
 void				render_obj(t_env *v, const Uint8 *keyboard_state);
 void				render_plane(t_env *v, const Uint8 *keyboard_state);
 
