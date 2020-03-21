@@ -32,12 +32,12 @@ static int	atoi_clamp_usage(const char *str, int min, int max)
 
 void		usage(char *error, int run)
 {
-	ft_strcmp(error, "") != 0 ? ft_putendl(error) : 0;
+	ft_strcmp(error, "") ? ft_putendl_fd(error, 2) : 0;
 	ft_putendl("\nusage:\n./rt [-f file] [-w width] [-h height] [--help]");
 	ft_putendl("\noptions:");
 	ft_putendl("-f <file_path>		choose your file.");
-	ft_putendl("-w <width [0-1280]>	set your window's width.");
-	ft_putendl("-h <height [0-720]>	set your window's height.");
+	ft_putendl("-w <width [100-1280]>	set your window's width.");
+	ft_putendl("-h <height [100-720]>	set your window's height.");
 	ft_putendl("filter:	--greyscale | --sepia | --negative | --celshading");
 	ft_putendl("--help			show help.\n");
 	!run ? exit(0) : 0;
