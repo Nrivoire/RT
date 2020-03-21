@@ -79,8 +79,8 @@ Partie Optionnelle
 	- [ ] Un Verre
 	- [ ] Bouge les Objets compose
 
-- [ ] Objets simpe suplementaire
-- [ ] Une autre primitive => A FAIRE
+- [ ] Objets simple suplementaire
+	- [ ] Une autre primitive => A FAIRE
 
 - [ ] Effet visuel classique
 	- [X] Anti-aliasing "Super-sampling"
