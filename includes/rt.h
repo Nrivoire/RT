@@ -28,9 +28,9 @@
 # define CONE 3
 # define CYLINDER 4
 
-# define POINT 10
-# define DIRECTIONAL 11
-# define SPOT 12
+# define POINT 1
+# define DIRECTIONAL 2
+# define SPOT 3
 
 # define PERLIN 1
 # define WOOD 2
@@ -267,7 +267,7 @@ typedef struct		s_env
 	t_ppc			ppc;
 	t_stats			stats;
 	t_ui			ui;
-	float			scale_mult;
+	float			sc_m;
 	Uint32			hover[4];
 }					t_env;
 
@@ -296,6 +296,12 @@ void				mouse_motion_event(SDL_Event event, t_env *v,
 					uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
+t_vec				rot_axe_x_l(t_vec point, float angle);
+t_vec				rot_axe_x_r(t_vec point, float angle);
+t_vec				rot_axe_y_l(t_vec point, float angle);
+t_vec				rot_axe_y_r(t_vec point, float angle);
+t_vec				rot_axe_z_l(t_vec point, float angle);
+t_vec				rot_axe_z_r(t_vec point, float angle);
 
 /*
 ** --form--
