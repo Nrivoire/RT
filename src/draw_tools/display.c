@@ -22,6 +22,22 @@ static void		quit(t_env *v)
 	TTF_Quit();
 }
 
+void			event_management(SDL_Event e, t_env *v, const Uint8 *key_state,
+		uint32_t mouse_state)
+{
+	if (e.type == SDL_KEYDOWN)
+		key_event(v, key_state);
+	if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
+		mouse_button_event(e, v);
+	if (e.type == SDL_MOUSEMOTION)
+		if (SDL_GetMouseFocus() == v->win)
+			mouse_motion_event(e, v, mouse_state);
+		if (SDL_GetMouseFocus() == v->ui.m_win)
+			over_a_button(v, e);
+	if (e.type == SDL_MOUSEWHEEL)
+		mouse_wheel_event(e, v);
+}
+
 void			draw_pro_frame(t_env *v)
 {
 	clear_pixels(v);
@@ -38,7 +54,7 @@ void			draw_pro_frame(t_env *v)
 	v->ppc.ssp == 2 ? blur(v) : 0;
 }
 
-void			display_two(t_env *v)
+static void		display_two(t_env *v)
 {
 	v->stats.frame_start = clock();
 	draw_pro_frame(v);
@@ -51,22 +67,6 @@ void			display_two(t_env *v)
 	SDL_RenderCopy(v->ui.m_ren, v->ui.m_tex, NULL, NULL);
 	SDL_RenderPresent(v->ren);
 	SDL_RenderPresent(v->ui.m_ren);
-}
-
-void			event_management(SDL_Event e, t_env *v, const Uint8 *key_state,
-		uint32_t mouse_state)
-{
-	if (e.type == SDL_KEYDOWN)
-		key_event(v, key_state);
-	if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
-		mouse_button_event(e, v);
-	if (e.type == SDL_MOUSEMOTION)
-		if (SDL_GetMouseFocus() == v->win)
-			mouse_motion_event(e, v, mouse_state);
-		if (SDL_GetMouseFocus() == v->ui.m_win)
-			over_a_button(v, e);
-	if (e.type == SDL_MOUSEWHEEL)
-		mouse_wheel_event(e, v);
 }
 
 void			display(t_env *v)
