@@ -18,17 +18,21 @@
 
 void			screenshot(t_env *v)
 {
-	long		id;
+	int			id;
 	char		*name;
 	char		*open;
 	SDL_Surface	*save;
 
 	if (!(save = malloc(sizeof(SDL_Surface *) * v->w * v->h + 1)))
 		return ;
-	id = time(NULL);
-	id = id - 1583000000;
+	id = 1;
 	name = my_strcat("screenshot/sshot_", ft_itoa(id));
 	name = my_strcat(name, ".png");
+	while (access(name, F_OK) != -1)
+	{
+		name = my_strcat("screenshot/sshot_", ft_itoa(id++));
+		name = my_strcat(name, ".png");
+	}
 	save = SDL_GetWindowSurface(v->win);
 	IMG_SavePNG(save, name);
 	system(open = my_strcat("open ", name));
