@@ -24,6 +24,7 @@ SRC_PATH	=	src
 
 SRC_NAME	=	main.c
 SRC_NAME	+=	rays.c
+SRC_NAME	+=	light.c
 SRC_NAME	+=	usage.c
 SRC_NAME	+=	init.c
 

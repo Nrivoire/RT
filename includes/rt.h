@@ -17,11 +17,12 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
+# include <stdio.h>
+# include <pthread.h>
 # include "../SDL_include/SDL.h"
 # include "../SDL_include/SDL_ttf.h"
 # include "../SDL_include/SDL_image.h"
 # include "../SDL_include/SDL_mixer.h"
-# include <stdio.h>
 
 # define SPHERE 1
 # define PLAN 2
@@ -36,6 +37,8 @@
 # define WOOD 2
 # define MARBLE 3
 # define CHESS 4
+
+# define NB_THREAD 8
 
 /*
 ** -----------------------------PARSING----------------------------
@@ -230,6 +233,11 @@ typedef struct		s_noise
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
+typedef struct		s_thread
+{
+	pthread_t		id[NB_THREAD];
+}					t_thread;
+
 typedef struct		s_ui
 {
 	SDL_Window		*m_win;
@@ -339,6 +347,12 @@ void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
 void				bouclette(t_env *v);
 void				bouclette_event(t_env *v);
+
+/*
+** --light--
+*/
+void				calc_light(t_env *v, t_tab_obj closest, t_color *px_color);
+
 
 /*
 ** --usage--

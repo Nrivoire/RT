@@ -27,47 +27,6 @@ t_ray				create_ray(t_env *v, int x, int y)
 	return (ray);
 }
 
-float				diffuse_light(t_env *v, t_tab_obj px, t_vec pos_light)
-{
-	float			dot;
-	t_vec			light;
-
-	light = vec_normalize(vec_sub(pos_light, px.point));
-	dot = vec_scale_product(light, px.normale);
-	return (dot);
-}
-
-void				calc_light(t_env *v, t_tab_obj closest, t_color *px_color)
-{
-	t_lst_lgt		*tmp;
-	float			dot_diffuse_light;
-	float			intensity;
-
-	dot_diffuse_light = 0;
-	intensity = 0;
-	tmp = v->p.lg;
-	while (tmp)
-	{
-		if ((dot_diffuse_light = diffuse_light(v, closest, tmp->pos)) > 0)
-		{
-			intensity = dot_diffuse_light * tmp->intensity;
-			px_color->r += tmp->color.r * intensity;
-			px_color->g += tmp->color.g * intensity;
-			px_color->b += tmp->color.b * intensity;
-		}
-		tmp = tmp->next;
-	}
-	px_color->r = (px_color->r + v->p.sc.amb_light.r) * closest.color.r;
-	px_color->g = (px_color->g + v->p.sc.amb_light.g) * closest.color.g;
-	px_color->b = (px_color->b + v->p.sc.amb_light.b) * closest.color.b;
-	if (v->selected_obj && v->selected_obj->i == closest.i)
-	{
-		px_color->r *= 2;
-		px_color->g *= 1.5;
-		px_color->b *= 2.5;
-	}
-}
-
 static void			big_pixel(t_env *v, int x, int y, t_color px_color)
 {
 	pixel_put(v, x, y, px_color);
