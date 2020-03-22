@@ -124,12 +124,12 @@ void			parse_obj(t_env *v, t_file *file)
 			ft_strstr(tmp, "CONE") ? content.type = CONE : 0;
 			ft_strstr(tmp, "CYLINDER") ? content.type = CYLINDER : 0;
 		}
-		else if (!ft_strncmp(tmp, "\tradius=", 8))
-			content.radius = parse_value(tmp);
+		!ft_strncmp(tmp, "\tradius=", 8) ? content.radius = parse_value(tmp) : 0;
 		parse_xyz_obj(v, tmp, &content, file);
 		parse_material_obj(v, tmp, &content, file);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
+	check_points_if_plane(&content, file);
 	add_lst_obj(&v->p.ob, content);
 }
