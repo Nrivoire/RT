@@ -14,19 +14,22 @@
 
 static void	obj_event_rotate(t_env *v, const Uint8 *keyboard_state)
 {
+	float	angle;
+
+	angle = .01 * v->sc_m;
 	// CHANGER LES BOUTONS SUIVANT POUR LE PAVE NUMERIQUE APRES ?
 	if (keyboard_state[SDL_SCANCODE_W])
-		v->selected_obj->dir = rot_axe_x_r(v->selected_obj->dir, .01 * v->sc_m);
+		v->selected_obj->dir = rot_axe_x(v->selected_obj->dir, angle, 'R');
 	if (keyboard_state[SDL_SCANCODE_D])
-		v->selected_obj->dir = rot_axe_y_r(v->selected_obj->dir, .01 * v->sc_m);
+		v->selected_obj->dir = rot_axe_y(v->selected_obj->dir, angle, 'R');
 	if (keyboard_state[SDL_SCANCODE_Q])
-		v->selected_obj->dir = rot_axe_z_r(v->selected_obj->dir, .01 * v->sc_m);
+		v->selected_obj->dir = rot_axe_z(v->selected_obj->dir, angle, 'R');
 	if (keyboard_state[SDL_SCANCODE_S])
-		v->selected_obj->dir = rot_axe_x_l(v->selected_obj->dir, .01 * v->sc_m);
+		v->selected_obj->dir = rot_axe_x(v->selected_obj->dir, angle, 'L');
 	if (keyboard_state[SDL_SCANCODE_A])
-		v->selected_obj->dir = rot_axe_y_l(v->selected_obj->dir, .01 * v->sc_m);
+		v->selected_obj->dir = rot_axe_y(v->selected_obj->dir, angle, 'L');
 	if (keyboard_state[SDL_SCANCODE_E])
-		v->selected_obj->dir = rot_axe_z_l(v->selected_obj->dir, .01 * v->sc_m);
+		v->selected_obj->dir = rot_axe_z(v->selected_obj->dir, angle, 'L');
 }
 
 void		obj_event(t_env *v, const Uint8 *keyboard_state, float scale)

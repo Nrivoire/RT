@@ -306,12 +306,9 @@ void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
 void				obj_event(t_env *v, const Uint8 *keyboard_state, float scale);
 void				plane_event(t_env *v, const Uint8 *keyboard_state, float scale);
-t_vec				rot_axe_x_l(t_vec point, float angle);
-t_vec				rot_axe_x_r(t_vec point, float angle);
-t_vec				rot_axe_y_l(t_vec point, float angle);
-t_vec				rot_axe_y_r(t_vec point, float angle);
-t_vec				rot_axe_z_l(t_vec point, float angle);
-t_vec				rot_axe_z_r(t_vec point, float angle);
+t_vec				rot_axe_x(t_vec point, float angle, char dir);
+t_vec				rot_axe_y(t_vec point, float angle, char dir);
+t_vec				rot_axe_z(t_vec point, float angle, char dir);
 void				plane_rotate(t_env *v, const Uint8 *keyboard_state);
 void				render_obj(t_env *v, const Uint8 *keyboard_state);
 void				render_plane(t_env *v, const Uint8 *keyboard_state);
@@ -382,6 +379,7 @@ int					check_bracket(t_file *file);
 int					read_line(t_file *file);
 char				*my_strcat(char *s1, char *s2);
 void				error_parser(char *error, t_file *file);
+void				check_points_if_plane(t_lst_obj *content, t_file *f);
 
 /*
 ** --init--
