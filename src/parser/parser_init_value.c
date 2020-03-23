@@ -45,4 +45,5 @@ void	init_value_light(t_lst_lgt *content)
 	content->dir = (t_vec){0.0, 0.0, 0.0};
 	content->color = (t_color){255.0, 255.0, 255.0, 255};
 	content->intensity = 0.0;
+	content->angle = 45.0;
 }

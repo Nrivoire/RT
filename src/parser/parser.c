@@ -36,7 +36,7 @@ char			*my_strcat(char *s1, char *s2)
 }
 
 /*
-** Check that the previous block is closed,
+** Check if the previous block is closed,
 ** before allowing the opening of the next one.
 */
 
