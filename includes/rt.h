@@ -379,7 +379,7 @@ int					check_bracket(t_file *file);
 int					read_line(t_file *file);
 char				*my_strcat(char *s1, char *s2);
 void				error_parser(char *error, t_file *file);
-void				check_points_if_plane(t_lst_obj *content, t_file *f);
+void				check_points_and_type(t_lst_obj *content, t_file *file);
 
 /*
 ** --init--

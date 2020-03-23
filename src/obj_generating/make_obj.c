@@ -53,8 +53,8 @@ t_quadric		make_plan(t_vec a, t_vec b, t_vec c)
 
 	ab = (t_vec){b.x - a.x, b.y - a.y, b.z - a.z};
 	ac = (t_vec){c.x - a.x, c.y - a.y, c.z - a.z};
-	if (is_it_colieaires(ab, ac))
-		ft_putendl("Les vecteurs sont colineaires, le plan ne s'affichera pas");
+	// if (is_it_colieaires(ab, ac))
+	// 	ft_putendl("Les vecteurs sont colineaires, le plan ne s'affichera pas");
 	cross = vec_cross_product(ab, ac);
 	res.a = 0;
 	res.b = 0;

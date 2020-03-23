@@ -80,10 +80,11 @@ void	parse_xyz(char *s, t_env *v, t_file *file)
 }
 
 /*
-** Check if the 3 points of a plane are different.
+** Check if the object as a type &
+** check if the 3 points of a plane are different.
 */
 
-void	check_points_if_plane(t_lst_obj *content, t_file *file)
+void	check_points_and_type(t_lst_obj *content, t_file *file)
 {
 	if (content->type == 0)
 		error_parser("Bad file: your must precise the type of object", file);

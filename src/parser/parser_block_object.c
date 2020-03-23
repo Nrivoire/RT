@@ -130,6 +130,6 @@ void			parse_obj(t_env *v, t_file *file)
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}
-	check_points_if_plane(&content, file);
+	check_points_and_type(&content, file);
 	add_lst_obj(&v->p.ob, content);
 }
