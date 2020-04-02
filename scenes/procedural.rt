@@ -1,0 +1,48 @@
+scene{
+	ambient-light= {0.4, 0.4, 0.4}
+}
+
+camera{
+	pos= {0, 0, 20}
+	fov= 60
+}
+
+light{
+	type= POINT
+	color= 0xFFFFFFFF
+	pos= {2, 0, 70}
+	dir= {0, 0, 1}
+	intensity= 0.8
+}
+
+light{
+	type= POINT
+	color= 0xFFFFFFFF
+	pos= {40, 40, 30}
+	dir= {0, 0, 1}
+	intensity= 0.5
+}
+
+object{
+	type= SPHERE
+	radius= 3
+	pos= {-7, 0, 0}
+	color= 0xFFFFFFFF
+	texture-procedural= WOOD
+}
+
+object{
+	type= SPHERE
+	radius= 3
+	pos= {0, 0, 0}
+	color= 0xFFFFFFFF
+	texture-procedural= PERLIN
+}
+
+object{
+	type= SPHERE
+	radius= 3
+	pos= {7, 0, 0}
+	color= 0xFFFFFFFF
+	texture-procedural= MARBLE
+}
