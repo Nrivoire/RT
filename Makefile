@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+         #
+#    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/03/12 20:27:32 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/04/02 10:27:55 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
