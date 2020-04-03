@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blur_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:37:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/05 19:37:08 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 12:09:29 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,6 @@
 /*
 ** Find the good color to each pixel on blur effect.
 */
-
-int			blur_calc_a(t_env *v)
-{
-	int		a;
-
-	a = (v->ppc.blur[0].a + v->ppc.blur[1].a + v->ppc.blur[2].a + \
-		v->ppc.blur[3].a + v->ppc.blur[4].a + v->ppc.blur[5].a + \
-		v->ppc.blur[6].a + v->ppc.blur[7].a + v->ppc.blur[8].a + \
-		v->ppc.blur[9].a + v->ppc.blur[10].a + v->ppc.blur[11].a + \
-		v->ppc.blur[12].a + v->ppc.blur[13].a + v->ppc.blur[14].a + \
-		v->ppc.blur[15].a + v->ppc.blur[16].a + v->ppc.blur[17].a + \
-		v->ppc.blur[18].a + v->ppc.blur[19].a + v->ppc.blur[20].a) \
-		* 0.04761904761;
-	return (a);
-}
 
 int			blur_calc_b(t_env *v)
 {

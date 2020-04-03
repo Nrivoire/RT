@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/11 15:21:17 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 17:54:09 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,26 +73,26 @@ void		menu_text(t_env *v)
 static void	menu_2(t_env *v, int x, int y)
 {
 	if (y < (v->ui.m_h - 20) && y > 450 && x > 20 && x < v->ui.m_w - 20)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else if (y < 50 && y > 20 && x > 20 && x < v->ui.m_w - 20)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else if (y < 100 && y > 70 && x > 140 && x < v->ui.m_w - 200)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else if (y < 100 && y > 70 && x > (v->ui.m_w / 2) + 60 \
 			&& x < v->ui.m_w - 20)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else if (y < 135 && y > 105 && x > 140 && x < v->ui.m_w - 200)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else if (y < 135 && y > 105 && x > (v->ui.m_w / 2) + 60 \
 			&& x < v->ui.m_w - 20)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else if (y < 170 && y > 140 && x > 140 && x < v->ui.m_w - 200)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else if (y < 170 && y > 140 && x > (v->ui.m_w / 2) + 60 \
 			&& x < v->ui.m_w - 20)
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else
-		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(255, 255, 255, 255);
+		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(255, 255, 255);
 }
 
 void		menu(t_env *v)

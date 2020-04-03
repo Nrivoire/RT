@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:20:49 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/28 17:20:52 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 14:49:52 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void			put_icon(t_env *v)
 
 void			init_value(t_env *v)
 {
-	v->w = 1280;
-	v->h = 720;
-	v->p.sc.amb_light = (t_color){0.5, 0.5, 0.5, 255};
+	v->w = 960;
+	v->h = 540;
+	v->p.sc.amb_light = (t_color){0.5, 0.5, 0.5};
 	v->p.cam.pos = (t_vec){0.0, 0.0, 0.0};
 	v->p.cam.dir = (t_vec){0.0, 0.0, 0.0};
 	v->p.cam.fov = 60;
@@ -41,7 +41,7 @@ void			init_value(t_env *v)
 	v->p.lg = NULL;
 	v->ui.m_h = 720;
 	v->ui.m_w = 500;
-	v->hover[0] = get_hex_menu(218, 112, 214, 255);
+	v->hover[0] = get_hex_menu(218, 112, 214);
 	v->hover[1] = v->hover[0];
 	v->hover[2] = v->hover[0];
 	v->hover[3] = v->hover[0];

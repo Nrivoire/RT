@@ -1,0 +1,221 @@
+scene{
+	ambient-light= {0.1, 0.1, 0.1}
+	intensity= 1
+}
+
+camera{
+	pos= {0, 10, 40}
+	fov= 90
+}
+
+light{
+	type= POINT
+	color={255,255,255,255}
+	pos= {-20, 10, 5}
+	intensity= 0.6
+}
+
+light{
+	type= POINT
+	color={255,255,255,255}
+	pos= {20, 10, 5}
+	intensity= 0.6
+}
+
+light{
+	type= POINT
+	color={0,0,255,255}
+	pos= {0, 10, -17}
+	intensity= 0.6
+}
+
+light{
+	type= POINT
+	color={255,0,0,255}
+	pos= {0, 10, -79}
+	intensity= 0.6
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {-15, 0, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {15, 0, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {-15, 0, -33}
+	color= {150, 150, 150, 255}
+	reflect= 0.6
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {15, 0, -33}
+	color= {150, 150, 150, 255}
+	reflect= 0.6
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {-15, 0, -66}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {15, 0, -66}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {-15, 20, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {15, 20, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {-15, 20, -33}
+	color= {150, 150, 150, 255}
+	reflect= 0.6
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {15, 20, -33}
+	color= {150, 150, 150, 255}
+	reflect= 0.6
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {-15, 20, -66}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= SPHERE
+	radius= 3.2
+	pos= {15, 20, -66}
+	color= {150, 150, 150, 255}
+}
+
+
+object{
+	type= CYLINDER
+	radius= 2.21
+	pos= {-15, 0, 0}
+	dir= {0, 1, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= CYLINDER
+	radius= 2.21
+	pos= {15, 0, 0}
+	dir= {0, 1, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= CYLINDER
+	radius= 2.21
+	pos= {-15, 0, -33}
+	dir= {0, 1, 0}
+	color= {150, 150, 150, 255}
+	reflect= 0.6
+}
+
+object{
+	type= CYLINDER
+	radius= 2.21
+	pos= {15, 0, -33}
+	dir= {0, 1, 0}
+	color= {150, 150, 150, 255}
+	reflect= 0.6
+}
+
+object{
+	type= CYLINDER
+	radius= 2.21
+	pos= {-15, 0, -66}
+	dir= {0, 1, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= CYLINDER
+	radius= 2.21
+	pos= {15, 0, -66}
+	dir= {0, 1, 0}
+	color= {150, 150, 150, 255}
+}
+
+object{
+	type= CONE
+	radius= 1
+	pos= {-40, 10, -17}
+	dir= {-0.5, 1, 0}
+	color= {0, 0, 0, 255}
+	reflect= 1
+}
+
+object{
+	type= CONE
+	radius= 1
+	pos= {40, 10, -17}
+	dir= {0.5, 1, 0}
+	color= {0, 0, 0, 255}
+	reflect= 1
+}
+
+object{
+	type= PLAN
+	point_a= {15, 0, 30}
+	point_b= {-15, 0, 30}
+	point_c= {15, 0, -10}
+	color= {100, 0, 255, 255}
+	reflect= 0.1
+}
+
+object{
+	type= PLAN
+	point_a= {15, 20, 30}
+	point_b= {-15, 20, 30}
+	point_c= {15, 20, -10}
+	color= {255, 125, 0, 255}
+	reflect= 0.1
+}
+
+object{
+	type= PLAN
+	point_a= {15, -20, -100}
+	point_b= {-15, 20, -100}
+	point_c= {15, 20, -100}
+	color= {255, 255, 255, 255}
+	reflect= 1
+}

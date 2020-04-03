@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 16:49:53 by qpupier           #+#    #+#             */
-/*   Updated: 2020/03/12 19:30:56 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/03/31 15:13:12 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdint.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>

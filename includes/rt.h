@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 20:04:34 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/03 16:37:52 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct		s_color
 	float			r;
 	float			g;
 	float			b;
-	int				a;
 }					t_color;
 
 typedef struct		s_scene
@@ -183,6 +182,12 @@ typedef struct		s_tab_obj
 	t_vec			normale;
 }					t_tab_obj;
 
+typedef struct		s_tab_lights
+{
+	t_vec			pos;
+	t_color			color;
+}					t_tab_lights;
+
 typedef struct		s_mapping
 {
 	double			start1;
@@ -269,6 +274,7 @@ typedef struct		s_env
 	int				nb_o;
 	int				nb_l;
 	t_tab_obj		*tab_obj;
+	t_tab_lights	*tab_lights;
 	t_vec			light_ori;
 	t_cam			cam;
 	t_tab_obj		*selected_obj;
@@ -284,9 +290,9 @@ typedef struct		s_env
 */
 
 void				display(t_env *v);
-t_vec				quadric_normal(t_quadric q, t_vec p, t_vec r);
-int					inter_ray_quadric(t_ray r, t_quadric q,
-					t_sol_2_vec *sol);
+t_vec				quadric_normal(t_quadric q, t_vec p);
+int					inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol);
+int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
 
 /*
 ** --draw_tools--
@@ -342,8 +348,8 @@ void				create_texture_procedural(t_tab_obj *obj);
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
-void				bouclette(t_env *v);
-void				bouclette_event(t_env *v);
+void				loop(t_env *v);
+void				loop_event(t_env *v);
 
 /*
 ** --light--
@@ -403,7 +409,7 @@ int					blur_calc_g(t_env *v);
 int					blur_calc_b(t_env *v);
 int					blur_calc_a(t_env *v);
 t_color				color_ssp(Uint32 pixel);
-int					get_hex(int r, int g, int b, int a);
+int					get_hex(int r, int g, int b);
 
 /*
 ** --bonus_tools--
@@ -427,7 +433,7 @@ void				selected_dir(t_env *v);
 SDL_Surface			*write_text_stats(char *text, int size_font);
 SDL_Surface			*write_text_menu(char *text, int size_font);
 SDL_Surface			*write_text_menu2(char *text, int size_font);
-int					get_hex_menu(int r, int g, int b, int a);
+int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 void				is_it_a_button(t_env *v, SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);

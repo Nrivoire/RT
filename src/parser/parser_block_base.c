@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/12 19:52:56 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 12:00:47 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		parse_scene(t_env *v, t_file *file)
 		{
 			parse_color_scene(tmp, v, file);
 			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g,\
-										v->p.p_col.b, v->p.p_col.a};
+										v->p.p_col.b};
 		}
 		option_scene(v, tmp);
 		ft_strdel(&file->line);

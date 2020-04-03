@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_obj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:17:18 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 19:52:50 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 11:45:34 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,14 +135,8 @@ static void		make_cone_surface(t_quadric *q, t_vec a, t_vec v, float sin_2)
 t_quadric		make_cone(t_vec a, t_vec v, float alpha)
 {
 	t_quadric	q;
-	float		vx_2;
-	float		vy_2;
-	float		vz_2;
 	float		sin_2;
 
-	vx_2 = v.x * v.x;
-	vy_2 = v.y * v.y;
-	vz_2 = v.z * v.z;
 	sin_2 = sin(alpha) * sin(alpha);
 	make_cone_quadric(&q, v, sin_2);
 	make_cone_surface(&q, a, v, sin_2);

@@ -175,7 +175,20 @@ SRC_NAME = 	display/ft_putchar_fd.c 							\
 			ft_realloc.c 										\
 			ft_calloc.c 										\
 			get_next_line.c
-SRC_SUP = {display,math,math/line,math/cplx,math/geometry,math/matrix,math/real,math/vec,math/sys,memory,mlx,mlx/colors,mlx/line,str}
+SRC_SUP = 	display												\
+			math												\
+			math/line											\
+			math/cplx											\
+			math/geometry										\
+			math/matrix											\
+			math/real											\
+			math/vec											\
+			math/sys											\
+			memory												\
+			mlx													\
+			mlx/colors											\
+			mlx/line											\
+			str
 OBJ_PATH = .objects
 INC_PATH = includes
 CPPFLAGS = -I $(INC_PATH)
@@ -207,7 +220,7 @@ $(NAME): $(OBJ)
 #	@make -C ../minilibx_macos
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c includes/libft.h includes/get_next_line.h
-	@mkdir -p $(OBJ_PATH) $(OBJ_PATH)/$(SRC_SUP)
+	@mkdir -p $(OBJ_PATH) $(addprefix $(OBJ_PATH)/,$(SRC_SUP))
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 	@printf "$(ERASE)$(BLUE)> Compilation :$(END) $<"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   post_process_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:37:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/05 19:37:08 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 13:54:21 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 ** Utils use in SSAA and Blur.
 */
 
-int				get_hex(int r, int g, int b, int a)
+int				get_hex(int r, int g, int b)
 {
-	return ((r << 24) | (g << 16) | (b << 8) | (a));
+	return ((r << 24) | (g << 16) | (b << 8));
 }
 
 t_color			color_ssp(Uint32 pixel)
@@ -27,13 +27,11 @@ t_color			color_ssp(Uint32 pixel)
 	int		r;
 	int		g;
 	int		b;
-	int		a;
 	t_color	color;
 
 	r = pixel >> 24 & 0xFF;
 	g = pixel >> 16 & 0xFF;
 	b = pixel >> 8 & 0xFF;
-	a = pixel & 0xFF;
-	color = (t_color){r, g, b, a};
+	color = (t_color){r, g, b};
 	return (color);
 }

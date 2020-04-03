@@ -3,20 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   inter_ray_quadric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:31:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 20:09:08 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/03 16:36:40 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
+t_vec	quadric_normal(t_quadric q, t_vec p)
+{
+	return (vec_normalize((t_vec){							\
+			2 * q.a * p.x + q.d * p.y + q.e * p.z + q.g, 	\
+			2 * q.b * p.y + q.d * p.x + q.f * p.z + q.h, 	\
+			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i}));
+}
+
 static int	inter_ray_quadric_create_equ(t_ray r, t_quadric q, 	\
 		t_sys_sol_1var_deg2 *sol)
 {
 	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)				\
-	{																\
+			{														\
 				.a = q.a * r.d.x * r.d.x 							\
 					+ q.b * r.d.y * r.d.y 							\
 					+ q.c * r.d.z * r.d.z 							\
@@ -38,11 +46,11 @@ static int	inter_ray_quadric_create_equ(t_ray r, t_quadric q, 	\
 					+ q.f * r.o.y * r.o.z 							\
 					+ q.g * r.o.x + q.h * r.o.y + q.i * r.o.z 		\
 					+ q.j											\
-	}, 																\
-	sol));
+			}, 														\
+			sol));
 }
 
-int			inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
+int		inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
 {
 	t_sys_sol_1var_deg2	res;
 	int					inter;
@@ -66,6 +74,21 @@ int			inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
 			sol->s2 = 0;
 		else
 			sol->v2 = vec_add(r.o, vec_mult_float(r.d, res.x2));
+	}
+	return (sol->s1 || sol->s2);
+}
+
+int		inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol)
+{
+	float	dist;
+
+	if (inter_ray_quadric((t_ray){s.a, vec_sub(s.b, s.a)}, q, sol))
+	{
+		dist = vec_norm(vec_sub(s.a, s.b));
+		if (sol->s1 && vec_norm(vec_sub(s.a, sol->v1)) > dist)
+			sol->s1 = 0;
+		if (sol->s2 && vec_norm(vec_sub(s.a, sol->v2)) > dist)
+			sol->s2 = 0;
 	}
 	return (sol->s1 || sol->s2);
 }

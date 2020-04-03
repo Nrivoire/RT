@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   closest_intersect.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:31:41 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 19:53:33 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/03 18:52:33 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,6 @@ t_vec			closest_point(t_vec ori, t_sol_2_vec sol)
 	return (sol.v2);
 }
 
-t_vec				quadric_normal(t_quadric q, t_vec p, t_vec r)
-{
-	t_vec			n;
-
-	n = vec_normalize((t_vec){								\
-			2 * q.a * p.x + q.d * p.y + q.e * p.z + q.g, 	\
-			2 * q.b * p.y + q.d * p.x + q.f * p.z + q.h, 	\
-			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i});
-	return (vec_scale_product(n, r) > 0 ? vec_mult_float(n, -1) : n);
-}
-
 t_tab_obj		make_closest(t_tab_obj p, t_vec point, float dist, int i)
 {
 	t_tab_obj	closest;
@@ -120,9 +109,10 @@ int				closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest)
 			if (tmp >= 0 && tmp < dist)
 			{
 				dist = tmp;
-				*closest = make_closest(v->tab_obj[i],
-                        closest_point(ray.o, sol), dist, i);
-				closest->normale = quadric_normal(closest->q, closest->point, ray.d);
+				*closest = make_closest(v->tab_obj[i], closest_point(ray.o, sol), dist, i);
+				closest->normale = quadric_normal(closest->q, closest->point);
+				if (vec_scale_product(closest->normale, ray.d) > 0)
+					closest->normale = vec_mult_float(closest->normale, -1);
 				state = 1;
 			}
 		}

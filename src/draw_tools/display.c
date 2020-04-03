@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:54:32 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 20:05:12 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/03 15:23:55 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 static void		quit(t_env *v)
 {
@@ -30,10 +30,12 @@ void			event_management(SDL_Event e, t_env *v, const Uint8 *key_state,
 	if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
 		mouse_button_event(e, v);
 	if (e.type == SDL_MOUSEMOTION)
+	{
 		if (SDL_GetMouseFocus() == v->win)
 			mouse_motion_event(e, v, mouse_state);
 		if (SDL_GetMouseFocus() == v->ui.m_win)
 			over_a_button(v, e);
+	}
 	if (e.type == SDL_MOUSEWHEEL)
 		mouse_wheel_event(e, v);
 }
@@ -49,7 +51,7 @@ void			draw_pro_frame(t_env *v)
 		else
 			v->ppc.render_size = 1;
 	}
-	bouclette(v);
+	loop(v);
 	v->ppc.ssp == 1 ? supersampling(v) : 0;
 	v->ppc.ssp == 2 ? blur(v) : 0;
 }

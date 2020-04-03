@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_init_value.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 16:23:30 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/28 16:27:33 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 12:08:06 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_value_obj(t_lst_obj *content)
 	content->a = (t_vec){0.0, 0.0, 0.0};
 	content->b = (t_vec){0.0, 0.0, 0.0};
 	content->c = (t_vec){0.0, 0.0, 0.0};
-	content->color = (t_color){255.0, 255.0, 255.0, 255};
+	content->color = (t_color){255, 255, 255};
 	content->reflect = 0.0;
 	content->refract = 0.0;
 	content->transparency = 0.0;
@@ -43,7 +43,6 @@ void	init_value_light(t_lst_lgt *content)
 	content->type = 0;
 	content->pos = (t_vec){0.0, 0.0, 0.0};
 	content->dir = (t_vec){0.0, 0.0, 0.0};
-	content->color = (t_color){255.0, 255.0, 255.0, 255};
+	content->color = (t_color){255, 255, 255};
 	content->intensity = 0.0;
-	content->angle = 45.0;
 }

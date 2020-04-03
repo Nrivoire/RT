@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_light.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:19 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/12 19:52:57 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 12:01:55 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v, f);
-		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b,\
-							v->p.p_col.a};
+		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
 	else if (!ft_strncmp(tmp, "\tintensity=", 11))
 		c->intensity = parse_value(tmp);
-	!ft_strncmp(tmp, "\tangle=", 7) ? c->angle = parse_value(tmp) : 0;
+//	if (!ft_strncmp(tmp, "\tangle=", 7))
+//		c->angle = parse_value(tmp);
 }
 
 static void		parse_xyz_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)

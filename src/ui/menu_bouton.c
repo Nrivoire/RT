@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bouton.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/12 20:53:08 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 14:17:25 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ int			mouse_location(SDL_Event e, t_between b)
 void		over_a_button(t_env *v, SDL_Event e)
 {
 	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 220, 260}))
-		v->hover[0] = get_hex_menu(255, 100, 114, 255);
+		v->hover[0] = get_hex_menu(255, 100, 114);
 	else
-		v->hover[0] = get_hex_menu(218, 112, 214, 255);
+		v->hover[0] = get_hex_menu(218, 112, 214);
 	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 270, 310}))
-		v->hover[1] = get_hex_menu(255, 100, 114, 255);
+		v->hover[1] = get_hex_menu(255, 100, 114);
 	else
-		v->hover[1] = get_hex_menu(218, 112, 214, 255);
+		v->hover[1] = get_hex_menu(218, 112, 214);
 	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 320, 360}))
-		v->hover[2] = get_hex_menu(255, 100, 114, 255);
+		v->hover[2] = get_hex_menu(255, 100, 114);
 	else
-		v->hover[2] = get_hex_menu(218, 112, 214, 255);
+		v->hover[2] = get_hex_menu(218, 112, 214);
 	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 370, 410}))
-		v->hover[3] = get_hex_menu(255, 100, 114, 255);
+		v->hover[3] = get_hex_menu(255, 100, 114);
 	else
-		v->hover[3] = get_hex_menu(218, 112, 214, 255);
+		v->hover[3] = get_hex_menu(218, 112, 214);
 }
 
 

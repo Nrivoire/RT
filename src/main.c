@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 18:18:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/06 16:29:55 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 20:17:51 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ t_tab_obj		make_tab_obj(t_lst_obj *p)
 	return (data);
 }
 
+t_tab_lights		make_tab_lights(t_lst_lgt *p)
+{
+	t_tab_lights	light;
+
+	light.pos = p->pos;
+	light.color = p->color;
+	return (light);
+}
+
 int				main(int argc, char **argv)
 {
 	t_env		*v;
@@ -90,6 +99,8 @@ int				main(int argc, char **argv)
 	scene_value(v);
 	if (!(v->tab_obj = (t_tab_obj *)malloc(sizeof(t_tab_obj) * v->nb_o)))
 		return (0);
+	if (!(v->tab_lights = (t_tab_lights *)malloc(sizeof(t_tab_lights) * v->nb_l)))
+		return (0);
 	i = 0;
 	tmp = v->p.ob;
 	while (tmp)
@@ -97,6 +108,14 @@ int				main(int argc, char **argv)
 		v->tab_obj[i] = make_tab_obj(tmp);
 		i++;
 		tmp = tmp->next;
+	}
+	t_lst_lgt	*tmp2;
+	i = 0;
+	tmp2 = v->p.lg;
+	while (tmp2)
+	{
+		v->tab_lights[i++] = make_tab_lights(tmp2);
+		tmp2 = tmp2->next;
 	}
 	init_sdl(v);
 	display(v);

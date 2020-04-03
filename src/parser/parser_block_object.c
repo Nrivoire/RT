@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_object.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/28 15:25:50 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 12:03:43 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 	if (!ft_strncmp(tmp, "\tcolor=", 7))
 	{
 		parse_color(tmp, v, f);
-		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b,\
-							v->p.p_col.a};
+		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
 	!ft_strncmp(tmp, "\treflect=", 9) ? c->reflect = parse_value(tmp) : 0;
 	!ft_strncmp(tmp, "\trefract=", 9) ? c->refract = parse_value(tmp) : 0;

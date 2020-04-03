@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 19:54:54 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 14:22:50 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ float				diffuse_light(t_env *v, t_tab_obj px, t_vec pos_light)
 	light = vec_normalize(vec_sub(pos_light, px.point));
 	dot = vec_scale_product(light, px.normale);
 	return (dot);
+	(void)v;
 }
 
 float				spot_light(t_env *v, t_tab_obj px, t_vec pos_light)
@@ -30,6 +31,7 @@ float				spot_light(t_env *v, t_tab_obj px, t_vec pos_light)
 	light = vec_normalize(pos_light);
 	spot = vec_scale_product(light, px.normale);
 	return (spot);
+	(void)v;
 }
 
 float				dir_light(t_env *v, t_tab_obj px, t_vec pos_light)
@@ -40,6 +42,7 @@ float				dir_light(t_env *v, t_tab_obj px, t_vec pos_light)
 	light = vec_normalize(pos_light);
 	spot = vec_scale_product(light, px.normale);
 	return (spot);
+	(void)v;
 }
 
 static void			calc_condition(t_lst_lgt *tmp, float light, t_color *px_color)

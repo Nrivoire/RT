@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   post_process.c                                     :+:      :+:    :+:   */
+/*   supersampling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:37:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/05 19:37:08 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 13:56:19 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ static void		supersampling_calc(t_env *v, int x, int y)
 		v->ppc.ssaa[3].g + v->ppc.ssaa[4].g) * 0.2;
 	ssp.b = (v->ppc.ssaa[0].b + v->ppc.ssaa[1].b + v->ppc.ssaa[2].b + \
 		v->ppc.ssaa[3].b + v->ppc.ssaa[4].b) * 0.2;
-	ssp.a = (v->ppc.ssaa[0].a + v->ppc.ssaa[1].a + v->ppc.ssaa[2].a + \
-		v->ppc.ssaa[3].a + v->ppc.ssaa[4].a) * 0.2;
-	v->pixels[y * v->w + x] = get_hex(ssp.r, ssp.g, ssp.b, ssp.a);
+	v->pixels[y * v->w + x] = get_hex(ssp.r, ssp.g, ssp.b);
 }
 
 void			supersampling(t_env *v)

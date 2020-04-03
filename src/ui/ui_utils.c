@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ui_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:25:42 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/11 15:25:44 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/02 17:57:56 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-int			get_hex_menu(int r, int g, int b, int a)
+int			get_hex_menu(int r, int g, int b)
 {
-	return ((r << 24) | (g << 16) | (b << 8) | (a));
+	return ((r << 24) | (g << 16) | (b << 8));
 }
 
 void		pixel_put_menu(t_env *v, int x, int y, t_color color)
@@ -28,7 +28,7 @@ void		pixel_put_menu(t_env *v, int x, int y, t_color color)
 	if (color.b > 1)
 		color.b = 1;
 	v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(color.r * 255, \
-			color.g * 255, color.b * 255, color.a);
+			color.g * 255, color.b * 255);
 }
 
 void		put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y)
@@ -47,7 +47,7 @@ void		put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y)
 					sur->format, &col.r, &col.g, &col.b, &col.a);
 			if (col.a != 0)
 				pixel_put_menu(v, x + s_x, y + s_y,
-						(t_color){col.r, col.g, col.b, col.a});
+						(t_color){col.r, col.g, col.b});
 		}
 	}
 	SDL_FreeSurface(sur);
