@@ -11,7 +11,7 @@ camera{
 
 light{
 	type= POINT
-	color= 0xFFFFFFFF
+	color= 0xFFFFFF
 	pos= {0.0, 6.0, -25}
 	dir= {0, 0, 1}
 	intensity= 0.8
@@ -23,7 +23,7 @@ object{
 	point_a= {15, 8, 30}
 	point_b= {-15, 8, 30}
 	point_c= {15, 8, -10}
-	color= {255, 255, 255, 255}
+	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -40,7 +40,7 @@ object{
 	point_a= {15, -8, 30}
 	point_b= {-15, -8, 30}
 	point_c= {15, -8, -10}
-	color= {255, 255, 255, 255}
+	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -57,7 +57,7 @@ object{
 	point_a= {-14, 0, 15}
 	point_b= {-14, 0, -15}
 	point_c= {-14, 15, 15}
-	color= {187, 17, 76, 255}
+	color= {187, 17, 76}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -74,7 +74,7 @@ object{
 	point_a= {14, 0, 15}
 	point_b= {14, 0, -15}
 	point_c= {14, 15, 15}
-	color= {36, 68, 92, 255}
+	color= {36, 68, 92}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -91,7 +91,7 @@ object{
 	point_a= {-15, 10, -50}
 	point_b= {15, 10, -50}
 	point_c= {15, -10, -50}
-	color= {255, 255, 255, 255}
+	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -108,7 +108,7 @@ object{
 	point_a= {-15, 10, 30}
 	point_b= {15, 10, 30}
 	point_c= {15, -10, 30}
-	color= {255, 255, 255, 255}
+	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -124,7 +124,7 @@ object{
 	type= SPHERE
 	radius= 1.5
 	pos= {3, 0, 3}
-	color= {255, 255, 255, 255}
+	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -140,7 +140,7 @@ object{
 	type= SPHERE
 	radius= 2.5
 	pos= {-9, -5, -40}
-	color= {255, 255, 255, 255}
+	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0

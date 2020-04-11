@@ -27,7 +27,7 @@ object{
 
 light{
 	type= POINT
-	color= 0xFFFFFFFF
+	color= 0xFFFFFF
 	pos= {-3, 3, 3}
 	dir= {0, 0, 1}
 	intensity= 1

@@ -9,7 +9,7 @@ camera{
 
 light{
 	type= POINT
-	color= 0xFFFFFFFF
+	color= 0xFFFFFF
 	pos= {-70, 0, 0}
 	dir= {0, 0, 1}
 	intensity= 4

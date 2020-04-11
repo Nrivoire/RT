@@ -9,7 +9,7 @@ camera{
 
 light{
 	type= POINT
-	color= 0xF5C7C2FF
+	color= 0xF5C7C2
 	pos= {5, 0, 10}
 	dir= {0, 0, 1}
 	intensity= 0.5
@@ -19,7 +19,7 @@ object{
 	type= SPHERE
 	radius= 1.5
 	pos= {0, 0, 0}
-	color= 0xFF0000FF
+	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
