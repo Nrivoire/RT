@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:36 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/21 18:53:39 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/11 18:14:53 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	parse_xyz(char *s, t_env *v, t_file *file)
 		i == 1 ? v->p.p_xyz.y = parse_value(res[i]) : 0;
 		i == 2 ? v->p.p_xyz.z = parse_value(res[i]) : 0;
 	}
+	if (i != 3)
+		error_parser("Bad file: must be -> '{x,y,z}'", file);
 	while (i >= 0)
 		ft_strdel(&res[i--]);
 	free(res);
