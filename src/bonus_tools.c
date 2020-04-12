@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:17:11 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/02 14:19:29 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:23:57 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 /*
 ** Take a screenshot of the window.

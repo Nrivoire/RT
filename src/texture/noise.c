@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 15:59:22 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/02 14:08:46 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:22:07 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 int				*init_permutation(void)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   greyscale.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:34:34 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/05 19:34:36 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:20:41 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 #include "pp.h"
 
 /*

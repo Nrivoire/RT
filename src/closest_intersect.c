@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:31:41 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/03 18:52:33 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:24:05 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 float			closest_dist(t_vec ori, t_sol_2_vec sol)
 {

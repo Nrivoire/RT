@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:54:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/02/28 15:26:43 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:19:49 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 /*
 ** Add an object or a light to the list if necessary.

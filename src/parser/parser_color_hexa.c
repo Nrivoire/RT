@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser_color_hexa.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:06:19 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/11 18:39:06 by jacket           ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:19:26 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 /*
 ** Retrieve the RGB values ​​from an hexa color.

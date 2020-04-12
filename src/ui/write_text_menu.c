@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:43:53 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/02 17:55:00 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:23:36 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 SDL_Surface		*write_text_menu2(char *text, int size_font)
 {

@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:03:30 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/03 14:51:26 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:17:04 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 void			clear_pixels(t_env *v)
 {

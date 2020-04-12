@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:17:18 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/02 11:45:34 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:18:19 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 t_quadric		make_sphere(t_vec center, float radius)
 {

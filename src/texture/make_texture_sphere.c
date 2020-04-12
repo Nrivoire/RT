@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:17:59 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/02 14:03:21 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:22:00 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 static int		calc_u(t_vec vn, t_vec ve, t_tab_obj *obj)
 {

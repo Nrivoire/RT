@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:56:53 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/12 19:53:39 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:24:56 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 static int	atoi_clamp_usage(const char *str, int min, int max)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   event_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/12 20:53:08 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:16:54 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt.h"
+#include "rt.h"
 
 void	render_obj(t_env *v, const Uint8 *keyboard_state)
 {

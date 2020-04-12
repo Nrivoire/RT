@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 16:23:30 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/02 12:08:06 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:19:43 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 /*
 ** Initializes the values ​​of each node in the list.

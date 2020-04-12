@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:19 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/02 12:01:55 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:18:43 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 /*
 ** Parse the values ​​of the lights in the file.

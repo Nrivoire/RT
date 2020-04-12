@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sepia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:34:26 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/05 19:34:27 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:21:01 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 #include "pp.h"
 
 /*

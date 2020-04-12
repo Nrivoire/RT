@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/02 14:44:42 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:22:14 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 float		perlin_noise(int octaves, float f, float persistence, t_tab_obj obj)
 {

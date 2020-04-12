@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:31:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/03 16:36:40 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:18:09 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 t_vec	quadric_normal(t_quadric q, t_vec p)
 {

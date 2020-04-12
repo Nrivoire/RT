@@ -6,11 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 18:18:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/02 20:17:51 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:24:30 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 static void		init_menu(t_env *v, int scale)
 {

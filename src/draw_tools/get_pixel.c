@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 13:56:43 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/03/12 20:05:30 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:17:08 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/rt.h"
+#include "rt.h"
 
 Uint32			get_pixel(SDL_Surface *surface, int x, int y)
 {

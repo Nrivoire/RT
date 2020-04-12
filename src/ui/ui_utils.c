@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ui_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:25:42 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/11 20:47:52 by jacket           ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:23:29 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 int			get_hex_menu(int r, int g, int b)
 {

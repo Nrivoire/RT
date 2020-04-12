@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cel_shading.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:33:50 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/12 19:53:02 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:20:37 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 #include "pp.h"
 
 /*

@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 #include <vulkan/vulkan.h>
 #else
 /* SDL includes a copy for building on systems without the Vulkan SDK */
-#include "../src/video/khronos/vulkan/vulkan.h"
+#include "src/video/khronos/vulkan/vulkan.h"
 #endif
 #include "SDL_vulkan.h"
 

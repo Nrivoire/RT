@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   menu_selected.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 14:34:36 by vasalome          #+#    #+#             */
-/*   Updated: 2020/03/11 14:34:39 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/04/12 21:23:09 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 void	selected_sphere(t_env *v)
 {
