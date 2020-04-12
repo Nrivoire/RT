@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 int	sys_solve_2equ_2var_deg1(t_equ_2var_deg1 e1, t_equ_2var_deg1 e2,
 														t_sys_sol_2var_deg1 *s)

@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 int	inter_2d_line_seg(t_2d_line l, t_2d_seg s, t_real *result)
 {

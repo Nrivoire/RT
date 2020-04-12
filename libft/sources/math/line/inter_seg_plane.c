@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 int		inter_seg_plane(t_seg s, t_plane p, t_inter_seg_plane *result)
 {

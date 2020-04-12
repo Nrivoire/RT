@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 t_vec	proj_point_plane(t_vec point, t_plane plane, float *dist)
 {

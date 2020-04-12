@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 t_2d_line	create_2d_line_point_vec(t_real p1, t_real p2)
 {

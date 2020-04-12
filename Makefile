@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/02 11:37:40 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/12 11:45:53 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@
 NAME = rt
 
 #	Sources
-SRC_SUP = 	events								\
-			draw_tools							\
-			parser								\
-			post_process						\
-			obj_generating						\
-			ui									\
+SRC_SUP = 	events			\
+			draw_tools		\
+			parser			\
+			post_process	\
+			obj_generating	\
+			ui				\
 			texture
 SRC_PATH = src
 SRC_NAME = 	draw_tools/display.c				\
@@ -87,35 +87,49 @@ INC_PATH = includes
 INC_NAME = 	rt.h								\
 			pp.h
 INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
-CPPFLAGS = -I $(INC_PATH)
-LDFLAGS = -O3 -flto -ffast-math -march=native
-LDLIBS = -lm libft/libft.a
+CPPFLAGS = -I $(INC_PATH) -I libft/$(INC_PATH)
+LIB = -L libft
+LDFLAGS = -O3 -ffast-math -march=native
+LDLIBS = -lm -lft
 
 #	SDL
-OS = $(shell uname -s)
-ifeq ($(OS), Darwin)
-	INC_SDL		=	-I ./frameworks/SDL2.framework/Versions/A/Headers
-	INC_SDL		+=	-I ./frameworks/SDL2_ttf.framework/Versions/A/Headers
-	INC_SDL		+=	-I ./frameworks/SDL2_image.framework/Versions/A/Headers
-	INC_SDL		+=	-I ./frameworks/SDL2_net.framework/Headers
-	INC_SDL		+=	-F ./frameworks
-	FRAMEWORKSDIR := ./frameworks
-	SDL 		=	-F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR) $(INC_SDL)
-	OS = $(END)$(PINK)Mac OS
+ifeq ($(OS), Windows_NT)
+	INC_SDL = 	-I SDL\SDL2-2.0.12\i686-w64-mingw32\include\SDL2 		\
+				-I SDL\SDL2_image-2.0.5\i686-w64-mingw32\include\SDL2 	\
+				-I SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\include\SDL2 	\
+				-I SDL\SDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2
+	LIB_SDL = 	-L SDL\SDL2-2.0.12\i686-w64-mingw32\lib 				\
+				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 			\
+				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib 			\
+				-L SDL\SDL2_mixer-2.0.4\i686-w64-mingw32\lib
+	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+	OS = $(PINK)Windows
 else
-	ifeq ($(OS), Linux)
-		INC_SDL = -I/usr/include/SDL2 -D_REENTRANT
-		SDL = -lSDL2 -lSDL2_image -lSDL2_ttf
-		OS = $(END)$(PINK)Linux
+	OS = $(shell uname -s)
+	ifeq ($(OS), Darwin)
+		INC_SDL = 	-I SDL/frameworks/SDL2.framework/Versions/A/Headers 			\
+					-I SDL/frameworks/SDL2_ttf.framework/Versions/A/Headers 		\
+					-I SDL/frameworks/SDL2_image.framework/Versions/A/Headers 	\
+					-I SDL/frameworks/SDL2_net.framework/Headers 					\
+		INC_SDL += -F SDL/frameworks
+		FRAMEWORKSDIR := SDL/frameworks
+		SDL = -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR) $(INC_SDL)
+		OS = $(END)$(PINK)Mac OS
 	else
-		OS = $(RED)This OS is not supported
+		ifeq ($(OS), Linux)
+			INC_SDL = -I/usr/include/SDL2 -D_REENTRANT
+			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+			OS = $(END)$(PINK)Linux
+		else
+			OS = $(RED)This OS is not supported
+		endif
 	endif
 endif
 
 #	Compiler
 CC = gcc
-CFLAGS		=	-Wall -Wextra -Werror $(LDFLAGS)
-#CFLAGS		+=	-ggdb -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror $(LDFLAGS)
+# CFLAGS += -ggdb -g -fsanitize=address
 
 ################
 ##   COLORS   ##
@@ -139,30 +153,25 @@ SUR = 		\033[7m
 ##  TARGETS    ##
 #################
 
-# $@ -> nom de la règle
-# $^ -> représente tout ce qui est apres le :
-# $< -> nom de la dependance
-
-# empêche le Makefile de confondre un fichier et une règle en cas de même nom
 .PHONY: all make_libft detected_OS clean fclean re
 
 all: make_libft detected_OS $(NAME)
 	@printf "$(BLUE)> $(NAME) : $(YELLOW)Project ready !$(END)\n"
 
 make_libft:
-	@make -C ./libft/
+	@make -C libft
 
 detected_OS:
 	@printf "$(BOLD)$(GREY)Detected OS : $(OS)$(END)\n"
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $^ $(SDL) $(LDLIBS) -o $@
+	@$(CC) $(CFLAGS) $(LIB) $(LIB_SDL) $^ $(SDL) $(LDLIBS) -o $@
 	@printf "$(ERASE)$(BLUE)> $@ : $(GREEN)Success !$(END)\n\n"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	@mkdir -p $(OBJ_PATH) $(addprefix $(OBJ_PATH)/,$(SRC_SUP))
 	@printf "$(ERASE)$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).c"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -c $< -o $@
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) $(LIB) $(LIB_SDL) -c $< -o $@
 
 clean:
 	@make -C libft clean
@@ -171,7 +180,7 @@ clean:
 
 fclean: clean
 	@make -C libft fclean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME) $(NAME).exe
 	@printf "$(ERASE)$(ERASE)$(BLUE)> Deleted : $(RED)$(NAME)$(END)\n"
 
 re: fclean all

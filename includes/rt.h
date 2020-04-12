@@ -6,23 +6,24 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/03 16:37:52 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/11 19:11:55 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_H
 # define RT_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include <unistd.h>
 # include <math.h>
+# include <time.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
-# include "../SDL_include/SDL.h"
-# include "../SDL_include/SDL_ttf.h"
-# include "../SDL_include/SDL_image.h"
-# include "../SDL_include/SDL_mixer.h"
+# include "SDL.h"
+# include "SDL_ttf.h"
+# include "SDL_image.h"
+# include "SDL_mixer.h"
 
 # define SPHERE 1
 # define PLAN 2

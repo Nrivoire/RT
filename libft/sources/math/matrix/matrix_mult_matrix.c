@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 void	matrix_mult_matrix(t_matrix_3_3 m1, t_matrix_3_3 m2, t_matrix_3_3 r)
 {

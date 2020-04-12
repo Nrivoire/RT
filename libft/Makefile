@@ -194,7 +194,7 @@ INC_PATH = includes
 CPPFLAGS = -I $(INC_PATH)
 NAME = libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -O3 -march=native -flto -ffast-math
+CFLAGS = -Wall -Wextra -Werror -O3 -march=native -ffast-math
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
@@ -207,7 +207,7 @@ RED = \033[0;31m
 YELLOW = \033[0;33m
 END = \033[0m
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, clean, fclean, re, norme
 
 all: $(NAME)
 
@@ -216,8 +216,6 @@ $(NAME): $(OBJ)
 	@ranlib $@
 	@printf "$(ERASE)$(BLUE)> libft : $(GREEN)Success !$(END)\n"
 
-#mlx:
-#	@make -C ../minilibx_macos
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c includes/libft.h includes/get_next_line.h
 	@mkdir -p $(OBJ_PATH) $(addprefix $(OBJ_PATH)/,$(SRC_SUP))
@@ -231,7 +229,6 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@printf "$(BLUE)> Deleted : $(RED)$(NAME)$(END)\n"
-#@make -C ../minilibx_macos clean
 
 re: fclean all
 

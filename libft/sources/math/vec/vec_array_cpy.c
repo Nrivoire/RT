@@ -11,9 +11,9 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
-void			tvec_array_cpy(t_vec *in, t_vec *out, unsigned int nb)
+void	tvec_array_cpy(t_vec *in, t_vec *out, unsigned int nb)
 {
 	unsigned int	i;
 

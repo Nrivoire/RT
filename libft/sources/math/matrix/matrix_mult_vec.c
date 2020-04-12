@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 t_vec	matrix_mult_vec(t_matrix_3_3 mat, t_vec v)
 {

@@ -11,8 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "../../../includes/libft.h"
 
 int	sys_solve_1equ_1var_deg1(float a, float b, t_sys_sol_1var_deg1 *s)
 {

@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 t_line	line_perpendicular_line_point_plane(t_line l, t_vec p, t_vec n)
 {

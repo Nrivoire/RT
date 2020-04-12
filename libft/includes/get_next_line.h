@@ -17,7 +17,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "../includes/libft.h"
+# include "libft.h"
 
 typedef struct	s_gnl
 {

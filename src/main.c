@@ -83,18 +83,18 @@ t_tab_lights		make_tab_lights(t_lst_lgt *p)
 	return (light);
 }
 
-int				main(int argc, char **argv)
+int		main(int ac, char **av)
 {
 	t_env		*v;
 	t_lst_obj	*tmp;
 	int			i;
 
-	argc > 1 && !ft_strcmp(argv[1], "--help") ? usage("", 0) : 0;
-	argc == 1 ? usage("\033[31m\nYou can also use options.\033[0m", 1) : 0;
+	ac > 1 && !ft_strcmp(av[1], "--help") ? usage("", 0) : 0;
+	ac == 1 ? usage("\033[31m\nYou can also use options.\033[0m", 1) : 0;
 	if (!(v = ft_memalloc(sizeof(t_env))))
 		return (0);
 	init_value(v);
-	check_options(v, argc, argv);
+	check_options(v, ac, av);
 	parser_file(v);
 	scene_value(v);
 	if (!(v->tab_obj = (t_tab_obj *)malloc(sizeof(t_tab_obj) * v->nb_o)))

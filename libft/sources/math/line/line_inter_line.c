@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 static int	line_inter_line__2(t_line l1, t_line l2, t_vec *result)
 {

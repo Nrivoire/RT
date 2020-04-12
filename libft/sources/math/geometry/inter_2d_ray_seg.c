@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/libft.h"
 
 int	inter_2d_ray_seg(t_2d_ray r, t_2d_seg s, t_inter_2d_ray_seg *sol)
 {

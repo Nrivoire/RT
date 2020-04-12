@@ -57,8 +57,8 @@ void		check_options(t_env *v, int argc, char **argv)
 	char	*default_map;
 
 	i = 0;
-	default_map = ft_strdup("./scenes/default.rt");
-	v->file = default_map;
+	default_map = ft_strdup("scenes/_room.rt");
+	v->file = ft_strdup("scenes/_room.rt");
 	while (++i < argc)
 	{
 		!ft_strcmp(argv[i], "--help") ? usage("", 1) : 0;
