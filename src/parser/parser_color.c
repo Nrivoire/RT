@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parser_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:06:19 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/02 12:06:35 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/11 18:39:27 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
 /*
-** Retrieve the RGBA values ​​of object & light block.
+** Retrieve the RGB values ​​of object & light block.
 */
 
 static float	color_value(char const *s)
@@ -60,6 +60,8 @@ void			parse_color(char *s, t_env *v, t_file *file)
 			i == 1 ? v->p.p_col.g = color_value(res[i]) : 0;
 			i == 2 ? v->p.p_col.b = color_value(res[i]) : 0;
 		}
+		if (i != 3)
+			error_parser("Bad file: rgb must be -> '{r,g,b}' [0-255]", file);
 		while (i >= 0)
 			ft_strdel(&res[i--]);
 		free(res);
@@ -100,22 +102,17 @@ void			parse_color_scene(char *s, t_env *v, t_file *file)
 
 	i = 0;
 	res = NULL;
-	if (ft_strstr(s, "0x"))
-		hexa_value(s, v, 'x', file);
-	else if (ft_strstr(s, "#"))
-		hexa_value(s, v, '#', file);
-	else
+	if (!(res = ft_strsplit(s, ',')))
+		error_parser("Bad file: error in rgb", file);
+	while (res[++i] != NULL)
 	{
-		if (!(res = ft_strsplit(s, ',')))
-			error_parser("Bad file: error in rgba", file);
-		while (res[++i] != NULL)
-		{
-			i == 1 ? v->p.p_col.r = color_value_scene(res[i - 1]) : 0;
-			i == 1 ? v->p.p_col.g = color_value_scene(res[i]) : 0;
-			i == 2 ? v->p.p_col.b = color_value_scene(res[i]) * 10 : 0;
-		}
-		while (i >= 0)
-			ft_strdel(&res[i--]);
-		free(res);
+		i == 1 ? v->p.p_col.r = color_value_scene(res[i - 1]) : 0;
+		i == 1 ? v->p.p_col.g = color_value_scene(res[i]) : 0;
+		i == 2 ? v->p.p_col.b = color_value_scene(res[i]) * 10 : 0;
 	}
+	if (i != 3)
+		error_parser("Bad file: ambient rgb must be -> '{r,g,b}' [0-1]", file);
+	while (i >= 0)
+		ft_strdel(&res[i--]);
+	free(res);
 }

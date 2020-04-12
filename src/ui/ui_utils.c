@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:25:42 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/02 17:57:56 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/11 20:47:52 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			get_hex_menu(int r, int g, int b)
 
 void		pixel_put_menu(t_env *v, int x, int y, t_color color)
 {
-	if (x >= v->w || y >= v->h || x < 0 || y < 0)
+	if (x >= v->ui.m_w || y >= v->ui.m_h || x < 0 || y < 0)
 		return ;
 	if (color.r > 1)
 		color.r = 1;

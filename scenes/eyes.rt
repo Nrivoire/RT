@@ -10,7 +10,7 @@ camera{
 
 light{
 	type= POINT
-	color= 0xFFFFFFFF
+	color= 0xFFFFFF
 	pos= {10, 10, 20}
 	dir= {0, 0, 1}
 	intensity= 1
@@ -18,7 +18,7 @@ light{
 
 light{
 	type= POINT
-	color= 0xFFFFFFFF
+	color= 0xFFFFFF
 	pos= {-5, -5, 20}
 	dir= {0, 0, 1}
 	intensity= 0.4
@@ -28,7 +28,7 @@ object{
 	type= SPHERE
 	radius= 1.5
 	pos= {-2, 0, 0}
-	color= 0xFFFFFFFF
+	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -44,7 +44,7 @@ object{
 	type= SPHERE
 	radius= 0.6
 	pos= {-1.7, 0.5, 1}
-	color= 0x0000FFFF
+	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -60,7 +60,7 @@ object{
 	type= SPHERE
 	radius= 1.5
 	pos= {2, 0, 0}
-	color= 0xFFFFFFFF
+	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -76,7 +76,7 @@ object{
 	type= SPHERE
 	radius= 0.6
 	pos= {2.3, 0.5, 1}
-	color= 0x0000FFFF
+	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
@@ -92,7 +92,7 @@ object{
 	type= SPHERE
 	radius= 5
 	pos= {20, 15, 30}
-	color= 0xFFFF00FF
+	color= 0xFFFF00
 	reflect= 0.5
 	refract= 0.2
 	transparency= 0.0
