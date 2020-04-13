@@ -6,8 +6,22 @@ Sujets :<br><br>
 * Git clone : ```git clone https://github.com/Nrivoire/RT.git```<br>
 ou
 * [Telecharger le ZIP](https://github.com/Nrivoire/RT/archive/master.zip)
-
-
+	### Sur Linux
+	Installer la librairie SDL
+	```bash
+	sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+	```
+	### Sur Windows
+	sdjskjdb
+<br>
+Compiler
+```bash
+make
+```
+puis lancer le projet
+```bash
+./rt
+```
 <br><br><br><br><br><br><br>
 # TO-DO
 tuto raytracing: https://www.gabrielgambetta.com/computer-graphics-from-scratch/basic-ray-tracing.html <br>
