@@ -1,9 +1,15 @@
 # Projet RT
-# Installation
+Sujets :<br><br>
+[RTv1](https://cdn.intra.42.fr/pdf/pdf/6260/rtv1.fr.pdf)<br>
+[RT](https://cdn.intra.42.fr/pdf/pdf/6266/rt.fr.pdf)<br>
+## Installation
+* Git clone : ```git clone https://github.com/Nrivoire/RT.git```<br>
+ou
+* [Telecharger le ZIP](https://github.com/Nrivoire/RT/archive/master.zip)
 
-(A rediger)
 
-https://cdn.intra.42.fr/pdf/pdf/6266/rt.fr.pdf <br>
+<br><br><br><br><br><br><br>
+# TO-DO
 tuto raytracing: https://www.gabrielgambetta.com/computer-graphics-from-scratch/basic-ray-tracing.html <br>
 
 plan: ax + by + cz + d = 0 <br>
@@ -11,7 +17,7 @@ quadratique: ax2 + by2 + cz2 + dxy + exz + fyz + gx + hy + iz + j = 0 <br>
 sphere: (x-a)2 + (y-b)2 + (z-c)2 = r2 <br>
 
 
-# To-do
+## To-do
 
 - [X] Préliminaire
 
