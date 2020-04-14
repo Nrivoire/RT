@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/11 19:11:55 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/13 18:48:38 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,6 +284,8 @@ typedef struct		s_env
 	t_ui			ui;
 	float			sc_m;
 	Uint32			hover[4];
+	int				reflect;
+	int				print;
 }					t_env;
 
 /*
@@ -349,6 +351,8 @@ void				create_texture_procedural(t_tab_obj *obj);
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
+int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, 	\
+		t_color *color);
 void				loop(t_env *v);
 void				loop_event(t_env *v);
 

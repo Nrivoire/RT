@@ -6,13 +6,13 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:24:47 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/14 15:33:18 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_ray				create_ray(t_env *v, int x, int y)
+t_ray	create_ray(t_env *v, int x, int y)
 {
 	t_matrix_3_3	cam;
 	t_ray			ray;
@@ -97,7 +97,22 @@ t_color	light_diffuse(t_vec point, t_vec *normal, t_tab_lights light)
 	return (color_ratio(light.color, sp_ratio));
 }
 
-t_color	ray_tracer(t_env *v, t_tab_obj obj, t_vec point)
+t_color	light_reflect(t_env *v, t_vec point, t_vec ray, t_vec normal)
+{
+	t_ray		prev;
+	t_tab_obj	obj;
+	t_color		color;
+
+	prev = (t_ray){													\
+			point, 													\
+			vec_sub(ray, vec_mult_float(vec_mult_float(normal, 2), 	\
+				vec_scale_product(ray, normal)))					\
+			};
+	select_obj(v, prev, &obj, &color);
+	return (color);
+}
+
+t_color	ray_tracer(t_env *v, t_tab_obj obj, t_vec point, t_vec ray)
 {
 	t_vec	normal;
 	t_color	light;
@@ -105,6 +120,12 @@ t_color	ray_tracer(t_env *v, t_tab_obj obj, t_vec point)
 	t_color	diffuse;
 
 	normal = quadric_normal(obj.q, point);
+	if (vec_scale_product(normal, ray) > 0)
+		normal = vec_mult_float(normal, -1);
+	if (obj.type == CONE || (obj.type == PLAN && !obj.q.h))
+		return (v->reflect-- 											\
+				? limit_color(light_reflect(v, point, ray, normal)) 	\
+				: (t_color){0, 0, 0});
 	light = v->p.sc.amb_light;
 	i = -1;
 	while (++i < v->nb_l)
@@ -178,13 +199,13 @@ int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *color)
 	t_vec		point;
 
 	dist = -1;
-	point = ray.o;
+	ray.o = vec_add(ray.o, vec_mult_float(vec_normalize(ray.d), 0.01));
 	i = -1;
 	while (++i < v->nb_o)
-		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol) 	\
+		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol) 				\
 				&& choose_closest_point(ray.o, sol, &dist, &point))
 			*obj = v->tab_obj[i];
-	*color = dist >= 0 ? ray_tracer(v, *obj, point) : (t_color){0, 0, 0};
+	*color = dist >= 0 ? ray_tracer(v, *obj, point, ray.d) : (t_color){0, 0, 0};
 	return (dist >= 0);
 }
 
@@ -199,6 +220,7 @@ void	loop(t_env *v)
 	while ((y += v->ppc.render_size) <= v->h && (x = -v->ppc.render_size))
 		while ((x += v->ppc.render_size) <= v->w)
 		{
+			v->reflect = 10;
 			if (select_obj(v, create_ray(v, x, y), &obj, &color) && obj.texture)
 			{
 				generate_texture(&obj);
