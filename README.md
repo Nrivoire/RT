@@ -3,7 +3,10 @@ Sujets :<br><br>
 [RTv1](https://cdn.intra.42.fr/pdf/pdf/6260/rtv1.fr.pdf)<br>
 [RT](https://cdn.intra.42.fr/pdf/pdf/6266/rt.fr.pdf)<br>
 ## Installation
-* Git clone : ```git clone https://github.com/Nrivoire/RT.git```<br>
+* Git clone
+```bash
+git clone https://github.com/Nrivoire/RT.git
+```
 ou
 * [Telecharger le ZIP](https://github.com/Nrivoire/RT/archive/master.zip)
 ### Sur MacOS
