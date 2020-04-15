@@ -33,7 +33,16 @@ make
 ```
 ### Sur Windows
 * Installer [MinGW](http://www.mingw.org) pour integrer le compilateur gcc et la librairie de threading POSIX : Lancer l'executable [```mingw.exe```](Windows/mingw.exe) present dans le dossier [Windows](Windows)
+	* Faire suivant tant que possible
+	* Une fois arriver sur la page d'installation des packages, cocher toutes les cases dans la liste presentee en seleccionnant ```Mark for installation```
+	* Puis dans le panneau lateral gauche, aller dans ```All packages``` puis ```MinGW``` et enfin ```MinGW Base System```
+		* Aller dans ```MinGW Compiler Suite``` puis dans la liste des packages, cocher toutes les lignes dont la description contient ```C Compiler```
+		* Aller dans ```MinGW Standard Librairies``` puis cocher toutes les lignes dont la description contient ```POSIX```
+	* Cliquer sur ```Installation``` en haut a gauche de la fenetre puis sur ```Update Catalogue```
+	* Cliquer ensuite sur ```Review changes``` puis ```Apply```
 * Installer [Cygwin](http://www.cygwin.com) pour integrer la gestion de Makefiles : Lancer l'executable [```cygwin.exe```](Windows/cygwin.exe) present dans le dossier [Windows](Windows)
+* Ajouter les variables d'envirronnement
+* Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT
 * Compiler
 ```bash
 make
