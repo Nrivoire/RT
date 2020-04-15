@@ -54,6 +54,7 @@ make
 	* Dans ```Variables systeme```, seleccionner la ligne ```PATH```, puis cliquer sur ```Modifier```
 		* Cliquer sur ```Nouvelle``` puis coller la ligne suivante pour integrer les variables d'environnement de MinGW : ```C:\MinGW\bin```
 		* Faire la meme chose pour Cygwin en indiquant le chemin d'installation par defaut que vous avez precedemment mis de cote, suivi de ```\bin```
+	* Fermer toutes les fenetres en cliquant sur ```Ok```
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT
 * Compiler
 ```bash
