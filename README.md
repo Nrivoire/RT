@@ -40,7 +40,7 @@ make
 		* Aller dans ```MinGW Standard Librairies``` puis cocher toutes les lignes dont la description contient ```POSIX```
 	* Cliquer sur ```Installation``` en haut a gauche de la fenetre puis sur ```Update Catalogue```
 	* Cliquer ensuite sur ```Review changes``` puis ```Apply```
-* Installer [Cygwin](http://www.cygwin.com) pour integrer la gestion de Makefiles : Lancer l'executable [```cygwin-x86_64.exe```](Windows/cygwin-x86_64.exe) pour un processeur 64 bits et [```cygwin-x86.exe```](Windows/cygwin-x86.exe) le cas echeant, tous deux presents dans le dossier [Windows](Windows)
+* Installer [Cygwin](http://www.cygwin.com) pour integrer la gestion de Makefiles : Lancer l'executable [```cygwin-x86_64.exe```](Windows/cygwin-x86_64.exe) pour un processeur 64 bits et [```cygwin-x86.exe```](Windows/cygwin-x86.exe) le cas echeant, tous deux presents dans le dossier [Windows](Windows) (Dans le doute, prendre le premier)
 	* Au moment de choisir le chemin d'installation, copier le chemin par defaut de cote
 	* Faire suivant jusqu'a arriver sur la page ```Select packages``` (si une liste de sites bloque l'avancee avant, choisir le premier puis cliquer sur suivant)
 		* Dans la case ```View```, choisir ```Full```
@@ -49,7 +49,7 @@ make
 			* Choisir la version la plus recente
 	* Continuer a faire suivant jusqu'a la fin de l'installation
 * Ajouter les variables d'environnement
-	* Rechercher les variables d'environnement du systeme
+	* Rechercher les variables d'environnement du PC
 	* Cliquer sur ```Variables d'environnement```
 	* Dans ```Variables systeme```, seleccionner la ligne ```PATH```, puis cliquer sur ```Modifier```
 		* Cliquer sur ```Nouveau``` puis coller la ligne suivante pour integrer les variables d'environnement de MinGW : ```C:\MinGW\bin```
@@ -58,8 +58,9 @@ make
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT-master
 	* Rien ne doit etre seleccionne dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
 * Copier les fichiers ```DLL``` indispensables au lancement de la SDL et du projet
-	* 32 bits : ```cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MingW\bin```
-	* 64 bits : ```cp -r SDL\SDL2*\x86_64-w64-mingw32\bin\*.dll C:\MingW\bin```
+```bash
+cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MingW\bin
+```
 * Pour prendre en compte les derniers changements, taper ```exit``` puis rouvrir l'invite de commandes de la meme maniere que precedemment
 * Compiler
 ```bash
