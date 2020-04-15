@@ -29,7 +29,7 @@ make
 ./rt
 ```
 ### Sur Windows
-* Installer le compilateur gcc et la librairie de threading POSIX : Lancer l'executable ```mingw.exe``` present dans le dossier [Windows](Windows)
+* Installer le compilateur gcc et la librairie de threading POSIX : Lancer l'executable [```mingw.exe```](Windows/mingw.exe) present dans le dossier [Windows](Windows)
 * Compiler
 ```bash
 make
