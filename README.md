@@ -52,20 +52,14 @@ make
 	* Rechercher les variables d'environnement du systeme
 	* Cliquer sur ```Variables d'environnement```
 	* Dans ```Variables systeme```, seleccionner la ligne ```PATH```, puis cliquer sur ```Modifier```
-		* Cliquer sur ```Nouvelle``` puis coller la ligne suivante pour integrer les variables d'environnement de MinGW : ```C:\MinGW\bin```
+		* Cliquer sur ```Nouveau`` puis coller la ligne suivante pour integrer les variables d'environnement de MinGW : ```C:\MinGW\bin```
 		* Faire la meme chose pour Cygwin en indiquant le chemin d'installation par defaut que vous avez precedemment mis de cote, suivi de ```\bin```
 	* Fermer toutes les fenetres en cliquant sur ```Ok```
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT-master
 	* Rien ne doit etre seleccionne dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
 * Copier les fichiers ```DLL``` indispensables au lancement de la SDL et du projet
-	* 32 bits :
-```bash
-cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MingW\bin
-```
-	* 64 bits :
-```bash
-cp -r SDL\SDL2*\x86_64-w64-mingw32\bin\*.dll C:\MingW\bin
-```
+	* 32 bits : ```cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MingW\bin```
+	* 64 bits : ```cp -r SDL\SDL2*\x86_64-w64-mingw32\bin\*.dll C:\MingW\bin```
 * Compiler
 ```bash
 make
