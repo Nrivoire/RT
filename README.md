@@ -60,6 +60,7 @@ make
 * Copier les fichiers ```DLL``` indispensables au lancement de la SDL et du projet
 	* 32 bits : ```cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MingW\bin```
 	* 64 bits : ```cp -r SDL\SDL2*\x86_64-w64-mingw32\bin\*.dll C:\MingW\bin```
+* Pour prendre en compte les derniers changements, taper ```exit``` puis rouvrir l'invite de commandes de la meme maniere que precedemment
 * Compiler
 ```bash
 make
