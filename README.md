@@ -41,8 +41,19 @@ make
 	* Cliquer sur ```Installation``` en haut a gauche de la fenetre puis sur ```Update Catalogue```
 	* Cliquer ensuite sur ```Review changes``` puis ```Apply```
 * Installer [Cygwin](http://www.cygwin.com) pour integrer la gestion de Makefiles : Lancer l'executable [```cygwin.exe```](Windows/cygwin.exe) present dans le dossier [Windows](Windows)
+	* Au moment de choisir le chemin d'installation, copier le chemin par defaut de cote
 	* Faire suivant jusqu'a arriver sur la page ```Select packages```
+		* Dans la case ```View```, choisir ```Full```
+		* Rechercher ```make```
+		* Installer la ligne qui contient le package ```make``` et la Categorie ```Devel```
+			* Choisir la version la plus recente
+	* Continuer a faire suivant jusqu'a la fin de l'installation
 * Ajouter les variables d'envirronnement
+	* Rechercher les variables d'environnement du systeme
+	* Cliquer sur ```Variables d'environnement```
+	* Dans ```Variables systeme```, seleccionner la ligne ```PATH```, puis cliquer sur ```Modifier```
+		* Cliquer sur ```Nouvelle``` puis coller la ligne suivante pour integrer les variables d'environnement de MinGW : ```C:\MinGW\bin```
+		* Faire la meme chose pour Cygwin en indiquant le chemin d'installation par defaut que vous avez precedemment mis de cote, suivi de ```\bin```
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT
 * Compiler
 ```bash
