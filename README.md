@@ -6,21 +6,37 @@ Sujets :<br><br>
 * Git clone : ```git clone https://github.com/Nrivoire/RT.git```<br>
 ou
 * [Telecharger le ZIP](https://github.com/Nrivoire/RT/archive/master.zip)
-	### Sur Linux
-	Installer la librairie SDL
-	```bash
-	sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
-	```
-	### Sur Windows
-	sdjskjdb
-<br>
-Compiler
+### Sur MacOS
+* Compiler
 ```bash
 make
 ```
-puis lancer le projet
+* puis lancer le projet
 ```bash
 ./rt
+```
+### Sur Linux
+* Installer la librairie SDL
+```bash
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+```
+* Compiler
+```bash
+make
+```
+* puis lancer le projet
+```bash
+./rt
+```
+### Sur Windows
+* Installer le compilateur gcc et la librairie de threading POSIX : Lancer l'executable [```mingw.exe```](Windows/mingw.exe) present dans le dossier Windows
+* Compiler
+```bash
+make
+```
+* puis lancer le projet
+```bash
+.\rt.exe
 ```
 <br><br><br><br><br><br><br>
 # TO-DO
