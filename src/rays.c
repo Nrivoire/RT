@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/14 15:33:18 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/15 10:59:21 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_color	light_diffuse(t_vec point, t_vec *normal, t_tab_lights light)
 	return (color_ratio(light.color, sp_ratio));
 }
 
-t_color	light_reflect(t_env *v, t_vec point, t_vec ray, t_vec normal)
+t_color	light_reflection(t_env *v, t_vec point, t_vec ray, t_vec normal)
 {
 	t_ray		prev;
 	t_tab_obj	obj;
@@ -112,29 +112,54 @@ t_color	light_reflect(t_env *v, t_vec point, t_vec ray, t_vec normal)
 	return (color);
 }
 
+t_color	light_shine(t_vec point, t_vec ray, t_vec normal, t_tab_lights light)
+{
+	t_vec	ori;
+	t_vec	reflected;
+	float	ratio;
+	float	shine;
+
+	ori = vec_normalize(vec_sub(point, light.pos));
+	reflected = vec_sub(ori, vec_mult_float(vec_mult_float(normal, 2), 	\
+			vec_scale_product(ori, normal)));
+	ratio = vec_scale_product(reflected, vec_normalize(ray));
+	shine = 0.1;
+	return (ratio < shine - 1 											\
+			? color_ratio(light.color, 1 - (ratio + 1) / shine) 		\
+			: (t_color){0, 0, 0});
+}
+
 t_color	ray_tracer(t_env *v, t_tab_obj obj, t_vec point, t_vec ray)
 {
 	t_vec	normal;
 	t_color	light;
 	int		i;
 	t_color	diffuse;
+	t_color	shine;
 
 	normal = quadric_normal(obj.q, point);
 	if (vec_scale_product(normal, ray) > 0)
 		normal = vec_mult_float(normal, -1);
-	if (obj.type == CONE || (obj.type == PLAN && !obj.q.h))
+	/*if (obj.type == CONE || (obj.type == PLAN && !obj.q.h))
 		return (v->reflect-- 											\
-				? limit_color(light_reflect(v, point, ray, normal)) 	\
-				: (t_color){0, 0, 0});
+				? limit_color(light_reflection(v, point, ray, normal)) 	\
+				: (t_color){0, 0, 0});*/
 	light = v->p.sc.amb_light;
+	shine = (t_color){0, 0, 0};
 	i = -1;
 	while (++i < v->nb_l)
 	{
 		diffuse = light_diffuse(point, &normal, v->tab_lights[i]);
 		if (!light_shadow(v, point, normal, v->tab_lights[i]))
+		{
 			light = color_op(light, '+', diffuse);
+			shine = color_op(shine, '+', light_shine(point, ray, normal, v->tab_lights[i]));
+		}
 	}
-	return (limit_color(color_op(light, '*', obj.color)));
+	light = color_op(light, '*', obj.color);
+	if (obj.type == CYLINDER || obj.type == SPHERE)
+		light = color_op(light, '+', shine);
+	return (limit_color(light));
 }
 
 void	big_pixel(t_env *v, t_int c, int size, t_color color)
@@ -220,7 +245,7 @@ void	loop(t_env *v)
 	while ((y += v->ppc.render_size) <= v->h && (x = -v->ppc.render_size))
 		while ((x += v->ppc.render_size) <= v->w)
 		{
-			v->reflect = 10;
+			v->reflect = 1;
 			if (select_obj(v, create_ray(v, x, y), &obj, &color) && obj.texture)
 			{
 				generate_texture(&obj);
