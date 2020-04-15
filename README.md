@@ -41,6 +41,7 @@ make
 	* Cliquer sur ```Installation``` en haut a gauche de la fenetre puis sur ```Update Catalogue```
 	* Cliquer ensuite sur ```Review changes``` puis ```Apply```
 * Installer [Cygwin](http://www.cygwin.com) pour integrer la gestion de Makefiles : Lancer l'executable [```cygwin.exe```](Windows/cygwin.exe) present dans le dossier [Windows](Windows)
+	* Faire suivant jusqu'a arriver sur la page ```Select packages```
 * Ajouter les variables d'envirronnement
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT
 * Compiler
