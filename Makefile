@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/12 11:45:53 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/15 21:21:41 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,9 +109,9 @@ else
 	ifeq ($(OS), Darwin)
 		INC_SDL = 	-I SDL/frameworks/SDL2.framework/Versions/A/Headers 			\
 					-I SDL/frameworks/SDL2_ttf.framework/Versions/A/Headers 		\
-					-I SDL/frameworks/SDL2_image.framework/Versions/A/Headers 	\
+					-I SDL/frameworks/SDL2_image.framework/Versions/A/Headers 		\
 					-I SDL/frameworks/SDL2_net.framework/Headers 					\
-		INC_SDL += -F SDL/frameworks
+					-F SDL/frameworks
 		FRAMEWORKSDIR := SDL/frameworks
 		SDL = -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR) $(INC_SDL)
 		OS = $(END)$(PINK)Mac OS
