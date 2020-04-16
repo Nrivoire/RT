@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/16 14:54:27 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/16 15:14:40 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,7 @@
 ##  VARIABLES  ##
 #################
 
-#	Output
 NAME = rt
-
-#	Sources
 SRC_SUP = 	events			\
 			draw_tools		\
 			parser			\
@@ -75,60 +72,47 @@ SRC_NAME = 	draw_tools/display.c				\
 			main.c								\
 			rays.c								\
 			usage.c
-
-#	Objects
 OBJ_PATH = .objects
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
-
-#	Includes
 INC_PATH = includes
 INC_NAME = 	rt.h								\
 			pp.h
 INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
-CPPFLAGS = -I $(INC_PATH) -I libft/$(INC_PATH)
 LIB = -L libft
 LDFLAGS = -O3 -ffast-math -march=native
 LDLIBS = -lm -lft
-
-#	SDL
 ifeq ($(OS), Windows_NT)
 	INC_SDL = 	-I SDL\SDL2-2.0.12\i686-w64-mingw32\include\SDL2 		\
 				-I SDL\SDL2_image-2.0.5\i686-w64-mingw32\include\SDL2 	\
 				-I SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\include\SDL2 	\
-				-I SDL\SDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2
 	LIB_SDL = 	-L SDL\SDL2-2.0.12\i686-w64-mingw32\lib 		\
 				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 	\
 				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib 	\
-				-L SDL\SDL2_mixer-2.0.4\i686-w64-mingw32\lib
-	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 	OS = $(PINK)Windows
 else
 	OS = $(shell uname -s)
 	ifeq ($(OS), Darwin)
 		INC_SDL = 	-I SDL/frameworks/SDL2.framework/Versions/A/Headers 		\
-					-I SDL/frameworks/SDL2_ttf.framework/Versions/A/Headers 	\
 					-I SDL/frameworks/SDL2_image.framework/Versions/A/Headers 	\
-					-I SDL/frameworks/SDL2_net.framework/Headers 				\
+					-I SDL/frameworks/SDL2_ttf.framework/Versions/A/Headers 	\
 					-F SDL/frameworks
-		FRAMEWORKSDIR := SDL/frameworks
-		SDL = -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR) $(INC_SDL)
+		SDL = -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath SDL/frameworks
 		OS = $(END)$(PINK)Mac OS
 	else
 		ifeq ($(OS), Linux)
 			INC_SDL = -I/usr/include/SDL2 -D_REENTRANT
-			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf
 			OS = $(END)$(PINK)Linux
 		else
 			OS = $(RED)This OS is not supported
 		endif
 	endif
 endif
-
-#	Compiler
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror $(LDFLAGS)
-# CFLAGS += -ggdb -g -fsanitize=address
+CPPFLAGS = -I $(INC_PATH) -I libft/$(INC_PATH)
 
 ################
 ##   COLORS   ##
