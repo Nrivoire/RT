@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/16 15:07:31 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/16 15:26:59 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdio.h>
 # include <pthread.h>
 # include "SDL.h"
-# include "SDL_ttf.h"
 # include "SDL_image.h"
+# include "SDL_ttf.h"
 
 # define SPHERE 1
 # define PLAN 2
