@@ -6,10 +6,9 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/16 14:46:25 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/16 14:54:27 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
-
 
 #################
 ##  VARIABLES  ##
@@ -98,9 +97,9 @@ ifeq ($(OS), Windows_NT)
 				-I SDL\SDL2_image-2.0.5\i686-w64-mingw32\include\SDL2 	\
 				-I SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\include\SDL2 	\
 				-I SDL\SDL2_mixer-2.0.4\i686-w64-mingw32\include\SDL2
-	LIB_SDL = 	-L SDL\SDL2-2.0.12\i686-w64-mingw32\lib 				\
-				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 			\
-				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib 			\
+	LIB_SDL = 	-L SDL\SDL2-2.0.12\i686-w64-mingw32\lib 		\
+				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 	\
+				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib 	\
 				-L SDL\SDL2_mixer-2.0.4\i686-w64-mingw32\lib
 	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 	OS = $(PINK)Windows
