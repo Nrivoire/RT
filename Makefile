@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/15 21:21:41 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/16 14:46:25 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,10 +107,10 @@ ifeq ($(OS), Windows_NT)
 else
 	OS = $(shell uname -s)
 	ifeq ($(OS), Darwin)
-		INC_SDL = 	-I SDL/frameworks/SDL2.framework/Versions/A/Headers 			\
-					-I SDL/frameworks/SDL2_ttf.framework/Versions/A/Headers 		\
-					-I SDL/frameworks/SDL2_image.framework/Versions/A/Headers 		\
-					-I SDL/frameworks/SDL2_net.framework/Headers 					\
+		INC_SDL = 	-I SDL/frameworks/SDL2.framework/Versions/A/Headers 		\
+					-I SDL/frameworks/SDL2_ttf.framework/Versions/A/Headers 	\
+					-I SDL/frameworks/SDL2_image.framework/Versions/A/Headers 	\
+					-I SDL/frameworks/SDL2_net.framework/Headers 				\
 					-F SDL/frameworks
 		FRAMEWORKSDIR := SDL/frameworks
 		SDL = -F $(FRAMEWORKSDIR) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -rpath $(FRAMEWORKSDIR) $(INC_SDL)
@@ -171,7 +171,7 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	@mkdir -p $(OBJ_PATH) $(addprefix $(OBJ_PATH)/,$(SRC_SUP))
 	@printf "$(ERASE)$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).c"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) $(LIB) $(LIB_SDL) -c $< -o $@
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -c $< -o $@
 
 clean:
 	@make -C libft clean
