@@ -33,7 +33,7 @@ make
 ```
 ### Sur Windows
 * Installer [MinGW](http://www.mingw.org) pour integrer le compilateur gcc et la librairie de threading POSIX : Lancer l'executable [```mingw.exe```](Windows/mingw.exe) present dans le dossier [Windows](Windows)
-	* Faire suivant tant que possible
+	* Faire suivant tant que possible (ne pas changer le chemin d'installation)
 	* Une fois arriver sur la page d'installation des packages, cocher toutes les cases dans la liste presentee en seleccionnant ```Mark for installation```
 	* Puis dans le panneau lateral gauche, aller dans ```All packages``` puis ```MinGW``` et enfin ```MinGW Base System```
 		* Aller dans ```MinGW Compiler Suite``` puis dans la liste des packages, cocher toutes les lignes dont la description contient ```C Compiler```
@@ -41,19 +41,19 @@ make
 	* Cliquer sur ```Installation``` en haut a gauche de la fenetre puis sur ```Update Catalogue```
 	* Cliquer ensuite sur ```Review changes``` puis ```Apply```
 * Installer [Cygwin](http://www.cygwin.com) pour integrer la gestion de Makefiles : Lancer l'executable [```cygwin-x86_64.exe```](Windows/cygwin-x86_64.exe) pour un processeur 64 bits et [```cygwin-x86.exe```](Windows/cygwin-x86.exe) le cas echeant, tous deux presents dans le dossier [Windows](Windows) (Dans le doute, prendre le premier)
-	* Au moment de choisir le chemin d'installation, copier le chemin par defaut de cote
+	* Choisir ```C:\cygwin``` comme chemin d'installation
 	* Faire suivant jusqu'a arriver sur la page ```Select packages``` (si une liste de sites bloque l'avancee avant, choisir le premier puis cliquer sur suivant)
 		* Dans la case ```View```, choisir ```Full```
 		* Rechercher ```make```
-		* Installer la ligne qui contient le package ```make``` et la Categorie ```Devel```
+		* Installer la ligne qui contient le package ```make``` et la Categorie ```Devel``` (en double-cliquant)
 			* Choisir la version la plus recente
 	* Continuer a faire suivant jusqu'a la fin de l'installation
 * Ajouter les variables d'environnement
-	* Rechercher les variables d'environnement du PC
+	* Rechercher les variables d'environnement du PC (Taper ```Variables``` dans la barre de recherche de la barre des taches)
 	* Cliquer sur ```Variables d'environnement```
 	* Dans ```Variables systeme```, seleccionner la ligne ```PATH```, puis cliquer sur ```Modifier```
 		* Cliquer sur ```Nouveau``` puis coller la ligne suivante pour integrer les variables d'environnement de MinGW : ```C:\MinGW\bin```
-		* Faire la meme chose pour Cygwin en indiquant le chemin d'installation par defaut que vous avez precedemment mis de cote, suivi de ```\bin```
+		* Faire la meme chose pour Cygwin en rajoutant ```C:\cygwin\bin```
 	* Fermer toutes les fenetres en cliquant sur ```Ok```
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT-master
 	* Rien ne doit etre seleccionne dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
