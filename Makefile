@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/16 15:36:38 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/16 15:39:08 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,7 +99,7 @@ else
 					-I SDL/frameworks/SDL2_ttf.framework/Versions/A/Headers 	\
 					-I SDL/frameworks/SDL2_net.framework/Headers 				\
 					-F SDL/frameworks
-		SDL = -framework SDL2 -framework SDL2_image -framework SDL2_ttf -framework SDL2_net -rpath SDL/frameworks
+		SDL = $(INC_SDL) -framework SDL2 -framework SDL2_image -framework SDL2_ttf -framework SDL2_net -rpath SDL/frameworks
 		OS = $(END)$(PINK)Mac OS
 	else
 		ifeq ($(OS), Linux)
