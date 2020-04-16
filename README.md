@@ -59,7 +59,7 @@ make
 	* Rien ne doit etre seleccionne dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
 * Copier les fichiers ```DLL``` indispensables au lancement de la SDL et du projet
 ```bash
-cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MingW\bin
+cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MinGW\bin
 ```
 * Pour prendre en compte les derniers changements, taper ```exit``` puis rouvrir l'invite de commandes de la meme maniere que precedemment
 * Compiler
