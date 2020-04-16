@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/13 18:48:38 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/16 11:38:31 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "SDL.h"
 # include "SDL_ttf.h"
 # include "SDL_image.h"
-# include "SDL_mixer.h"
+//# include "SDL_mixer.h"
 
 # define SPHERE 1
 # define PLAN 2

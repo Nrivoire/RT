@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/15 21:21:41 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/16 11:56:34 by jacket           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -171,7 +171,7 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	@mkdir -p $(OBJ_PATH) $(addprefix $(OBJ_PATH)/,$(SRC_SUP))
 	@printf "$(ERASE)$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).c"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) $(LIB) $(LIB_SDL) -c $< -o $@
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -c $< -o $@
 
 clean:
 	@make -C libft clean
