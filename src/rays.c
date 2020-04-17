@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/15 10:59:21 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/04/17 17:22:59 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_color	light_shine(t_vec point, t_vec ray, t_vec normal, t_tab_lights light)
 	reflected = vec_sub(ori, vec_mult_float(vec_mult_float(normal, 2), 	\
 			vec_scale_product(ori, normal)));
 	ratio = vec_scale_product(reflected, vec_normalize(ray));
-	shine = 0.1;
+	shine = 0.05;
 	return (ratio < shine - 1 											\
 			? color_ratio(light.color, 1 - (ratio + 1) / shine) 		\
 			: (t_color){0, 0, 0});
