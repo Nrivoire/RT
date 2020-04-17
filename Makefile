@@ -85,10 +85,10 @@ LDLIBS = -lm -lft
 ifeq ($(OS), Windows_NT)
 	INC_SDL = 	-I SDL\SDL2-2.0.12\i686-w64-mingw32\include\SDL2 		\
 				-I SDL\SDL2_image-2.0.5\i686-w64-mingw32\include\SDL2 	\
-				-I SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\include\SDL2 	\
+				-I SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\include\SDL2
 	LIB_SDL = 	-L SDL\SDL2-2.0.12\i686-w64-mingw32\lib 		\
 				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 	\
-				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib 	\
+				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib
 	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 	OS = $(PINK)Windows
 else
