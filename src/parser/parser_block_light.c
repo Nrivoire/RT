@@ -25,8 +25,6 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
 	}
 	else if (!ft_strncmp(tmp, "\tintensity=", 11))
 		c->intensity = parse_value(tmp);
-//	if (!ft_strncmp(tmp, "\tangle=", 7))
-//		c->angle = parse_value(tmp);
 }
 
 static void		parse_xyz_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
