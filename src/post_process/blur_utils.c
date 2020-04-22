@@ -35,7 +35,7 @@ int			blur_calc_b(t_env *v)
 int			blur_calc_g(t_env *v)
 {
 	int			g;
-	
+
 	g = (v->ppc.blur[0].g + v->ppc.blur[1].g + v->ppc.blur[2].g + \
 		v->ppc.blur[3].g + v->ppc.blur[4].g + v->ppc.blur[5].g + \
 		v->ppc.blur[6].g + v->ppc.blur[7].g + v->ppc.blur[8].g + \
@@ -50,7 +50,7 @@ int			blur_calc_g(t_env *v)
 int			blur_calc_r(t_env *v)
 {
 	int			r;
-	
+
 	r = (v->ppc.blur[0].r + v->ppc.blur[1].r + v->ppc.blur[2].r + \
 		v->ppc.blur[3].r + v->ppc.blur[4].r + v->ppc.blur[5].r + \
 		v->ppc.blur[6].r + v->ppc.blur[7].r + v->ppc.blur[8].r + \

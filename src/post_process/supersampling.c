@@ -17,11 +17,10 @@
 ** Apply anti-alising supersampling / SSAA.
 */
 
-
 static void		supersampling_calc(t_env *v, int x, int y)
 {
 	t_color		ssp;
-	
+
 	ssp.r = (v->ppc.ssaa[0].r + v->ppc.ssaa[1].r + v->ppc.ssaa[2].r + \
 		v->ppc.ssaa[3].r + v->ppc.ssaa[4].r) * 0.2;
 	ssp.g = (v->ppc.ssaa[0].g + v->ppc.ssaa[1].g + v->ppc.ssaa[2].g + \

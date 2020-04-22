@@ -42,7 +42,6 @@ static void		blur_effect(t_env *v, int x, int y)
 	v->ppc.blur[20] = color_ssp(v->pixels[(y + 2) * v->w + (x + 1)]);
 }
 
-
 void			blur(t_env *v)
 {
 	int			x;
