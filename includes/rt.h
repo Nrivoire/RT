@@ -312,8 +312,10 @@ void				mouse_motion_event(SDL_Event event, t_env *v,
 					uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
-void				obj_event(t_env *v, const Uint8 *keyboard_state, float scale);
-void				plane_event(t_env *v, const Uint8 *keyboard_state, float scale);
+void				obj_event(t_env *v, const Uint8 *keyboard_state,\
+		float scale);
+void				plane_event(t_env *v, const Uint8 *keyboard_state,\
+		float scale);
 t_vec				rot_axe_x(t_vec point, float angle, char dir);
 t_vec				rot_axe_y(t_vec point, float angle, char dir);
 t_vec				rot_axe_z(t_vec point, float angle, char dir);
@@ -359,7 +361,6 @@ void				loop_event(t_env *v);
 ** --light--
 */
 void				calc_light(t_env *v, t_tab_obj closest, t_color *px_color);
-
 
 /*
 ** --usage--
@@ -441,9 +442,5 @@ int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 void				is_it_a_button(t_env *v, SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);
-
-
-
-
 
 #endif
