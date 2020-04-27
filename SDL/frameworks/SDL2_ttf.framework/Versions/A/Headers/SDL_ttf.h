@@ -31,8 +31,8 @@
 #ifndef _SDL_TTF_H
 #define _SDL_TTF_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/begin_code.h>
+#include "SDL.h"
+#include "begin_code.h"
 
 /* Set up for C function definitions, even when using C++ */
 #ifdef __cplusplus
