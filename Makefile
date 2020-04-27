@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/17 18:08:20 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/04/27 14:45:29 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,7 +137,7 @@ SUR = 		\033[7m
 ##  TARGETS    ##
 #################
 
-.PHONY: all make_libft detected_OS clean fclean re
+.PHONY: all make_libft detected_OS clean fclean re norme
 
 all: make_libft detected_OS $(NAME)
 	@printf "$(BLUE)> $(NAME) : $(YELLOW)Project ready !$(END)\n"
