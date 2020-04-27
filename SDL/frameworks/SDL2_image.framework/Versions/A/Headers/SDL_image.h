@@ -156,6 +156,6 @@ extern DECLSPEC int SDLCALL IMG_SaveJPG_RW(SDL_Surface *surface, SDL_RWops *dst,
 #ifdef __cplusplus
 }
 #endif
-#include <SDL2/close_code.h>
+#include "close_code.h"
 
 #endif /* SDL_IMAGE_H_ */
