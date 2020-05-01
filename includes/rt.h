@@ -179,7 +179,6 @@ typedef struct		s_tab_obj
 	t_quadric		q;
 	t_vec			point;
 	float			dist;
-	t_vec			normale;
 }					t_tab_obj;
 
 typedef struct		s_tab_lights
@@ -334,9 +333,9 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --textures--
 */
-void				generate_texture(t_tab_obj *closest);
-void				make_texture_sphere(t_tab_obj *obj);
-void				make_texture_plan(t_tab_obj *obj);
+void				generate_texture(t_tab_obj *obj, t_vec point);
+void				make_texture_sphere(t_tab_obj *obj, t_vec point);
+void				make_texture_plan(t_tab_obj *obj, t_vec point);
 void				make_texture_cone(t_tab_obj *obj);
 void				make_texture_cylindre(t_tab_obj *obj);
 
@@ -344,7 +343,7 @@ void				make_texture_cylindre(t_tab_obj *obj);
 ** --procedural_textures--
 */
 float				noise(float x, float y, float z);
-void				create_texture_procedural(t_tab_obj *obj);
+void				create_texture_procedural(t_tab_obj *obj, t_vec normal);
 
 /*
 ** --rays--
@@ -352,15 +351,9 @@ void				create_texture_procedural(t_tab_obj *obj);
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
-int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, 	\
-		t_color *color);
+int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
 void				loop(t_env *v);
 void				loop_event(t_env *v);
-
-/*
-** --light--
-*/
-void				calc_light(t_env *v, t_tab_obj closest, t_color *px_color);
 
 /*
 ** --usage--

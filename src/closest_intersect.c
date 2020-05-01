@@ -110,9 +110,6 @@ int				closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest)
 			{
 				dist = tmp;
 				*closest = make_closest(v->tab_obj[i], closest_point(ray.o, sol), dist, i);
-				closest->normale = quadric_normal(closest->q, closest->point);
-				if (vec_scale_product(closest->normale, ray.d) > 0)
-					closest->normale = vec_mult_float(closest->normale, -1);
 				state = 1;
 			}
 		}

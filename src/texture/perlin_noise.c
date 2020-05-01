@@ -12,7 +12,7 @@
 
 #include "rt.h"
 
-float		perlin_noise(int octaves, float f, float persistence, t_tab_obj obj)
+float		perlin_noise(int octaves, float f, float persistence, t_vec normal)
 {
 	int		i;
 	float	r;
@@ -24,8 +24,7 @@ float		perlin_noise(int octaves, float f, float persistence, t_tab_obj obj)
 	i = -1;
 	while (++i < octaves)
 	{
-		r += noise(obj.normale.x * f, obj.normale.y * f, obj.normale.z * f) *
-				amplitude;
+		r += noise(normal.x * f, normal.y * f, normal.z * f) * amplitude;
 		amplitude *= persistence;
 		f *= 2;
 	}
@@ -33,16 +32,16 @@ float		perlin_noise(int octaves, float f, float persistence, t_tab_obj obj)
 	return (r * lim);
 }
 
-void		create_texture_procedural(t_tab_obj *obj)
+void		create_texture_procedural(t_tab_obj *obj, t_vec normal)
 {
 	float	time;
 
 	if (obj->procedural == PERLIN)
-		time = perlin_noise(1, 7, 2, *obj);
+		time = perlin_noise(1, 7, 2, normal);
 	else if (obj->procedural == WOOD)
-		time = (1. + sin((perlin_noise(2, 1, 15, *obj) * 0.5) * 150.)) * 0.5;
+		time = (1. + sin((perlin_noise(2, 1, 15, normal) * 0.5) * 150.)) * 0.5;
 	else if (obj->procedural == MARBLE)
-		time = sin(obj->normale.x + perlin_noise(1, 7, 2, *obj) * 12) / 24;
+		time = sin(normal.x + perlin_noise(1, 7, 2, normal) * 12) / 24;
 	else
 		return ;
 	if (time >= 0)

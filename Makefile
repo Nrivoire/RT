@@ -57,7 +57,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			texture/make_texture_sphere.c		\
 			texture/noise.c						\
 			texture/perlin_noise.c				\
-			texture/put_texture_on_surface.c	\
+			texture/generate_texture.c	\
 			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\
@@ -68,7 +68,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			bonus_tools.c						\
 			closest_intersect.c					\
 			init.c								\
-			light.c								\
 			main.c								\
 			rays.c								\
 			usage.c

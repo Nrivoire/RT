@@ -30,20 +30,6 @@ t_quadric		make_sphere(t_vec center, float radius)
 	return (res);
 }
 
-int				is_it_colieaires(t_vec v1, t_vec v2)
-{
-	int			i;
-	int			j;
-	int			k;
-
-	i = v1.x / v2.x;
-	j = v1.y / v2.y;
-	k = v1.z / v2.z;
-	if (i == j && j == k && k == i)
-		return (1);
-	return (0);
-}
-
 t_quadric		make_plan(t_vec a, t_vec b, t_vec c)
 {
 	t_quadric	res;
@@ -53,8 +39,6 @@ t_quadric		make_plan(t_vec a, t_vec b, t_vec c)
 
 	ab = (t_vec){b.x - a.x, b.y - a.y, b.z - a.z};
 	ac = (t_vec){c.x - a.x, c.y - a.y, c.z - a.z};
-	// if (is_it_colieaires(ab, ac))
-	// 	ft_putendl("Les vecteurs sont colineaires, le plan ne s'affichera pas");
 	cross = vec_cross_product(ab, ac);
 	res.a = 0;
 	res.b = 0;

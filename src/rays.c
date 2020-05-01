@@ -101,15 +101,15 @@ t_color	light_reflection(t_env *v, t_vec point, t_vec ray, t_vec normal)
 {
 	t_ray		prev;
 	t_tab_obj	obj;
-	t_color		color;
+	t_color		light;
 
 	prev = (t_ray){													\
 			point, 													\
 			vec_sub(ray, vec_mult_float(vec_mult_float(normal, 2), 	\
 				vec_scale_product(ray, normal)))					\
 			};
-	select_obj(v, prev, &obj, &color);
-	return (color);
+	select_obj(v, prev, &obj, &light);
+	return (light);
 }
 
 t_color	light_shine(t_vec point, t_vec ray, t_vec normal, t_tab_lights light)
@@ -129,7 +129,7 @@ t_color	light_shine(t_vec point, t_vec ray, t_vec normal, t_tab_lights light)
 			: (t_color){0, 0, 0});
 }
 
-t_color	ray_tracer(t_env *v, t_tab_obj obj, t_vec point, t_vec ray)
+t_color		select_light(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 {
 	t_vec	normal;
 	t_color	light;
@@ -137,10 +137,10 @@ t_color	ray_tracer(t_env *v, t_tab_obj obj, t_vec point, t_vec ray)
 	t_color	diffuse;
 	t_color	shine;
 
-	normal = quadric_normal(obj.q, point);
+	normal = quadric_normal(obj->q, point);
 	if (vec_scale_product(normal, ray) > 0)
 		normal = vec_mult_float(normal, -1);
-	/*if (obj.type == CONE || (obj.type == PLAN && !obj.q.h))
+	/*if (obj->type == CONE || (obj->type == PLAN && !obj->q.h))
 		return (v->reflect-- 											\
 				? limit_color(light_reflection(v, point, ray, normal)) 	\
 				: (t_color){0, 0, 0});*/
@@ -156,8 +156,8 @@ t_color	ray_tracer(t_env *v, t_tab_obj obj, t_vec point, t_vec ray)
 			shine = color_op(shine, '+', light_shine(point, ray, normal, v->tab_lights[i]));
 		}
 	}
-	light = color_op(light, '*', obj.color);
-	if (obj.type == CYLINDER || obj.type == SPHERE)
+	light = color_op(light, '*', obj->color);
+	if (obj->type == CYLINDER || obj->type == SPHERE)
 		light = color_op(light, '+', shine);
 	return (limit_color(light));
 }
@@ -216,7 +216,7 @@ int		choose_closest_point(t_vec o, t_sol_2_vec s, float *dist, t_vec *point)
 	return (0);
 }
 
-int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *color)
+int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light)
 {
 	float		dist;
 	int			i;
@@ -230,8 +230,26 @@ int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *color)
 		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol) 				\
 				&& choose_closest_point(ray.o, sol, &dist, &point))
 			*obj = v->tab_obj[i];
-	*color = dist >= 0 ? ray_tracer(v, *obj, point, ray.d) : (t_color){0, 0, 0};
+	if (dist >= 0)
+	{
+		if (obj->texture)
+			generate_texture(obj, point);
+		*light = dist >= 0 ? select_light(v, obj, point, ray.d) : (t_color){0, 0, 0};
+	}
 	return (dist >= 0);
+}
+
+void			calc_light(t_env *v, t_tab_obj obj, t_color light, t_color *px_color)
+{
+	px_color->r = light.r * obj.color.r;
+	px_color->g = light.g * obj.color.g;
+	px_color->b = light.b * obj.color.b;
+	if (v->selected_obj && v->selected_obj->i == obj.i)
+	{
+		px_color->r *= 2;
+		px_color->g *= 1.5;
+		px_color->b *= 2.5;
+	}
 }
 
 void	loop(t_env *v)
@@ -240,16 +258,19 @@ void	loop(t_env *v)
 	int			y;
 	t_tab_obj	obj;
 	t_color		color;
+	t_color		light;
 
 	y = -v->ppc.render_size;
 	while ((y += v->ppc.render_size) <= v->h && (x = -v->ppc.render_size))
 		while ((x += v->ppc.render_size) <= v->w)
 		{
+			color = (t_color){0, 0, 0};
 			v->reflect = 1;
-			if (select_obj(v, create_ray(v, x, y), &obj, &color) && obj.texture)
+			if (select_obj(v, create_ray(v, x, y), &obj, &light))
 			{
-				generate_texture(&obj);
-				color = limit_color(obj.color);
+				color = limit_color(light);
+				if (obj.texture)
+					calc_light(v, obj, light, &color);
 			}
 			if (v->ppc.render_size == 1)
 				pixel_put(v, x, y, color);

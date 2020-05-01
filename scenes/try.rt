@@ -29,7 +29,7 @@ object{
 	diffuse= 0
 	specular= 0
 	shininess= 0
-	texture= "./textures/brick.jpg"
+	texture= "./textures/checkboard_test.jpg"
 }
 
 # object{

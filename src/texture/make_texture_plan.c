@@ -12,7 +12,7 @@
 
 #include "rt.h"
 
-void			make_texture_plan(t_tab_obj *obj)
+void			make_texture_plan(t_tab_obj *obj, t_vec point)
 {
 	SDL_Color			col;
 	t_vec				u;
@@ -25,7 +25,7 @@ void			make_texture_plan(t_tab_obj *obj)
 	col = (SDL_Color){0, 0, 0, 255};
 	u = vec_sub(obj->b, obj->a);
 	v = vec_sub(obj->c, obj->a);
-	vp = vec_sub(obj->point, obj->a);
+	vp = vec_sub(point, obj->a);
 	equ1 = (t_equ_2var_deg1)
 	{
 		.a_x = vec_scale_product(u, u),
