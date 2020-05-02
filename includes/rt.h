@@ -195,6 +195,12 @@ typedef struct		s_mapping
 	double			stop2;
 }					t_mapping;
 
+typedef struct		s_unit
+{
+	float			u;
+	float			v;
+}					t_unit;
+
 /*
 ** -----------------------------POST-PROCESS----------------------------
 */
@@ -334,7 +340,7 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 ** --textures--
 */
 void				generate_texture(t_tab_obj *obj, t_vec point);
-void				make_texture_sphere(t_tab_obj *obj, t_vec point);
+void				make_texture_sphere(t_tab_obj *obj, t_vec point, SDL_Color col);
 void				make_texture_plan(t_tab_obj *obj, t_vec point);
 void				make_texture_cone(t_tab_obj *obj);
 void				make_texture_cylindre(t_tab_obj *obj);

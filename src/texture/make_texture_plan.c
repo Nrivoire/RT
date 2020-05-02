@@ -12,20 +12,12 @@
 
 #include "rt.h"
 
-void			make_texture_plan(t_tab_obj *obj, t_vec point)
+int				resolv_equation(t_vec u, t_vec v, t_vec vp,
+	t_sys_sol_2var_deg1 *res)
 {
-	SDL_Color			col;
-	t_vec				u;
-	t_vec				v;
-	t_vec				vp;
 	t_equ_2var_deg1		equ1;
 	t_equ_2var_deg1		equ2;
-	t_sys_sol_2var_deg1	res;
 
-	col = (SDL_Color){0, 0, 0, 255};
-	u = vec_sub(obj->b, obj->a);
-	v = vec_sub(obj->c, obj->a);
-	vp = vec_sub(point, obj->a);
 	equ1 = (t_equ_2var_deg1)
 	{
 		.a_x = vec_scale_product(u, u),
@@ -38,8 +30,24 @@ void			make_texture_plan(t_tab_obj *obj, t_vec point)
 		.a_y = vec_scale_product(v, v),
 		.b = -vec_scale_product(vp, v)
 	};
-	if (!sys_solve_2equ_2var_deg1(equ1, equ2, &res))
-		return ;
+	if (!sys_solve_2equ_2var_deg1(equ1, equ2, res))
+		return (0);
+	return (1);
+}
+
+void			make_texture_plan(t_tab_obj *obj, t_vec point)
+{
+	SDL_Color			col;
+	t_vec				u;
+	t_vec				v;
+	t_vec				vp;
+	t_sys_sol_2var_deg1	res;
+
+	col = (SDL_Color){0, 0, 0, 255};
+	u = vec_sub(obj->b, obj->a);
+	v = vec_sub(obj->c, obj->a);
+	vp = vec_sub(point, obj->a);
+	resolv_equation(u, v, vp, &res);
 	SDL_GetRGB(get_pixel(obj->texture,
 		(int)(fabs(res.x) * obj->texture->w) % obj->texture->w,
 		(int)(fabs(res.y) * obj->texture->h) % obj->texture->h),

@@ -33,8 +33,11 @@
 
 void			generate_texture(t_tab_obj *obj, t_vec point)
 {
+	SDL_Color col;
+
+	col = (SDL_Color){0, 0, 0, 255};
 	if (obj->type == SPHERE)
-		make_texture_sphere(obj, point);
+		make_texture_sphere(obj, point, col);
 	// if (obj->type == CYLINDER)
 		// make_texture_cylinder(obj);
 	if (obj->type == PLAN)
