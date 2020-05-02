@@ -34,7 +34,6 @@ void			init_permutation(t_env *v)
 		29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
 	};
 
-	printf("here\n");
 	i = -1;
 	while (++i < 512)
 		v->pe[i] = permutation[i & 255];
