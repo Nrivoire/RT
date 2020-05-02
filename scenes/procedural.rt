@@ -27,7 +27,7 @@ object{
 	type= SPHERE
 	radius= 3
 	pos= {-7, 0, 0}
-	color= 0xFFFFFF
+	color= 0x855E42
 	texture-procedural= WOOD
 }
 
@@ -35,7 +35,7 @@ object{
 	type= SPHERE
 	radius= 3
 	pos= {0, 0, 0}
-	color= 0xFFFFFF
+	color= 0x605ADF
 	texture-procedural= PERLIN
 }
 
@@ -43,6 +43,6 @@ object{
 	type= SPHERE
 	radius= 3
 	pos= {7, 0, 0}
-	color= 0xFFFFFF
+	color= 0xE6E4D8
 	texture-procedural= MARBLE
 }

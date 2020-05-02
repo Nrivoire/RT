@@ -202,6 +202,27 @@ typedef struct		s_unit
 }					t_unit;
 
 /*
+** ---------------------------------PERLIN--------------------------------
+*/
+
+typedef struct		s_noise
+{
+	int				xi;
+	int				yi;
+	int				zi;
+	float			u;
+	float			v;
+	float			w;
+}					t_noise;
+
+typedef struct		s_perlin
+{
+	int				octaves;
+	float			frequency;
+	float			persistence;
+}					t_perlin;
+
+/*
 ** -----------------------------POST-PROCESS----------------------------
 */
 
@@ -224,20 +245,6 @@ typedef struct		s_stats
 	double			frame;
 	int				fps;
 }					t_stats;
-
-/*
-** ---------------------------------PERLIN--------------------------------
-*/
-
-typedef struct		s_noise
-{
-	int				xi;
-	int				yi;
-	int				zi;
-	float			u;
-	float			v;
-	float			w;
-}					t_noise;
 
 /*
 ** -----------------------------ENVIRONNEMENT----------------------------
@@ -290,6 +297,7 @@ typedef struct		s_env
 	Uint32			hover[4];
 	int				reflect;
 	int				print;
+	int				pe[512];
 }					t_env;
 
 /*
@@ -339,17 +347,18 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --textures--
 */
-void				generate_texture(t_tab_obj *obj, t_vec point);
+void				generate_texture(t_env *v, t_tab_obj *obj, t_vec point, t_vec normal);
 void				make_texture_sphere(t_tab_obj *obj, t_vec point, SDL_Color col);
 void				make_texture_plan(t_tab_obj *obj, t_vec point);
-void				make_texture_cone(t_tab_obj *obj);
-void				make_texture_cylindre(t_tab_obj *obj);
+//void				make_texture_cone(t_tab_obj *obj);
+//void				make_texture_cylindre(t_tab_obj *obj);
 
 /*
 ** --procedural_textures--
 */
-float				noise(float x, float y, float z);
-void				create_texture_procedural(t_tab_obj *obj, t_vec normal);
+void				init_permutation(t_env *v);
+float				noise(t_env *v, float x, float y, float z);
+void				create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec normal);
 
 /*
 ** --rays--

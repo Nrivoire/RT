@@ -31,15 +31,24 @@
 // 	matrix_rotation(ax, ay, az, rot);
 // }
 
-void			generate_texture(t_tab_obj *obj, t_vec point)
+void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, t_vec normal)
 {
 	SDL_Color col;
 
 	col = (SDL_Color){0, 0, 0, 255};
-	if (obj->type == SPHERE)
-		make_texture_sphere(obj, point, col);
-	// if (obj->type == CYLINDER)
-		// make_texture_cylinder(obj);
-	if (obj->type == PLAN)
-		make_texture_plan(obj, point);
+	if (obj->procedural)
+	{
+		if (v->pe[0] != 151)
+			init_permutation(v);
+		create_texture_procedural(v, obj, normal);
+	}
+	else
+	{
+		if (obj->type == SPHERE)
+			make_texture_sphere(obj, point, col);
+		// if (obj->type == CYLINDER)
+			// make_texture_cylinder(obj);
+		if (obj->type == PLAN)
+			make_texture_plan(obj, point);
+	}
 }

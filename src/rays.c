@@ -156,6 +156,8 @@ t_color		select_light(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 			shine = color_op(shine, '+', light_shine(point, ray, normal, v->tab_lights[i]));
 		}
 	}
+	if (obj->texture || obj->procedural)
+		generate_texture(v, obj, point, normal);
 	light = color_op(light, '*', obj->color);
 	if (obj->type == CYLINDER || obj->type == SPHERE)
 		light = color_op(light, '+', shine);
@@ -230,12 +232,7 @@ int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light)
 		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol) 				\
 				&& choose_closest_point(ray.o, sol, &dist, &point))
 			*obj = v->tab_obj[i];
-	if (dist >= 0)
-	{
-		if (obj->texture)
-			generate_texture(obj, point);
-		*light = dist >= 0 ? select_light(v, obj, point, ray.d) : (t_color){0, 0, 0};
-	}
+	*light = dist >= 0 ? select_light(v, obj, point, ray.d) : (t_color){0, 0, 0};
 	return (dist >= 0);
 }
 

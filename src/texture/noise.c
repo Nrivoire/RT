@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   noise.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 15:59:22 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:22:07 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/03/13 12:15:16 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../includes/rt.h"
 
-int				*init_permutation(void)
+void			init_permutation(t_env *v)
 {
-	int	*p;
-	int	i;
-	int	permutation[256] = {151, 160, 137, 91, 90, 15, 131, 13, 201, 95,
+	int			i;
+	const int	permutation[256] = {151, 160, 137, 91, 90, 15, 131, 13, 201, 95,
 		96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21,
 		10, 23, 190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219,
 		203, 117, 35, 11, 32, 57, 177, 33, 88, 237, 149, 56, 87, 174, 20, 125,
@@ -32,15 +31,13 @@ int				*init_permutation(void)
 		, 242, 193, 238, 210, 144, 12, 191, 179, 162, 241, 81, 51, 145, 235, 249
 		, 14, 239, 107, 49, 192, 214, 31, 181, 199, 106, 157, 184, 84, 204, 176
 		, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93, 222, 114, 67,
-		29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180};
+		29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
+	};
 
-// A changer IMPERATIVEMENT
-	if (!(p = malloc(sizeof(int) * 512)))
-		ft_error("Malloc error : _init_permutation");
+	printf("here\n");
 	i = -1;
 	while (++i < 512)
-		p[i] = permutation[i & 255];
-	return (p);
+		v->pe[i] = permutation[i & 255];
 }
 
 float			grad(int hash, float x, float y, float z)
@@ -80,7 +77,7 @@ void			init_noise(t_noise *n, float x, float y, float z)
 	n->w = z * z * z * (z * (z * 6 - 15) + 10);
 }
 
-float			noise(float x, float y, float z)
+float			noise(t_env *v, float x, float y, float z)
 {
 	t_noise		n;
 	int			*p;
@@ -89,7 +86,7 @@ float			noise(float x, float y, float z)
 	x -= (int)floor(x);
 	y -= (int)floor(y);
 	z -= (int)floor(z);
-	p = init_permutation();
+	p = v->pe;
 	return (
 		(lerp(n.w,
 			lerp(n.v,
