@@ -4,6 +4,7 @@ scene{
 
 camera{
 	pos= {0, 0.5, 10}
+	dir= {-0.8, 1, 0}
 	fov= 60
 }
 
@@ -12,21 +13,14 @@ light{
 	color= 0xF5C7C2
 	pos= {1.5, 0.5, 5}
 	dir= {0, 0, 1}
-	intensity= 2
 }
 
 object{
 	type= SPHERE
 	radius= 1
 	pos= {0, 0, 0}
-	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 	texture= "textures/brick.jpg"
 }
@@ -39,11 +33,6 @@ object{
 	color= 0xFFFF00
 	reflect= 0
 	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
 	shininess= 0
 }
 
@@ -55,11 +44,6 @@ object{
 	color= 0x00FF00
 	reflect= 0
 	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
 	shininess= 0
 }
 
@@ -71,11 +55,6 @@ object{
 	color= 0x0000FF
 	reflect= 0
 	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
 	shininess= 0
 }
 
@@ -87,10 +66,5 @@ object{
 	color= {77, 77, 77}
 	reflect= 0
 	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
 	shininess= 0
 }

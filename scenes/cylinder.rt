@@ -4,6 +4,7 @@ scene{
 
 camera{
 	pos= {0, 0, 10}
+	dir= {0, 1, 0}
 	fov= 60
 }
 
@@ -12,7 +13,6 @@ light{
 	color= 0xF5C7C2
 	pos= {5, 0, 10}
 	dir= {0, 0, 1}
-	intensity= 0.5
 }
 
 object{
@@ -23,10 +23,5 @@ object{
 	color= 0x00FF00
 	reflect= 0
 	refract= 0
-	transparency= 0
-	absorbtion= 0
-	ambient= 0
-	diffuse= 0
-	specular= 0
 	shininess= 0
 }

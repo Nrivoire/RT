@@ -23,8 +23,6 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
 		parse_color(tmp, v, f);
 		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
-	else if (!ft_strncmp(tmp, "\tintensity=", 11))
-		c->intensity = parse_value(tmp);
 }
 
 static void		parse_xyz_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)

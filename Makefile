@@ -22,7 +22,7 @@ SRC_SUP = 	events			\
 			ray_tracer		\
 			obj_generating	\
 			ui				\
-			texture
+
 SRC_PATH = src
 SRC_NAME = 	draw_tools/display.c				\
 			draw_tools/get_pixel.c				\
@@ -56,12 +56,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			ray_tracer/colors.c					\
 			ray_tracer/loop.c					\
 			ray_tracer/ray_tracer.c				\
-			texture/checkboard.c				\
-			texture/make_texture_plan.c			\
-			texture/make_texture_sphere.c		\
-			texture/noise.c						\
-			texture/perlin_noise.c				\
-			texture/generate_texture.c			\
 			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\
@@ -70,7 +64,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			ui/ui_utils.c						\
 			ui/write_text_menu.c				\
 			bonus_tools.c						\
-			closest_intersect.c					\
 			init.c								\
 			main.c								\
 			usage.c

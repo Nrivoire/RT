@@ -4,6 +4,7 @@ scene{
 
 camera{
 	pos= {0, 0, 200}
+	dir= {0, 0, 1}
 	fov= 60
 }
 
@@ -12,11 +13,9 @@ light{
 	color= 0xFFFFFF
 	pos= {-70, 0, 0}
 	dir= {0, 0, 1}
-	intensity= 4
 }
 
 object{
-	name= "earth"
 	type= SPHERE
 	radius= 12.756
 	pos= {0, 0, 0}
@@ -24,7 +23,6 @@ object{
 }
 
 object{
-	name= "moon"
 	type= SPHERE
 	radius= 3.476
 	pos= {25.0, 15, 0}
@@ -32,17 +30,8 @@ object{
 }
 
 object{
-	name= "sun"
 	type= SPHERE
 	radius= 1390.000
 	pos= {-1600.000, 0, 0}
-	texture= "textures/8k_sun.jpg"
-}
-
-object{
-	name= "stars"
-	type= SPHERE
-	radius= 8000.000
-	pos= {0, 0, 0}
-	texture= "textures/8k_stars.jpg"
+	texture= "textures/sun.jpg"
 }

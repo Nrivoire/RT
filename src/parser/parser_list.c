@@ -32,14 +32,7 @@ void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 	new->color = content.color;
 	new->reflect = content.reflect;
 	new->refract = content.refract;
-	new->transparency = content.transparency;
-	new->absorbtion = content.absorbtion;
-	new->ambient = content.ambient;
-	new->diffuse = content.diffuse;
-	new->specular = content.specular;
 	new->shininess = content.shininess;
-	new->texture = content.texture;
-	new->procedural = content.procedural;
 	new->next = (!*ob) ? NULL : *ob;
 	*ob = new;
 }
@@ -54,7 +47,6 @@ void	add_lst_lgt(t_lst_lgt **lg, t_lst_lgt content)
 	new->pos = content.pos;
 	new->dir = content.dir;
 	new->color = content.color;
-	new->intensity = content.intensity;
 	new->next = (!*lg) ? NULL : *lg;
 	*lg = new;
 }

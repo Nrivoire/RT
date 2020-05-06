@@ -79,7 +79,10 @@ int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light)
 	while (++i < v->nb_o)
 		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol) 				\
 				&& choose_closest_point(ray.o, sol, &dist, &point))
+		{
+			v->tab_obj[i].i = i;
 			*obj = v->tab_obj[i];
+		}
 	*light = dist >= 0 ? ray_tracer(v, obj, point, ray.d) : (t_color){0, 0, 0};
 	return (dist >= 0);
 }

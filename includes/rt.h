@@ -72,7 +72,6 @@ typedef struct		s_lst_lgt
 	t_vec			pos;
 	t_vec			dir;
 	t_color			color;
-	float			intensity;
 	struct s_lst_lgt*next;
 }					t_lst_lgt;
 
@@ -88,14 +87,7 @@ typedef struct		s_lst_obj
 	t_color			color;
 	float			reflect;
 	float			refract;
-	float			transparency;
-	float			absorbtion;
-	float			ambient;
-	float			diffuse;
-	float			specular;
 	float			shininess;
-	int				procedural;
-	SDL_Surface		*texture;
 	struct s_lst_obj*next;
 }					t_lst_obj;
 
@@ -159,7 +151,6 @@ typedef struct		s_cam
 
 typedef struct		s_tab_obj
 {
-	int				i;
 	short			type;
 	float			radius;
 	t_vec			pos;
@@ -170,17 +161,9 @@ typedef struct		s_tab_obj
 	t_color			color;
 	float			reflect;
 	float			refract;
-	float			transparency;
-	float			absorbtion;
-	float			ambient;
-	float			diffuse;
-	float			specular;
 	float			shininess;
-	int				procedural;
-	SDL_Surface		*texture;
 	t_quadric		q;
-	t_vec			point;
-	float			dist;
+	int				i;
 }					t_tab_obj;
 
 typedef struct		s_tab_lights
@@ -189,40 +172,27 @@ typedef struct		s_tab_lights
 	t_color			color;
 }					t_tab_lights;
 
-typedef struct		s_mapping
+// typedef struct		s_mapping
+// {
+// 	double			start1;
+// 	double			stop1;
+// 	double			start2;
+// 	double			stop2;
+// }					t_mapping;
+
+typedef struct		s_between
 {
-	double			start1;
-	double			stop1;
-	double			start2;
-	double			stop2;
-}					t_mapping;
+	int				min_x;
+	int				max_x;
+	int				min_y;
+	int				max_y;
+}					t_between;
 
 typedef struct		s_unit
 {
 	float			u;
 	float			v;
 }					t_unit;
-
-/*
-** ---------------------------------PERLIN--------------------------------
-*/
-
-typedef struct		s_noise
-{
-	int				xi;
-	int				yi;
-	int				zi;
-	float			u;
-	float			v;
-	float			w;
-}					t_noise;
-
-typedef struct		s_perlin
-{
-	int				octaves;
-	float			frequency;
-	float			persistence;
-}					t_perlin;
 
 /*
 ** -----------------------------POST-PROCESS----------------------------
@@ -267,14 +237,6 @@ typedef struct		s_ui
 	int				m_h;
 }					t_ui;
 
-typedef struct		s_between
-{
-	int				min_x;
-	int				max_x;
-	int				min_y;
-	int				max_y;
-}					t_between;
-
 typedef struct		s_env
 {
 	SDL_Window		*win;
@@ -299,7 +261,6 @@ typedef struct		s_env
 	Uint32			hover[4];
 	int				reflect;
 	int				print;
-	int				pe[512];
 }					t_env;
 
 /*
@@ -371,6 +332,7 @@ t_ray				create_ray(t_env *v, int x, int y);
 int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
 void				loop(t_env *v);
 void				loop_event(t_env *v);
+int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
 t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray);
 t_color	color_ratio(t_color color, float ratio);
 t_color	color_op(t_color c1, char op, t_color c2);

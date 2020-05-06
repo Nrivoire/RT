@@ -1,6 +1,5 @@
 scene{
 	ambient-light= {0.4, 0.4, 0.4}
-	intensity= 1
 }
 
 camera{
@@ -14,7 +13,6 @@ light{
 	color= 0xFFFFFF
 	pos= {0.0, 6.0, -25}
 	dir= {0, 0, 1}
-	intensity= 0.8
 }
 
 # box
@@ -26,13 +24,7 @@ object{
 	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -43,13 +35,7 @@ object{
 	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -60,13 +46,7 @@ object{
 	color= {187, 17, 76}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -77,13 +57,7 @@ object{
 	color= {36, 68, 92}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -94,13 +68,7 @@ object{
 	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -111,13 +79,7 @@ object{
 	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -127,13 +89,7 @@ object{
 	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -143,11 +99,5 @@ object{
 	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
