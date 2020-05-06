@@ -177,8 +177,6 @@ typedef struct		s_tab_obj
 	int				procedural;
 	SDL_Surface		*texture;
 	t_quadric		q;
-	t_vec			point;
-	float			dist;
 }					t_tab_obj;
 
 typedef struct		s_tab_lights
