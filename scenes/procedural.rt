@@ -4,6 +4,7 @@ scene{
 
 camera{
 	pos= {0, 0, 20}
+	dir= {0, 0, 1}
 	fov= 60
 }
 
@@ -12,7 +13,6 @@ light{
 	color= 0xFFFFFF
 	pos= {2, 0, 70}
 	dir= {0, 0, 1}
-	intensity= 0.8
 }
 
 light{
@@ -20,7 +20,6 @@ light{
 	color= 0xFFFFFF
 	pos= {40, 40, 30}
 	dir= {0, 0, 1}
-	intensity= 0.5
 }
 
 object{

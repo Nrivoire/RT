@@ -12,7 +12,6 @@ light{
 	type= POINT
 	color= {255, 255, 255}
 	pos= {10, -8, -10}
-	intensity= 1
 }
 
 object{
@@ -22,13 +21,7 @@ object{
 	color= {0, 255, 255}
 	reflect= 0
 	refract= 1
-	transparency= 1
-	absorbtion= 2
-	ambient= 3
-	diffuse= 4
-	specular= 5
 	shininess= 6
-	texture= ""
 }
 
 object{
@@ -38,11 +31,5 @@ object{
 	color= {255, 255, 255}
 	reflect= 0
 	refract= 1
-	transparency= 1
-	absorbtion= 2
-	ambient= 3
-	diffuse= 4
-	specular= 5
 	shininess= 6
-	texture= ""
 }
