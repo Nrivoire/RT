@@ -6,12 +6,11 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:37:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:20:22 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/06 18:28:46 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-#include "pp.h"
 
 /*
 ** Apply blur effect.

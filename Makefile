@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/06 18:19:07 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/05/06 18:26:50 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,7 @@ OBJ_PATH = .objects
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 INC_PATH = includes
-INC_NAME = 	rt.h	\
-			pp.h
+INC_NAME = rt.h
 INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
 LIB = -L libft
 LDFLAGS = -O3 -ffast-math -march=native

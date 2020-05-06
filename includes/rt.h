@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/06 18:17:11 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/06 18:34:51 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define CHESS 4
 
 # define NB_THREAD 8
+
+# define CELSHADING 30
 
 /*
 ** -----------------------------PARSING----------------------------
