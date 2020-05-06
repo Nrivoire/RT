@@ -1,6 +1,5 @@
 scene{
 	ambient-light= {0.4, 0.4, 0.4}
-	intensity= 1
 }
 
 camera{
@@ -14,7 +13,6 @@ light{
 	color= 0xFFFFFF
 	pos= {0.0, 6.0, -25}
 	dir= {0, 0, 1}
-	intensity= 0.8
 }
 
 # box

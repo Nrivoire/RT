@@ -66,7 +66,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			ui/ui_utils.c						\
 			ui/write_text_menu.c				\
 			bonus_tools.c						\
-			closest_intersect.c					\
 			init.c								\
 			main.c								\
 			rays.c								\

@@ -1,10 +1,10 @@
 scene{
 	ambient-light= {0.1, 0.1, 0.1}
-	intensity= 1
 }
 
 camera{
 	pos= {0, 0, 70}
+	dir= {0, 0, 1}
 	fov= 60
 }
 
@@ -12,14 +12,12 @@ light{
 	type= POINT
 	color= 0xFFFFFF
 	pos= {-15, 8, 70}
-	intensity= 0.1
 }
 
 light{
 	type= POINT
 	color= 0xFFFFFF
 	pos= {15, 8, 60}
-	intensity= 0.1
 }
 
 # Bottom sphere
