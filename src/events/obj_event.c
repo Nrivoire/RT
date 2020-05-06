@@ -17,7 +17,6 @@ static void	obj_event_rotate(t_env *v, const Uint8 *keyboard_state)
 	float	angle;
 
 	angle = .01 * v->sc_m;
-	// CHANGER LES BOUTONS SUIVANT POUR LE PAVE NUMERIQUE APRES ?
 	if (keyboard_state[SDL_SCANCODE_W])
 		v->selected_obj->dir = rot_axe_x(v->selected_obj->dir, angle, 'R');
 	if (keyboard_state[SDL_SCANCODE_D])

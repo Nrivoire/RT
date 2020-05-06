@@ -44,12 +44,12 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 	t_color		light;
 
 	if (e.type == SDL_MOUSEBUTTONDOWN)
-	{
 		if (e.button.button == SDL_BUTTON_LEFT)
 		{
 			if (SDL_GetMouseFocus() == v->win)
 			{
-				if (select_obj(v, create_ray(v, e.button.x, e.button.y), &tmp, &light))
+				if (select_obj(v, create_ray(v, e.button.x, e.button.y),
+						&tmp, &light))
 				{
 					if (v->selected_obj && v->selected_obj->i == tmp.i)
 						v->selected_obj = NULL;
@@ -65,7 +65,6 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 			else if (SDL_GetMouseFocus() == v->ui.m_win)
 				is_it_a_button(v, e);
 		}
-	}
 }
 
 void		mouse_wheel_event(SDL_Event e, t_env *v)
