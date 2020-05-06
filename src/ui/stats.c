@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stats.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:12:27 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:15:17 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/06 18:14:12 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void			display_stats(t_env *v)
 		count = v->stats.fps;
 		v->stats.fps = 0;
 	}
-	put_text(v, write_text_menu(" FPS:       ", 18), 30, 70);
-	put_text(v, write_text_menu(c_fps, 18), 80, 70);
+	put_text(v, write_text_stats("NewFPS:", 20), 10, 290);
+	put_text(v, write_text_stats(c_fps, 20), 90, 290);
 	free(fps);
 	free(c_fps);
 }
