@@ -24,15 +24,6 @@ object{
 	point_b= {-15, 8, 30}
 	point_c= {15, 8, -10}
 	color= {255, 255, 255}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -41,15 +32,6 @@ object{
 	point_b= {-15, -8, 30}
 	point_c= {15, -8, -10}
 	color= {255, 255, 255}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -58,15 +40,6 @@ object{
 	point_b= {-14, 0, -15}
 	point_c= {-14, 15, 15}
 	color= {187, 17, 76}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -75,15 +48,6 @@ object{
 	point_b= {14, 0, -15}
 	point_c= {14, 15, 15}
 	color= {36, 68, 92}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -92,15 +56,6 @@ object{
 	point_b= {15, 10, -50}
 	point_c= {15, -10, -50}
 	color= {255, 255, 255}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -109,15 +64,6 @@ object{
 	point_b= {15, 10, 30}
 	point_c= {15, -10, 30}
 	color= {255, 255, 255}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -125,15 +71,6 @@ object{
 	radius= 1.5
 	pos= {3, 0, 3}
 	color= {255, 255, 255}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -141,13 +78,4 @@ object{
 	radius= 2.5
 	pos= {-9, -5, -40}
 	color= {255, 255, 255}
-	reflect= 0.5
-	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
-	shininess= 0.0
-	texture= ""
 }
