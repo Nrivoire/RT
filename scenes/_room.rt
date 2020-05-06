@@ -131,6 +131,7 @@ object{
 	pos= {-15, 0, 0}
 	dir= {0, 1, 0}
 	color= {150, 150, 150}
+	shininess= 0.5
 }
 
 object{
@@ -139,6 +140,7 @@ object{
 	pos= {15, 0, 0}
 	dir= {0, 1, 0}
 	color= {150, 150, 150}
+	shininess= 1
 }
 
 object{

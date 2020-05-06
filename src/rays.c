@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/17 17:22:59 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/06 17:40:30 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,6 @@ t_color	light_diffuse(t_vec point, t_vec *normal, t_tab_lights light)
 	return (color_ratio(light.color, sp_ratio));
 }
 
-t_color	light_reflection(t_env *v, t_vec point, t_vec ray, t_vec normal)
-{
-	t_ray		prev;
-	t_tab_obj	obj;
-	t_color		light;
-
-	prev = (t_ray){													\
-			point, 													\
-			vec_sub(ray, vec_mult_float(vec_mult_float(normal, 2), 	\
-				vec_scale_product(ray, normal)))					\
-			};
-	select_obj(v, prev, &obj, &light);
-	return (light);
-}
-
 t_color	light_shine(t_vec point, t_vec ray, t_vec normal, t_tab_lights light)
 {
 	t_vec	ori;
@@ -140,10 +125,6 @@ t_color		select_light(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 	normal = quadric_normal(obj->q, point);
 	if (vec_scale_product(normal, ray) > 0)
 		normal = vec_mult_float(normal, -1);
-	/*if (obj->type == CONE || (obj->type == PLAN && !obj->q.h))
-		return (v->reflect-- 											\
-				? limit_color(light_reflection(v, point, ray, normal)) 	\
-				: (t_color){0, 0, 0});*/
 	light = v->p.sc.amb_light;
 	shine = (t_color){0, 0, 0};
 	i = -1;
@@ -153,14 +134,12 @@ t_color		select_light(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 		if (!light_shadow(v, point, normal, v->tab_lights[i]))
 		{
 			light = color_op(light, '+', diffuse);
-			shine = color_op(shine, '+', light_shine(point, ray, normal, v->tab_lights[i]));
+			shine = color_op(shine, '+', 						\
+					light_shine(point, ray, normal, v->tab_lights[i]));
 		}
 	}
-	if (obj->texture || obj->procedural)
-		generate_texture(v, obj, point, normal);
-	light = color_op(light, '*', obj->color);
-	if (obj->type == CYLINDER || obj->type == SPHERE)
-		light = color_op(light, '+', shine);
+	light = color_op(color_op(light, '*', obj->color), '+', 	\
+			color_ratio(shine, obj->shininess));
 	return (limit_color(light));
 }
 
