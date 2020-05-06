@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/16 15:26:59 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/06 18:17:11 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,6 +369,10 @@ t_ray				create_ray(t_env *v, int x, int y);
 int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
 void				loop(t_env *v);
 void				loop_event(t_env *v);
+t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray);
+t_color	color_ratio(t_color color, float ratio);
+t_color	color_op(t_color c1, char op, t_color c2);
+t_color	limit_color(t_color color);
 
 /*
 ** --usage--

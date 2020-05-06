@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/27 14:45:29 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/05/06 18:19:07 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC_SUP = 	events			\
 			draw_tools		\
 			parser			\
 			post_process	\
+			ray_tracer		\
 			obj_generating	\
 			ui				\
 			texture
@@ -52,12 +53,15 @@ SRC_NAME = 	draw_tools/display.c				\
 			post_process/post_process_utils.c	\
 			post_process/sepia.c				\
 			post_process/supersampling.c		\
+			ray_tracer/colors.c					\
+			ray_tracer/loop.c					\
+			ray_tracer/ray_tracer.c				\
 			texture/checkboard.c				\
 			texture/make_texture_plan.c			\
 			texture/make_texture_sphere.c		\
 			texture/noise.c						\
 			texture/perlin_noise.c				\
-			texture/generate_texture.c	\
+			texture/generate_texture.c			\
 			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\
@@ -69,13 +73,12 @@ SRC_NAME = 	draw_tools/display.c				\
 			closest_intersect.c					\
 			init.c								\
 			main.c								\
-			rays.c								\
 			usage.c
 OBJ_PATH = .objects
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 INC_PATH = includes
-INC_NAME = 	rt.h								\
+INC_NAME = 	rt.h	\
 			pp.h
 INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
 LIB = -L libft
