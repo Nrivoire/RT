@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:53:16 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 15:02:25 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,10 @@ typedef struct		s_env
 /*
 ** --init--
 */
+void				init_value(t_env *v);
+void				scene_value(t_env *v);
+void				restart_values(t_env *v);
+void				put_icon(t_env *v);
 void				create_first_tab_obj(t_env *v);
 void				create_first_tab_lgt(t_env *v);
 void				init_sdl(t_env *v);
@@ -291,9 +295,9 @@ void				mouse_motion_event(SDL_Event event, t_env *v,
 					uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
-void				obj_event(t_env *v, const Uint8 *keyboard_state,\
+void				obj_event(t_env *v, const Uint8 *keyboard_state,
 		float scale);
-void				plane_event(t_env *v, const Uint8 *keyboard_state,\
+void				plane_event(t_env *v, const Uint8 *keyboard_state,
 		float scale);
 t_vec				rot_axe_x(t_vec point, float angle, char dir);
 t_vec				rot_axe_y(t_vec point, float angle, char dir);
@@ -315,14 +319,14 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 */
 void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
-int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
 void				loop(t_env *v);
-void				loop_event(t_env *v);
-int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
-t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray);
-t_color	color_ratio(t_color color, float ratio);
-t_color	color_op(t_color c1, char op, t_color c2);
-t_color	limit_color(t_color color);
+int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj,
+		t_color *light);
+t_color				ray_tracer(t_env *v, t_tab_obj *obj,
+		t_vec point, t_vec ray);
+t_color				color_ratio(t_color color, float ratio);
+t_color				color_op(t_color c1, char op, t_color c2);
+t_color				limit_color(t_color color);
 
 /*
 ** --usage--
@@ -353,14 +357,6 @@ int					read_line(t_file *file);
 char				*my_strcat(char *s1, char *s2);
 void				error_parser(char *error, t_file *file);
 void				check_points_and_type(t_lst_obj *content, t_file *file);
-
-/*
-** --init--
-*/
-void				init_value(t_env *v);
-void				scene_value(t_env *v);
-void				restart_values(t_env *v);
-void				put_icon(t_env *v);
 
 /*
 ** --post_process--

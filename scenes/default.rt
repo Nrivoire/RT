@@ -19,10 +19,10 @@ object{
 	type= SPHERE
 	radius= 1
 	pos= {0, 0, 0}
+	color= 0xFF28FF
 	reflect= 0.5
 	refract= 0.2
 	shininess= 0.0
-	texture= "textures/brick.jpg"
 }
 
 object{
