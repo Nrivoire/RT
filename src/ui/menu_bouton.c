@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bouton.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:22:42 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/06 18:12:55 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 void		menu_bouton(t_env *v, int x, int y)
 {
-	if (y < 260 && y > 220 && x > 140 && x < v->ui.m_w - 20)
+	if (y < 230 && y > 190 && x > 10 && x < 185)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[0];
-	else if (y < 310 && y > 270 && x > 140 && x < v->ui.m_w - 20)
+	else if (y < 230 && y > 190 && x > 187 + 2 && x < 365)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[1];
-	else if (y < 360 && y > 320 && x > 140 && x < v->ui.m_w - 20)
+	else if (y < 275 && y > 235 && x > 10 && x < 185)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[2];
-	else if (y < 410 && y > 370 && x > 140 && x < v->ui.m_w - 20)
+	else if (y < 275 && y > 235 && x > 187 + 2 && x < 365)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[3];
 }
 
 void		menu_bouton_text(t_env *v)
 {
-	put_text(v, write_text_menu2(">    ADD SPHERE", 20), 190, 225);
-	put_text(v, write_text_menu2(">    ADD CYLINDER", 20), 190, 275);
-	put_text(v, write_text_menu2(">    ADD CONE", 20), 190, 325);
-	put_text(v, write_text_menu2(">    ADD PLAN", 20), 190, 375);
+	put_text(v, write_text_stats("Add:", 18), 10, 172);
+	put_text(v, write_text_menu2("> SPHERE", 22), 30, 203);
+	put_text(v, write_text_menu2("> CYLINDER", 22), 187 + 22, 203);
+	put_text(v, write_text_menu2("> CONE", 22), 30, 247);
+	put_text(v, write_text_menu2("> PLANE", 22), 187 + 22, 247);
 }
 
 int			mouse_location(SDL_Event e, t_between b)
@@ -42,19 +43,19 @@ int			mouse_location(SDL_Event e, t_between b)
 
 void		over_a_button(t_env *v, SDL_Event e)
 {
-	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 220, 260}))
+	if (mouse_location(e, (t_between){10, 185, 190, 230}))
 		v->hover[0] = get_hex_menu(255, 100, 114);
 	else
 		v->hover[0] = get_hex_menu(218, 112, 214);
-	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 270, 310}))
+	if (mouse_location(e, (t_between){189, 365, 190, 230}))
 		v->hover[1] = get_hex_menu(255, 100, 114);
 	else
 		v->hover[1] = get_hex_menu(218, 112, 214);
-	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 320, 360}))
+	if (mouse_location(e, (t_between){10, 185, 235, 275}))
 		v->hover[2] = get_hex_menu(255, 100, 114);
 	else
 		v->hover[2] = get_hex_menu(218, 112, 214);
-	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 370, 410}))
+	if (mouse_location(e, (t_between){189, 365, 235, 275}))
 		v->hover[3] = get_hex_menu(255, 100, 114);
 	else
 		v->hover[3] = get_hex_menu(218, 112, 214);
@@ -63,12 +64,15 @@ void		over_a_button(t_env *v, SDL_Event e)
 
 void		is_it_a_button(t_env *v, SDL_Event e)
 {
-	if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 220, 260}))
+	if (mouse_location(e, (t_between){10, 185, 190, 230}))
 		printf("function add a sphere\n");
-	else if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 270, 310}))
+	else if (mouse_location(e, (t_between){189, 365, 190, 230}))
 		printf("function add a cylinder\n");
-	else if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 320, 360}))
+	else if (mouse_location(e, (t_between){10, 185, 235, 275}))
 		printf("function add a cone\n");
-	else if (mouse_location(e, (t_between){140, v->ui.m_w - 20, 370, 410}))
+	else if (mouse_location(e, (t_between){189, 365, 235, 275}))
 		printf("function add a plane\n");
+	
+	//enleve erreur en attendant:
+	v->w = v->w;
 }

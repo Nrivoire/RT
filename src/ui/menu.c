@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:23:17 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/06 19:34:03 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,34 @@ static void	menu_text_2(t_env *v)
 	info[0] = ft_ftoa(v->cam.angle_x, 3);
 	info[1] = ft_ftoa(v->cam.angle_y, 3);
 	info[2] = ft_ftoa(v->cam.fov, 0);
-	put_text(v, write_text_menu2("AngleX:", 20), 320, 70);
-	put_text(v, write_text_menu2(info[0], 20), 395, 70);
-	put_text(v, write_text_menu2("AngleY:", 20), 320, 105);
-	put_text(v, write_text_menu2(info[1], 20), 395, 105);
-	put_text(v, write_text_menu2("FOV:", 20), 320, 140);
-	put_text(v, write_text_menu2(info[2], 20), 370, 140);
+	put_text(v, write_text_menu2("angle x:", 22), 199, 62);
+	put_text(v, write_text_menu2(info[0], 24), 280, 62);
+	put_text(v, write_text_menu2("angle y:", 22), 199, 97);
+	put_text(v, write_text_menu2(info[1], 24), 280, 97);
+	put_text(v, write_text_menu2("fov:", 22), 199, 132);
+	put_text(v, write_text_menu2(info[2], 24), 280, 132);
 	free(info[0]);
 	free(info[1]);
 	free(info[2]);
 	if (v->ppc.render_size == 4)
-		put_text(v, write_text_menu("Loading...", 20), 370, 180);
+		put_text(v, write_text_menu("Loading...", 22), 260, 165);
 }
 
 void		menu_text(t_env *v)
 {
 	char	*info[3];
 
-	put_text(v, write_text_menu2("scene :", 18), 30, 22);
-	put_text(v, write_text_menu2(v->file, 18), 112, 22);
+	put_text(v, write_text_menu2("scene :", 20), 20, 17);
+	put_text(v, write_text_menu2(v->file, 20), 95, 17);
 	info[0] = ft_ftoa(v->cam.ori.x, 3);
 	info[1] = ft_ftoa(v->cam.ori.y, 3);
 	info[2] = ft_ftoa(v->cam.ori.z, 3);
-	put_text(v, write_text_menu2("X:", 20), 150, 70);
-	put_text(v, write_text_menu2(info[0], 20), 175, 70);
-	put_text(v, write_text_menu2("Y:", 20), 150, 105);
-	put_text(v, write_text_menu2(info[1], 20), 175, 105);
-	put_text(v, write_text_menu2("Z:", 20), 150, 140);
-	put_text(v, write_text_menu2(info[2], 20), 175, 140);
+	put_text(v, write_text_menu2("x:", 22), 20, 62);
+	put_text(v, write_text_menu2(info[0], 24), 45, 62);
+	put_text(v, write_text_menu2("y:", 22), 20, 97);
+	put_text(v, write_text_menu2(info[1], 24), 45, 97);
+	put_text(v, write_text_menu2("z:", 22), 20, 132);
+	put_text(v, write_text_menu2(info[2], 24), 45, 132);
 	free(info[0]);
 	free(info[1]);
 	free(info[2]);
@@ -72,24 +72,24 @@ void		menu_text(t_env *v)
 
 static void	menu_2(t_env *v, int x, int y)
 {
-	if (y < (v->ui.m_h - 20) && y > 450 && x > 20 && x < v->ui.m_w - 20)
+	if (y < (v->ui.m_h - 10) && y > 310 && x > 10 && x < v->ui.m_w - 10)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
-	else if (y < 50 && y > 20 && x > 20 && x < v->ui.m_w - 20)
+	else if (y < 40 && y > 10 && x > 10 && x < v->ui.m_w - 10)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
-	else if (y < 100 && y > 70 && x > 140 && x < v->ui.m_w - 200)
+	else if (y < 85 && y > 55 && x > 10 && x < (v->ui.m_w / 2) - 2)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
-	else if (y < 100 && y > 70 && x > (v->ui.m_w / 2) + 60 \
-			&& x < v->ui.m_w - 20)
+	else if (y < 85 && y > 55 && x > (v->ui.m_w / 2) + 2 \
+			&& x < v->ui.m_w - 10)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
-	else if (y < 135 && y > 105 && x > 140 && x < v->ui.m_w - 200)
+	else if (y < 120 && y > 90 && x > 10 && x < (v->ui.m_w / 2) - 2)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
-	else if (y < 135 && y > 105 && x > (v->ui.m_w / 2) + 60 \
-			&& x < v->ui.m_w - 20)
+	else if (y < 120 && y > 90 && x > (v->ui.m_w / 2) + 2 \
+			&& x < v->ui.m_w - 10)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
-	else if (y < 170 && y > 140 && x > 140 && x < v->ui.m_w - 200)
+	else if (y < 155 && y > 125 && x > 10 && x < (v->ui.m_w / 2) - 2)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
-	else if (y < 170 && y > 140 && x > (v->ui.m_w / 2) + 60 \
-			&& x < v->ui.m_w - 20)
+	else if (y < 155 && y > 125 && x > (v->ui.m_w / 2) + 2 \
+			&& x < v->ui.m_w - 10)
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(0, 0, 0);
 	else
 		v->ui.m_pixels[y * v->ui.m_w + x] = get_hex_menu(255, 255, 255);
