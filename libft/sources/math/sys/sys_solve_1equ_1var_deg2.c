@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sys_solve_1equ_1var_deg2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:29:48 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:29:30 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 15:17:56 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int		sys_solve_1equ_1var_deg2(t_equ_1var_deg2 e, t_sys_sol_1var_deg2 *s)
 {
-	float	delta;
-	float	tmp;
-	float	sqrt_delta;
-	int		result;
+	float				delta;
+	float				tmp;
+	float				sqrt_delta;
+	int					result;
 	t_sys_sol_1var_deg1	sol;
 
 	s->s1 = 0;
