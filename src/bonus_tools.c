@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:17:11 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/07 14:38:05 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 19:49:14 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void			screenshot(t_env *v)
 	save = SDL_GetWindowSurface(v->win);
 	IMG_SavePNG(save, name);
 	if (!system(open = my_strcat("open ", name)))
-		ft_error("Command system : Fail to open file => Screenshot fail");
+		ft_putstr("test");
+	// 	ft_error("Command system : Fail to open file => Screenshot fail");
 	SDL_FreeSurface(save);
 	free(open);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 18:52:54 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 20:04:32 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,12 +366,6 @@ t_color				color_ssp(Uint32 pixel);
 int					get_hex(int r, int g, int b);
 
 /*
-** --bonus_tools--
-*/
-void				screenshot(t_env *v);
-void				display_stats(t_env *v);
-
-/*
 ** --menu--
 */
 void				menu(t_env *v);
@@ -391,5 +385,6 @@ int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 void				is_it_a_button(SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);
+void				display_stats(t_env *v);
 
 #endif

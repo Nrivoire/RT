@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:28:03 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 19:58:19 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 	else if (!keyboard_state[SDL_SCANCODE_LSHIFT]
 			&& !keyboard_state[SDL_SCANCODE_RSHIFT])
 		v->sc_m = 1;
-	if (keyboard_state[SDL_SCANCODE_P])
-		screenshot(v);
 	if (keyboard_state[SDL_SCANCODE_C])
 		v->p.sc.filter = 0;
 	if (keyboard_state[SDL_SCANCODE_V])
