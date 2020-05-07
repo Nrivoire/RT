@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:56:53 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:24:56 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 06:45:03 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void		check_options(t_env *v, int argc, char **argv)
 	char	*default_map;
 
 	i = 0;
-	default_map = ft_strdup("scenes/_room.rt");
-	v->file = ft_strdup("scenes/_room.rt");
+	default_map = ft_strdup("scenes/default.rt");
+	v->file = default_map;
 	while (++i < argc)
 	{
 		!ft_strcmp(argv[i], "--help") ? usage("", 1) : 0;
