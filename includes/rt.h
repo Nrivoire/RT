@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 20:04:32 by jacket           ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 20:17:06 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,6 +317,8 @@ t_color				ray_tracer(t_env *v, t_tab_obj *obj,
 		t_vec point, t_vec ray);
 t_color				color_ratio(t_color color, float ratio);
 t_color				color_op(t_color c1, char op, t_color c2);
+t_color				is_it_selected(t_env *v, t_tab_obj obj,
+		t_color color);
 t_color				limit_color(t_color color);
 
 /*
