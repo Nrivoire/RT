@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:54:32 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:27:56 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 18:38:51 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			event_management(SDL_Event e, t_env *v, const Uint8 *key_state,
 void			draw_pro_frame(t_env *v)
 {
 	clear_pixels(v);
-	create_tab_obj(v);
+	make_tab_obj(v);
 	if (v->ppc.active_rpx == 1)
 	{
 		if (v->ppc.render_key > 0 || v->ppc.render_mouse > 0)
@@ -51,7 +51,7 @@ void			draw_pro_frame(t_env *v)
 		else
 			v->ppc.render_size = 1;
 	}
-	loop(v);
+	multi_thread_with_loop(v);
 	v->ppc.ssp == 1 ? supersampling(v) : 0;
 	v->ppc.ssp == 2 ? blur(v) : 0;
 }

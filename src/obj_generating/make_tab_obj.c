@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_tab_obj.c                                   :+:      :+:    :+:   */
+/*   make_tab_obj.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:12:17 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:28:11 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 18:37:58 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			check_plan(int i, t_env *v)
 	}
 }
 
-void			create_tab_obj(t_env *v)
+void			make_tab_obj(t_env *v)
 {
 	int			i;
 

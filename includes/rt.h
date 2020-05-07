@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 15:02:25 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 18:48:08 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@
 # define POINT 1
 # define DIRECTIONAL 2
 # define SPOT 3
-
-# define PERLIN 1
-# define WOOD 2
-# define MARBLE 3
-# define CHESS 4
-
-# define NB_THREAD 8
 
 # define CELSHADING 30
 
@@ -214,11 +207,6 @@ typedef struct		s_stats
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
-typedef struct		s_thread
-{
-	pthread_t		id[NB_THREAD];
-}					t_thread;
-
 typedef struct		s_ui
 {
 	SDL_Window		*m_win;
@@ -253,6 +241,9 @@ typedef struct		s_env
 	Uint32			hover[4];
 	int				reflect;
 	int				print;
+	int				thread_index;
+	pthread_mutex_t	mutex;
+	int				width_thread;
 }					t_env;
 
 /*
@@ -317,9 +308,9 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --rays--
 */
-void				create_tab_obj(t_env *v);
+void				make_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
-void				loop(t_env *v);
+void				multi_thread_with_loop(t_env *v);
 int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj,
 		t_color *light);
 t_color				ray_tracer(t_env *v, t_tab_obj *obj,

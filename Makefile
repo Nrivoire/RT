@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/07 14:58:13 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/05/07 18:38:36 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			init/init_value.c					\
 			init/init_sdl.c						\
 			init/init_menu.c					\
-			obj_generating/create_tab_obj.c		\
+			obj_generating/make_tab_obj.c		\
 			obj_generating/inter_ray_quadric.c	\
 			obj_generating/make_plan.c			\
 			obj_generating/make_sphere.c		\

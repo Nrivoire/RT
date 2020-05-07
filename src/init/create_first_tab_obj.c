@@ -6,13 +6,13 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/07 14:56:52 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 18:40:55 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static t_tab_obj	make_tab_obj(t_lst_obj *p)
+static t_tab_obj	make_obj(t_lst_obj *p)
 {
 	t_tab_obj		data;
 
@@ -44,7 +44,7 @@ void				create_first_tab_obj(t_env *v)
 		return ;
 	while (tmp)
 	{
-		v->tab_obj[i] = make_tab_obj(tmp);
+		v->tab_obj[i] = make_obj(tmp);
 		i++;
 		tmp = tmp->next;
 	}
