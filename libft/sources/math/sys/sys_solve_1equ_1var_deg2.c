@@ -3,22 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   sys_solve_1equ_1var_deg2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:29:48 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 15:17:56 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 15:51:53 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		sys_solve_1equ_1var_deg2(t_equ_1var_deg2 e, t_sys_sol_1var_deg2 *s)
+static int	sys_solve_1equ_1var_deg2_tmp(t_equ_1var_deg2 e, 	\
+		t_sys_sol_1var_deg2 *s)
 {
-	float				delta;
-	float				tmp;
-	float				sqrt_delta;
-	int					result;
 	t_sys_sol_1var_deg1	sol;
+	int					result;
 
 	s->s1 = 0;
 	s->s2 = 0;
@@ -35,6 +33,17 @@ int		sys_solve_1equ_1var_deg2(t_equ_1var_deg2 e, t_sys_sol_1var_deg2 *s)
 		s->x1 = sol.x;
 		return (1);
 	}
+	return (-1);
+}
+
+int			sys_solve_1equ_1var_deg2(t_equ_1var_deg2 e, t_sys_sol_1var_deg2 *s)
+{
+	float	delta;
+	float	tmp;
+	float	sqrt_delta;
+
+	if ((tmp = sys_solve_1equ_1var_deg2_tmp(e, s)) != -1)
+		return (tmp);
 	delta = ft_sq(e.b) - 4 * e.a * e.c;
 	tmp = 1 / (2 * e.a);
 	if (delta < 0)

@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/07 18:38:36 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/05/07 18:52:50 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -188,5 +188,5 @@ norme:
 ifeq ($(OS), $(RED)This OS is not supported)
 	@printf "Norminette is not supported\n"
 else
-	$(NORMINETTE) $(SRC_PATH) $(INC_PATH)
+	$(NORMINETTE) libft/includes libft/sources $(INC_PATH) $(SRC_PATH)
 endif

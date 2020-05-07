@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:20:49 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/07 18:48:57 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 18:52:56 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			put_icon(t_env *v)
 {
 	SDL_Surface		*icon;
 
-	if (!(icon = IMG_Load("textures/icon.png")))
+	if (!(icon = IMG_Load("utils/textures/icon.png")))
 		ft_putstr("Error: Can't find the icon\n");
 	SDL_SetWindowIcon(v->win, icon);
 	SDL_FreeSurface(icon);

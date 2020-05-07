@@ -29,7 +29,7 @@ object{
 	reflect= 0.5
 	refract= 0.2
 	shininess= 0.0
-	texture= "textures/checkboard_test.jpg"
+	texture= "utils/textures/checkboard_test.jpg"
 }
 
 object{
