@@ -19,19 +19,19 @@ object{
 	type= SPHERE
 	radius= 12.756
 	pos= {0, 0, 0}
-	texture= "textures/earth.jpg"
+	texture= "utils/textures/earth.jpg"
 }
 
 object{
 	type= SPHERE
 	radius= 3.476
 	pos= {25.0, 15, 0}
-	texture= "textures/moon.jpg"
+	texture= "utils/textures/moon.jpg"
 }
 
 object{
 	type= SPHERE
 	radius= 1390.000
 	pos= {-1600.000, 0, 0}
-	texture= "textures/sun.jpg"
+	texture= "utils/textures/sun.jpg"
 }
