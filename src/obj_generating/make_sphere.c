@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   make_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 18:18:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:57:12 by nrivoire         ###   ########lyon.fr   */
+/*   Created: 2020/05/07 14:19:32 by natachaNata       #+#    #+#             */
+/*   Updated: 2020/05/07 14:30:03 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int				main(int ac, char **av)
+t_quadric		make_sphere(t_vec center, float radius)
 {
-	t_env		*v;
+	t_quadric	res;
 
-	ac > 1 && !ft_strcmp(av[1], "--help") ? usage("", 0) : 0;
-	ac == 1 ? usage("\033[31m\nYou can also use options.\033[0m", 1) : 0;
-	if (!(v = ft_memalloc(sizeof(t_env))))
-		return (0);
-	init_value(v);
-	check_options(v, ac, av);
-	parser_file(v);
-	scene_value(v);
-	create_first_tab_obj(v);
-	create_first_tab_lgt(v);
-	init_sdl(v);
-	display(v);
-	return (0);
+	res.a = 1;
+	res.b = 1;
+	res.c = 1;
+	res.d = 0;
+	res.e = 0;
+	res.f = 0;
+	res.g = -2 * center.x;
+	res.h = -2 * center.y;
+	res.i = -2 * center.z;
+	res.j = center.x * center.x + center.y * center.y + center.z * center.z
+			- radius * radius;
+	return (res);
 }

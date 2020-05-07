@@ -3,21 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_obj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:12:17 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:18:01 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 14:28:11 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void			create_tab_obj(t_env *v)
+void			check_plan(int i, t_env *v)
 {
-	int			i;
 	t_vec		ab;
 	t_vec		ac;
 	t_vec		cross;
+
+	ab = vec_sub(v->tab_obj[i].b, v->tab_obj[i].a);
+	ac = vec_sub(v->tab_obj[i].c, v->tab_obj[i].a);
+	cross = vec_cross_product(ab, ac);
+	if (vec_scale_product(ab, ac) != 0)
+	{
+		cross = vec_cross_product(cross, ab);
+		v->tab_obj[i].c = vec_sub(cross, v->tab_obj[i].a);
+	}
+}
+
+void			create_tab_obj(t_env *v)
+{
+	int			i;
 
 	i = -1;
 	while (++i < v->nb_o)
@@ -27,14 +40,7 @@ void			create_tab_obj(t_env *v)
 					v->tab_obj[i].radius);
 		else if (v->tab_obj[i].type == PLAN)
 		{
-			ab = vec_sub(v->tab_obj[i].b, v->tab_obj[i].a);
-			ac = vec_sub(v->tab_obj[i].c, v->tab_obj[i].a);
-			cross = vec_cross_product(ab, ac);
-			if (vec_scale_product(ab, ac) != 0)
-			{
-				cross = vec_cross_product(cross, ab);
-				v->tab_obj[i].c = vec_sub(cross, v->tab_obj[i].a);
-			}
+			check_plan(i, v);
 			v->tab_obj[i].q = make_plan(v->tab_obj[i].a, v->tab_obj[i].b,
 					v->tab_obj[i].c);
 		}

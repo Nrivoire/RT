@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bouton.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/06 18:12:55 by jacket           ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 14:34:43 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ void		over_a_button(t_env *v, SDL_Event e)
 		v->hover[3] = get_hex_menu(218, 112, 214);
 }
 
-
-void		is_it_a_button(t_env *v, SDL_Event e)
+void		is_it_a_button(SDL_Event e)
 {
 	if (mouse_location(e, (t_between){10, 185, 190, 230}))
 		printf("function add a sphere\n");
@@ -72,7 +71,4 @@ void		is_it_a_button(t_env *v, SDL_Event e)
 		printf("function add a cone\n");
 	else if (mouse_location(e, (t_between){189, 365, 235, 275}))
 		printf("function add a plane\n");
-	
-	//enleve erreur en attendant:
-	v->w = v->w;
 }

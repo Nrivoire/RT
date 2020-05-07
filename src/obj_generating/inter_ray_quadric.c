@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   inter_ray_quadric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:31:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:18:09 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 14:28:12 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_vec	quadric_normal(t_quadric q, t_vec p)
+t_vec		quadric_normal(t_quadric q, t_vec p)
 {
 	return (vec_normalize((t_vec){							\
 			2 * q.a * p.x + q.d * p.y + q.e * p.z + q.g, 	\
@@ -23,34 +23,34 @@ t_vec	quadric_normal(t_quadric q, t_vec p)
 static int	inter_ray_quadric_create_equ(t_ray r, t_quadric q, 	\
 		t_sys_sol_1var_deg2 *sol)
 {
-	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)				\
-			{														\
-				.a = q.a * r.d.x * r.d.x 							\
-					+ q.b * r.d.y * r.d.y 							\
-					+ q.c * r.d.z * r.d.z 							\
-					+ q.d * r.d.x * r.d.y 							\
-					+ q.e * r.d.x * r.d.z 							\
-					+ q.f * r.d.y * r.d.z, 							\
-				.b = q.a * 2 * r.o.x * r.d.x 						\
-					+ q.b * 2 * r.o.y * r.d.y 						\
-					+ q.c * 2 * r.o.z * r.d.z 						\
-					+ q.d * (r.o.x * r.d.y + r.d.x * r.o.y) 		\
-					+ q.e * (r.o.x * r.d.z + r.d.x * r.o.z) 		\
-					+ q.f * (r.o.y * r.d.z + r.d.y * r.o.z) 		\
-					+ q.g * r.d.x + q.h * r.d.y + q.i * r.d.z, 		\
-				.c = q.a * r.o.x * r.o.x 							\
-					+ q.b * r.o.y * r.o.y 							\
-					+ q.c * r.o.z * r.o.z 							\
-					+ q.d * r.o.x * r.o.y 							\
-					+ q.e * r.o.x * r.o.z 							\
-					+ q.f * r.o.y * r.o.z 							\
-					+ q.g * r.o.x + q.h * r.o.y + q.i * r.o.z 		\
-					+ q.j											\
-			}, 														\
-			sol));
+	return (sys_solve_1equ_1var_deg2((t_equ_1var_deg2)		\
+	{														\
+		.a = q.a * r.d.x * r.d.x 							\
+			+ q.b * r.d.y * r.d.y 							\
+			+ q.c * r.d.z * r.d.z 							\
+			+ q.d * r.d.x * r.d.y 							\
+			+ q.e * r.d.x * r.d.z 							\
+			+ q.f * r.d.y * r.d.z, 							\
+		.b = q.a * 2 * r.o.x * r.d.x 						\
+			+ q.b * 2 * r.o.y * r.d.y 						\
+			+ q.c * 2 * r.o.z * r.d.z 						\
+			+ q.d * (r.o.x * r.d.y + r.d.x * r.o.y) 		\
+			+ q.e * (r.o.x * r.d.z + r.d.x * r.o.z) 		\
+			+ q.f * (r.o.y * r.d.z + r.d.y * r.o.z) 		\
+			+ q.g * r.d.x + q.h * r.d.y + q.i * r.d.z, 		\
+		.c = q.a * r.o.x * r.o.x 							\
+			+ q.b * r.o.y * r.o.y 							\
+			+ q.c * r.o.z * r.o.z 							\
+			+ q.d * r.o.x * r.o.y 							\
+			+ q.e * r.o.x * r.o.z 							\
+			+ q.f * r.o.y * r.o.z 							\
+			+ q.g * r.o.x + q.h * r.o.y + q.i * r.o.z 		\
+			+ q.j											\
+	}, 														\
+	sol));
 }
 
-int		inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
+int			inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
 {
 	t_sys_sol_1var_deg2	res;
 	int					inter;
@@ -78,7 +78,7 @@ int		inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol)
 	return (sol->s1 || sol->s2);
 }
 
-int		inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol)
+int			inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol)
 {
 	float	dist;
 

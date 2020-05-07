@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:17:11 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:23:57 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 14:38:05 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/06 18:34:51 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 14:53:16 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,7 +259,17 @@ typedef struct		s_env
 ** ----------------------------------------------------------------------
 */
 
-void				display(t_env *v);
+/*
+** --init--
+*/
+void				create_first_tab_obj(t_env *v);
+void				create_first_tab_lgt(t_env *v);
+void				init_sdl(t_env *v);
+void				init_menu(t_env *v, int scale);
+
+/*
+** --quadric--
+*/
 t_vec				quadric_normal(t_quadric q, t_vec p);
 int					inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol);
 int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
@@ -270,6 +280,7 @@ int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
 void				clear_pixels(t_env *v);
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_color color);
+void				display(t_env *v);
 
 /*
 ** --events--
@@ -391,7 +402,7 @@ SDL_Surface			*write_text_menu(char *text, int size_font);
 SDL_Surface			*write_text_menu2(char *text, int size_font);
 int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
-void				is_it_a_button(t_env *v, SDL_Event e);
+void				is_it_a_button(SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);
 
 #endif

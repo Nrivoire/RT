@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:03:30 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:17:04 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 14:27:59 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

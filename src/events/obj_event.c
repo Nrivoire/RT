@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:17:22 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 14:28:05 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

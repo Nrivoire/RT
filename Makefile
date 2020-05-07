@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/07 11:51:30 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/05/07 14:58:13 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_SUP = 	events			\
 			ray_tracer		\
 			obj_generating	\
 			ui				\
+			init			\
 
 SRC_PATH = src
 SRC_NAME = 	draw_tools/display.c				\
@@ -33,9 +34,17 @@ SRC_NAME = 	draw_tools/display.c				\
 			events/obj_event.c					\
 			events/plane_event.c				\
 			events/rotate.c						\
+			init/create_first_tab_obj.c			\
+			init/create_first_tab_lgt.c			\
+			init/init_value.c					\
+			init/init_sdl.c						\
+			init/init_menu.c					\
 			obj_generating/create_tab_obj.c		\
 			obj_generating/inter_ray_quadric.c	\
-			obj_generating/make_obj.c			\
+			obj_generating/make_plan.c			\
+			obj_generating/make_sphere.c		\
+			obj_generating/make_cone.c			\
+			obj_generating/make_cylinder.c		\
 			parser/parser_block_base.c			\
 			parser/parser_block_light.c			\
 			parser/parser_block_object.c		\
@@ -64,7 +73,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			ui/ui_utils.c						\
 			ui/write_text_menu.c				\
 			bonus_tools.c						\
-			init.c								\
 			main.c								\
 			usage.c
 OBJ_PATH = .objects

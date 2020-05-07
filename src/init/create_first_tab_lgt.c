@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   create_first_tab_lgt.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 18:18:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:57:12 by nrivoire         ###   ########lyon.fr   */
+/*   Created: 2020/05/07 14:47:04 by natachaNata       #+#    #+#             */
+/*   Updated: 2020/05/07 14:48:21 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int				main(int ac, char **av)
+static t_tab_lights		make_tab_lights(t_lst_lgt *p)
 {
-	t_env		*v;
+	t_tab_lights	light;
 
-	ac > 1 && !ft_strcmp(av[1], "--help") ? usage("", 0) : 0;
-	ac == 1 ? usage("\033[31m\nYou can also use options.\033[0m", 1) : 0;
-	if (!(v = ft_memalloc(sizeof(t_env))))
-		return (0);
-	init_value(v);
-	check_options(v, ac, av);
-	parser_file(v);
-	scene_value(v);
-	create_first_tab_obj(v);
-	create_first_tab_lgt(v);
-	init_sdl(v);
-	display(v);
-	return (0);
+	light.pos = p->pos;
+	light.color = p->color;
+	return (light);
+}
+
+void					create_first_tab_lgt(t_env *v)
+{
+	t_lst_lgt	*tmp2;
+	int			i;
+
+	i = 0;
+	tmp2 = v->p.lg;
+	while (tmp2)
+	{
+		v->tab_lights[i++] = make_tab_lights(tmp2);
+		tmp2 = tmp2->next;
+	}
 }
