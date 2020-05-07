@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:28:03 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 19:17:52 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 	if (keyboard_state[SDL_SCANCODE_ESCAPE])
 		return (1);
 	if (v->selected_obj)
-		obj_event(v, keyboard_state, .025);
+		obj_event(v, keyboard_state, 1);
 	if (keyboard_state[SDL_SCANCODE_LSHIFT]
 			|| keyboard_state[SDL_SCANCODE_RSHIFT])
 		v->sc_m = 6;

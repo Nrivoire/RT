@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/07 18:52:50 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/05/07 19:21:49 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			ray_tracer/colors.c					\
 			ray_tracer/loop.c					\
 			ray_tracer/ray_tracer.c				\
+			ray_tracer/select_obj.c				\
 			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\

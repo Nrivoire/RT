@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 18:52:54 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/07 19:15:08 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,6 +317,8 @@ t_color				ray_tracer(t_env *v, t_tab_obj *obj,
 		t_vec point, t_vec ray);
 t_color				color_ratio(t_color color, float ratio);
 t_color				color_op(t_color c1, char op, t_color c2);
+t_color				is_it_selected(t_env *v, t_tab_obj obj,
+		t_color color);
 t_color				limit_color(t_color color);
 
 /*
