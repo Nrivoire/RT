@@ -1,10 +1,10 @@
 scene{
 	ambient-light= {0.1, 0.1, 0.1}
-	intensity= 1
 }
 
 camera{
 	pos= {0, 0, 20}
+	dir= {0, 0, 1}
 	fov= 60
 }
 
@@ -13,7 +13,6 @@ light{
 	color= 0xFFFFFF
 	pos= {10, 10, 20}
 	dir= {0, 0, 1}
-	intensity= 1
 }
 
 light{
@@ -21,7 +20,6 @@ light{
 	color= 0xFFFFFF
 	pos= {-5, -5, 20}
 	dir= {0, 0, 1}
-	intensity= 0.4
 }
 
 object{
@@ -31,13 +29,7 @@ object{
 	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -47,13 +39,7 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -63,13 +49,7 @@ object{
 	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -79,13 +59,7 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
-	texture= ""
 }
 
 object{
@@ -95,11 +69,5 @@ object{
 	color= 0xFFFF00
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0
-	ambient= 0.0
-	diffuse= 0.0
-	specular= 0.2
 	shininess= 1.0
-	texture= ""
 }

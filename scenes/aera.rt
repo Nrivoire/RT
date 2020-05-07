@@ -4,6 +4,7 @@ scene{
 
 camera{
 	pos= {0, 0.2, 10}
+	dir= {0, 0, 1}
 	fov= 60
 }
 
@@ -11,7 +12,6 @@ light{
 	type= POINT
 	color= 0xFFFFFF
 	pos= {0, 5, 2}
-	intensity= 1
 }
 
 object{
@@ -21,11 +21,6 @@ object{
 	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -36,11 +31,6 @@ object{
 	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -51,11 +41,6 @@ object{
 	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -66,11 +51,6 @@ object{
 	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -81,11 +61,6 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -96,11 +71,6 @@ object{
 	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -111,11 +81,6 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -126,11 +91,6 @@ object{
 	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -141,11 +101,6 @@ object{
 	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -156,11 +111,6 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -171,11 +121,6 @@ object{
 	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -186,11 +131,6 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -201,11 +141,6 @@ object{
 	color= 0xFFFFFF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -216,11 +151,6 @@ object{
 	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -231,11 +161,6 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -246,11 +171,6 @@ object{
 	color= 0xFF0000
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -261,11 +181,6 @@ object{
 	color= 0x0000FF
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }
 
@@ -277,10 +192,5 @@ object{
 	color= {255, 255, 255}
 	reflect= 0.5
 	refract= 0.2
-	transparency= 0.0
-	absorbtion= 0.2
-	ambient= 0.0
-	diffuse= 0.2
-	specular= 0.2
 	shininess= 0.0
 }

@@ -12,6 +12,20 @@
 
 #include "rt.h"
 
+void		key_event_two(t_env *v, const Uint8 *keyboard_state)
+{
+	if (keyboard_state[SDL_SCANCODE_R])
+		v->ppc.active_rpx = 1;
+	if (keyboard_state[SDL_SCANCODE_T])
+		v->ppc.active_rpx = 0;
+	if (keyboard_state[SDL_SCANCODE_Y])
+		v->ppc.ssp = 0;
+	if (keyboard_state[SDL_SCANCODE_U])
+		v->ppc.ssp = 1;
+	if (keyboard_state[SDL_SCANCODE_I])
+		v->ppc.ssp = 2;
+}
+
 int			key_event(t_env *v, const Uint8 *keyboard_state)
 {
 	if (keyboard_state[SDL_SCANCODE_ESCAPE])
@@ -36,15 +50,6 @@ int			key_event(t_env *v, const Uint8 *keyboard_state)
 		v->p.sc.filter = 3;
 	if (keyboard_state[SDL_SCANCODE_M])
 		v->p.sc.filter = 4;
-	if (keyboard_state[SDL_SCANCODE_R])
-		v->ppc.active_rpx = 1;
-	if (keyboard_state[SDL_SCANCODE_T])
-		v->ppc.active_rpx = 0;
-	if (keyboard_state[SDL_SCANCODE_Y])
-		v->ppc.ssp = 0;
-	if (keyboard_state[SDL_SCANCODE_U])
-		v->ppc.ssp = 1;
-	if (keyboard_state[SDL_SCANCODE_I])
-		v->ppc.ssp = 2;
+	key_event_two(v, keyboard_state);
 	return (0);
 }

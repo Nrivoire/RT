@@ -28,14 +28,7 @@ void	init_value_obj(t_lst_obj *content)
 	content->color = (t_color){255, 255, 255};
 	content->reflect = 0.0;
 	content->refract = 0.0;
-	content->transparency = 0.0;
-	content->absorbtion = 0.0;
-	content->ambient = 0.0;
-	content->diffuse = 0.0;
-	content->specular = 0.0;
 	content->shininess = 0.0;
-	content->texture = NULL;
-	content->procedural = 0;
 }
 
 void	init_value_light(t_lst_lgt *content)
@@ -44,5 +37,4 @@ void	init_value_light(t_lst_lgt *content)
 	content->pos = (t_vec){0.0, 0.0, 0.0};
 	content->dir = (t_vec){0.0, 0.0, 0.0};
 	content->color = (t_color){255, 255, 255};
-	content->intensity = 0.0;
 }

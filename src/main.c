@@ -63,14 +63,7 @@ t_tab_obj		make_tab_obj(t_lst_obj *p)
 	data.color = p->color;
 	data.reflect = p->reflect;
 	data.refract = p->refract;
-	data.transparency = p->transparency;
-	data.absorbtion = p->absorbtion;
-	data.ambient = p->ambient;
-	data.diffuse = p->diffuse;
-	data.specular = p->specular;
 	data.shininess = p->shininess;
-	data.texture = p->texture;
-	data.procedural = p->procedural;
 	return (data);
 }
 

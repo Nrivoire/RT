@@ -12,15 +12,15 @@
 
 #include "rt.h"
 
-static void		plane_event_z(t_env *v, const Uint8 *keyboard_state, float scale)
+static void		plane_event_z(t_env *v, const Uint8 *keyboard, float scale)
 {
-	if (keyboard_state[SDL_SCANCODE_KP_MINUS])
+	if (keyboard[SDL_SCANCODE_KP_MINUS])
 	{
 		v->selected_obj->a.z -= scale * v->sc_m;
 		v->selected_obj->b.z -= scale * v->sc_m;
 		v->selected_obj->c.z -= scale * v->sc_m;
 	}
-	if (keyboard_state[SDL_SCANCODE_KP_PLUS])
+	if (keyboard[SDL_SCANCODE_KP_PLUS])
 	{
 		v->selected_obj->a.z += scale * v->sc_m;
 		v->selected_obj->b.z += scale * v->sc_m;
@@ -28,76 +28,85 @@ static void		plane_event_z(t_env *v, const Uint8 *keyboard_state, float scale)
 	}
 }
 
-void			plane_event(t_env *v, const Uint8 *keyboard_state, float scale)
+void			plane_event_t(t_env *v, const Uint8 *keyboard, float scale)
 {
-	if (keyboard_state[SDL_SCANCODE_UP])
-	{
-		v->selected_obj->a.y += scale * v->sc_m;
-		v->selected_obj->b.y += scale * v->sc_m;
-		v->selected_obj->c.y += scale * v->sc_m;
-	}
-	if (keyboard_state[SDL_SCANCODE_DOWN])
-	{
-		v->selected_obj->a.y -= scale * v->sc_m;
-		v->selected_obj->b.y -= scale * v->sc_m;
-		v->selected_obj->c.y -= scale * v->sc_m;
-	}
-	if (keyboard_state[SDL_SCANCODE_RIGHT])
+	if (keyboard[SDL_SCANCODE_RIGHT])
 	{
 		v->selected_obj->a.x += scale * v->sc_m;
 		v->selected_obj->b.x += scale * v->sc_m;
 		v->selected_obj->c.x += scale * v->sc_m;
 	}
-	if (keyboard_state[SDL_SCANCODE_LEFT])
+	if (keyboard[SDL_SCANCODE_LEFT])
 	{
 		v->selected_obj->a.x -= scale * v->sc_m;
 		v->selected_obj->b.x -= scale * v->sc_m;
 		v->selected_obj->c.x -= scale * v->sc_m;
 	}
-	plane_event_z(v, keyboard_state, scale);
-	render_plane(v, keyboard_state);
+	plane_event_z(v, keyboard, scale);
+	render_plane(v, keyboard);
 }
 
-static void		plane_rotate_2(t_env *v, const Uint8 *keyboard_state, float angle)
+void			plane_event(t_env *v, const Uint8 *keyboard, float scale)
 {
-	// CHANGER LES BOUTONS SUIVANT POUR LE PAVE NUMERIQUE APRES ?
-	if (keyboard_state[SDL_SCANCODE_S]) {
+	if (keyboard[SDL_SCANCODE_UP])
+	{
+		v->selected_obj->a.y += scale * v->sc_m;
+		v->selected_obj->b.y += scale * v->sc_m;
+		v->selected_obj->c.y += scale * v->sc_m;
+	}
+	if (keyboard[SDL_SCANCODE_DOWN])
+	{
+		v->selected_obj->a.y -= scale * v->sc_m;
+		v->selected_obj->b.y -= scale * v->sc_m;
+		v->selected_obj->c.y -= scale * v->sc_m;
+	}
+	plane_event_t(v, keyboard, scale);
+}
+
+static void		plane_rotate_2(t_env *v, const Uint8 *keyboard, float angle)
+{
+	if (keyboard[SDL_SCANCODE_S])
+	{
 		v->selected_obj->a = rot_axe_x(v->selected_obj->a, angle, 'L');
 		v->selected_obj->b = rot_axe_x(v->selected_obj->b, angle, 'L');
 		v->selected_obj->c = rot_axe_x(v->selected_obj->c, angle, 'L');
 	}
-	if (keyboard_state[SDL_SCANCODE_A]) {
+	if (keyboard[SDL_SCANCODE_A])
+	{
 		v->selected_obj->a = rot_axe_y(v->selected_obj->a, angle, 'L');
 		v->selected_obj->b = rot_axe_y(v->selected_obj->b, angle, 'L');
 		v->selected_obj->c = rot_axe_y(v->selected_obj->c, angle, 'L');
 	}
-	if (keyboard_state[SDL_SCANCODE_E]) {
+	if (keyboard[SDL_SCANCODE_E])
+	{
 		v->selected_obj->a = rot_axe_z(v->selected_obj->a, angle, 'L');
 		v->selected_obj->b = rot_axe_z(v->selected_obj->b, angle, 'L');
 		v->selected_obj->c = rot_axe_z(v->selected_obj->c, angle, 'L');
 	}
 }
 
-void			plane_rotate(t_env *v, const Uint8 *keyboard_state)
+void			plane_rotate(t_env *v, const Uint8 *keyboard)
 {
 	float	angle;
 
 	angle = .01 * v->sc_m;
-	// CHANGER LES BOUTONS SUIVANT POUR LE PAVE NUMERIQUE APRES ?
-	if (keyboard_state[SDL_SCANCODE_W]) {
+	if (keyboard[SDL_SCANCODE_W])
+	{
 		v->selected_obj->a = rot_axe_x(v->selected_obj->a, angle, 'R');
 		v->selected_obj->b = rot_axe_x(v->selected_obj->b, angle, 'R');
 		v->selected_obj->c = rot_axe_x(v->selected_obj->c, angle, 'R');
 	}
-	if (keyboard_state[SDL_SCANCODE_D]) {
+	if (keyboard[SDL_SCANCODE_D])
+	{
 		v->selected_obj->a = rot_axe_y(v->selected_obj->a, angle, 'R');
 		v->selected_obj->b = rot_axe_y(v->selected_obj->b, angle, 'R');
 		v->selected_obj->c = rot_axe_y(v->selected_obj->c, angle, 'R');
 	}
-	if (keyboard_state[SDL_SCANCODE_Q]) {
+	if (keyboard[SDL_SCANCODE_Q])
+	{
 		v->selected_obj->a = rot_axe_z(v->selected_obj->a, angle, 'R');
 		v->selected_obj->b = rot_axe_z(v->selected_obj->b, angle, 'R');
 		v->selected_obj->c = rot_axe_z(v->selected_obj->c, angle, 'R');
 	}
-	plane_rotate_2(v, keyboard_state, angle);
+	plane_rotate_2(v, keyboard, angle);
 }
