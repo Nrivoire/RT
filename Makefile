@@ -6,7 +6,7 @@
 #    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/06 18:26:50 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/05/07 11:51:30 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 ##  VARIABLES  ##
 #################
 
-NAME = rt
+NAME = rtv1
 SRC_SUP = 	events			\
 			draw_tools		\
 			parser			\
@@ -91,6 +91,7 @@ ifeq ($(OS), Windows_NT)
 				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 	\
 				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib
 	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
+	NORMINETTE = ~/.norminette/norminette.rb
 	OS = $(PINK)Windows
 else
 	OS = $(shell uname -s)
@@ -101,11 +102,13 @@ else
 					-I $(FM)/SDL2_ttf.framework/Versions/A/Headers
 		SDL = -rpath $(FM) -F $(FM) -framework SDL2 -framework SDL2_image 	\
 				-framework SDL2_ttf
+		NORMINETTE = norminette
 		OS = $(END)$(PINK)Mac OS
 	else
 		ifeq ($(OS), Linux)
 			INC_SDL = -I/usr/include/SDL2 -D_REENTRANT
 			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf
+			NORMINETTE = ~/.norminette/norminette.rb
 			OS = $(END)$(PINK)Linux
 		else
 			OS = $(RED)This OS is not supported
@@ -141,7 +144,11 @@ SUR = 		\033[7m
 .PHONY: all make_libft detected_OS clean fclean re norme
 
 all: make_libft detected_OS $(NAME)
+ifeq ($(OS), $(RED)This OS is not supported)
+	@printf "$(BLUE)> $(NAME) : $(RED)Project fail !$(END)\n"
+else
 	@printf "$(BLUE)> $(NAME) : $(YELLOW)Project ready !$(END)\n"
+endif
 
 make_libft:
 	@make -C libft
@@ -150,13 +157,19 @@ detected_OS:
 	@printf "$(BOLD)$(GREY)Detected OS : $(OS)$(END)\n"
 
 $(NAME): $(OBJ)
+ifneq ($(OS), $(RED)This OS is not supported)
 	@$(CC) $(CFLAGS) $(LIB) $(LIB_SDL) $^ $(SDL) $(LDLIBS) -o $@
 	@printf "$(ERASE)$(BLUE)> $@ : $(GREEN)Success !$(END)\n\n"
+endif
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC) libft/libft.a
 	@mkdir -p $(OBJ_PATH) $(addprefix $(OBJ_PATH)/,$(SRC_SUP))
+ifeq ($(OS), $(RED)This OS is not supported)
+	@touch $@
+else
 	@printf "$(ERASE)$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).c"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -c $< -o $@
+endif
 
 clean:
 	@make -C libft clean
@@ -171,4 +184,8 @@ fclean: clean
 re: fclean all
 
 norme:
-	norminette $(SRC_PATH) $(INC_PATH)
+ifeq ($(OS), $(RED)This OS is not supported)
+	@printf "Norminette is not supported\n"
+else
+	$(NORMINETTE) $(SRC_PATH) $(INC_PATH)
+endif
