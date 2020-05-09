@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/04/27 14:45:29 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/05/09 22:00:21 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC_SUP = 	events			\
 			post_process	\
 			obj_generating	\
 			ui				\
-			texture
+			init			\
+			texture			\
+			
 SRC_PATH = src
 SRC_NAME = 	draw_tools/display.c				\
 			draw_tools/get_pixel.c				\
@@ -32,6 +34,11 @@ SRC_NAME = 	draw_tools/display.c				\
 			events/obj_event.c					\
 			events/plane_event.c				\
 			events/rotate.c						\
+			init/create_first_tab_obj.c			\
+			init/create_first_tab_lgt.c			\
+			init/init_value.c					\
+			init/init_sdl.c						\
+			init/init_menu.c					\
 			obj_generating/create_tab_obj.c		\
 			obj_generating/inter_ray_quadric.c	\
 			obj_generating/make_obj.c			\
@@ -57,7 +64,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			texture/make_texture_sphere.c		\
 			texture/noise.c						\
 			texture/perlin_noise.c				\
-			texture/generate_texture.c	\
+			texture/generate_texture.c			\
 			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\
@@ -66,7 +73,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			ui/ui_utils.c						\
 			ui/write_text_menu.c				\
 			bonus_tools.c						\
-			init.c								\
 			main.c								\
 			rays.c								\
 			usage.c
@@ -74,8 +80,7 @@ OBJ_PATH = .objects
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 INC_PATH = includes
-INC_NAME = 	rt.h								\
-			pp.h
+INC_NAME = 	rt.h
 INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
 LIB = -L libft
 LDFLAGS = -O3 -ffast-math -march=native

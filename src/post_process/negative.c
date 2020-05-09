@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   negative.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:33:59 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:20:50 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 22:02:00 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-#include "pp.h"
 
 /*
 ** Apply a filter to each pixel: negative.

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cel_shading.c                                      :+:      :+:    :+:   */
+/*   create_first_tab_lgt.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 19:33:50 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/09 22:01:54 by nrivoire         ###   ########lyon.fr   */
+/*   Created: 2020/05/07 14:47:04 by natachaNata       #+#    #+#             */
+/*   Updated: 2020/05/07 14:48:21 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-/*
-** Apply a filter to each pixel: cel-shading / cartoon.
-*/
-
-int		cel_shading(int color)
+static t_tab_lights		make_tab_lights(t_lst_lgt *p)
 {
-	int		r;
-	int		g;
-	int		b;
+	t_tab_lights	light;
 
-	r = color >> 24 & 0xFF;
-	g = color >> 16 & 0xFF;
-	b = color >> 8 & 0xFF;
-	r = (int)((r / CELSHADING) * CELSHADING << 24);
-	g = (int)((g / CELSHADING) * CELSHADING << 16);
-	b = (int)((b / CELSHADING) * CELSHADING << 8);
-	return (r | g | b | (color & 0xFF));
+	light.pos = p->pos;
+	light.color = p->color;
+	return (light);
+}
+
+void					create_first_tab_lgt(t_env *v)
+{
+	t_lst_lgt	*tmp2;
+	int			i;
+
+	i = 0;
+	tmp2 = v->p.lg;
+	while (tmp2)
+	{
+		v->tab_lights[i++] = make_tab_lights(tmp2);
+		tmp2 = tmp2->next;
+	}
 }

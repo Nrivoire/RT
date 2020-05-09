@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_object.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:19:03 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 22:01:01 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void		parse_tex_pro(char *tmp, t_lst_obj *content)
 		ft_strstr(tmp, "PERLIN") ? content->procedural = PERLIN : 0;
 		ft_strstr(tmp, "WOOD") ? content->procedural = WOOD : 0;
 		ft_strstr(tmp, "MARBLE") ? content->procedural = MARBLE : 0;
-		ft_strstr(tmp, "CHESS") ? content->procedural = CHESS : 0;
 	}
 }
 
