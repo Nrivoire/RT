@@ -6,17 +6,17 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/09 14:33:42 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 14:39:43 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static void		check_plan(int i, t_env *v)
+static void			check_plan(int i, t_env *v)
 {
-	t_vec		ab;
-	t_vec		ac;
-	t_vec		cross;
+	t_vec			ab;
+	t_vec			ac;
+	t_vec			cross;
 
 	ab = vec_sub(v->tab_obj[i].b, v->tab_obj[i].a);
 	ac = vec_sub(v->tab_obj[i].c, v->tab_obj[i].a);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/08 23:38:18 by jacket           ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 14:41:51 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void		selected_menu(t_env *v)
 	}
 	else
 		put_text(v, write_text_stats("click an object to select", 18), 10, 180);
-	
 }
 
 static void	menu_text_2(t_env *v)
