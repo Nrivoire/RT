@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/09 21:47:09 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 23:03:50 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static t_tab_obj	make_obj(t_lst_obj *p)
 	data.reflect = p->reflect;
 	data.refract = p->refract;
 	data.shininess = p->shininess;
+	data.procedural = p->procedural;
+	data.texture = p->texture;
 	return (data);
 }
 

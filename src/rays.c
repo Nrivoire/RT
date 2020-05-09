@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/17 17:22:59 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 23:04:39 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,7 +231,10 @@ int		select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light)
 	while (++i < v->nb_o)
 		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol) 				\
 				&& choose_closest_point(ray.o, sol, &dist, &point))
+		{
+			v->tab_obj[i].i = i;
 			*obj = v->tab_obj[i];
+		}
 	*light = dist >= 0 ? select_light(v, obj, point, ray.d) : (t_color){0, 0, 0};
 	return (dist >= 0);
 }
