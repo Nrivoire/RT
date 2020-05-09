@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:28:05 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/08 22:57:57 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void		obj_event(t_env *v, const Uint8 *keyboard_state, float scale)
 			v->selected_obj->pos.x += scale * v->sc_m;
 		if (keyboard_state[SDL_SCANCODE_LEFT])
 			v->selected_obj->pos.x -= scale * v->sc_m;
-		if (keyboard_state[SDL_SCANCODE_KP_MINUS])
+		if (keyboard_state[SDL_SCANCODE_P])
 			v->selected_obj->pos.z -= scale * v->sc_m;
-		if (keyboard_state[SDL_SCANCODE_KP_PLUS])
+		if (keyboard_state[SDL_SCANCODE_O])
 			v->selected_obj->pos.z += scale * v->sc_m;
 		obj_event_rotate(v, keyboard_state);
 		render_obj(v, keyboard_state);
