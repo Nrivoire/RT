@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:54:32 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/03 15:23:55 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 23:21:06 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			draw_pro_frame(t_env *v)
 		else
 			v->ppc.render_size = 1;
 	}
-	loop(v);
+	multi_thread_with_loop(v);
 	v->ppc.ssp == 1 ? supersampling(v) : 0;
 	v->ppc.ssp == 2 ? blur(v) : 0;
 }

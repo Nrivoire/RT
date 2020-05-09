@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/09 21:58:50 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 23:20:24 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,6 +290,9 @@ typedef struct		s_env
 	int				reflect;
 	int				print;
 	int				pe[512];
+	int				thread_index;
+	pthread_mutex_t	mutex;
+	int				width_thread;
 }					t_env;
 
 /*
@@ -375,7 +378,7 @@ int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
 int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
-void				loop(t_env *v);
+void				multi_thread_with_loop(t_env *v);
 void				loop_event(t_env *v);
 
 /*

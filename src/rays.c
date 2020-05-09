@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/09 23:04:39 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 23:21:54 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,17 +252,22 @@ void			calc_light(t_env *v, t_tab_obj obj, t_color light, t_color *px_color)
 	}
 }
 
-void	loop(t_env *v)
+static void		loop(t_env *v)
 {
 	int			x;
 	int			y;
 	t_tab_obj	obj;
 	t_color		color;
 	t_color		light;
+	int			i;
 
+	pthread_mutex_lock(&v->mutex);
+	i = v->thread_index++;
+	pthread_mutex_unlock(&v->mutex);
 	y = -v->ppc.render_size;
-	while ((y += v->ppc.render_size) <= v->h && (x = -v->ppc.render_size))
-		while ((x += v->ppc.render_size) <= v->w)
+	while ((y += v->ppc.render_size) <= v->h &&
+			(x = i * v->width_thread - v->ppc.render_size))
+		while ((x += v->ppc.render_size) < ((i + 1) * v->width_thread))
 		{
 			color = (t_color){0, 0, 0};
 			v->reflect = 1;
@@ -277,4 +282,18 @@ void	loop(t_env *v)
 			else
 				big_pixel(v, (t_int){x, y}, v->ppc.render_size, color);
 		}
+	pthread_exit(NULL);
+}
+
+void			multi_thread_with_loop(t_env *v)
+{
+	pthread_t	id[8];
+	int			i;
+
+	i = -1;
+	v->thread_index = 0;
+	while (++i < 8)
+		pthread_create(&id[i], NULL, (void*)loop, (void*)v);
+	while (i--)
+		pthread_join(id[i], NULL);
 }
