@@ -6,7 +6,7 @@
 #    By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/07 20:17:02 by jacket           ###   ########lyon.fr    #
+#    Updated: 2020/05/08 23:14:02 by jacket           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			ray_tracer/loop.c					\
 			ray_tracer/ray_tracer.c				\
 			ray_tracer/select_obj.c				\
-			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\
 			ui/menu.c							\

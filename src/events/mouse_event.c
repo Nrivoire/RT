@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:36:30 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/08 23:18:21 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 				else
 					v->selected_obj = NULL;
 			}
-			else if (SDL_GetMouseFocus() == v->ui.m_win)
-				is_it_a_button(e);
 		}
 }
 

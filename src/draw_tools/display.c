@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:54:32 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 18:38:51 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/08 23:17:52 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void			event_management(SDL_Event e, t_env *v, const Uint8 *key_state,
 	{
 		if (SDL_GetMouseFocus() == v->win)
 			mouse_motion_event(e, v, mouse_state);
-		if (SDL_GetMouseFocus() == v->ui.m_win)
-			over_a_button(v, e);
 	}
 	if (e.type == SDL_MOUSEWHEEL)
 		mouse_wheel_event(e, v);
