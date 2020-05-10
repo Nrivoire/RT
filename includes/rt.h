@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/10 18:56:15 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/10 22:13:18 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,7 +438,7 @@ int					get_hex(int r, int g, int b);
 /*
 ** --bonus_tools--
 */
-void				screenshot(t_env *v);
+void				screenshot(t_env *v, int id);
 void				display_stats(t_env *v);
 
 /*
