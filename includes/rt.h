@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/09 23:20:24 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/10 18:56:15 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -401,7 +401,7 @@ float				parse_value(char const *s);
 int					parse_int_value(char const *s);
 void				parse_color(char *s, t_env *v, t_file *file);
 void				parse_color_scene(char *s, t_env *v, t_file *file);
-void				hexa_value(char *s, t_env *v, char delim, t_file *file);
+void				hexa_value(char *s, t_env *v, t_file *file);
 void				parse_xyz(char *s, t_env *v, t_file *file);
 void				add_lst_obj(t_lst_obj **ob, t_lst_obj content);
 void				add_lst_lgt(t_lst_lgt **lg, t_lst_lgt content);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:06:19 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:19:34 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/10 18:56:03 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,13 @@ void			parse_color(char *s, t_env *v, t_file *file)
 {
 	int		i;
 	char	**res;
+	char	*save;
 
 	i = 0;
 	res = NULL;
-	if (ft_strstr(s, "0x"))
-		hexa_value(s, v, 'x', file);
-	else if (ft_strstr(s, "#"))
-		hexa_value(s, v, '#', file);
-	else
+	save = ft_strdup(s);
+	ft_strstr(s, "0x") || ft_strstr(s, "#") ? hexa_value(save, v, file) : 0;
+	if (!ft_strstr(s, "0x") && !ft_strstr(s, "#"))
 	{
 		if (!(res = ft_strsplit(s, ',')))
 			error_parser("Bad file: error in rgba", file);
@@ -66,6 +65,7 @@ void			parse_color(char *s, t_env *v, t_file *file)
 			ft_strdel(&res[i--]);
 		free(res);
 	}
+	free(save);
 }
 
 /*

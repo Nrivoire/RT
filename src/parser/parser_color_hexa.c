@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_color_hexa.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 20:06:19 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:19:26 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/10 18:56:34 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,23 @@ static int		get_hexa(char *s, t_file *file)
 	return (res);
 }
 
-void			hexa_value(char *s, t_env *v, char delim, t_file *file)
+static char		delim_is(char *s)
+{
+	if (ft_strstr(s, "0x"))
+		return ('x');
+	else if (ft_strstr(s, "#"))
+		return ('#');
+	return (' ');
+}
+
+void			hexa_value(char *s, t_env *v, t_file *file)
 {
 	int		i;
 	char	**hexa;
+	char	delim;
 
 	i = 0;
+	delim = delim_is(s);
 	if (!(hexa = ft_strsplit(s, delim)))
 		error_parser("Bad file: Echec de lecture du format hexa", file);
 	while (hexa[++i] != NULL)
