@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/11 12:18:24 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/11 15:20:48 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			post_process/post_process_utils.c	\
 			post_process/sepia.c				\
 			post_process/supersampling.c		\
-			texture/checkboard.c				\
 			texture/make_texture_plan.c			\
 			texture/make_texture_sphere.c		\
 			texture/noise.c						\
@@ -75,7 +74,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			ui/stats.c							\
 			ui/ui_utils.c						\
 			ui/write_text_menu.c				\
-			bonus_tools.c						\
+			screenshot.c						\
 			main.c								\
 			rays.c								\
 			usage.c
