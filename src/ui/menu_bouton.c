@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bouton.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/06 18:12:55 by jacket           ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 05:53:30 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,16 @@ void		over_a_button(t_env *v, SDL_Event e)
 		v->hover[3] = get_hex_menu(218, 112, 214);
 }
 
-
 void		is_it_a_button(t_env *v, SDL_Event e)
 {
 	if (mouse_location(e, (t_between){10, 185, 190, 230}))
-		printf("function add a sphere\n");
+		printf("Not-available yet: sphere\n");
 	else if (mouse_location(e, (t_between){189, 365, 190, 230}))
-		printf("function add a cylinder\n");
+		printf("Not-available yet: cylinder\n");
 	else if (mouse_location(e, (t_between){10, 185, 235, 275}))
-		printf("function add a cone\n");
+		printf("Not-available yet: cone\n");
 	else if (mouse_location(e, (t_between){189, 365, 235, 275}))
-		printf("function add a plane\n");
-	
+		printf("Not-available yet: plane\n");
 	//enleve erreur en attendant:
 	v->w = v->w;
 }
