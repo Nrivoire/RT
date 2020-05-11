@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_tab_obj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:12:17 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/09 22:00:41 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 12:17:58 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void			create_tab_obj(t_env *v)
+void			make_tab_obj(t_env *v)
 {
 	int			i;
 

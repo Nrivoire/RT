@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/11 04:05:24 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 12:17:49 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,7 +378,7 @@ void				create_texture_procedural(t_env *v, t_tab_obj *obj,\
 ** --rays--
 */
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
-void				create_tab_obj(t_env *v);
+void				make_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
 int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj,\
 		t_color *light);

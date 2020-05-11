@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/09 22:00:21 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/05/11 12:18:24 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,12 @@ SRC_NAME = 	draw_tools/display.c				\
 			init/init_value.c					\
 			init/init_sdl.c						\
 			init/init_menu.c					\
-			obj_generating/create_tab_obj.c		\
+			obj_generating/make_tab_obj.c		\
 			obj_generating/inter_ray_quadric.c	\
-			obj_generating/make_obj.c			\
+			obj_generating/make_sphere.c		\
+			obj_generating/make_plan.c			\
+			obj_generating/make_cone.c			\
+			obj_generating/make_cylinder.c		\
 			parser/parser_block_base.c			\
 			parser/parser_block_light.c			\
 			parser/parser_block_object.c		\

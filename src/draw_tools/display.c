@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:54:32 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/09 23:21:06 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 12:18:06 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			event_management(SDL_Event e, t_env *v, const Uint8 *key_state,
 void			draw_pro_frame(t_env *v)
 {
 	clear_pixels(v);
-	create_tab_obj(v);
+	make_tab_obj(v);
 	if (v->ppc.active_rpx == 1)
 	{
 		if (v->ppc.render_key > 0 || v->ppc.render_mouse > 0)
