@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_texture_on_surface.c                           :+:      :+:    :+:   */
+/*   generate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:11:12 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 14:50:56 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 // 	matrix_rotation(ax, ay, az, rot);
 // }
 
-void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, t_vec normal)
+void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
+					t_vec normal)
 {
 	SDL_Color col;
 
