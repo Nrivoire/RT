@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/11 12:17:49 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 15:50:23 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,11 +321,11 @@ int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
 /*
 ** --draw_tools--
 */
-
 void				display(t_env *v);
 void				clear_pixels(t_env *v);
 Uint32				get_pixel(SDL_Surface *surface, int x, int y);
 void				pixel_put(t_env *v, int x, int y, t_color color);
+int					get_hex_rgba(int r, int g, int b, int a);
 
 /*
 ** --events--
@@ -437,7 +437,6 @@ int					blur_calc_g(t_env *v);
 int					blur_calc_b(t_env *v);
 int					blur_calc_a(t_env *v);
 t_color				color_ssp(Uint32 pixel);
-int					get_hex(int r, int g, int b);
 
 /*
 ** --bonus_tools--

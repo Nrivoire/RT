@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:03:30 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:17:04 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 15:51:11 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void			clear_pixels(t_env *v)
 	}
 }
 
-static int		get_hex_rgba(int r, int g, int b, int a)
+int				get_hex_rgba(int r, int g, int b, int a)
 {
 	return ((r << 24) | (g << 16) | (b << 8) | (a));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blur.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:37:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/09 22:01:50 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 15:50:58 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void			blur(t_env *v)
 			blr.r = blur_calc_r(v);
 			blr.g = blur_calc_g(v);
 			blr.b = blur_calc_b(v);
-			v->pixels[y * v->w + x] = get_hex(blr.r, blr.g, blr.b);
+			v->pixels[y * v->w + x] = get_hex_rgba(blr.r, blr.g, blr.b, 255);
 		}
 	}
 }

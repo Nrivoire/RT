@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   supersampling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:37:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/09 22:02:10 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 15:50:32 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		supersampling_calc(t_env *v, int x, int y)
 		v->ppc.ssaa[3].g + v->ppc.ssaa[4].g) * 0.2;
 	ssp.b = (v->ppc.ssaa[0].b + v->ppc.ssaa[1].b + v->ppc.ssaa[2].b + \
 		v->ppc.ssaa[3].b + v->ppc.ssaa[4].b) * 0.2;
-	v->pixels[y * v->w + x] = get_hex(ssp.r, ssp.g, ssp.b);
+	v->pixels[y * v->w + x] = get_hex_rgba(ssp.r, ssp.g, ssp.b, 255);
 }
 
 void			supersampling(t_env *v)
