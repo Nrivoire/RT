@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/10 22:13:18 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 04:05:24 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,8 +358,10 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --textures--
 */
-void				generate_texture(t_env *v, t_tab_obj *obj, t_vec point, t_vec normal);
-void				make_texture_sphere(t_tab_obj *obj, t_vec point, SDL_Color col);
+void				generate_texture(t_env *v, t_tab_obj *obj, t_vec point,\
+		t_vec normal);
+void				make_texture_sphere(t_tab_obj *obj, t_vec point,\
+		SDL_Color col);
 void				make_texture_plan(t_tab_obj *obj, t_vec point);
 //void				make_texture_cone(t_tab_obj *obj);
 //void				make_texture_cylindre(t_tab_obj *obj);
@@ -369,7 +371,8 @@ void				make_texture_plan(t_tab_obj *obj, t_vec point);
 */
 void				init_permutation(t_env *v);
 float				noise(t_env *v, float x, float y, float z);
-void				create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec normal);
+void				create_texture_procedural(t_env *v, t_tab_obj *obj,\
+		t_vec normal);
 
 /*
 ** --rays--
@@ -377,7 +380,8 @@ void				create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec normal);
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				create_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
-int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light);
+int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj,\
+		t_color *light);
 void				multi_thread_with_loop(t_env *v);
 void				loop_event(t_env *v);
 
