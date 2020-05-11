@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:16:50 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/11 14:11:15 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ void		mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state)
 	}
 }
 
+static void	mouse_button_event_2(t_env *v, t_tab_obj tmp)
+{
+	if (v->selected_obj && v->selected_obj->i == tmp.i)
+		v->selected_obj = NULL;
+	else
+	{
+		v->selected_obj = &v->tab_obj[tmp.i];
+		v->selected_obj->i = tmp.i;
+	}
+}
+
 void		mouse_button_event(SDL_Event e, t_env *v)
 {
 	t_tab_obj	tmp;
@@ -49,16 +60,9 @@ void		mouse_button_event(SDL_Event e, t_env *v)
 		{
 			if (SDL_GetMouseFocus() == v->win)
 			{
-				if (select_obj(v, create_ray(v, e.button.x, e.button.y), &tmp, &light))
-				{
-					if (v->selected_obj && v->selected_obj->i == tmp.i)
-						v->selected_obj = NULL;
-					else
-					{
-						v->selected_obj = &v->tab_obj[tmp.i];
-						v->selected_obj->i = tmp.i;
-					}
-				}
+				if (select_obj(v, create_ray(v, e.button.x, e.button.y),\
+						&tmp, &light))
+					mouse_button_event_2(v, tmp);
 				else
 					v->selected_obj = NULL;
 			}
