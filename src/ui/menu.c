@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/09 14:41:51 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 19:57:39 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ static void	menu_text_2(t_env *v)
 {
 	char	*info[3];
 
-	info[0] = ft_ftoa(v->cam.angle_x, 3);
-	info[1] = ft_ftoa(v->cam.angle_y, 3);
-	info[2] = ft_ftoa(v->cam.fov, 0);
+	info[0] = ft_ftoa(ft_rad_to_deg(v->cam.angle_x), 3);
+	info[1] = ft_ftoa(ft_rad_to_deg(v->cam.angle_y), 3);
+	info[2] = ft_ftoa(ft_rad_to_deg(v->cam.angle_z), 3);
 	put_text(v, write_text_menu2("angle x:", 22), 199, 62);
 	put_text(v, write_text_menu2(info[0], 24), 280, 62);
 	put_text(v, write_text_menu2("angle y:", 22), 199, 97);
 	put_text(v, write_text_menu2(info[1], 24), 280, 97);
-	put_text(v, write_text_menu2("fov:", 22), 199, 132);
+	put_text(v, write_text_menu2("angle z:", 22), 199, 132);
 	put_text(v, write_text_menu2(info[2], 24), 280, 132);
 	free(info[0]);
 	free(info[1]);

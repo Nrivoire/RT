@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/03 16:49:53 by qpupier           #+#    #+#             */
-/*   Updated: 2020/03/31 15:13:12 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 20:04:28 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,6 +309,7 @@ int					color_avg(unsigned int s_col, unsigned int end_col,
 int					ft_count_words(char *s, char c);
 void				ft_create_img(void *ptr, t_mlx_img *img, int w, int h);
 float				ft_deg_to_rad(float nb);
+float				ft_rad_to_deg(float nb);
 int					ft_digit_abs(int d);
 int					ft_digit_hex_to_int(char c);
 t_rgb				hex_to_rgb(unsigned int color);
