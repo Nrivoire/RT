@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 23:28:10 by qpupier           #+#    #+#             */
-/*   Updated: 2020/04/12 21:29:30 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 13:55:09 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ float	real_oriented_angle(t_real u, t_real v)
 {
 	float	tmp;
 
+	u = real_normalize(u);
+	v = real_normalize(v);
 	tmp = real_scale_product(u, v);
 	if (tmp < -1)
 		tmp = -1;
