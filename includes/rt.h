@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 15:02:25 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 18:53:16 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef struct		s_cam
 {
 	float			angle_x;
 	float			angle_y;
+	float			angle_z;
 	t_vec			ori;
 	t_vec			dir;
 	float			fov_x;
