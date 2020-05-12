@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/12 18:53:16 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 18:58:41 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@
 # define DIRECTIONAL 2
 # define SPOT 3
 
-# define PERLIN 1
-# define WOOD 2
-# define MARBLE 3
-# define CHESS 4
-
-# define NB_THREAD 8
-
 # define CELSHADING 30
 
 /*
@@ -62,7 +55,9 @@ typedef struct		s_scene
 typedef struct		s_camera
 {
 	t_vec			pos;
-	t_vec			dir;
+	float			angle_x;
+	float			angle_y;
+	float			angle_z;
 	int				fov;
 }					t_camera;
 
@@ -144,7 +139,6 @@ typedef struct		s_cam
 	float			angle_y;
 	float			angle_z;
 	t_vec			ori;
-	t_vec			dir;
 	float			fov_x;
 	float			fov_y;
 	float			fov;
@@ -215,11 +209,6 @@ typedef struct		s_stats
 ** -----------------------------ENVIRONNEMENT----------------------------
 */
 
-typedef struct		s_thread
-{
-	pthread_t		id[NB_THREAD];
-}					t_thread;
-
 typedef struct		s_ui
 {
 	SDL_Window		*m_win;
@@ -254,6 +243,9 @@ typedef struct		s_env
 	Uint32			hover[4];
 	int				reflect;
 	int				print;
+	int				thread_index;
+	pthread_mutex_t	mutex;
+	int				width_thread;
 }					t_env;
 
 /*
@@ -318,15 +310,17 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --rays--
 */
-void				create_tab_obj(t_env *v);
+void				make_tab_obj(t_env *v);
 t_ray				create_ray(t_env *v, int x, int y);
-void				loop(t_env *v);
+void				multi_thread_with_loop(t_env *v);
 int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj,
 		t_color *light);
 t_color				ray_tracer(t_env *v, t_tab_obj *obj,
 		t_vec point, t_vec ray);
 t_color				color_ratio(t_color color, float ratio);
 t_color				color_op(t_color c1, char op, t_color c2);
+t_color				is_it_selected(t_env *v, t_tab_obj obj,
+		t_color color);
 t_color				limit_color(t_color color);
 
 /*
@@ -349,7 +343,7 @@ float				parse_value(char const *s);
 int					parse_int_value(char const *s);
 void				parse_color(char *s, t_env *v, t_file *file);
 void				parse_color_scene(char *s, t_env *v, t_file *file);
-void				hexa_value(char *s, t_env *v, char delim, t_file *file);
+void				hexa_value(char *s, t_env *v, t_file *file);
 void				parse_xyz(char *s, t_env *v, t_file *file);
 void				add_lst_obj(t_lst_obj **ob, t_lst_obj content);
 void				add_lst_lgt(t_lst_lgt **lg, t_lst_lgt content);
@@ -376,18 +370,10 @@ t_color				color_ssp(Uint32 pixel);
 int					get_hex(int r, int g, int b);
 
 /*
-** --bonus_tools--
-*/
-void				screenshot(t_env *v);
-void				display_stats(t_env *v);
-
-/*
 ** --menu--
 */
 void				menu(t_env *v);
 void				load_menu(t_env *v);
-void				menu_bouton(t_env *v, int x, int y);
-void				menu_bouton_text(t_env *v);
 void				selected_sphere(t_env *v);
 void				selected_plan(t_env *v);
 void				selected_cone(t_env *v);
@@ -399,7 +385,6 @@ SDL_Surface			*write_text_menu(char *text, int size_font);
 SDL_Surface			*write_text_menu2(char *text, int size_font);
 int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
-void				is_it_a_button(SDL_Event e);
-void				over_a_button(t_env *v, SDL_Event e);
+void				display_stats(t_env *v);
 
 #endif

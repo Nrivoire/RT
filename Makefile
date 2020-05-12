@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/07 15:55:25 by qpupier          ###   ########lyon.fr    #
+#    Updated: 2020/05/08 23:14:02 by jacket           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			init/init_value.c					\
 			init/init_sdl.c						\
 			init/init_menu.c					\
-			obj_generating/create_tab_obj.c		\
+			obj_generating/make_tab_obj.c		\
 			obj_generating/inter_ray_quadric.c	\
 			obj_generating/make_plan.c			\
 			obj_generating/make_sphere.c		\
@@ -65,14 +65,13 @@ SRC_NAME = 	draw_tools/display.c				\
 			ray_tracer/colors.c					\
 			ray_tracer/loop.c					\
 			ray_tracer/ray_tracer.c				\
-			ui/menu_bouton.c					\
+			ray_tracer/select_obj.c				\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\
 			ui/menu.c							\
 			ui/stats.c							\
 			ui/ui_utils.c						\
 			ui/write_text_menu.c				\
-			bonus_tools.c						\
 			main.c								\
 			usage.c
 OBJ_PATH = .objects

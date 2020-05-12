@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/07 14:28:02 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 15:05:18 by jacket           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	render_obj(t_env *v, const Uint8 *keyboard_state)
 		&& !keyboard_state[SDL_SCANCODE_RIGHT]
 		&& !keyboard_state[SDL_SCANCODE_DOWN]
 		&& !keyboard_state[SDL_SCANCODE_UP]
-		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
-		&& !keyboard_state[SDL_SCANCODE_KP_MINUS]
+		&& !keyboard_state[SDL_SCANCODE_O]
+		&& !keyboard_state[SDL_SCANCODE_P]
 		&& !keyboard_state[SDL_SCANCODE_W]
 		&& !keyboard_state[SDL_SCANCODE_D]
 		&& !keyboard_state[SDL_SCANCODE_Q]
@@ -37,8 +37,8 @@ void	render_plane(t_env *v, const Uint8 *keyboard_state)
 		&& !keyboard_state[SDL_SCANCODE_RIGHT]
 		&& !keyboard_state[SDL_SCANCODE_DOWN]
 		&& !keyboard_state[SDL_SCANCODE_UP]
-		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
-		&& !keyboard_state[SDL_SCANCODE_KP_MINUS]
+		&& !keyboard_state[SDL_SCANCODE_O]
+		&& !keyboard_state[SDL_SCANCODE_P]
 		&& !keyboard_state[SDL_SCANCODE_W]
 		&& !keyboard_state[SDL_SCANCODE_D]
 		&& !keyboard_state[SDL_SCANCODE_Q]

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/06 19:34:03 by jacket           ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 14:41:51 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ void		selected_menu(t_env *v)
 {
 	if (v->selected_obj)
 	{
+		put_text(v, write_text_stats("Object menu:", 18), 10, 180);
+		put_text(v, write_text_stats("UP: move +y", 19), 130, 180);
+		put_text(v, write_text_stats("DOWN: move -y", 19), 130, 200);
+		put_text(v, write_text_stats("LEFT: move -x", 19), 130, 220);
+		put_text(v, write_text_stats("RIGHT: move +x", 19), 130, 240);
+		put_text(v, write_text_stats("P: move +z", 19), 130, 260);
+		put_text(v, write_text_stats("O: move -z", 19), 130, 280);
 		if (v->selected_obj->type == SPHERE)
 			selected_sphere(v);
 		if (v->selected_obj->type == PLAN)
@@ -25,6 +32,8 @@ void		selected_menu(t_env *v)
 		if (v->selected_obj->type == CYLINDER)
 			selected_cylinder(v);
 	}
+	else
+		put_text(v, write_text_stats("click an object to select", 18), 10, 180);
 }
 
 static void	menu_text_2(t_env *v)
@@ -107,9 +116,7 @@ void		menu(t_env *v)
 		while (++x < v->ui.m_w)
 		{
 			menu_2(v, x, y);
-			menu_bouton(v, x, y);
 		}
 	}
 	menu_text(v);
-	menu_bouton_text(v);
 }

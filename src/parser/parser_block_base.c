@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:18:31 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 18:44:16 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		parse_scene(t_env *v, t_file *file)
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\twidth=", 7))
-			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 1280);
+			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 960);
 		else if (!ft_strncmp(tmp, "\theight=", 8))
 			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
@@ -85,7 +85,9 @@ void		parse_cam(t_env *v, t_file *file)
 		else if (!ft_strncmp(tmp, "\tdir=", 5))
 		{
 			parse_xyz(tmp, v, file);
-			v->p.cam.dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+			v->p.cam.angle_x = v->p.p_xyz.x;
+			v->p.cam.angle_y = v->p.p_xyz.y;
+			v->p.cam.angle_z = v->p.p_xyz.z;
 		}
 		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_int_value(tmp) : 0;
 		ft_strdel(&file->line);

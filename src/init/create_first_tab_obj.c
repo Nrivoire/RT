@@ -6,13 +6,29 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/07 14:56:52 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/09 14:39:43 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static t_tab_obj	make_tab_obj(t_lst_obj *p)
+static void			check_plan(int i, t_env *v)
+{
+	t_vec			ab;
+	t_vec			ac;
+	t_vec			cross;
+
+	ab = vec_sub(v->tab_obj[i].b, v->tab_obj[i].a);
+	ac = vec_sub(v->tab_obj[i].c, v->tab_obj[i].a);
+	cross = vec_cross_product(ab, ac);
+	if (vec_scale_product(ab, ac) != 0)
+	{
+		cross = vec_cross_product(cross, ab);
+		v->tab_obj[i].c = vec_sub(cross, v->tab_obj[i].a);
+	}
+}
+
+static t_tab_obj	make_obj(t_lst_obj *p)
 {
 	t_tab_obj		data;
 
@@ -44,7 +60,9 @@ void				create_first_tab_obj(t_env *v)
 		return ;
 	while (tmp)
 	{
-		v->tab_obj[i] = make_tab_obj(tmp);
+		if (tmp->type == PLAN)
+			check_plan(i, v);
+		v->tab_obj[i] = make_obj(tmp);
 		i++;
 		tmp = tmp->next;
 	}
