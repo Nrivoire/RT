@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/10 17:45:36 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 18:37:41 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct		s_cam
 {
 	float			angle_x;
 	float			angle_y;
+	float			angle_z;
 	t_vec			ori;
 	t_vec			dir;
 	float			fov_x;
