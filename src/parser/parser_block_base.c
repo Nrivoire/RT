@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:18:31 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 03:52:22 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		parse_scene(t_env *v, t_file *file)
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\twidth=", 7))
-			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 1280);
+			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 960);
 		else if (!ft_strncmp(tmp, "\theight=", 8))
 			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
