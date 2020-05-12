@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 18:37:34 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 18:44:16 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void		parse_cam(t_env *v, t_file *file)
 		else if (!ft_strncmp(tmp, "\tdir=", 5))
 		{
 			parse_xyz(tmp, v, file);
-			v->cam.angle_x = v->p.p_xyz.x;
-			v->cam.angle_y = v->p.p_xyz.y;
-			v->cam.angle_z = v->p.p_xyz.z;
+			v->p.cam.angle_x = v->p.p_xyz.x;
+			v->p.cam.angle_y = v->p.p_xyz.y;
+			v->p.cam.angle_z = v->p.p_xyz.z;
 		}
 		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_int_value(tmp) : 0;
 		ft_strdel(&file->line);
