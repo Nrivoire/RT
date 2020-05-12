@@ -4,7 +4,6 @@ scene{
 
 camera{
 	pos= {0, 0, 10}
-	dir= {0, 1, 0}
 	fov= 60
 }
 
