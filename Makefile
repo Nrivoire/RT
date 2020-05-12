@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jacket <jacket@student.42lyon.fr>          +#+  +:+       +#+         #
+#    By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/08 23:14:02 by jacket           ###   ########lyon.fr    #
+#    Updated: 2020/05/12 19:10:22 by qpupier          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,7 @@ else
 	else
 		ifeq ($(OS), Linux)
 			INC_SDL = -I/usr/include/SDL2 -D_REENTRANT
-			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf
+			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
 			NORMINETTE = ~/.norminette/norminette.rb
 			OS = $(END)$(PINK)Linux
 		else
