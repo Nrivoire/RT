@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:20:49 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 18:57:19 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 02:44:41 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void			init_value(t_env *v)
 	v->hover[1] = v->hover[0];
 	v->hover[2] = v->hover[0];
 	v->hover[3] = v->hover[0];
+	v->cooldown = clock() / CLOCKS_PER_SEC;
 }
 
 void			scene_value(t_env *v)
