@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/13 05:39:46 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 06:46:32 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void		obj_event(t_env *v, const Uint8 *keyboard, float scale)
 			v->selected_obj->pos.y += scale * v->sc_m;
 		if (keyboard[SDL_SCANCODE_K] && keyboard[SDL_SCANCODE_SPACE])
 			v->selected_obj->pos.y -= scale * v->sc_m;
-		if (keyboard[SDL_SCANCODE_J] && keyboard[SDL_SCANCODE_SPACE])
-			v->selected_obj->pos.x += scale * v->sc_m;
 		if (keyboard[SDL_SCANCODE_L] && keyboard[SDL_SCANCODE_SPACE])
+			v->selected_obj->pos.x += scale * v->sc_m;
+		if (keyboard[SDL_SCANCODE_J] && keyboard[SDL_SCANCODE_SPACE])
 			v->selected_obj->pos.x -= scale * v->sc_m;
 		if (keyboard[SDL_SCANCODE_U] && keyboard[SDL_SCANCODE_SPACE])
 			v->selected_obj->pos.z -= scale * v->sc_m;
