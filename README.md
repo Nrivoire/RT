@@ -70,3 +70,143 @@ make
 ```bash
 .\rt.exe
 ```
+## Utilisation des scenes
+* Respecter le format de chaque block du fichier
+
+```
+[type de block]{
+'tabulation'[variable]= [données]
+}
+
+type de block = [scene - camera - light - object]
+```
+
+### Scene
+
+```
+'	ambient-light= {r, g, b}'
+
+r.g.b = [0-1]
+```
+```
+'	width= largeur'
+
+largeur = [100-960]
+```
+```
+'	height= hauteur'
+
+hauteur = [100-720]
+```
+```
+'	filter= nom_du_filtre'
+
+nom_du_filtre = [greyscale - sepia - negative - cel-shading]
+```
+
+### Camera
+
+```
+'	pos= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	dir= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	fov= fov_cam'
+
+fov_cam = [int]
+```
+
+### Lumière
+
+```
+'	type= type_de_lumière'
+
+type_de_lumière = [POINT - DIRECTIONAL - SPOT]
+```
+```
+'	pos= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	dir= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	color= {r, g, b}'
+
+{r, g, b} = [float]
+---
+'	color= hexa'
+
+hexa = [#......] ou [0x......]
+```
+
+### Objet
+
+```
+'	type= type_objet'
+
+type_objet = [SPHERE - PLAN - CONE - CYLINDER]
+```
+```
+'	radius= rayon'
+
+rayon = [float]
+```
+```
+'	pos= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	dir= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	point_a= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	point_b= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	point_c= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	color= {r, g, b}'
+
+{r, g, b} = [float]
+---
+'	color= hexa'
+
+hexa = [#......] ou [0x......]
+```
+```
+'	reflect= reflection'
+
+reflection = [0-1]
+```
+```
+'	refract= refraction'
+
+refraction = [0-1]
+```
+```
+'	shininess= brillance'
+
+brillance = [0-1]
+```
