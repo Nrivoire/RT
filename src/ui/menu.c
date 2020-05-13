@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 19:57:39 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 07:30:28 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void		selected_menu(t_env *v)
 	if (v->selected_obj)
 	{
 		put_text(v, write_text_stats("Object menu:", 18), 10, 180);
-		put_text(v, write_text_stats("UP: move +y", 19), 130, 180);
-		put_text(v, write_text_stats("DOWN: move -y", 19), 130, 200);
-		put_text(v, write_text_stats("LEFT: move -x", 19), 130, 220);
-		put_text(v, write_text_stats("RIGHT: move +x", 19), 130, 240);
-		put_text(v, write_text_stats("P: move +z", 19), 130, 260);
-		put_text(v, write_text_stats("O: move -z", 19), 130, 280);
+		put_text(v, write_text_stats("I +SPACE: move +y", 19), 130, 180);
+		put_text(v, write_text_stats("K +SPACE: move -y", 19), 130, 200);
+		put_text(v, write_text_stats("J +SPACE: move -x", 19), 130, 220);
+		put_text(v, write_text_stats("L +SPACE: move +x", 19), 130, 240);
+		put_text(v, write_text_stats("O +SPACE: move +z", 19), 130, 260);
+		put_text(v, write_text_stats("U +SPACE: move -z", 19), 130, 280);
 		if (v->selected_obj->type == SPHERE)
 			selected_sphere(v);
 		if (v->selected_obj->type == PLAN)
