@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/13 05:18:55 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 07:41:26 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,13 @@ void		mouse_wheel_event(SDL_Event e, t_env *v)
 {
 	if (e.wheel.y != 0)
 	{
-		v->ppc.render_mouse = 1;
-		// v->cam.fov_x -= e.wheel.y * 0.01;
-		// v->cam.fov_y += e.wheel.y * 0.01;
+		if (v->selected_obj->type != PLAN)
+		{
+			v->ppc.render_mouse = 1;
+			v->selected_obj->radius -= e.wheel.y * 0.01;
+			if (v->selected_obj->radius < 0.1)
+				v->selected_obj->radius = 0.11;
+		}
 	}
 	else
 		v->ppc.render_mouse = 0;
