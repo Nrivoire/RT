@@ -22,7 +22,7 @@ object{
 	color= 0xFF28FF
 	reflect= 0.5
 	refract= 0.2
-	shininess= 0.0
+	shininess= 1.0
 }
 
 object{
