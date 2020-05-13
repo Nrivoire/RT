@@ -3,27 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/09 23:21:54 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 09:00:15 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+// t_ray	create_ray(t_env *v, int x, int y)
+// {
+// 	t_matrix_3_3	cam;
+// 	t_ray			ray;
+
+// 	ray.o = v->cam.ori;
+// 	ray.d.x = v->cam.fov_x * (2. * x / v->w - 1);
+// 	ray.d.y = v->cam.fov_y * (2. * y / v->h - 1);
+// 	ray.d.z = -1;
+// 	matrix_rotation(v->cam.angle_x, v->cam.angle_y, 0, cam);
+// 	ray.d = matrix_mult_vec(cam, ray.d);
+// 	ray.o = matrix_mult_vec(cam, v->cam.ori);
+// 	return (ray);
+// }
 
 t_ray	create_ray(t_env *v, int x, int y)
 {
 	t_matrix_3_3	cam;
 	t_ray			ray;
 
+	matrix_rotation(v->cam.angle_x, v->cam.angle_y, v->cam.angle_z, cam);
 	ray.o = v->cam.ori;
-	ray.d.x = v->cam.fov_x * (2. * x / v->w - 1);
-	ray.d.y = v->cam.fov_y * (2. * y / v->h - 1);
-	ray.d.z = -1;
-	matrix_rotation(v->cam.angle_x, v->cam.angle_y, 0, cam);
-	ray.d = matrix_mult_vec(cam, ray.d);
-	ray.o = matrix_mult_vec(cam, v->cam.ori);
+	ray.d = matrix_mult_vec(cam, 							\
+			(t_vec){v->cam.fov_x * (2. * x / v->w - 1), 	\
+			v->cam.fov_y * (2. * y / v->h - 1), -1});
 	return (ray);
 }
 

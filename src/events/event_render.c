@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:16:54 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 09:12:27 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	render_obj(t_env *v, const Uint8 *keyboard_state)
 {
-	if (!keyboard_state[SDL_SCANCODE_LEFT]
-		&& !keyboard_state[SDL_SCANCODE_RIGHT]
-		&& !keyboard_state[SDL_SCANCODE_DOWN]
-		&& !keyboard_state[SDL_SCANCODE_UP]
-		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
-		&& !keyboard_state[SDL_SCANCODE_KP_MINUS]
+	if (!keyboard_state[SDL_SCANCODE_J]
+		&& !keyboard_state[SDL_SCANCODE_L]
+		&& !keyboard_state[SDL_SCANCODE_K]
+		&& !keyboard_state[SDL_SCANCODE_I]
+		&& !keyboard_state[SDL_SCANCODE_U]
+		&& !keyboard_state[SDL_SCANCODE_O]
 		&& !keyboard_state[SDL_SCANCODE_W]
 		&& !keyboard_state[SDL_SCANCODE_D]
 		&& !keyboard_state[SDL_SCANCODE_Q]
@@ -33,12 +33,12 @@ void	render_obj(t_env *v, const Uint8 *keyboard_state)
 
 void	render_plane(t_env *v, const Uint8 *keyboard_state)
 {
-	if (!keyboard_state[SDL_SCANCODE_LEFT]
-		&& !keyboard_state[SDL_SCANCODE_RIGHT]
-		&& !keyboard_state[SDL_SCANCODE_DOWN]
-		&& !keyboard_state[SDL_SCANCODE_UP]
-		&& !keyboard_state[SDL_SCANCODE_KP_PLUS]
-		&& !keyboard_state[SDL_SCANCODE_KP_MINUS]
+	if (!keyboard_state[SDL_SCANCODE_J]
+		&& !keyboard_state[SDL_SCANCODE_L]
+		&& !keyboard_state[SDL_SCANCODE_K]
+		&& !keyboard_state[SDL_SCANCODE_I]
+		&& !keyboard_state[SDL_SCANCODE_U]
+		&& !keyboard_state[SDL_SCANCODE_O]
 		&& !keyboard_state[SDL_SCANCODE_W]
 		&& !keyboard_state[SDL_SCANCODE_D]
 		&& !keyboard_state[SDL_SCANCODE_Q]

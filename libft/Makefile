@@ -1,15 +1,15 @@
 # **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    Makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: qpupier <qpupier@student.le-101.fr>        +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/03/13 11:56:39 by qpupier      #+#   ##    ##    #+#        #
-#    Updated: 2020/02/20 18:14:25 by qpupier     ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/03/13 11:56:39 by qpupier           #+#    #+#              #
+#    Updated: 2020/05/12 20:00:52 by vasalome         ###   ########lyon.fr    #
+#                                                                              #
 # **************************************************************************** #
+
 
 SRC_PATH = sources
 SRC_NAME = 	display/ft_putchar_fd.c 							\
@@ -95,6 +95,7 @@ SRC_NAME = 	display/ft_putchar_fd.c 							\
 			math/ft_abs.c 										\
 			math/ft_average.c 									\
 			math/ft_deg_to_rad.c 								\
+			math/ft_rad_to_deg.c 								\
 			math/clamp.c 										\
 			math/ft_digit_abs.c 								\
 			math/ft_digit_hex_to_int.c 							\

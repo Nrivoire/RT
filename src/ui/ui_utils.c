@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ui_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:25:42 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:23:29 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 19:58:12 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/11 14:11:15 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 07:43:54 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,37 +38,37 @@ void		mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state)
 	}
 }
 
-static void	mouse_button_event_2(t_env *v, t_tab_obj tmp)
+void		button_left(SDL_Event e, t_env *v)
 {
-	if (v->selected_obj && v->selected_obj->i == tmp.i)
-		v->selected_obj = NULL;
-	else
+	t_tab_obj	tmp;
+	t_color		light;
+
+	if (SDL_GetMouseFocus() == v->win)
 	{
-		v->selected_obj = &v->tab_obj[tmp.i];
-		v->selected_obj->i = tmp.i;
+		if (select_obj(v, create_ray(v, e.button.x, e.button.y),
+				&tmp, &light))
+		{
+			if (v->selected_obj && v->selected_obj->i == tmp.i)
+				v->selected_obj = NULL;
+			else
+			{
+				v->selected_obj = &v->tab_obj[tmp.i];
+				v->selected_obj->i = tmp.i;
+			}
+		}
+		else
+			v->selected_obj = NULL;
 	}
 }
 
 void		mouse_button_event(SDL_Event e, t_env *v)
 {
-	t_tab_obj	tmp;
-	t_color		light;
-
 	if (e.type == SDL_MOUSEBUTTONDOWN)
 	{
 		if (e.button.button == SDL_BUTTON_LEFT)
-		{
-			if (SDL_GetMouseFocus() == v->win)
-			{
-				if (select_obj(v, create_ray(v, e.button.x, e.button.y),\
-						&tmp, &light))
-					mouse_button_event_2(v, tmp);
-				else
-					v->selected_obj = NULL;
-			}
-			else if (SDL_GetMouseFocus() == v->ui.m_win)
-				is_it_a_button(v, e);
-		}
+			button_left(e, v);
+		if (e.button.button == SDL_BUTTON_RIGHT && cooldown(v, 5))
+			screenshot(v, 1);
 	}
 }
 
@@ -76,8 +76,13 @@ void		mouse_wheel_event(SDL_Event e, t_env *v)
 {
 	if (e.wheel.y != 0)
 	{
-		v->ppc.render_mouse = 1;
-		v->cam.ori.z -= e.wheel.y * 0.1;
+		if (v->selected_obj->type != PLAN)
+		{
+			v->ppc.render_mouse = 1;
+			v->selected_obj->radius -= e.wheel.y * 0.01;
+			if (v->selected_obj->radius < 0.1)
+				v->selected_obj->radius = 0.11;
+		}
 	}
 	else
 		v->ppc.render_mouse = 0;

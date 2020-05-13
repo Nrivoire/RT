@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deg_to_rad.c                                    :+:      :+:    :+:   */
+/*   ft_rad_to_deg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/19 11:30:53 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/12 19:55:29 by vasalome         ###   ########lyon.fr   */
+/*   Created: 2020/05/12 19:59:31 by vasalome          #+#    #+#             */
+/*   Updated: 2020/05/12 20:10:16 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float	ft_deg_to_rad(float nb)
+float	ft_rad_to_deg(float nb)
 {
-	return (nb * M_PI / 180);
+	return (nb * 180 / M_PI);
 }

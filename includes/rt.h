@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/11 15:50:23 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 06:02:42 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ typedef struct		s_scene
 typedef struct		s_camera
 {
 	t_vec			pos;
-	t_vec			dir;
+	float			angle_x;
+	float			angle_y;
+	float			angle_z;
 	int				fov;
 }					t_camera;
 
@@ -147,8 +149,8 @@ typedef struct		s_cam
 {
 	float			angle_x;
 	float			angle_y;
+	float			angle_z;
 	t_vec			ori;
-	t_vec			dir;
 	float			fov_x;
 	float			fov_y;
 	float			fov;
@@ -293,6 +295,7 @@ typedef struct		s_env
 	int				thread_index;
 	pthread_mutex_t	mutex;
 	int				width_thread;
+	int				cooldown;
 }					t_env;
 
 /*
@@ -346,6 +349,7 @@ t_vec				rot_axe_z(t_vec point, float angle, char dir);
 void				plane_rotate(t_env *v, const Uint8 *keyboard_state);
 void				render_obj(t_env *v, const Uint8 *keyboard_state);
 void				render_plane(t_env *v, const Uint8 *keyboard_state);
+int					cooldown(t_env *v, int seconds);
 
 /*
 ** --form--
