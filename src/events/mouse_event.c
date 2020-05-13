@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/13 07:41:26 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/13 07:45:47 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,42 @@ void		mouse_motion_event(SDL_Event event, t_env *v, uint32_t mouse_state)
 	}
 }
 
-void		mouse_button_event(SDL_Event e, t_env *v)
+void		button_left(SDL_Event e, t_env *v)
 {
 	t_tab_obj	tmp;
 	t_color		light;
 
-	if (e.type == SDL_MOUSEBUTTONDOWN)
-		if (e.button.button == SDL_BUTTON_LEFT)
+	if (SDL_GetMouseFocus() == v->win)
+	{
+		if (select_obj(v, create_ray(v, e.button.x, e.button.y),
+				&tmp, &light))
 		{
-			if (SDL_GetMouseFocus() == v->win)
+			if (v->selected_obj && v->selected_obj->i == tmp.i)
+				v->selected_obj = NULL;
+			else
 			{
-				if (select_obj(v, create_ray(v, e.button.x, e.button.y),
-						&tmp, &light))
-				{
-					if (v->selected_obj && v->selected_obj->i == tmp.i)
-						v->selected_obj = NULL;
-					else
-					{
-						v->selected_obj = &v->tab_obj[tmp.i];
-						v->selected_obj->i = tmp.i;
-					}
-				}
-				else
-					v->selected_obj = NULL;
+				v->selected_obj = &v->tab_obj[tmp.i];
+				v->selected_obj->i = tmp.i;
 			}
 		}
+		else
+			v->selected_obj = NULL;
+	}
+}
+
+void		mouse_button_event(SDL_Event e, t_env *v)
+{
+	if (e.type == SDL_MOUSEBUTTONDOWN)
+	{
+		if (e.button.button == SDL_BUTTON_LEFT)
+			button_left(e, v);
+		if (e.button.button == SDL_BUTTON_RIGHT && cooldown(v, 5))
+		{
+			v->p.sc.filter++;
+			if (v->p.sc.filter == 5)
+				v->p.sc.filter = 0;
+		}
+	}
 }
 
 void		mouse_wheel_event(SDL_Event e, t_env *v)
