@@ -61,7 +61,7 @@ make
 ```bash
 cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MinGW\bin
 ou
-cp -r SDL/SDL2-2.0.12/i686-w64-mingw32/bin/*.dll C:/MinGW/bin
+cp -r SDL/SDL2*/i686-w64-mingw32/bin/*.dll C:/MinGW/bin
 ```
 * Pour prendre en compte les derniers changements, taper ```exit``` puis rouvrir l'invite de commandes de la même manière que précédemment
 * Compiler
