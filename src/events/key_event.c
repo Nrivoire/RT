@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/14 14:01:41 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/14 18:03:03 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int				key_event(t_env *v, const Uint8 *keyboard_state)
 		v->sc_m = 1;
 	else if (!keyboard_state[SDL_SCANCODE_LSHIFT]
 			&& !keyboard_state[SDL_SCANCODE_RSHIFT])
-		v->sc_m = 0.1;
+		v->sc_m = 0.15;
 	if (keyboard_state[SDL_SCANCODE_R])
 		v->ppc.active_rpx = 1;
 	if (keyboard_state[SDL_SCANCODE_T])

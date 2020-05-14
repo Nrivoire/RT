@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 19:25:59 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/14 14:52:35 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ void		parse_scene(t_env *v, t_file *file)
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
 		{
 			parse_color_scene(tmp, v, file);
-			v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g,\
-										v->p.p_col.b};
+			if ((v->p.p_col.r + v->p.p_col.g + v->p.p_col.b) < 0.1)
+				v->p.sc.amb_light = (t_color){0.05, 0.05, 0.05};
+			else
+				v->p.sc.amb_light = (t_color){v->p.p_col.r, v->p.p_col.g,\
+									v->p.p_col.b};
 		}
 		option_scene(v, tmp);
 		ft_strdel(&file->line);

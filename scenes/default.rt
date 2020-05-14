@@ -20,8 +20,6 @@ object{
 	radius= 1
 	pos= {0, 0, 0}
 	color= 0xFF28FF
-	reflect= 0.5
-	refract= 0.2
 	shininess= 1.0
 }
 
@@ -31,9 +29,6 @@ object{
 	pos= {1.2, 0.2, 0.4}
 	dir= {-0.8, 1, 0}
 	color= 0xFFFF00
-	reflect= 0
-	refract= 0
-	shininess= 0
 }
 
 object{
@@ -42,9 +37,6 @@ object{
 	pos= {-1, 0, 0}
 	dir= {1, 1, -1}
 	color= 0x00FF00
-	reflect= 0
-	refract= 0
-	shininess= 0
 }
 
 object{
@@ -53,9 +45,6 @@ object{
 	point_b= {15, 10, -5}
 	point_c= {15, -10, -5}
 	color= 0x0000FF
-	reflect= 0
-	refract= 0
-	shininess= 0
 }
 
 object{
@@ -64,7 +53,4 @@ object{
 	point_b= {10, -0.8, -10}
 	point_c= {-10, -0.78, 10}
 	color= {77, 77, 77}
-	reflect= 0
-	refract= 0
-	shininess= 0
 }

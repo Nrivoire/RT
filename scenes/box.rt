@@ -1,5 +1,5 @@
 scene{
-	ambient-light= {0.4, 0.4, 0.4}
+	ambient-light= {0.0, 0.0, 0.0}
 }
 
 camera{
@@ -64,7 +64,7 @@ object{
 	point_a= {-15, 10, -50}
 	point_b= {15, 10, -50}
 	point_c= {15, -10, -50}
-	color= {255, 255, 255}
+	color= {200, 200, 200}
 	reflect= 0.5
 	refract= 0.2
 	shininess= 0.0

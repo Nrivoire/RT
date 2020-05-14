@@ -20,7 +20,4 @@ object{
 	pos= {0, 0, 0}
 	dir= {0, 1, 0}
 	color= 0x00FF00
-	reflect= 0
-	refract= 0
-	shininess= 0
 }

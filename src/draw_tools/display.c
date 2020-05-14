@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:54:32 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/14 13:19:42 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/14 16:10:00 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void		display_two(t_env *v)
 {
 	v->stats.frame_start = clock();
 	draw_pro_frame(v);
+	v->stats.fps++;
 	v->stats.frame = (clock() - v->stats.frame_start) / (float)CLOCKS_PER_SEC;
 	menu(v);
 	SDL_UpdateTexture(v->tex, NULL, v->pixels, sizeof(uint32_t) * v->w);

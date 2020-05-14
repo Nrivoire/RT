@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:56:53 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 03:52:14 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/14 16:16:40 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	atoi_clamp_usage(const char *str, int min, int max)
 void		usage(char *error, int run)
 {
 	ft_strcmp(error, "") ? ft_putendl_fd(error, 2) : 0;
-	ft_putendl("\nusage:\n./rt [-f file] [-w width] [-h height] [--help]");
+	ft_putendl("\nusage:\n./rtv1 [-f file] [-w width] [-h height] [--help]");
 	ft_putendl("\noptions:");
 	ft_putendl("-f <file_path>		choose your file.");
 	ft_putendl("-w <width [100-960]>	set your window's width.");
