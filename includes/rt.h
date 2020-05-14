@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/13 07:46:38 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/14 13:21:33 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,7 +298,6 @@ t_vec				rot_axe_y(t_vec point, float angle, char dir);
 t_vec				rot_axe_z(t_vec point, float angle, char dir);
 void				plane_rotate(t_env *v, const Uint8 *keyboard_state);
 void				render_obj(t_env *v, const Uint8 *keyboard_state);
-void				render_plane(t_env *v, const Uint8 *keyboard_state);
 int					cooldown(t_env *v, int seconds);
 
 /*
