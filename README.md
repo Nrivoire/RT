@@ -1,14 +1,13 @@
-# Projet RT
+# Projet RTv1
 Sujets :<br><br>
 [RTv1](https://cdn.intra.42.fr/pdf/pdf/6260/rtv1.fr.pdf)<br>
-[RT](https://cdn.intra.42.fr/pdf/pdf/6266/rt.fr.pdf)<br>
 ## Installation
 * Git clone
 ```bash
 git clone https://github.com/Nrivoire/RT.git
 ```
 ou
-* [Télécharger le ZIP](https://github.com/Nrivoire/RT/archive/master.zip)
+* [Télécharger le ZIP](https://github.com/Nrivoire/RT/archive/RTv1.zip)
 ### Sur MacOS
 * Compiler
 ```bash
@@ -21,7 +20,7 @@ make
 ### Sur Linux
 * Installer la librairie SDL
 ```bash
-sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
 ```
 * Compiler
 ```bash
@@ -71,10 +70,10 @@ make
 .\rt.exe
 ```
 ## Utilisation des scenes
-* Respecter le format de chaque block du fichier
+* Respecter le format de chaque bloc du fichier
 
 ```
-[type de block]{
+[type de bloc]{
 'tabulation'[variable]= [données]
 }
 
