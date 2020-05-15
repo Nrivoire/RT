@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:20:49 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/15 03:03:57 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/15 11:45:08 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			put_icon(t_env *v)
 
 void			init_value(t_env *v)
 {
-	v->w = 960;
+	v->w = 720;
 	v->width_thread = v->w / 8;
 	v->h = 540;
 	v->p.sc.amb_light = (t_color){0.5, 0.5, 0.5};
