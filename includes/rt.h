@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/13 06:02:42 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/15 16:34:20 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 # include "SDL.h"
 # include "SDL_image.h"
 # include "SDL_ttf.h"
@@ -238,11 +239,8 @@ typedef struct		s_ppc
 
 typedef struct		s_stats
 {
-	clock_t			current;
-	clock_t			last;
-	clock_t			frame_start;
-	double			frame;
-	int				fps;
+	struct timeval	before;
+	struct timeval	after;
 }					t_stats;
 
 /*
@@ -348,7 +346,6 @@ t_vec				rot_axe_y(t_vec point, float angle, char dir);
 t_vec				rot_axe_z(t_vec point, float angle, char dir);
 void				plane_rotate(t_env *v, const Uint8 *keyboard_state);
 void				render_obj(t_env *v, const Uint8 *keyboard_state);
-void				render_plane(t_env *v, const Uint8 *keyboard_state);
 int					cooldown(t_env *v, int seconds);
 
 /*

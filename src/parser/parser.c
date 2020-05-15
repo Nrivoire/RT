@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:31:41 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:20:01 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/15 16:57:53 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static void		read_file(t_env *v, t_file *file)
 {
 	char		*tmp;
 
+	tmp = NULL;
 	while (read_line(file) > 0)
 	{
 		tmp = ft_strdup(file->line);
