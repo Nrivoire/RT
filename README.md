@@ -56,10 +56,12 @@ make
 		* Faire la même chose pour Cygwin en rajoutant ```C:\cygwin\bin```
 	* Fermer toutes les fenêtres en cliquant sur ```Ok```
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT-master (suivant comment vous avez nommé le dossier du projet)
-	* Rien ne doit être séleccionné dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
+	* Rien ne doit être sélectionner dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
 * Copier les fichiers ```DLL``` indispensables au lancement de la SDL et du projet
 ```bash
 cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MinGW\bin
+ou
+cp -r SDL/SDL2*/i686-w64-mingw32/bin/*.dll C:/MinGW/bin
 ```
 * Pour prendre en compte les derniers changements, taper ```exit``` puis rouvrir l'invite de commandes de la même manière que précédemment
 * Compiler
