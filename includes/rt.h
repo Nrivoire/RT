@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/14 13:21:33 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/15 02:53:43 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 # include "SDL.h"
 # include "SDL_image.h"
 # include "SDL_ttf.h"
@@ -198,11 +199,8 @@ typedef struct		s_ppc
 
 typedef struct		s_stats
 {
-	clock_t			current;
-	clock_t			last;
-	clock_t			frame_start;
-	double			frame;
-	int				fps;
+	struct timeval	before;
+	struct timeval	after;
 }					t_stats;
 
 /*
