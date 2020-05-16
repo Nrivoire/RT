@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bouton.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/11 05:53:30 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 20:29:54 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,67 @@ void		over_a_button(t_env *v, SDL_Event e)
 		v->hover[3] = get_hex_menu(218, 112, 214);
 }
 
+// static t_tab_obj	make_new_obj(t_tab_obj new)
+// {
+// 	t_tab_obj		data;
+
+// 	data.type = new.type;
+// 	data.radius = new.radius;
+// 	data.pos = new.pos;
+// 	data.dir = new.dir;
+// 	data.a = new.a;
+// 	data.b = new.b;
+// 	data.c = new.c;
+// 	data.color = new.color;
+// 	data.reflect = 0;
+// 	data.refract = 0;
+// 	data.shininess = 0;
+// 	data.procedural = 0;
+// 	data.texture = NULL;
+// 	return (data);
+// }
+
+void		add_new_obj(t_env *v, t_tab_obj new_obj)
+{
+	int			i;
+	t_tab_obj	*old_tab;
+
+	if (!(old_tab = (t_tab_obj *)malloc(sizeof(t_tab_obj) * v->nb_o)))
+		ft_error("malloc error in add_new_obj");
+	i = -1;
+	while (++i < v->nb_o)
+		old_tab[i] = v->tab_obj[i];
+	free(v->tab_obj);
+	if (!(v->tab_obj = (t_tab_obj *)malloc(sizeof(t_tab_obj) * (v->nb_o + 1))))
+		ft_error("malloc error in add_new_obj");
+	i = -1;
+	while (++i < v->nb_o)
+		v->tab_obj[i] = old_tab[i];
+	v->tab_obj[i] = new_obj;
+	v->nb_o = v->nb_o + 1;
+	free(old_tab);
+}
+
 void		is_it_a_button(t_env *v, SDL_Event e)
 {
 	if (mouse_location(e, (t_between){10, 185, 190, 230}))
-		printf("Not-available yet: sphere\n");
+		add_new_obj(v, (t_tab_obj){v->nb_o + 1, SPHERE, 2, (t_vec){0, -4, -18},
+			(t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
+			(t_vec){0, 0, 0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0}, 0, 0, 0, 0.2,
+			NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (mouse_location(e, (t_between){189, 365, 190, 230}))
-		printf("Not-available yet: cylinder\n");
+		add_new_obj(v, (t_tab_obj){v->nb_o + 1, CYLINDER, 2, (t_vec){-10, -4, -18},
+			(t_vec){0, 1, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
+			(t_vec){0, 0, 0}, (t_color){35 / 255.0, 205 / 255.0, 35 / 255.0}, 0, 0, 0, 0.2, NULL,
+			(t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (mouse_location(e, (t_between){10, 185, 235, 275}))
-		printf("Not-available yet: cone\n");
+		add_new_obj(v, (t_tab_obj){v->nb_o + 1, CONE, 0.3, (t_vec){10, -4, -18},
+			(t_vec){0, 1, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
+			(t_vec){0, 0, 0}, (t_color){35 / 255.0, 35 / 255.0, 205 / 255.0}, 0, 0, 0, 0.2, NULL,
+			(t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (mouse_location(e, (t_between){189, 365, 235, 275}))
-		printf("Not-available yet: plane\n");
-	//enleve erreur en attendant:
-	v->w = v->w;
+		add_new_obj(v, (t_tab_obj){v->nb_o + 1, PLAN, 0, (t_vec){0, 0, 0},
+			(t_vec){0, 0, 0}, (t_vec){15, -8, 30}, (t_vec){-15, -8, 30},
+			(t_vec){15, -8, -10}, (t_color){30 / 255.0, 30 / 255.0, 30 / 255.0}, 0, 0, 0, 0, NULL,
+			(t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 }

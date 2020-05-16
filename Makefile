@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/16 03:00:22 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/16 19:20:49 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ ifeq ($(OS), Windows_NT)
 	LIB_SDL = 	-L SDL\SDL2-2.0.12\i686-w64-mingw32\lib 		\
 				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 	\
 				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib
-	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
+	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
 	OS = $(PINK)Windows
 else
 	OS = $(shell uname -s)
@@ -105,12 +105,12 @@ else
 					-I $(FM)/SDL2_image.framework/Versions/A/Headers 	\
 					-I $(FM)/SDL2_ttf.framework/Versions/A/Headers
 		SDL = -rpath $(FM) -F $(FM) -framework SDL2 -framework SDL2_image 	\
-				-framework SDL2_ttf
+				-framework SDL2_ttf -lpthread
 		OS = $(END)$(PINK)Mac OS
 	else
 		ifeq ($(OS), Linux)
 			INC_SDL = -I/usr/include/SDL2 -D_REENTRANT
-			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf
+			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
 			OS = $(END)$(PINK)Linux
 		else
 			OS = $(RED)This OS is not supported
@@ -118,7 +118,7 @@ else
 	endif
 endif
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror $(LDFLAGS)
+CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I $(INC_PATH) -I libft/$(INC_PATH)
 
 ################
@@ -155,7 +155,7 @@ detected_OS:
 	@printf "$(BOLD)$(GREY)Detected OS : $(OS)$(END)\n"
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(LIB) $(LIB_SDL) $^ $(SDL) $(LDLIBS) -o $@
+	@$(CC) $(CFLAGS) $(LDFLAGS) $(LIB) $(LIB_SDL) $^ $(SDL) $(LDLIBS) -o $@
 	@printf "$(ERASE)$(BLUE)> $@ : $(GREEN)Success !$(END)\n\n"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC) libft/libft.a
