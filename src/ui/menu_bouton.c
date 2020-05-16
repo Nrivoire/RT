@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bouton.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 20:29:54 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 20:48:59 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,17 @@ void		is_it_a_button(t_env *v, SDL_Event e)
 	if (mouse_location(e, (t_between){10, 185, 190, 230}))
 		add_new_obj(v, (t_tab_obj){v->nb_o + 1, SPHERE, 2, (t_vec){0, -4, -18},
 			(t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
-			(t_vec){0, 0, 0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0}, 0, 0, 0, 0.2,
+			(t_vec){0, 0, 0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0}, 0, 0, 0.2, 0,
 			NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (mouse_location(e, (t_between){189, 365, 190, 230}))
 		add_new_obj(v, (t_tab_obj){v->nb_o + 1, CYLINDER, 2, (t_vec){-10, -4, -18},
 			(t_vec){0, 1, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
-			(t_vec){0, 0, 0}, (t_color){35 / 255.0, 205 / 255.0, 35 / 255.0}, 0, 0, 0, 0.2, NULL,
+			(t_vec){0, 0, 0}, (t_color){35 / 255.0, 205 / 255.0, 35 / 255.0}, 0, 0, 0.2, 0, NULL,
 			(t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (mouse_location(e, (t_between){10, 185, 235, 275}))
 		add_new_obj(v, (t_tab_obj){v->nb_o + 1, CONE, 0.3, (t_vec){10, -4, -18},
 			(t_vec){0, 1, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
-			(t_vec){0, 0, 0}, (t_color){35 / 255.0, 35 / 255.0, 205 / 255.0}, 0, 0, 0, 0.2, NULL,
+			(t_vec){0, 0, 0}, (t_color){35 / 255.0, 35 / 255.0, 205 / 255.0}, 0, 0, 0.2, 0, NULL,
 			(t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (mouse_location(e, (t_between){189, 365, 235, 275}))
 		add_new_obj(v, (t_tab_obj){v->nb_o + 1, PLAN, 0, (t_vec){0, 0, 0},

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:20:49 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 02:12:28 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 21:00:51 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void			put_icon(t_env *v)
 void			init_value(t_env *v)
 {
 	v->w = 720;
-	v->width_thread = v->w / 8;
 	v->h = 540;
 	v->p.sc.amb_light = (t_color){0.5, 0.5, 0.5};
 	v->p.cam.pos = (t_vec){0.0, 0.0, 0.0};
@@ -59,4 +58,5 @@ void			scene_value(t_env *v)
 	v->cam.angle_z = v->p.cam.angle_z;
 	v->cam.fov_x = tan(v->cam.fov * M_PI / 180 * 0.5);
 	v->cam.fov_y = -tan(v->h * v->cam.fov / v->w * M_PI / 180 * 0.5);
+	v->width_thread = v->w / 8;
 }
