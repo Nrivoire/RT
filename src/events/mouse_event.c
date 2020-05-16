@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/13 07:43:54 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 04:25:54 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void		mouse_wheel_event(SDL_Event e, t_env *v)
 			v->selected_obj->radius -= e.wheel.y * 0.01;
 			if (v->selected_obj->radius < 0.1)
 				v->selected_obj->radius = 0.11;
+			else if (v->selected_obj->radius > 10000.01)
+				v->selected_obj->radius = 10000;
 		}
 	}
 	else

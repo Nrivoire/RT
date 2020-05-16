@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_object.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/09 22:01:01 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 03:38:44 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,22 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 		parse_color(tmp, v, f);
 		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
-	!ft_strncmp(tmp, "\treflect=", 9) ? c->reflect = parse_value(tmp) : 0;
-	!ft_strncmp(tmp, "\trefract=", 9) ? c->refract = parse_value(tmp) : 0;
-	if (!ft_strncmp(tmp, "\ttransparency=", 14))
-		c->transparency = parse_value(tmp);
+	else if (!ft_strncmp(tmp, "\treflect=", 9))
+		c->reflect = ft_clampf(parse_value(tmp), 0.0, 1.0);
+	else if (!ft_strncmp(tmp, "\trefract=", 9))
+		c->refract = ft_clampf(parse_value(tmp), 0.0, 1.0);
+	else if (!ft_strncmp(tmp, "\ttransparency=", 14))
+		c->transparency = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	else if (!ft_strncmp(tmp, "\tabsorbtion=", 12))
-		c->absorbtion = parse_value(tmp);
-	!ft_strncmp(tmp, "\tambient=", 9) ? c->ambient = parse_value(tmp) : 0;
-	!ft_strncmp(tmp, "\tdiffuse=", 9) ? c->diffuse = parse_value(tmp) : 0;
-	if (!ft_strncmp(tmp, "\tspecular=", 10))
-		c->specular = parse_value(tmp);
+		c->absorbtion = ft_clampf(parse_value(tmp), 0.0, 1.0);
+	else if (!ft_strncmp(tmp, "\tambient=", 9))
+		c->ambient = ft_clampf(parse_value(tmp), 0.0, 1.0);
+	else if (!ft_strncmp(tmp, "\tdiffuse=", 9))
+		c->diffuse = ft_clampf(parse_value(tmp), 0.0, 1.0);
+	else if (!ft_strncmp(tmp, "\tspecular=", 10))
+		c->specular = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	else if (!ft_strncmp(tmp, "\tshininess=", 11))
-		c->shininess = parse_value(tmp);
+		c->shininess = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	parse_texture_obj(tmp, c, f);
 }
 
@@ -123,7 +127,7 @@ void			parse_obj(t_env *v, t_file *file)
 			ft_strstr(tmp, "CYLINDER") ? content.type = CYLINDER : 0;
 		}
 		if (!ft_strncmp(tmp, "\tradius=", 8))
-			content.radius = parse_value(tmp);
+			content.radius = ft_clampf(parse_value(tmp), 0, 10000);
 		parse_xyz_obj(v, tmp, &content, file);
 		parse_material_obj(v, tmp, &content, file);
 		ft_strdel(&file->line);

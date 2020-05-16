@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/15 16:34:20 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 03:02:18 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -415,6 +415,8 @@ int					read_line(t_file *file);
 char				*my_strcat(char *s1, char *s2);
 void				error_parser(char *error, t_file *file);
 void				check_points_and_type(t_lst_obj *content, t_file *file);
+int					ft_clamp(int value, int min, int max);
+float				ft_clampf(float value, float min, float max);
 
 /*
 ** --init--

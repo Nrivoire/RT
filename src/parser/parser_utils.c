@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:36 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:19:56 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 04:00:57 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-/*
-** Displays an error message related to the file and the corresponding line.
-*/
-
-void	error_parser(char *error, t_file *file)
-{
-	ft_putendl(error);
-	ft_putendl(my_strcat("> line ", ft_itoa(file->nb_line)));
-	exit(1);
-}
 
 /*
 ** Parse the necessary values ​​in int or float.
@@ -82,28 +71,20 @@ void	parse_xyz(char *s, t_env *v, t_file *file)
 }
 
 /*
-** Check if the object as a type &
-** check if the 3 points of a plane are different.
+** Allows to bring a value between two lower and upper limits,
+** and to assign the upper limit if the value exceeds.
 */
 
-void	check_points_and_type(t_lst_obj *content, t_file *file)
+int		ft_clamp(int value, int min, int max)
 {
-	if (content->type == 0)
-		error_parser("Bad file: your must precise the type of object", file);
-	if (content->type == PLAN)
-	{
-		if (content->a.x == content->b.x && content->b.x == content->c.x
-				&& content->a.y == content->b.y && content->b.y == content->c.y
-				&& content->a.z == content->b.z && content->b.z == content->c.z)
-			error_parser("Bad file: the points need to be different", file);
-		else if (content->a.x == content->b.x && content->a.y == content->b.y
-				&& content->a.z == content->b.z)
-			error_parser("Bad file: points [a][b] need to be different", file);
-		else if (content->b.x == content->c.x && content->b.y == content->c.y
-				&& content->b.z == content->c.z)
-			error_parser("Bad file: points [b][c] need to be different", file);
-		else if (content->a.x == content->c.x && content->a.y == content->c.y
-				&& content->a.z == content->c.z)
-			error_parser("Bad file: points [a][c] need to be different", file);
-	}
+	value > max ? value = max : 0;
+	value < min ? value = min : 0;
+	return (value);
+}
+
+float	ft_clampf(float value, float min, float max)
+{
+	value > max ? value = max : 0;
+	value < min ? value = min : 0;
+	return (value);
 }

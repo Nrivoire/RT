@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_block_light.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:19 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:18:43 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 02:53:12 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		parse_material_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)
 		c->color = (t_color){v->p.p_col.r, v->p.p_col.g, v->p.p_col.b};
 	}
 	else if (!ft_strncmp(tmp, "\tintensity=", 11))
-		c->intensity = parse_value(tmp);
+		c->intensity = ft_clamp(parse_value(tmp), 0, 1);
 }
 
 static void		parse_xyz_lgt(t_env *v, char *tmp, t_lst_lgt *c, t_file *f)

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:56:53 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 03:44:34 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 02:31:46 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	atoi_clamp_usage(const char *str, int min, int max)
 		str++;
 	}
 	value > max ? value = max : 0;
-	value < min ? value = max : 0;
+	value < min ? value = min : 0;
 	return (value);
 }
 
@@ -36,7 +36,7 @@ void		usage(char *error, int run)
 	ft_putendl("\nusage:\n./rt [-f file] [-w width] [-h height] [--help]");
 	ft_putendl("\noptions:");
 	ft_putendl("-f <file_path>		choose your file.");
-	ft_putendl("-w <width [100-960]>	set your window's width.");
+	ft_putendl("-w <width [100-1280]>	set your window's width.");
 	ft_putendl("-h <height [100-720]>	set your window's height.");
 	ft_putendl("filter:	--greyscale | --sepia | --negative | --celshading");
 	ft_putendl("--help			show help.\n");
@@ -65,7 +65,7 @@ void		check_options(t_env *v, int argc, char **argv)
 		if (!ft_strcmp(argv[i], "-w") || !ft_strcmp(argv[i], "--width"))
 		{
 			if (i + 1 < argc)
-				v->w = atoi_clamp_usage(argv[i + 1], 100, 960);
+				v->w = atoi_clamp_usage(argv[i + 1], 100, 1280);
 		}
 		else if (!ft_strcmp(argv[i], "-h") || !ft_strcmp(argv[i], "--height"))
 		{

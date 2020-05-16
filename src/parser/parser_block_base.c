@@ -6,23 +6,11 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 19:28:52 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 04:04:10 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-/*
-** Allows to bring a value between two lower and upper limits,
-** and to assign the upper limit if the value exceeds.
-*/
-
-static int	ft_clamp_to_max(int value, int min, int max)
-{
-	value > max ? value = max : 0;
-	value < min ? value = max : 0;
-	return (value);
-}
 
 /*
 ** Parse the values ​​of the scene in the file.
@@ -49,9 +37,9 @@ void		parse_scene(t_env *v, t_file *file)
 	{
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\twidth=", 7))
-			v->w = ft_clamp_to_max(parse_int_value(tmp), 100, 960);
+			v->w = ft_clamp(parse_int_value(tmp), 100, 1280);
 		else if (!ft_strncmp(tmp, "\theight=", 8))
-			v->h = ft_clamp_to_max(parse_int_value(tmp), 100, 720);
+			v->h = ft_clamp(parse_int_value(tmp), 100, 720);
 		else if (!ft_strncmp(tmp, "\tambient-light=", 15))
 		{
 			parse_color_scene(tmp, v, file);
@@ -89,7 +77,8 @@ void		parse_cam(t_env *v, t_file *file)
 			v->p.cam.angle_y = ft_deg_to_rad(v->p.p_xyz.y);
 			v->p.cam.angle_z = ft_deg_to_rad(v->p.p_xyz.z);
 		}
-		!ft_strncmp(tmp, "\tfov=", 5) ? v->p.cam.fov = parse_int_value(tmp) : 0;
+		if (!ft_strncmp(tmp, "\tfov=", 5))
+			v->p.cam.fov = ft_clamp(parse_int_value(tmp), 0, 200);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

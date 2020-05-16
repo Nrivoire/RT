@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/11 15:20:48 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/16 03:00:22 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			parser/parser_color.c				\
 			parser/parser_init_value.c			\
 			parser/parser_list.c				\
+			parser/parser_check.c				\
 			parser/parser_utils.c				\
 			parser/parser.c						\
 			post_process/blur_utils.c			\
