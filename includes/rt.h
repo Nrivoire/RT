@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/16 03:02:18 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 19:07:42 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,11 +170,6 @@ typedef struct		s_tab_obj
 	t_color			color;
 	float			reflect;
 	float			refract;
-	float			transparency;
-	float			absorbtion;
-	float			ambient;
-	float			diffuse;
-	float			specular;
 	float			shininess;
 	int				procedural;
 	SDL_Surface		*texture;

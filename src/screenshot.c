@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screenshot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:17:11 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/11 15:20:53 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 19:08:19 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 static void		save_screen(t_env *v, char *full)
 {
 	SDL_Surface	*save;
-	char		*open;
+	//char		*open;
 
 	if (!(save = malloc(sizeof(SDL_Surface *) * v->w * v->h + 1)))
 		return ;
 	save = SDL_GetWindowSurface(v->win);
 	IMG_SavePNG(save, full);
-	system(open = my_strcat("open ", full));
+	//system(open = my_strcat("open ", full));
 	SDL_FreeSurface(save);
-	free(open);
+	//free(open);
 }
 
 void			screenshot(t_env *v, int id)
