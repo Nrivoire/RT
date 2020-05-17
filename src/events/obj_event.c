@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/15 16:32:02 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:09:09 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	obj_event_rotate(t_env *v, const Uint8 *keyboard_state)
 
 void		obj_event(t_env *v, const Uint8 *keyboard, float scale)
 {
-	if (v->selected_obj->type != PLAN)
+	if (v->selected_obj->type != 2)
 	{
 		if (keyboard[SDL_SCANCODE_W])
 			v->selected_obj->pos.y += scale * v->sc_m;

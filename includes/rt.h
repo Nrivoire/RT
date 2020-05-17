@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/17 12:12:10 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:58:45 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@
 # include "SDL.h"
 # include "SDL_image.h"
 # include "SDL_ttf.h"
-
-# define SPHERE 1
-# define PLAN 2
-# define CONE 3
-# define CYLINDER 4
 
 # define POINT 1
 # define DIRECTIONAL 2
@@ -332,6 +327,7 @@ void				mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v,
 					uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
+void				to_add_new_object(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
 void				obj_event(t_env *v, const Uint8 *keyboard_state,\
 		float scale);

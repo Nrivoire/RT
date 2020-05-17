@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_bouton.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/17 12:11:59 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:36:12 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ void		menu_bouton(t_env *v, int x, int y)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[2];
 	else if (y < 275 && y > 235 && x > 187 + 2 && x < 365)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[3];
+	if (v->add_new_obj != 0)
+	{
+		v->hover[0] = get_hex_menu(50, 50, 200);
+		v->hover[1] = v->hover[0];
+		v->hover[2] = v->hover[0];
+		v->hover[3] = v->hover[0];
+	}
 }
 
 void		menu_bouton_text(t_env *v)
@@ -64,12 +71,12 @@ void		over_a_button(t_env *v, SDL_Event e)
 int		is_it_a_button(SDL_Event e)
 {
 	if (mouse_location(e, (t_between){10, 185, 190, 230}))
-		return (SPHERE);
+		return (1);
 	else if (mouse_location(e, (t_between){189, 365, 190, 230}))
-		return (CYLINDER);
+		return (4);
 	else if (mouse_location(e, (t_between){10, 185, 235, 275}))
-		return (CONE);
+		return (3);
 	else if (mouse_location(e, (t_between){189, 365, 235, 275}))
-		return (PLAN);
+		return (2);
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/16 19:20:49 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/05/17 18:52:30 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			events/event_render.c				\
 			events/key_event.c					\
 			events/mouse_event.c				\
+			events/mouse_create_obj.c			\
 			events/obj_event.c					\
 			events/plane_event.c				\
 			events/rotate.c						\

@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 03:38:44 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:32:58 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 	else if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz(tmp, v, f);
-		c->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+		c->dir = (t_vec){ft_clampf(v->p.p_xyz.x, -1, 1), ft_clampf(v->p.p_xyz.y, -1, 1), ft_clampf(v->p.p_xyz.z, -1, 1)};
 	}
 	else if (!ft_strncmp(tmp, "\tpoint_a=", 9))
 	{
@@ -121,10 +121,10 @@ void			parse_obj(t_env *v, t_file *file)
 		tmp = ft_strdup(file->line);
 		if (!ft_strncmp(tmp, "\ttype=", 6))
 		{
-			ft_strstr(tmp, "SPHERE") ? content.type = SPHERE : 0;
-			ft_strstr(tmp, "PLAN") ? content.type = PLAN : 0;
-			ft_strstr(tmp, "CONE") ? content.type = CONE : 0;
-			ft_strstr(tmp, "CYLINDER") ? content.type = CYLINDER : 0;
+			ft_strstr(tmp, "SPHERE") ? content.type = 1 : 0;
+			ft_strstr(tmp, "PLAN") ? content.type = 2 : 0;
+			ft_strstr(tmp, "CONE") ? content.type = 3 : 0;
+			ft_strstr(tmp, "CYLINDER") ? content.type = 4 : 0;
 		}
 		if (!ft_strncmp(tmp, "\tradius=", 8))
 			content.radius = ft_clampf(parse_value(tmp), 0, 10000);

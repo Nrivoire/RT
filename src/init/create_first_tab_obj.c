@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_first_tab_obj.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/09 23:03:50 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:09:29 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				create_first_tab_obj(t_env *v)
 		return ;
 	while (tmp)
 	{
-		if (tmp->type == PLAN)
+		if (tmp->type == 2)
 			check_plan(i, v);
 		v->tab_obj[i] = make_obj(tmp);
 		i++;

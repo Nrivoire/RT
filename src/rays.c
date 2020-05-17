@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 19:03:46 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/13 16:19:00 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:07:51 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ t_color		select_light(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 	normal = quadric_normal(obj->q, point);
 	if (vec_scale_product(normal, ray) > 0)
 		normal = vec_mult_float(normal, -1);
-	/*if (obj->type == CONE || (obj->type == PLAN && !obj->q.h))
+	/*if (obj->type == 3 || (obj->type == 2 && !obj->q.h))
 		return (v->reflect-- 											\
 				? limit_color(light_reflection(v, point, ray, normal)) 	\
 				: (t_color){0, 0, 0});*/
@@ -172,7 +172,7 @@ t_color		select_light(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 	if (obj->texture || obj->procedural)
 		generate_texture(v, obj, point, normal);
 	light = color_op(light, '*', obj->color);
-	if (obj->type == CYLINDER || obj->type == SPHERE)
+	if (obj->type == 4 || obj->type == 1)
 		light = color_op(light, '+', shine);
 	return (limit_color(light));
 }

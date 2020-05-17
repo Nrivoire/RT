@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 15:21:14 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/12 20:02:56 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:04:45 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void		selected_menu(t_env *v)
 {
 	if (v->selected_obj)
 	{
-		if (v->selected_obj->type == SPHERE)
+		if (v->selected_obj->type == 1)
 			selected_sphere(v);
-		if (v->selected_obj->type == PLAN)
+		if (v->selected_obj->type == 2)
 			selected_plan(v);
-		if (v->selected_obj->type == CONE)
+		if (v->selected_obj->type == 3)
 			selected_cone(v);
-		if (v->selected_obj->type == CYLINDER)
+		if (v->selected_obj->type == 4)
 			selected_cylinder(v);
 	}
 }

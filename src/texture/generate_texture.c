@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/11 14:50:56 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 18:11:30 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 	}
 	else
 	{
-		if (obj->type == SPHERE)
+		if (obj->type == 1)
 			make_texture_sphere(obj, point, col);
-		// if (obj->type == CYLINDER)
+		// if (obj->type == 4)
 			// make_texture_cylinder(obj);
-		if (obj->type == PLAN)
+		if (obj->type == 2)
 			make_texture_plan(obj, point);
 	}
 }
