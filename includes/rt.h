@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/16 19:07:42 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 12:12:10 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,7 @@ typedef struct		s_env
 	pthread_mutex_t	mutex;
 	int				width_thread;
 	int				cooldown;
+	int				add_new_obj;
 }					t_env;
 
 /*
@@ -460,7 +461,7 @@ SDL_Surface			*write_text_menu(char *text, int size_font);
 SDL_Surface			*write_text_menu2(char *text, int size_font);
 int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
-void				is_it_a_button(t_env *v, SDL_Event e);
+int					is_it_a_button(SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);
 
 #endif

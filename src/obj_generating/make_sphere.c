@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:19:32 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/16 17:41:52 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/16 21:05:19 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

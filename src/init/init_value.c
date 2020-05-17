@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:20:49 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 21:00:51 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 11:53:51 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void			scene_value(t_env *v)
 	v->cam.fov_x = tan(v->cam.fov * M_PI / 180 * 0.5);
 	v->cam.fov_y = -tan(v->h * v->cam.fov / v->w * M_PI / 180 * 0.5);
 	v->width_thread = v->w / 8;
+	v->add_new_obj = 0;
 }
