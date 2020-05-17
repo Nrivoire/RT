@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/17 18:58:45 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 19:21:54 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,7 +327,6 @@ void				mouse_button_event(SDL_Event event, t_env *v);
 void				mouse_motion_event(SDL_Event event, t_env *v,
 					uint32_t mouse_state);
 void				mouse_wheel_event(SDL_Event e, t_env *v);
-void				to_add_new_object(SDL_Event e, t_env *v);
 int					key_event(t_env *v, const Uint8 *keyboard_state);
 void				obj_event(t_env *v, const Uint8 *keyboard_state,\
 		float scale);
@@ -458,6 +457,7 @@ SDL_Surface			*write_text_menu2(char *text, int size_font);
 int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 int					is_it_a_button(SDL_Event e);
+void				add_new_obj(t_env *v, SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);
 
 #endif

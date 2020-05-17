@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/17 18:51:37 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 19:20:49 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		button_left(SDL_Event e, t_env *v)
 	if (SDL_GetMouseFocus() == v->win)
 	{
 		if (v->add_new_obj > 0)
-			to_add_new_object(e, v);
+			add_new_obj(v, e);
 		else if (select_obj(v, create_ray(v, e.button.x, e.button.y),
 				&tmp, &light))
 		{
