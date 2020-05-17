@@ -6,7 +6,7 @@
 #    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/16 19:20:49 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/05/17 14:59:15 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			events/obj_event.c					\
 			events/plane_event.c				\
 			events/rotate.c						\
+			events/add_new_obj.c				\
 			init/create_first_tab_obj.c			\
 			init/create_first_tab_lgt.c			\
 			init/init_value.c					\

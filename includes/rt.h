@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/17 12:12:10 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 14:59:32 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -462,6 +462,7 @@ SDL_Surface			*write_text_menu2(char *text, int size_font);
 int					get_hex_menu(int r, int g, int b);
 void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 int					is_it_a_button(SDL_Event e);
+void				add_new_obj(t_env *v, SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);
 
 #endif
