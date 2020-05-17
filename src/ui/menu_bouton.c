@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/17 19:17:47 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 19:31:22 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void		menu_bouton(t_env *v, int x, int y)
 {
+	Uint32	button_color_add;
+
 	if (y < 230 && y > 190 && x > 10 && x < 185)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[0];
 	else if (y < 230 && y > 190 && x > 187 + 2 && x < 365)
@@ -22,13 +24,15 @@ void		menu_bouton(t_env *v, int x, int y)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[2];
 	else if (y < 275 && y > 235 && x > 187 + 2 && x < 365)
 		v->ui.m_pixels[y * v->ui.m_w + x] = v->hover[3];
-	if (v->add_new_obj != 0)
-	{
-		v->hover[0] = get_hex_menu(50, 50, 200);
-		v->hover[1] = v->hover[0];
-		v->hover[2] = v->hover[0];
-		v->hover[3] = v->hover[0];
-	}
+	button_color_add = get_hex_menu(50, 50, 200);
+	if (v->add_new_obj == 1)
+		v->hover[0] = button_color_add;
+	else if (v->add_new_obj == 4)
+		v->hover[1] = button_color_add;
+	else if (v->add_new_obj == 3)
+		v->hover[2] = button_color_add;
+	else if (v->add_new_obj == 2)
+		v->hover[3] = button_color_add;
 }
 
 void		menu_bouton_text(t_env *v)
