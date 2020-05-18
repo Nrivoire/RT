@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/17 19:31:22 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/17 19:51:04 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void		over_a_button(t_env *v, SDL_Event e)
 		v->hover[3] = get_hex_menu(218, 112, 214);
 }
 
-int		is_it_a_button(SDL_Event e)
+int			is_it_a_button(SDL_Event e)
 {
 	if (mouse_location(e, (t_between){10, 185, 190, 230}))
 		return (1);

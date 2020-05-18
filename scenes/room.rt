@@ -214,9 +214,9 @@ object{
 
 object{
 	type= PLAN
-	point_a= {15, -20, -100}
-	point_b= {-15, 20, -100}
-	point_c= {15, 20, -100}
+	point_a= {15, -20, -90}
+	point_b= {-15, 20, -90}
+	point_c= {15, 20, -90}
 	color= {255, 255, 255}
 	reflect= 1
 	shininess= 0.5

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/18 13:06:21 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 16:10:21 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -409,6 +409,7 @@ void				parse_color(char *s, t_env *v, t_file *file);
 void				parse_color_scene(char *s, t_env *v, t_file *file);
 void				hexa_value(char *s, t_env *v, t_file *file);
 void				parse_xyz(char *s, t_env *v, t_file *file);
+void				parse_xyz_dir(char *s, t_env *v, t_file *file);
 void				add_lst_obj(t_lst_obj **ob, t_lst_obj content);
 void				add_lst_lgt(t_lst_lgt **lg, t_lst_lgt content);
 int					check_bracket(t_file *file);
@@ -434,6 +435,8 @@ int					cel_shading(int color);
 int					negative(int color);
 int					sepia(int color);
 int					greyscale(int color);
+int					stereo_r(int color);
+int					stereo_b(int color);
 void				supersampling(t_env *v);
 void				blur(t_env *v);
 int					blur_calc_r(t_env *v);

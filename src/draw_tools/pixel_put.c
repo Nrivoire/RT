@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:03:30 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/11 15:51:11 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 14:59:45 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,8 @@ void			pixel_put(t_env *v, int x, int y, t_color color)
 				color.g * 255, color.b * 255, 255));
 	else if (v->p.sc.filter == 4)
 		v->pixels[y * v->w + x] = cel_shading(get_hex_rgba(color.r * 255,
+				color.g * 255, color.b * 255, 255));
+	else if (v->p.sc.filter == 5)
+		v->pixels[y * v->w + x] = stereo_r(get_hex_rgba(color.r * 255,
 				color.g * 255, color.b * 255, 255));
 }
