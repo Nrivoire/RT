@@ -21,7 +21,7 @@ make
 ### Sur Linux
 * Installer la librairie SDL
 ```bash
-sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
 ```
 * Compiler
 ```bash
@@ -56,12 +56,10 @@ make
 		* Faire la même chose pour Cygwin en rajoutant ```C:\cygwin\bin```
 	* Fermer toutes les fenêtres en cliquant sur ```Ok```
 * Lancer le terminal ```cmd``` ou ```Windows PowerShell``` dans le dossier RT-master (suivant comment vous avez nommé le dossier du projet)
-	* Rien ne doit être sélectionner dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
+	* Rien ne doit être sélectionné dans le dossier puis aller dans ```Fichier``` puis ```Windows PowerShell```
 * Copier les fichiers ```DLL``` indispensables au lancement de la SDL et du projet
 ```bash
 cp -r SDL\SDL2*\i686-w64-mingw32\bin\*.dll C:\MinGW\bin
-ou
-cp -r SDL/SDL2*/i686-w64-mingw32/bin/*.dll C:/MinGW/bin
 ```
 * Pour prendre en compte les derniers changements, taper ```exit``` puis rouvrir l'invite de commandes de la même manière que précédemment
 * Compiler
@@ -72,7 +70,147 @@ make
 ```bash
 .\rt.exe
 ```
-<br><br><br><br><br><br><br>
+## Utilisation des scenes
+* Respecter le format de chaque bloc du fichier
+
+```
+[type de bloc]{
+'tabulation'[variable]= [données]
+}
+
+type de block = [scene - camera - light - object]
+```
+
+### Scene
+
+```
+'	ambient-light= {r, g, b}'
+
+r.g.b = [0-1]
+```
+```
+'	width= largeur'
+
+largeur = [100-960]
+```
+```
+'	height= hauteur'
+
+hauteur = [100-720]
+```
+```
+'	filter= nom_du_filtre'
+
+nom_du_filtre = [greyscale - sepia - negative - cel-shading]
+```
+
+### Camera
+
+```
+'	pos= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	dir= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	fov= fov_cam'
+
+fov_cam = [int]
+```
+
+### Lumière
+
+```
+'	type= type_de_lumière'
+
+type_de_lumière = [POINT - DIRECTIONAL - SPOT]
+```
+```
+'	pos= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	dir= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	color= {r, g, b}'
+
+{r, g, b} = [float]
+---
+'	color= hexa'
+
+hexa = [#......] ou [0x......]
+```
+
+### Objet
+
+```
+'	type= type_objet'
+
+type_objet = [SPHERE - PLAN - CONE - CYLINDER]
+```
+```
+'	radius= rayon'
+
+rayon = [float]
+```
+```
+'	pos= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	dir= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	point_a= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	point_b= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	point_c= {x, y, z}'
+
+x.y.z = [float]
+```
+```
+'	color= {r, g, b}'
+
+{r, g, b} = [float]
+---
+'	color= hexa'
+
+hexa = [#......] ou [0x......]
+```
+```
+'	reflect= reflection'
+
+reflection = [0-1]
+```
+```
+'	refract= refraction'
+
+refraction = [0-1]
+```
+```
+'	shininess= brillance'
+
+brillance = [0-1]
+```
+
 # TO-DO
 tuto raytracing: https://www.gabrielgambetta.com/computer-graphics-from-scratch/basic-ray-tracing.html <br>
 
