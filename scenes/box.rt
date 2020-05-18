@@ -16,7 +16,7 @@ light{
 
 # box
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, 8, 30}
 	point_b= {-15, 8, 30}
 	point_c= {15, 8, -10}
@@ -24,7 +24,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, -8, 30}
 	point_b= {-15, -8, 30}
 	point_c= {15, -8, -10}
@@ -32,7 +32,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-14, 0, 15}
 	point_b= {-14, 0, -15}
 	point_c= {-14, 15, 15}
@@ -40,7 +40,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {14, 0, 15}
 	point_b= {14, 0, -15}
 	point_c= {14, 15, 15}
@@ -48,7 +48,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-15, 10, -50}
 	point_b= {15, 10, -50}
 	point_c= {15, -10, -50}
@@ -56,7 +56,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-15, 10, 30}
 	point_b= {15, 10, 30}
 	point_c= {15, -10, 30}

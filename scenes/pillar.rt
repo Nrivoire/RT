@@ -110,9 +110,9 @@ object{
 	color= 0xFFFFFF
 }
 
-# plan
+# plane
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, 10, 30}
 	point_b= {-15, 10, 30}
 	point_c= {15, 10, -10}
@@ -120,7 +120,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, -10, 30}
 	point_b= {-15, -10, 30}
 	point_c= {15, -10, -10}
@@ -128,7 +128,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-15, 10, -70}
 	point_b= {15, 10, -70}
 	point_c= {15, -10, -70}

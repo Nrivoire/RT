@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/17 19:23:17 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 20:37:11 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static void		set_new_obj(t_env *v, float x, float y, float z)
 			0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (v->add_new_obj == 2)
 		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 2, 0, (t_vec){x, y, z},
-			(t_vec){0, 0, 0}, (t_vec){15, -8, 30}, (t_vec){-15, -8, 30},
-			(t_vec){15, -8, -10}, (t_color){30 / 255.0, 30 / 255.0, 30 / 255.0},
+			(t_vec){0, 0, 0}, (t_vec){15, -3, 30}, (t_vec){-15, -3, 30},
+			(t_vec){15, -3, -10}, (t_color){30 / 255.0, 30 / 255.0, 30 / 255.0},
 			0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	v->add_new_obj = 0;
 }

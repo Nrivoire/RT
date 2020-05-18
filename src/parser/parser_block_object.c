@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/18 13:18:18 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 20:19:57 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void			parse_obj(t_env *v, t_file *file)
 		if (!ft_strncmp(tmp, "\ttype=", 6))
 		{
 			ft_strstr(tmp, "SPHERE") ? content.type = 1 : 0;
-			ft_strstr(tmp, "PLAN") ? content.type = 2 : 0;
+			ft_strstr(tmp, "PLANE") ? content.type = 2 : 0;
 			ft_strstr(tmp, "CONE") ? content.type = 3 : 0;
 			ft_strstr(tmp, "CYLINDER") ? content.type = 4 : 0;
 		}

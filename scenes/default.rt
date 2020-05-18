@@ -48,7 +48,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-15, 10, -5}
 	point_b= {15, 10, -5}
 	point_c= {15, -10, -5}
@@ -59,7 +59,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {0, -0.78, 10}
 	point_b= {10, -0.8, -10}
 	point_c= {-10, -0.78, 10}

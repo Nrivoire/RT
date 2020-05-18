@@ -184,7 +184,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, -1.5, 30}
 	point_b= {-15, -1.5, 30}
 	point_c= {15, -1.5, -10}

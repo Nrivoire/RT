@@ -193,7 +193,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, 0, 30}
 	point_b= {-15, 0, 30}
 	point_c= {15, 0, -10}
@@ -203,7 +203,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, 20, 30}
 	point_b= {-15, 20, 30}
 	point_c= {15, 20, -10}
@@ -213,7 +213,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, -20, -90}
 	point_b= {-15, 20, -90}
 	point_c= {15, 20, -90}
