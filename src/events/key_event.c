@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/15 16:25:36 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 15:00:11 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,36 @@ int				cooldown(t_env *v, int seconds)
 	return (0);
 }
 
-static void		key_angle(t_env *v, const Uint8 *keyboard_state)
+static void		key_angle(t_env *v, const Uint8 *keyboard_state, float scale)
 {
 	if (keyboard_state[SDL_SCANCODE_I])
-		v->cam.angle_x += 0.02;
+		v->cam.angle_x += scale * v->sc_m;
 	if (keyboard_state[SDL_SCANCODE_K])
-		v->cam.angle_x -= 0.02;
+		v->cam.angle_x -= scale * v->sc_m;
 	if (keyboard_state[SDL_SCANCODE_J])
-		v->cam.angle_y += 0.02;
+		v->cam.angle_y += scale * v->sc_m;
 	if (keyboard_state[SDL_SCANCODE_L])
-		v->cam.angle_y -= 0.02;
+		v->cam.angle_y -= scale * v->sc_m;
 	if (keyboard_state[SDL_SCANCODE_O])
-		v->cam.angle_z -= 0.02;
+		v->cam.angle_z -= scale * v->sc_m;
 	if (keyboard_state[SDL_SCANCODE_U])
-		v->cam.angle_z += 0.02;
+		v->cam.angle_z += scale * v->sc_m;
 }
 
-static void		key_cam(t_env *v, const Uint8 *keyboard_state)
+static void		key_cam(t_env *v, const Uint8 *keyboard_state, float scale)
 {
 	if (keyboard_state[SDL_SCANCODE_W])
-		v->cam.ori.z -= 1.0;
+		v->cam.ori.z -= scale;
 	if (keyboard_state[SDL_SCANCODE_S])
-		v->cam.ori.z += 1.0;
+		v->cam.ori.z += scale;
 	if (keyboard_state[SDL_SCANCODE_A])
-		v->cam.ori.x -= 1.0;
+		v->cam.ori.x -= scale;
 	if (keyboard_state[SDL_SCANCODE_D])
-		v->cam.ori.x += 1.0;
+		v->cam.ori.x += scale;
 	if (keyboard_state[SDL_SCANCODE_E])
-		v->cam.ori.y += 1.0;
+		v->cam.ori.y += scale;
 	if (keyboard_state[SDL_SCANCODE_Q])
-		v->cam.ori.y -= 1.0;
+		v->cam.ori.y -= scale;
 }
 
 void			key_post_process(t_env *v, const Uint8 *keyboard_state)
@@ -62,7 +62,7 @@ void			key_post_process(t_env *v, const Uint8 *keyboard_state)
 	if (keyboard_state[SDL_SCANCODE_F] && cooldown(v, 5))
 	{
 		v->p.sc.filter++;
-		if (v->p.sc.filter == 5)
+		if (v->p.sc.filter == 6)
 			v->p.sc.filter = 0;
 	}
 	if (keyboard_state[SDL_SCANCODE_C])
@@ -95,8 +95,8 @@ int				key_event(t_env *v, const Uint8 *keyboard_state)
 	if (!keyboard_state[SDL_SCANCODE_SPACE])
 	{
 		render_obj(v, keyboard_state);
-		key_angle(v, keyboard_state);
-		key_cam(v, keyboard_state);
+		key_angle(v, keyboard_state, 0.03);
+		key_cam(v, keyboard_state, 1.0);
 	}
 	return (0);
 }

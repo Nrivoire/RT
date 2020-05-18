@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   greyscale.c                                        :+:      :+:    :+:   */
+/*   parser_clamp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 19:34:34 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/18 15:02:55 by vasalome         ###   ########lyon.fr   */
+/*   Created: 2020/02/21 18:53:36 by vasalome          #+#    #+#             */
+/*   Updated: 2020/05/18 13:14:22 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
 /*
-** Apply a filter to each pixel: greyscale.
+** Allows to bring a value between two lower and upper limits,
+** and to assign the upper limit if the value exceeds.
 */
 
-int		greyscale(int color)
+int		ft_clamp(int value, int min, int max)
 {
-	t_color			rgb;
-	unsigned int	v;
+	value > max ? value = max : 0;
+	value < min ? value = min : 0;
+	return (value);
+}
 
-	rgb.r = color >> 24 & 0xFF;
-	rgb.g = color >> 16 & 0xFF;
-	rgb.b = color >> 8 & 0xFF;
-	v = rgb.r * 0.212671 + rgb.g * 0.715160 + rgb.b * 0.072169;
-	return (((int)v << 24) | ((int)v << 16) | (int)v << 8 | (color & 0xFF));
+float	ft_clampf(float value, float min, float max)
+{
+	value > max ? value = max : 0;
+	value < min ? value = min : 0;
+	return (value);
 }

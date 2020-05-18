@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/17 19:20:14 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/18 14:34:48 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			parser/parser_list.c				\
 			parser/parser_check.c				\
 			parser/parser_utils.c				\
+			parser/parser_clamp.c				\
 			parser/parser.c						\
 			post_process/blur_utils.c			\
 			post_process/blur.c					\
@@ -63,6 +64,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			post_process/negative.c				\
 			post_process/post_process_utils.c	\
 			post_process/sepia.c				\
+			post_process/stereo.c				\
 			post_process/supersampling.c		\
 			texture/make_texture_plan.c			\
 			texture/make_texture_sphere.c		\

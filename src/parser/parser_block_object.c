@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/17 18:32:58 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 13:18:18 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 	}
 	else if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
-		parse_xyz(tmp, v, f);
-		c->dir = (t_vec){ft_clampf(v->p.p_xyz.x, -1, 1), ft_clampf(v->p.p_xyz.y, -1, 1), ft_clampf(v->p.p_xyz.z, -1, 1)};
+		parse_xyz_dir(tmp, v, f);
+		c->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 	else if (!ft_strncmp(tmp, "\tpoint_a=", 9))
 	{

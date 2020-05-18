@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:56:53 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 02:31:46 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 15:19:14 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	option_filter(t_env *v, char *option)
 	!ft_strcmp(option, "--sepia") ? v->p.sc.filter = 2 : 0;
 	!ft_strcmp(option, "--negative") ? v->p.sc.filter = 3 : 0;
 	!ft_strcmp(option, "--celshading") ? v->p.sc.filter = 4 : 0;
+	!ft_strcmp(option, "--cartoon") ? v->p.sc.filter = 4 : 0;
 }
 
 void		check_options(t_env *v, int argc, char **argv)

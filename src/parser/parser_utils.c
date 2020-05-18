@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:36 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 04:00:57 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 13:20:54 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,24 @@ void	parse_xyz(char *s, t_env *v, t_file *file)
 	free(res);
 }
 
-/*
-** Allows to bring a value between two lower and upper limits,
-** and to assign the upper limit if the value exceeds.
-*/
-
-int		ft_clamp(int value, int min, int max)
+void	parse_xyz_dir(char *s, t_env *v, t_file *file)
 {
-	value > max ? value = max : 0;
-	value < min ? value = min : 0;
-	return (value);
-}
+	int		i;
+	char	**res;
 
-float	ft_clampf(float value, float min, float max)
-{
-	value > max ? value = max : 0;
-	value < min ? value = min : 0;
-	return (value);
+	i = 0;
+	res = NULL;
+	if (!(res = ft_strsplit(s, ',')))
+		error_parser("Bad file: error in xyz", file);
+	while (res[++i] != NULL)
+	{
+		i == 1 ? v->p.p_xyz.x = ft_clampf(parse_value(res[i - 1]), -1, 1) : 0;
+		i == 1 ? v->p.p_xyz.y = ft_clampf(parse_value(res[i]), -1, 1) : 0;
+		i == 2 ? v->p.p_xyz.z = ft_clampf(parse_value(res[i]), -1, 1) : 0;
+	}
+	if (i != 3)
+		error_parser("Bad file: must be -> '{x,y,z}'", file);
+	while (i >= 0)
+		ft_strdel(&res[i--]);
+	free(res);
 }

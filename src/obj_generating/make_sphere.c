@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:19:32 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/16 21:05:19 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 12:56:57 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_quadric		make_sphere(t_vec center, float radius)
 	res.g = -2 * center.x;
 	res.h = -2 * center.y;
 	res.i = -2 * center.z;
-	res.j = (center.x * center.x + center.y * center.y + center.z * center.z
-			- radius * radius ) / 1;
+	res.j = center.x * center.x + center.y * center.y + center.z * center.z
+			- radius * radius;
 	return (res);
 }
