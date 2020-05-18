@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/18 12:46:34 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 14:29:42 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 					light_shine(point, ray, normal, v->tab_lights[i]));
 		}
 	}
+	if (obj->texture || obj->procedural)
+		generate_texture(v, obj, point, normal);
 	light = color_op(color_op(light, '*', obj->color), '+', 	\
 			color_ratio(shine, obj->shininess));
 	return (limit_color(light));

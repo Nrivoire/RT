@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:55:49 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/07 19:15:06 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 14:30:51 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,6 @@ t_color	color_op(t_color c1, char op, t_color c2)
 		color.r = c1.r + c2.r;
 		color.g = c1.g + c2.g;
 		color.b = c1.b + c2.b;
-	}
-	return (color);
-}
-
-t_color	is_it_selected(t_env *v, t_tab_obj obj, t_color color)
-{
-	if (v->selected_obj && v->selected_obj->i == obj.i)
-	{
-		color.r *= 2;
-		color.g *= 1.5;
-		color.b *= 2.5;
 	}
 	return (color);
 }
