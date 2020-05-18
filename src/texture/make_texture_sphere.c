@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_texture_sphere.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:17:59 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/12 21:22:00 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 14:40:06 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
