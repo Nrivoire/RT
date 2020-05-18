@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/18 14:50:23 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 16:10:21 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,6 +309,16 @@ void				init_menu(t_env *v, int scale);
 t_vec				quadric_normal(t_quadric q, t_vec p);
 int					inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol);
 int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
+
+/*
+** --ray-tracer--
+*/
+t_color				limit_color(t_color color);
+t_color				is_it_selected(t_env *v, t_tab_obj obj, t_color color);
+t_color				color_ratio(t_color color, float ratio);
+t_color				color_op(t_color c1, char op, t_color c2);
+t_color				ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, 	\
+		t_vec ray);
 
 /*
 ** --draw_tools--

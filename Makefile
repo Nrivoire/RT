@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/18 14:34:48 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/18 16:10:11 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,15 @@
 #################
 
 NAME = rt
-SRC_SUP = 	events			\
-			draw_tools		\
+SRC_SUP = 	draw_tools		\
+			events			\
+			init			\
+			obj_generating	\
 			parser			\
 			post_process	\
-			obj_generating	\
-			ui				\
-			init			\
+			ray_tracer		\
 			texture			\
-			
+			ui
 SRC_PATH = src
 SRC_NAME = 	draw_tools/display.c				\
 			draw_tools/get_pixel.c				\
@@ -66,6 +66,10 @@ SRC_NAME = 	draw_tools/display.c				\
 			post_process/sepia.c				\
 			post_process/stereo.c				\
 			post_process/supersampling.c		\
+			ray_tracer/colors.c					\
+			ray_tracer/loop.c					\
+			ray_tracer/ray_tracer.c				\
+			ray_tracer/select_obj.c				\
 			texture/make_texture_plan.c			\
 			texture/make_texture_sphere.c		\
 			texture/noise.c						\
@@ -80,7 +84,6 @@ SRC_NAME = 	draw_tools/display.c				\
 			ui/write_text_menu.c				\
 			screenshot.c						\
 			main.c								\
-			rays.c								\
 			usage.c
 OBJ_PATH = .objects
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -99,6 +102,7 @@ ifeq ($(OS), Windows_NT)
 				-L SDL\SDL2_image-2.0.5\i686-w64-mingw32\lib 	\
 				-L SDL\SDL2_ttf-2.0.15\i686-w64-mingw32\lib
 	SDL = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
+	NORMINETTE = ~/.norminette/norminette.rb
 	OS = $(PINK)Windows
 else
 	OS = $(shell uname -s)
@@ -109,11 +113,13 @@ else
 					-I $(FM)/SDL2_ttf.framework/Versions/A/Headers
 		SDL = -rpath $(FM) -F $(FM) -framework SDL2 -framework SDL2_image 	\
 				-framework SDL2_ttf -lpthread
+		NORMINETTE = norminette
 		OS = $(END)$(PINK)Mac OS
 	else
 		ifeq ($(OS), Linux)
 			INC_SDL = -I/usr/include/SDL2 -D_REENTRANT
 			SDL = -lSDL2 -lSDL2_image -lSDL2_ttf -lpthread
+			NORMINETTE = ~/.norminette/norminette.rb
 			OS = $(END)$(PINK)Linux
 		else
 			OS = $(RED)This OS is not supported
@@ -121,7 +127,7 @@ else
 	endif
 endif
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror $(LDFLAGS)
 CPPFLAGS = -I $(INC_PATH) -I libft/$(INC_PATH)
 
 ################
@@ -149,7 +155,11 @@ SUR = 		\033[7m
 .PHONY: all make_libft detected_OS clean fclean re norme
 
 all: make_libft detected_OS $(NAME)
+ifeq ($(OS), $(RED)This OS is not supported)
+	@printf "$(BLUE)> $(NAME) : $(RED)Project fail !$(END)\n"
+else
 	@printf "$(BLUE)> $(NAME) : $(YELLOW)Project ready !$(END)\n"
+endif
 
 make_libft:
 	@make -C libft
@@ -158,13 +168,19 @@ detected_OS:
 	@printf "$(BOLD)$(GREY)Detected OS : $(OS)$(END)\n"
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(LDFLAGS) $(LIB) $(LIB_SDL) $^ $(SDL) $(LDLIBS) -o $@
+ifneq ($(OS), $(RED)This OS is not supported)
+	@$(CC) $(CFLAGS) $(LIB) $(LIB_SDL) $^ $(SDL) $(LDLIBS) -o $@
 	@printf "$(ERASE)$(BLUE)> $@ : $(GREEN)Success !$(END)\n\n"
+endif
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC) libft/libft.a
 	@mkdir -p $(OBJ_PATH) $(addprefix $(OBJ_PATH)/,$(SRC_SUP))
+ifeq ($(OS), $(RED)This OS is not supported)
+	@touch $@
+else
 	@printf "$(ERASE)$(YELLOW)$(BOLD)[COMPILE] $(END) $(<:.c=).c"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(INC_SDL) -c $< -o $@
+endif
 
 clean:
 	@make -C libft clean
@@ -179,4 +195,8 @@ fclean: clean
 re: fclean all
 
 norme:
-	norminette $(SRC_PATH) $(INC_PATH)
+ifeq ($(OS), $(RED)This OS is not supported)
+	@printf "Norminette is not supported\n"
+else
+	$(NORMINETTE) libft/includes libft/sources $(INC_PATH) $(SRC_PATH)
+endif
