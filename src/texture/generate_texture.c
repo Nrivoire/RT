@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/19 16:38:26 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 19:21:46 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,18 @@ void			make_texture_cylinder(t_tab_obj *obj, t_vec pt, SDL_Color col)
 }
 
 void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
-					t_vec normal)
+					t_vec *normal)
 {
 	SDL_Color col;
 
 	col = (SDL_Color){0, 0, 0, 255};
 	if (obj->procedural)
 	{
-		if (v->pe[0] != 151)
+		if (obj->procedural == WAVES)
+			quadric_normal_pertu(obj->q, point, obj->waves, normal);
+		else if (v->pe[0] != 151)
 			init_permutation(v);
-		create_texture_procedural(v, obj, normal);
+		create_texture_procedural(v, obj, *normal);
 	}
 	else
 	{
