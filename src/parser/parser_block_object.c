@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/18 20:19:57 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 04:27:41 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ static void		parse_tex_pro(char *tmp, t_lst_obj *content)
 		ft_strstr(tmp, "PERLIN") ? content->procedural = PERLIN : 0;
 		ft_strstr(tmp, "WOOD") ? content->procedural = WOOD : 0;
 		ft_strstr(tmp, "MARBLE") ? content->procedural = MARBLE : 0;
+		if (ft_strstr(tmp, "WAVES"))
+		{
+			content->procedural = WAVES;
+			content->waves = 0 + ft_clamp(parse_int_value(tmp), 0, 100);
+			if (content->waves == 0)
+				content->waves = 10;
+		}
 	}
 }
 
@@ -89,7 +96,7 @@ static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 	else if (!ft_strncmp(tmp, "\tdir=", 5))
 	{
 		parse_xyz_dir(tmp, v, f);
-		c->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+		c->dir = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z * 10};
 	}
 	else if (!ft_strncmp(tmp, "\tpoint_a=", 9))
 	{

@@ -33,14 +33,15 @@ object{
 	color= 0xFFFF00
 	reflect= 0
 	refract= 0
-	shininess= 0
+	shininess= 1.0
+	texture-procedural= WAVES 10
 }
 
 object{
 	type= CYLINDER
 	radius= 1.2
 	pos= {-1, 0, 0}
-	dir= {1, 1, -1}
+	dir= {1, 1, -0.1}
 	color= 0x00FF00
 	reflect= 0
 	refract= 0

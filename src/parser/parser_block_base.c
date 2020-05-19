@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 04:04:10 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 21:58:42 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	option_scene(t_env *v, char *tmp)
 		ft_strstr(tmp, "sepia") ? v->p.sc.filter = 2 : 0;
 		ft_strstr(tmp, "negative") ? v->p.sc.filter = 3 : 0;
 		ft_strstr(tmp, "cel-shading") ? v->p.sc.filter = 4 : 0;
+		ft_strstr(tmp, "stereoscopie") ? v->p.sc.filter = 5 : 0;
 	}
 }
 
@@ -78,7 +79,7 @@ void		parse_cam(t_env *v, t_file *file)
 			v->p.cam.angle_z = ft_deg_to_rad(v->p.p_xyz.z);
 		}
 		if (!ft_strncmp(tmp, "\tfov=", 5))
-			v->p.cam.fov = ft_clamp(parse_int_value(tmp), 0, 200);
+			v->p.cam.fov = ft_clamp(parse_int_value(tmp), 30, 170);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
 	}

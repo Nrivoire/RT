@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/18 20:37:11 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 04:07:07 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,23 @@ static void		set_new_obj(t_env *v, float x, float y, float z)
 		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 1, 2, (t_vec){x, y, z},
 			(t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
 			(t_vec){0, 0, 0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0},
-			0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
+			0, 0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (v->add_new_obj == 4)
 		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 4, 2,
 			(t_vec){x, y, z}, (t_vec){0, 1, 0}, (t_vec){0, 0, 0},
 			(t_vec){0, 0, 0}, (t_vec){0, 0, 0},
 			(t_color){35 / 255.0, 205 / 255.0, 35 / 255.0},
-			0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
+			0, 0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (v->add_new_obj == 3)
 		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 3, 0.3, (t_vec){x, y, z},
 			(t_vec){0, 1, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0},
 			(t_vec){0, 0, 0}, (t_color){35 / 255.0, 35 / 255.0, 205 / 255.0},
-			0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
+			0, 0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	else if (v->add_new_obj == 2)
 		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 2, 0, (t_vec){x, y, z},
 			(t_vec){0, 0, 0}, (t_vec){15, -3, 30}, (t_vec){-15, -3, 30},
 			(t_vec){15, -3, -10}, (t_color){30 / 255.0, 30 / 255.0, 30 / 255.0},
-			0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
+			0, 0, 0, 0, 0, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0}});
 	v->add_new_obj = 0;
 }
 

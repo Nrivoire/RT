@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/18 16:10:21 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 04:13:34 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # define PERLIN 1
 # define WOOD 2
 # define MARBLE 3
+# define WAVES 4
+
+# define SCALE_WAVES 100
 
 # define CELSHADING 30
 
@@ -90,6 +93,7 @@ typedef struct		s_lst_obj
 	float			specular;
 	float			shininess;
 	int				procedural;
+	int				waves;
 	SDL_Surface		*texture;
 	struct s_lst_obj*next;
 }					t_lst_obj;
@@ -167,6 +171,7 @@ typedef struct		s_tab_obj
 	float			refract;
 	float			shininess;
 	int				procedural;
+	int				waves;
 	SDL_Surface		*texture;
 	t_quadric		q;
 }					t_tab_obj;
@@ -307,6 +312,7 @@ void				init_menu(t_env *v, int scale);
 ** --quadric--
 */
 t_vec				quadric_normal(t_quadric q, t_vec p);
+t_vec				quadric_normal_pertu(t_quadric q, t_vec p, int waves);
 int					inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol);
 int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
 

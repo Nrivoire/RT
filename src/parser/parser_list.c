@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:54:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/04/12 21:19:49 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 04:09:55 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 	new->shininess = content.shininess;
 	new->texture = content.texture;
 	new->procedural = content.procedural;
+	new->waves = content.waves;
 	new->next = (!*ob) ? NULL : *ob;
 	*ob = new;
 }
