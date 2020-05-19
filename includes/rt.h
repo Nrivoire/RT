@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/19 04:13:34 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 12:48:33 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define WOOD 2
 # define MARBLE 3
 # define WAVES 4
+# define GRAD 5
 
 # define SCALE_WAVES 100
 

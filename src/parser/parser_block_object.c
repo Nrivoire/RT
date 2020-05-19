@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/19 04:27:41 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 13:10:48 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void		parse_tex_pro(char *tmp, t_lst_obj *content)
 			if (content->waves == 0)
 				content->waves = 10;
 		}
+		ft_strstr(tmp, "GRADIENT") ? content->procedural = GRAD : 0;
 	}
 }
 
