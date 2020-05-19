@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/19 16:38:26 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 20:46:13 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,29 @@
 
 void			make_texture_cylinder(t_tab_obj *obj, t_vec pt, SDL_Color col)
 {
-	float		u;
-	float		v;
-	t_vec		proj;
-	t_plane		plane;
-	float		dist;
-	t_vec		pproj;
-	t_vec		ve;
-	t_vec		u_vec;
-	t_vec		v_vec;
+	t_plane	plane;
+	t_vec	proj;
+	float	v;
+	t_vec	vec;
+	t_vec	fix;
+	float	u;
+	t_vec	fix2;
 
-	plane = (t_plane){obj->dir.x, obj->dir.y, obj->dir.z, obj->dir.x * obj->pos.x - obj->dir.y * obj->pos.y - obj->dir.z * obj->pos.z};
-	proj = proj_point_plane(pt, plane, &dist);
-	pproj = vec_normalize(vec_sub(proj, obj->pos));
-	ve = (t_vec){1, 0, 0};
-	u_vec = vec_normalize(vec_cross_product(ve, obj->dir));
-	u = acos(vec_scale_product(u_vec, pproj)) / (2 * M_PI);
-	v_vec = vec_normalize(vec_sub(proj, pt));
-	v = vec_norm(v_vec);
+	plane = (t_plane){obj->dir.x, obj->dir.y, obj->dir.z, -obj->dir.x * obj->pos.x - obj->dir.y * obj->pos.y - obj->dir.z * obj->pos.z};//A PRECALCULER
+	proj = proj_point_plane(pt, plane, &v);
+	vec = vec_normalize(vec_sub(proj, obj->pos));
+	fix = vec_normalize(vec_cross_product((t_vec){1, 0, 0}, obj->dir));//A PRECALCULER
+	u = acos(vec_scale_product(fix, vec)) / (2 * M_PI);
+	fix2 = vec_normalize(vec_cross_product(obj->dir, fix));//A PRECALCULER
+	if (vec_scale_product(vec, fix2) > 0)
+		u = 1 - u;
+	v /= 2 * M_PI * obj->radius;
 	v = v - (int)v;
-	if (u >= 0 && v >= 0 && u <= 1 && v <= 1)
-	{
-		SDL_GetRGB(get_pixel(obj->texture, u * obj->texture->w,
-		 			v * obj->texture->h), obj->texture->format,
-		 			&col.r, &col.g, &col.b);
-		obj->color = (t_color){col.r / 255.0, col.g / 255.0, col.b / 255.0};
-	}
+	if (vec_scale_product(obj->dir, vec_sub(pt, proj)) < 0)
+		v = 1 - v;
+	SDL_GetRGB(get_pixel(obj->texture, u * obj->texture->w, 	\
+			v * obj->texture->h), obj->texture->format, &col.r, &col.g, &col.b);
+	obj->color = (t_color){col.r / 255.0, col.g / 255.0, col.b / 255.0};
 }
 
 void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \

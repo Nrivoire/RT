@@ -28,7 +28,7 @@ object{
 	type= CYLINDER
 	radius= 2.21
 	pos= {0, 0, 0}
-	dir= {0, 1, 0}
+	dir= {0, -1, 0}
 	color= {150, 150, 150}
 	texture= "./textures/checkboard_test.jpg"
 }
