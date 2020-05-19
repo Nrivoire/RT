@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   make_texture_sphere.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:17:59 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/18 14:40:06 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 18:54:23 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-float		precision(t_vec vp, t_vec ve, float phi)
+float	precision(t_vec vp, t_vec ve, float phi)
 {
 	float	precision;
 
@@ -24,7 +24,7 @@ float		precision(t_vec vp, t_vec ve, float phi)
 	return (precision);
 }
 
-t_unit		calc_u_and_v(t_vec vn, t_vec vp, t_vec ve)
+t_unit	calc_u_and_v(t_vec vn, t_vec vp, t_vec ve)
 {
 	t_unit	res;
 	float	phi;
@@ -40,7 +40,7 @@ t_unit		calc_u_and_v(t_vec vn, t_vec vp, t_vec ve)
 	return (res);
 }
 
-void		make_texture_sphere(t_tab_obj *obj, t_vec point, SDL_Color col)
+void	make_texture_sphere(t_tab_obj *obj, t_vec point, SDL_Color col)
 {
 	t_vec	vp;
 	t_vec	vn;
