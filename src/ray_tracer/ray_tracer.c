@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/18 14:29:42 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 04:13:06 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 	t_color	diffuse;
 	t_color	shine;
 
-	normal = quadric_normal(obj->q, point);
+	if (obj->procedural == WAVES)
+		normal = quadric_normal_pertu(obj->q, point, obj->waves);
+	else
+		normal = quadric_normal(obj->q, point);
 	if (vec_scale_product(normal, ray) > 0)
 		normal = vec_mult_float(normal, -1);
 /*	if (obj->reflect == 1)

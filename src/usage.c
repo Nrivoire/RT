@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:56:53 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/18 15:19:14 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/18 21:55:03 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void		usage(char *error, int run)
 	ft_putendl("-f <file_path>		choose your file.");
 	ft_putendl("-w <width [100-1280]>	set your window's width.");
 	ft_putendl("-h <height [100-720]>	set your window's height.");
+	ft_putendl("-fov <fov [30-170]>	set your window's fov.");
 	ft_putendl("filter:	--greyscale | --sepia | --negative | --celshading");
 	ft_putendl("--help			show help.\n");
 	!run ? exit(0) : 0;
@@ -52,6 +53,25 @@ static void	option_filter(t_env *v, char *option)
 	!ft_strcmp(option, "--cartoon") ? v->p.sc.filter = 4 : 0;
 }
 
+static void	check_size(t_env *v, int argc, char **argv, int i)
+{
+	if (!ft_strcmp(argv[i], "-w") || !ft_strcmp(argv[i], "--width"))
+	{
+		if (i + 1 < argc)
+			v->w = atoi_clamp_usage(argv[i + 1], 100, 1280);
+	}
+	else if (!ft_strcmp(argv[i], "-h") || !ft_strcmp(argv[i], "--height"))
+	{
+		if (i + 1 < argc)
+			v->h = atoi_clamp_usage(argv[i + 1], 100, 720);
+	}
+	else if (!ft_strcmp(argv[i], "-fov"))
+	{
+		if (i + 1 < argc)
+			v->p.cam.fov = atoi_clamp_usage(argv[i + 1], 30, 170);
+	}
+}
+
 void		check_options(t_env *v, int argc, char **argv)
 {
 	int		i;
@@ -63,18 +83,9 @@ void		check_options(t_env *v, int argc, char **argv)
 	while (++i < argc)
 	{
 		!ft_strcmp(argv[i], "--help") ? usage("", 1) : 0;
-		if (!ft_strcmp(argv[i], "-w") || !ft_strcmp(argv[i], "--width"))
-		{
-			if (i + 1 < argc)
-				v->w = atoi_clamp_usage(argv[i + 1], 100, 1280);
-		}
-		else if (!ft_strcmp(argv[i], "-h") || !ft_strcmp(argv[i], "--height"))
-		{
-			if (i + 1 < argc)
-				v->h = atoi_clamp_usage(argv[i + 1], 100, 720);
-		}
-		else if (!ft_strcmp(argv[i], "-f") || !ft_strcmp(argv[i], "--file"))
+		if (!ft_strcmp(argv[i], "-f") || !ft_strcmp(argv[i], "--file"))
 			i + 1 < argc ? v->file = ft_strdup(argv[i + 1]) : 0;
+		check_size(v, argc, argv, i);
 		option_filter(v, argv[i]);
 	}
 	ft_strdel(&default_map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_ray_quadric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:31:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/07 14:28:12 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 04:13:22 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ t_vec		quadric_normal(t_quadric q, t_vec p)
 {
 	return (vec_normalize((t_vec){							\
 			2 * q.a * p.x + q.d * p.y + q.e * p.z + q.g, 	\
+			2 * q.b * p.y + q.d * p.x + q.f * p.z + q.h, 	\
+			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i}));
+}
+
+t_vec		quadric_normal_pertu(t_quadric q, t_vec p, int waves)
+{
+	return (vec_normalize((t_vec){							\
+			sin(2 * (waves * q.a * p.x + q.d * p.y + q.e * p.z + q.g)),\
 			2 * q.b * p.y + q.d * p.x + q.f * p.z + q.h, 	\
 			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i}));
 }

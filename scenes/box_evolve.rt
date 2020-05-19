@@ -24,7 +24,7 @@ light{
 
 # box
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, 8, 30}
 	point_b= {-15, 8, 30}
 	point_c= {15, 8, -10}
@@ -32,7 +32,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {15, -8, 30}
 	point_b= {-15, -8, 30}
 	point_c= {15, -8, -10}
@@ -41,7 +41,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-10, 0, 15}
 	point_b= {-10, 0, -15}
 	point_c= {-10, 15, 15}
@@ -49,7 +49,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {10, 0, 15}
 	point_b= {10, 0, -15}
 	point_c= {10, 15, 15}
@@ -57,7 +57,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-15, 10, -25}
 	point_b= {15, 10, -25}
 	point_c= {15, -10, -25}
@@ -65,7 +65,7 @@ object{
 }
 
 object{
-	type= PLAN
+	type= PLANE
 	point_a= {-15, 10, 16}
 	point_b= {15, 10, 16}
 	point_c= {15, -10, 16}
@@ -88,6 +88,7 @@ object{
 	color= {35, 35, 35}
 	shininess= 1.0
 	reflect= 1.0
+	texture-procedural= WAVES
 }
 
 object{

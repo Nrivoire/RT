@@ -154,7 +154,7 @@ hexa = [#......] ou [0x......]
 ```
 '	type= type_objet'
 
-type_objet = [SPHERE - PLAN - CONE - CYLINDER]
+type_objet = [SPHERE - PLANE - CONE - CYLINDER]
 ```
 ```
 '	radius= rayon'

@@ -6,39 +6,55 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/18 15:00:11 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 12:40:39 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int				cooldown(t_env *v, int seconds)
+static void		key_angle_z(t_env *v, const Uint8 *keyboard_state, float scale)
 {
-	int		tmp;
-
-	tmp = clock() / CLOCKS_PER_SEC;
-	if (tmp - v->cooldown > seconds)
+	if (keyboard_state[SDL_SCANCODE_U])
 	{
-		v->cooldown = clock() / CLOCKS_PER_SEC;
-		return (1);
+		v->cam.angle_z += scale * v->sc_m;
+		if (v->cam.angle_z > (360 * (M_PI / 180)))
+			v->cam.angle_z = 0.000000;
 	}
-	return (0);
+	if (keyboard_state[SDL_SCANCODE_O])
+	{
+		v->cam.angle_z -= scale * v->sc_m;
+		if (v->cam.angle_z < 0.000000)
+			v->cam.angle_z = (360 * (M_PI / 180));
+	}
 }
 
 static void		key_angle(t_env *v, const Uint8 *keyboard_state, float scale)
 {
 	if (keyboard_state[SDL_SCANCODE_I])
+	{
 		v->cam.angle_x += scale * v->sc_m;
+		if (v->cam.angle_x > (360 * (M_PI / 180)))
+			v->cam.angle_x = 0.00000;
+	}
 	if (keyboard_state[SDL_SCANCODE_K])
+	{
 		v->cam.angle_x -= scale * v->sc_m;
+		if (v->cam.angle_x < 0.000000)
+			v->cam.angle_x = (360 * (M_PI / 180));
+	}
 	if (keyboard_state[SDL_SCANCODE_J])
+	{
 		v->cam.angle_y += scale * v->sc_m;
+		if (v->cam.angle_y > (360 * (M_PI / 180)))
+			v->cam.angle_y = 0.000000;
+	}
 	if (keyboard_state[SDL_SCANCODE_L])
+	{
 		v->cam.angle_y -= scale * v->sc_m;
-	if (keyboard_state[SDL_SCANCODE_O])
-		v->cam.angle_z -= scale * v->sc_m;
-	if (keyboard_state[SDL_SCANCODE_U])
-		v->cam.angle_z += scale * v->sc_m;
+		if (v->cam.angle_y < 0.000000)
+			v->cam.angle_y = (360 * (M_PI / 180));
+	}
+	key_angle_z(v, keyboard_state, scale);
 }
 
 static void		key_cam(t_env *v, const Uint8 *keyboard_state, float scale)

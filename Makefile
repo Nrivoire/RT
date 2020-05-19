@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/18 16:10:11 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/19 12:36:18 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_PATH = src
 SRC_NAME = 	draw_tools/display.c				\
 			draw_tools/get_pixel.c				\
 			draw_tools/pixel_put.c				\
+			events/event_utils.c				\
 			events/event_render.c				\
 			events/key_event.c					\
 			events/mouse_event.c				\
