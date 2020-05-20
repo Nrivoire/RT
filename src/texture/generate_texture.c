@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 15:35:38 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 16:12:28 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,18 @@
 //     vNormal = temp * vNormal;
 // }
 
-// void	bump_mapping(t_env *v, t_vec *normal, t_vec point)
+// void		bump_mapping(t_env *v, t_vec *normal, t_vec point)
 // {
 // 	float	noiseCoefx;
 // 	float	noiseCoefy;
 // 	float	noiseCoefz;
 
-// 	noiseCoefx = noise(v, 0.1 * point.x, 0.1 * point.y, 0.1 * point.z);
-// 	noiseCoefy = noise(v, 0.1 * point.y, 0.1 * point.z, 0.1 * point.x);
-// 	noiseCoefz = noise(v, 0.1 * point.z, 0.1 * point.x, 0.1 * point.y);
-// 	normal->x = (1.0 - currentMat.bump ) * vNormal.x + currentMat.bump * noiseCoefx;
+// 	noiseCoefx = noise(v, 0.1f * point.x, 0.1f * point.y, 0.1f * point.z);
+// 	noiseCoefy = noise(v, 0.1f * point.y, 0.1f * point.z, 0.1f * point.x);
+// 	noiseCoefz = noise(v, 0.1f * point.z, 0.1f * point.x, 0.1f * point.y);
+// 	normal->x = (1.0f - 0.5f) * normal->x + 0.5f * noiseCoefx;
+// 	normal->y = (1.0f - 0.5f) * normal->y + 0.5f * noiseCoefy;
+// 	normal->z = (1.0f - 0.5f) * normal->z + 0.5f * noiseCoefz;
 // }
 
 float			texture_color_move(float x)

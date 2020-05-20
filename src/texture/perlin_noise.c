@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perlin_noise.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 15:31:17 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 16:12:26 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
