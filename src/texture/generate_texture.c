@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 17:18:47 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:04:43 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 		obj->color.g = texture_color_move(obj->pos.y * obj->pos.z);
 		obj->color.b = texture_color_move(obj->pos.x * obj->pos.z);
 	}
-	if (obj->procedural)
+	if (obj->procedural && obj->procedural != GRAD)
 	{
 		if (obj->procedural == BUMP)
 			bump_mapping(v, normal, point);
 		if (obj->procedural == WAVES)
-			quadric_normal_pertu(obj->q, point, obj->waves, normal);
+			quadric_normal_pertu(obj->q, point, obj->tx_pertu, normal);
 		else if (v->pe[0] != 151)
 			init_permutation(v);
 		create_texture_procedural(v, obj, *normal);
