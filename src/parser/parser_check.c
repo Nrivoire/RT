@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/16 02:57:51 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/17 18:10:55 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:56:03 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ void	error_parser(char *error, t_file *file)
 ** check if the 3 points of a plane are different.
 */
 
+void	check_fix(t_lst_obj *content)
+{
+	if (content->dir.x == content->fix.x
+		&& content->dir.y == content->fix.y
+		&& content->dir.z == content->fix.z)
+		{
+			content->fix.x = content->fix.x + 0.5;
+			if (content->fix.x > 1)
+				content->fix.x =content->fix.x - 1;
+		}
+}
+
 void	check_points_and_type(t_lst_obj *content, t_file *file)
 {
 	if (content->type == 0)
@@ -48,4 +60,5 @@ void	check_points_and_type(t_lst_obj *content, t_file *file)
 				&& content->a.z == content->c.z)
 			error_parser("Bad file: points [a][c] need to be different", file);
 	}
+	check_fix(content);
 }

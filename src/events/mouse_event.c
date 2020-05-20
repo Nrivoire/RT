@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/18 13:25:18 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 12:39:20 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 		// else
 		// 	v->cam.angle_x -= (e.motion.yrel * 0.1) * (M_PI / 180);
 		// SDL_SetRelativeMouseMode(SDL_TRUE);
+		
 	}
 	if (mouse == 4)
 	{

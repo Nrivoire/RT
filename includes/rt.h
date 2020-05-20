@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 13:32:16 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:57:05 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@
 # define MARBLE 3
 # define WAVES 4
 # define GRAD 5
-
-# define SCALE_WAVES 100
 
 # define CELSHADING 30
 
@@ -95,6 +93,7 @@ typedef struct		s_lst_obj
 	float			shininess;
 	int				procedural;
 	int				waves;
+	t_vec			fix;
 	SDL_Surface		*texture;
 	struct s_lst_obj*next;
 }					t_lst_obj;
@@ -173,6 +172,7 @@ typedef struct		s_tab_obj
 	float			shininess;
 	int				procedural;
 	int				waves;
+	t_vec			fix;
 	SDL_Surface		*texture;
 	t_quadric		q;
 	t_plane			plan_cylinder_for_tex;

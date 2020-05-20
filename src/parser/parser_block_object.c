@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/19 13:10:48 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:47:19 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,30 @@
 ** Parse the values ​​of the objects in the file.
 */
 
-static void		parse_tex_pro(char *tmp, t_lst_obj *content)
+static void		parse_tex_pro(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
 	if (!ft_strncmp(tmp, "\ttexture-procedural=", 20))
 	{
-		ft_strstr(tmp, "PERLIN") ? content->procedural = PERLIN : 0;
-		ft_strstr(tmp, "WOOD") ? content->procedural = WOOD : 0;
-		ft_strstr(tmp, "MARBLE") ? content->procedural = MARBLE : 0;
+		ft_strstr(tmp, "PERLIN") ? c->procedural = PERLIN : 0;
+		ft_strstr(tmp, "WOOD") ? c->procedural = WOOD : 0;
+		ft_strstr(tmp, "MARBLE") ? c->procedural = MARBLE : 0;
 		if (ft_strstr(tmp, "WAVES"))
 		{
-			content->procedural = WAVES;
-			content->waves = 0 + ft_clamp(parse_int_value(tmp), 0, 100);
-			if (content->waves == 0)
-				content->waves = 10;
+			c->procedural = WAVES;
+			c->waves = 0 + ft_clamp(parse_int_value(tmp), 0, 100);
+			if (c->waves == 0)
+				c->waves = 10;
 		}
-		ft_strstr(tmp, "GRADIENT") ? content->procedural = GRAD : 0;
+		ft_strstr(tmp, "GRADIENT") ? c->procedural = GRAD : 0;
+	}
+	if (!ft_strncmp(tmp, "\tfix=", 5))
+	{
+		parse_xyz(tmp, v, f);
+		c->fix = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 	}
 }
 
-static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
+static void		parse_texture_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 {
 	int		i;
 	char	**tex_path;
@@ -44,21 +49,21 @@ static void		parse_texture_obj(char *tmp, t_lst_obj *content, t_file *file)
 	if (!ft_strncmp(tmp, "\ttexture=", 9))
 	{
 		if (!(tex_path = ft_strsplit(tmp, '"')))
-			error_parser("Bad file: can't find the quotation marks", file);
+			error_parser("Bad file: can't find the quotation marks", f);
 		while (tex_path[++i] != NULL)
 		{
 			if (i == 1)
 			{
-				if (!(content->texture = IMG_Load(tex_path[i])))
+				if (!(c->texture = IMG_Load(tex_path[i])))
 					error_parser(my_strcat("Bad file: can't find the file ",\
-								tex_path[i]), file);
+								tex_path[i]), f);
 			}
 		}
 		while (i >= 0)
 			ft_strdel(&tex_path[i--]);
 		free(tex_path);
 	}
-	parse_tex_pro(tmp, content);
+	parse_tex_pro(v, tmp, c, f);
 }
 
 static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
@@ -84,7 +89,7 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 		c->specular = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	else if (!ft_strncmp(tmp, "\tshininess=", 11))
 		c->shininess = ft_clampf(parse_value(tmp), 0.0, 1.0);
-	parse_texture_obj(tmp, c, f);
+	parse_texture_obj(v, tmp, c, f);
 }
 
 static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)

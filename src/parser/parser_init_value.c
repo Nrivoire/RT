@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 16:23:30 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/19 04:08:23 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:29:21 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	init_value_obj(t_lst_obj *content)
 	content->texture = NULL;
 	content->procedural = 0;
 	content->waves = 0;
+	content->fix = (t_vec){1.0, 0.0, 0.0};
 }
 
 void	init_value_light(t_lst_lgt *content)

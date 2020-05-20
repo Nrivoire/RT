@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 15:01:58 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 15:04:59 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,13 @@ void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 	SDL_Color col;
 
 	col = (SDL_Color){0, 0, 0, 255};
-	if (obj->procedural)
+	if (obj->procedural == GRAD)
+	{
+		// obj->color.r = ft_texture_color_rainbow(obj->pos.x * obj->pos.y);
+		// obj->color.g = ft_texture_color_rainbow(obj->pos.y * obj->pos.z);
+		// obj->color.b = ft_texture_color_rainbow(obj->pos.x * obj->pos.z);
+	}
+	if (obj->procedural && obj->procedural != GRAD)
 	{
 		if (obj->procedural == WAVES)
 			quadric_normal_pertu(obj->q, point, obj->waves, normal);
