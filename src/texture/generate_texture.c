@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 15:05:31 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 15:35:38 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 // 	normal->x = (1.0 - currentMat.bump ) * vNormal.x + currentMat.bump * noiseCoefx;
 // }
 
+float			texture_color_move(float x)
+{
+	return ((1 - round((2 * (x - floor(x)) - 1))));
+}
+
 void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 					t_vec *normal)
 {
@@ -43,11 +48,11 @@ void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 	col = (SDL_Color){0, 0, 0, 255};
 	if (obj->procedural == GRAD)
 	{
-		// obj->color.r = ft_texture_color_rainbow(obj->pos.x * obj->pos.y);
-		// obj->color.g = ft_texture_color_rainbow(obj->pos.y * obj->pos.z);
-		// obj->color.b = ft_texture_color_rainbow(obj->pos.x * obj->pos.z);
+		obj->color.r = texture_color_move(obj->pos.x * obj->pos.y);
+		obj->color.g = texture_color_move(obj->pos.y * obj->pos.z);
+		obj->color.b = texture_color_move(obj->pos.x * obj->pos.z);
 	}
-	if (obj->procedural && obj->procedural != GRAD)
+	if (obj->procedural)
 	{
 		if (obj->procedural == WAVES)
 			quadric_normal_pertu(obj->q, point, obj->waves, normal);
