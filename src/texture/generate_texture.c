@@ -6,36 +6,25 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 16:12:28 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 17:18:47 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-   
-//     vNormal.x = (1.0f - currentMat.bump ) * vNormal.x + currentMat.bump * noiseCoefx; 
-//     vNormal.y = (1.0f - currentMat.bump ) * vNormal.y + currentMat.bump * noiseCoefy; 
-//     vNormal.z = (1.0f - currentMat.bump ) * vNormal.z + currentMat.bump * noiseCoefz; 
-   
-//     temp = vNormal * vNormal;
-//     if (temp == 0.0f)
-//     break;
-//     temp = invsqrtf(temp);
-//     vNormal = temp * vNormal;
-// }
 
-// void		bump_mapping(t_env *v, t_vec *normal, t_vec point)
-// {
-// 	float	noiseCoefx;
-// 	float	noiseCoefy;
-// 	float	noiseCoefz;
+void		bump_mapping(t_env *v, t_vec *normal, t_vec point)
+{
+	float	noiseCoefx;
+	float	noiseCoefy;
+	float	noiseCoefz;
 
-// 	noiseCoefx = noise(v, 0.1f * point.x, 0.1f * point.y, 0.1f * point.z);
-// 	noiseCoefy = noise(v, 0.1f * point.y, 0.1f * point.z, 0.1f * point.x);
-// 	noiseCoefz = noise(v, 0.1f * point.z, 0.1f * point.x, 0.1f * point.y);
-// 	normal->x = (1.0f - 0.5f) * normal->x + 0.5f * noiseCoefx;
-// 	normal->y = (1.0f - 0.5f) * normal->y + 0.5f * noiseCoefy;
-// 	normal->z = (1.0f - 0.5f) * normal->z + 0.5f * noiseCoefz;
-// }
+	noiseCoefx = noise(v, 0.1f * point.x, 0.1f * point.y, 0.1f * point.z);
+	noiseCoefy = noise(v, 0.1f * point.y, 0.1f * point.z, 0.1f * point.x);
+	noiseCoefz = noise(v, 0.1f * point.z, 0.1f * point.x, 0.1f * point.y);
+	normal->x = (1.0f - 0.5f) * normal->x + 0.5f * noiseCoefx;
+	normal->y = (1.0f - 0.5f) * normal->y + 0.5f * noiseCoefy;
+	normal->z = (1.0f - 0.5f) * normal->z + 0.5f * noiseCoefz;
+}
 
 float			texture_color_move(float x)
 {
@@ -56,6 +45,8 @@ void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 	}
 	if (obj->procedural)
 	{
+		if (obj->procedural == BUMP)
+			bump_mapping(v, normal, point);
 		if (obj->procedural == WAVES)
 			quadric_normal_pertu(obj->q, point, obj->waves, normal);
 		else if (v->pe[0] != 151)

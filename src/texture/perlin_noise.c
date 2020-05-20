@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 16:12:26 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 18:20:40 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec normal)
 	}
 	else if (obj->procedural == MARBLE)
 	{
-		time = perlin_noise(v, (t_perlin){1, 7, 2}, normal);
-		time = sin(normal.x + time * 12) / 24;
+		time = perlin_noise(v, (t_perlin){1, 4, 4}, normal);
+		time = (1. + cos((normal.x + time) * 12.)) / 3;
 	}
 	else
 		return ;

@@ -43,7 +43,7 @@ object{
 	type= SPHERE
 	radius= 3
 	pos= {7, 0, 0}
-	color= {105, 135, 35}
+	color= {255, 212, 249}
 	texture-procedural= MARBLE
 }
 
