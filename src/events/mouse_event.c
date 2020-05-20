@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 12:39:20 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 16:55:52 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,17 @@ void		mouse_wheel_event(SDL_Event e, t_env *v)
 {
 	if (e.wheel.y != 0)
 	{
-		if (v->selected_obj->type != 2)
+		if (v->selected_obj)
 		{
-			v->ppc.render_mouse = 1;
-			v->selected_obj->radius -= e.wheel.y * 0.01;
-			if (v->selected_obj->radius < 0.1)
-				v->selected_obj->radius = 0.11;
-			else if (v->selected_obj->radius > 10000.01)
-				v->selected_obj->radius = 10000;
+			if (v->selected_obj->type != 2 && v->selected_obj->type != 0)
+			{
+				v->ppc.render_mouse = 1;
+				v->selected_obj->radius -= e.wheel.y * 0.01;
+				if (v->selected_obj->radius < 0.1)
+					v->selected_obj->radius = 0.11;
+				else if (v->selected_obj->radius > 10000.01)
+					v->selected_obj->radius = 10000;
+			}
 		}
 	}
 	else
