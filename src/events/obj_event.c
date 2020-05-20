@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/17 18:09:09 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:28:39 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

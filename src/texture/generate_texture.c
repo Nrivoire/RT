@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   generate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 15:00:09 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 15:05:31 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-// if (currentMat.bump)
-// {
-//     float noiseCoefx = float(noise(0.1 * double(ptHitPoint.x), 0.1 * double(ptHitPoint.y),0.1 * double(ptHitPoint.z)));
-//     float noiseCoefy = float(noise(0.1 * double(ptHitPoint.y), 0.1 * double(ptHitPoint.z),0.1 * double(ptHitPoint.x)));
-//     float noiseCoefz = float(noise(0.1 * double(ptHitPoint.z), 0.1 * double(ptHitPoint.x),0.1 * double(ptHitPoint.y)));
    
 //     vNormal.x = (1.0f - currentMat.bump ) * vNormal.x + currentMat.bump * noiseCoefx; 
 //     vNormal.y = (1.0f - currentMat.bump ) * vNormal.y + currentMat.bump * noiseCoefy; 
@@ -29,9 +23,16 @@
 //     vNormal = temp * vNormal;
 // }
 
-// void	bump_mapping(t_vec normal)
+// void	bump_mapping(t_env *v, t_vec *normal, t_vec point)
 // {
+// 	float	noiseCoefx;
+// 	float	noiseCoefy;
+// 	float	noiseCoefz;
 
+// 	noiseCoefx = noise(v, 0.1 * point.x, 0.1 * point.y, 0.1 * point.z);
+// 	noiseCoefy = noise(v, 0.1 * point.y, 0.1 * point.z, 0.1 * point.x);
+// 	noiseCoefz = noise(v, 0.1 * point.z, 0.1 * point.x, 0.1 * point.y);
+// 	normal->x = (1.0 - currentMat.bump ) * vNormal.x + currentMat.bump * noiseCoefx;
 // }
 
 void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \

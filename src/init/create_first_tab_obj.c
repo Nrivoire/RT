@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_first_tab_obj.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/20 14:59:38 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 15:06:13 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
