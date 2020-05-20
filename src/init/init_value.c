@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:20:49 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/20 13:01:51 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 18:57:38 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ void			scene_value(t_env *v)
 	v->cam.fov_y = -tan(v->h * v->cam.fov / v->w * M_PI / 180 * 0.5);
 	v->width_thread = v->w / 8;
 	v->add_new_obj = 0;
+	// if (!(v->reflect = malloc(sizeof(int) * v->w * v->h)))
+		// ft_error("Malloc error");
 }

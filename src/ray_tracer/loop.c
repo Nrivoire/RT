@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:47:32 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/18 14:46:18 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:58:46 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,19 @@ static void		loop(t_env *v)
 	i = v->thread_index++;
 	pthread_mutex_unlock(&v->mutex);
 	y = -v->ppc.render_size;
-	while ((y += v->ppc.render_size) <= v->h &&
-			(x = i * v->width_thread - v->ppc.render_size))
+	while ((y += v->ppc.render_size) <= v->h 	\
+			&& (x = i * v->width_thread - v->ppc.render_size))
 		while ((x += v->ppc.render_size) < ((i + 1) * v->width_thread))
 		{
 			color = (t_color){0, 0, 0};
-			v->reflect = 1;
+			// v->reflect[y * v->w + x] = 1;
 			if (select_obj(v, create_ray(v, x, y), &obj, &color))
 			{
 				color = limit_color(color);
 				if (obj.texture)
 					calc_light(obj, color, &color);
 			}
+			color = limit_color(color);
 			if (v->ppc.render_size == 1)
 				pixel_put(v, x, y, color);
 			else

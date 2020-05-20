@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 17:15:43 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 20:19:56 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define BUMP 6
 
 # define CELSHADING 30
+
+# define REFLECTION 3
 
 /*
 ** -----------------------------PARSING----------------------------
@@ -287,7 +289,7 @@ typedef struct		s_env
 	t_ui			ui;
 	float			sc_m;
 	Uint32			hover[4];
-	int				reflect;
+	// int				reflect;
 	int				print;
 	int				pe[512];
 	int				thread_index;
@@ -296,6 +298,13 @@ typedef struct		s_env
 	int				cooldown;
 	int				add_new_obj;
 }					t_env;
+
+typedef struct		s_rt
+{
+	t_vec	o;
+	t_vec	ray;
+	int		reflect;
+}					t_rt;
 
 /*
 ** ----------------------------------------------------------------------
@@ -328,8 +337,7 @@ t_color				limit_color(t_color color);
 t_color				is_it_selected(t_env *v, t_tab_obj obj, t_color color);
 t_color				color_ratio(t_color color, float ratio);
 t_color				color_op(t_color c1, char op, t_color c2);
-t_color				ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, 	\
-		t_vec ray);
+t_color				ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt);
 
 /*
 ** --draw_tools--
@@ -393,8 +401,8 @@ void				create_texture_procedural(t_env *v, t_tab_obj *obj,\
 */
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				make_tab_obj(t_env *v);
-t_ray				create_ray(t_env *v, int x, int y);
-int					select_obj(t_env *v, t_ray ray, t_tab_obj *obj,\
+t_rt				create_ray(t_env *v, int x, int y);
+int					select_obj(t_env *v, t_rt rt, t_tab_obj *obj, 	\
 		t_color *light);
 void				multi_thread_with_loop(t_env *v);
 void				loop_event(t_env *v);

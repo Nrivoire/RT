@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/19 19:25:07 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 20:23:33 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,20 @@ t_color	light_diffuse(t_vec point, t_vec *normal, t_tab_lights light)
 	return (color_ratio(light.color, sp_ratio));
 }
 
-t_color	light_reflection(t_env *v, t_vec point, t_vec ray, t_vec normal)
+t_color	light_reflection(t_env *v, t_vec point, t_rt rt, t_vec normal)
 {
-	t_ray		prev;
+	t_rt		prev;
 	t_tab_obj	obj;
 	t_color		light;
 
-	prev = (t_ray){													\
-			point, 													\
-			vec_sub(ray, vec_mult_float(vec_mult_float(normal, 2), 	\
-				vec_scale_product(ray, normal)))					\
-			};
+	prev = (t_rt){point, 												\
+			vec_sub(rt.ray, vec_mult_float(vec_mult_float(normal, 2), 	\
+			vec_scale_product(rt.ray, normal))), rt.reflect};
 	select_obj(v, prev, &obj, &light);
 	return (light);
 }
 
-t_color	light_shine(t_vec point, t_vec ray, t_vec normal, t_tab_lights light)
+t_color	light_shine(t_vec point, t_rt rt, t_vec normal, t_tab_lights light)
 {
 	t_vec	ori;
 	t_vec	reflected;
@@ -65,16 +63,17 @@ t_color	light_shine(t_vec point, t_vec ray, t_vec normal, t_tab_lights light)
 	ori = vec_normalize(vec_sub(point, light.pos));
 	reflected = vec_sub(ori, vec_mult_float(vec_mult_float(normal, 2), 	\
 			vec_scale_product(ori, normal)));
-	ratio = vec_scale_product(reflected, vec_normalize(ray));
+	ratio = vec_scale_product(reflected, vec_normalize(rt.ray));
 	shine = 0.05;
 	return (ratio < shine - 1 											\
 			? color_ratio(light.color, 1 - (ratio + 1) / shine) 		\
 			: (t_color){0, 0, 0});
 }
 
-t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
+t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt)
 {
 	t_vec	normal;
+	t_color	reflect;
 	t_color	light;
 	int		i;
 	t_color	diffuse;
@@ -83,12 +82,14 @@ t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 	normal = quadric_normal(obj->q, point);
 	if (obj->texture || obj->procedural)
 		generate_texture(v, obj, point, &normal);
-	if (vec_scale_product(normal, ray) > 0)
+	if (vec_scale_product(normal, rt.ray) > 0)
 		normal = vec_mult_float(normal, -1);
-/*	if (obj->reflect == 1)
-		return (v->reflect-- 											\
-				? limit_color(light_reflection(v, point, ray, normal)) 	\
-				: (t_color){0, 0, 0});*/
+	reflect = (t_color){0, 0, 0};
+	if (obj->reflect)
+		reflect = rt.reflect-- 											\
+				? color_ratio(light_reflection(v, point, rt, normal), 	\
+					obj->reflect) 										\
+				: (t_color){0, 0, 0};
 	light = v->p.sc.amb_light;
 	shine = (t_color){0, 0, 0};
 	i = -1;
@@ -99,23 +100,24 @@ t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 		{
 			light = color_op(light, '+', diffuse);
 			shine = color_op(shine, '+', 						\
-					light_shine(point, ray, normal, v->tab_lights[i]));
+					light_shine(point, rt, normal, v->tab_lights[i]));
 		}
 	}
-	light = color_op(color_op(light, '*', obj->color), '+', 	\
-			color_ratio(shine, obj->shininess));
-	return (limit_color(light));
+	light = color_op(color_ratio(color_op(light, '*', obj->color), 	\
+			1 - obj->reflect), '+', color_ratio(shine, obj->reflect));
+	return (color_op(light, '+', reflect));
 }
 
-t_ray	create_ray(t_env *v, int x, int y)
+t_rt	create_ray(t_env *v, int x, int y)
 {
 	t_matrix_3_3	cam;
-	t_ray			ray;
+	t_rt			ray;
 
 	matrix_rotation(v->cam.angle_x, v->cam.angle_y, v->cam.angle_z, cam);
 	ray.o = v->cam.ori;
-	ray.d = matrix_mult_vec(cam, 							\
+	ray.ray = matrix_mult_vec(cam, 							\
 			(t_vec){v->cam.fov_x * (2. * x / v->w - 1), 	\
 			v->cam.fov_y * (2. * y / v->h - 1), -1});
+	ray.reflect = REFLECTION;
 	return (ray);
 }
