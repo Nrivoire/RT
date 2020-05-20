@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/19 12:36:18 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/20 12:58:22 by nrivoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			texture/noise.c						\
 			texture/perlin_noise.c				\
 			texture/generate_texture.c			\
+			texture/make_texture_cylinder.c		\
 			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\

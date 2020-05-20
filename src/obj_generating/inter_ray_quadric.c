@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 12:31:29 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 13:26:05 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:59:56 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ t_vec		quadric_normal(t_quadric q, t_vec p)
 			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i}));
 }
 
-t_vec		quadric_normal_pertu(t_quadric q, t_vec p, int waves)
+void		quadric_normal_pertu(t_quadric q, t_vec p, int waves, t_vec *normal)
 {
-	return (vec_normalize((t_vec){							\
-			sin(2 * (waves * q.a * p.x + q.d * p.y + q.e * p.z + q.g)),\
-			2 * q.b * p.y + q.d * p.x + q.f * p.z + q.h, 	\
-			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i}));
+	*normal = vec_normalize((t_vec){
+			sin(2 * (waves * q.a * p.x + q.d * p.y + q.e * p.z + q.g)),
+			2 * q.b * p.y + q.d * p.x + q.f * p.z + q.h,
+			2 * q.c * p.z + q.e * p.x + q.f * p.y + q.i});
 }
 
 static int	inter_ray_quadric_create_equ(t_ray r, t_quadric q, 	\

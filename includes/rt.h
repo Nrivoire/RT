@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 14:28:29 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:57:05 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,9 @@ typedef struct		s_tab_obj
 	t_vec			fix;
 	SDL_Surface		*texture;
 	t_quadric		q;
+	t_plane			plan_cylinder_for_tex;
+	t_vec			vn;
+	t_vec			ve;
 }					t_tab_obj;
 
 typedef struct		s_tab_lights
@@ -313,7 +316,7 @@ void				init_menu(t_env *v, int scale);
 ** --quadric--
 */
 t_vec				quadric_normal(t_quadric q, t_vec p);
-t_vec				quadric_normal_pertu(t_quadric q, t_vec p, int waves);
+void				quadric_normal_pertu(t_quadric q, t_vec p, int waves, t_vec *normal);
 int					inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol);
 int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
 
@@ -368,12 +371,13 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 ** --textures--
 */
 void				generate_texture(t_env *v, t_tab_obj *obj, t_vec point,\
-		t_vec normal);
+		t_vec *normal);
 void				make_texture_sphere(t_tab_obj *obj, t_vec point,\
 		SDL_Color col);
 void				make_texture_plan(t_tab_obj *obj, t_vec point);
 //void				make_texture_cone(t_tab_obj *obj);
-//void				make_texture_cylindre(t_tab_obj *obj);
+void				make_texture_cylinder(t_tab_obj *obj, t_vec pt,
+		SDL_Color col);
 
 /*
 ** --procedural_textures--

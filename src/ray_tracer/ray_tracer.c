@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/19 04:13:06 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/19 19:25:07 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,9 @@ t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 	t_color	diffuse;
 	t_color	shine;
 
-	if (obj->procedural == WAVES)
-		normal = quadric_normal_pertu(obj->q, point, obj->waves);
-	else
-		normal = quadric_normal(obj->q, point);
+	normal = quadric_normal(obj->q, point);
+	if (obj->texture || obj->procedural)
+		generate_texture(v, obj, point, &normal);
 	if (vec_scale_product(normal, ray) > 0)
 		normal = vec_mult_float(normal, -1);
 /*	if (obj->reflect == 1)
@@ -103,8 +102,6 @@ t_color	ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_vec ray)
 					light_shine(point, ray, normal, v->tab_lights[i]));
 		}
 	}
-	if (obj->texture || obj->procedural)
-		generate_texture(v, obj, point, normal);
 	light = color_op(color_op(light, '*', obj->color), '+', 	\
 			color_ratio(shine, obj->shininess));
 	return (limit_color(light));
