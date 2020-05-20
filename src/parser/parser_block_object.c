@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/20 14:47:19 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 15:17:58 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ static void		parse_tex_pro(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 				c->waves = 10;
 		}
 		ft_strstr(tmp, "GRADIENT") ? c->procedural = GRAD : 0;
+		if (ft_strstr(tmp, "BUMP"))
+		{
+			c->procedural = BUMP;
+			c->waves = 0 + ft_clamp(parse_int_value(tmp), 0, 100);
+			if (c->waves == 0)
+				c->waves = 10;
+		}
 	}
 	if (!ft_strncmp(tmp, "\tfix=", 5))
 	{

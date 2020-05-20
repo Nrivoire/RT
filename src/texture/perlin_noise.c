@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 15:00:19 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 15:18:44 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,6 @@ float		perlin_noise(t_env *v, t_perlin p, t_vec normal)
 	lim = (1 - p.persistence) / (1 - amplitude);
 	return (r * lim);
 }
-
-// t_vec	v3add(t_vec a, t_vec b)
-// {
-// 	t_vec	ret;
-
-// 	ret.x = a.x + b.x;
-// 	ret.y = a.y + b.y;
-// 	ret.z = a.z + b.z;
-// 	return (ret);
-// }
-
-// void		bump(t_env *v, t_tab_obj *obj, t_vec normal, float **f)
-// {
-// 	t_vec		nv;
-// 	float		e;
-
-// 	if (m->texture < 0 || m->texture > 5)
-// 		e = obj->waves;
-// 	else
-// 		e = ((*f)[0] + (*f)[1] + (*f)[2]) / 3;
-// 	nv.x = noise(v, obj->pos.x - e, obj->pos.y, obj->pos.z)
-// 		- noise(v, obj->pos.x + e, obj->pos.y, obj->pos.z);
-// 	nv.y = noise(v, obj->pos.x, obj->pos.y - e, obj->pos.z)
-// 		- noise(v, obj->pos.x, obj->pos.y + e, obj->pos.z);
-// 	nv.z = noise(v, obj->pos.x, obj->pos.y, obj->pos.z - e)
-// 		- noise(v, obj->pos.x, obj->pos.y, obj->pos.z + e);
-// 	normal = v3add(normal, nv);
-// }
 
 void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec normal)
 {
@@ -93,10 +65,7 @@ void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec normal)
 		// 	else
 		// 		obj->color = (t_color){0,0,0};
 		// }
-
-
 		time = 1;
-		//bump(v, obj, normal, 10);
 	}
 	else
 		return ;

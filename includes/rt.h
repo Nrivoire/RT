@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 14:57:05 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 15:15:35 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define MARBLE 3
 # define WAVES 4
 # define GRAD 5
+# define BUMP 6
 
 # define CELSHADING 30
 
