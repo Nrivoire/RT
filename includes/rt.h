@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 19:02:26 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:52:56 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,6 @@ typedef struct		s_lst_obj
 	float			reflect;
 	float			refract;
 	float			transparency;
-	float			absorbtion;
-	float			ambient;
-	float			diffuse;
-	float			specular;
 	float			shininess;
 	int				procedural;
 	int				tx_pertu;

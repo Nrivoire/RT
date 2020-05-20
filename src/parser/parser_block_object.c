@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/20 19:00:11 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:58:43 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Parse the values ​​of the objects in the file.
 */
 
-static void		parse_tex_pro(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
+static void		parse_tex_pro(char *tmp, t_lst_obj *c)
 {
 	if (!ft_strncmp(tmp, "\ttexture-procedural=", 20))
 	{
@@ -39,14 +39,9 @@ static void		parse_tex_pro(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 				c->tx_pertu = 50;
 		}
 	}
-	if (!ft_strncmp(tmp, "\tfix=", 5))
-	{
-		parse_xyz(tmp, v, f);
-		c->fix = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
-	}
 }
 
-static void		parse_texture_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
+static void		parse_texture_obj(char *tmp, t_lst_obj *c, t_file *f)
 {
 	int		i;
 	char	**tex_path;
@@ -70,7 +65,7 @@ static void		parse_texture_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 			ft_strdel(&tex_path[i--]);
 		free(tex_path);
 	}
-	parse_tex_pro(v, tmp, c, f);
+	parse_tex_pro(tmp, c);
 }
 
 static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
@@ -86,17 +81,14 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 		c->refract = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	else if (!ft_strncmp(tmp, "\ttransparency=", 14))
 		c->transparency = ft_clampf(parse_value(tmp), 0.0, 1.0);
-	else if (!ft_strncmp(tmp, "\tabsorbtion=", 12))
-		c->absorbtion = ft_clampf(parse_value(tmp), 0.0, 1.0);
-	else if (!ft_strncmp(tmp, "\tambient=", 9))
-		c->ambient = ft_clampf(parse_value(tmp), 0.0, 1.0);
-	else if (!ft_strncmp(tmp, "\tdiffuse=", 9))
-		c->diffuse = ft_clampf(parse_value(tmp), 0.0, 1.0);
-	else if (!ft_strncmp(tmp, "\tspecular=", 10))
-		c->specular = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	else if (!ft_strncmp(tmp, "\tshininess=", 11))
 		c->shininess = ft_clampf(parse_value(tmp), 0.0, 1.0);
-	parse_texture_obj(v, tmp, c, f);
+	else if (!ft_strncmp(tmp, "\tfix=", 5))
+	{
+		parse_xyz(tmp, v, f);
+		c->fix = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
+	}
+	parse_texture_obj(tmp, c, f);
 }
 
 static void		parse_xyz_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)

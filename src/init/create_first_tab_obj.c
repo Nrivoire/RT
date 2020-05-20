@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/20 19:02:09 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:45:29 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ static t_tab_obj	make_obj(t_lst_obj *p)
 	return (data);
 }
 
+static void			create_first_tab_obj_2(t_env *v, int i)
+{
+	v->tab_obj[i].plan_cylinder_for_tex = (t_plane){v->tab_obj[i].dir.x,
+			v->tab_obj[i].dir.y, v->tab_obj[i].dir.z,
+			-v->tab_obj[i].dir.x * v->tab_obj[i].pos.x -
+			v->tab_obj[i].dir.y * v->tab_obj[i].pos.y -
+			v->tab_obj[i].dir.z * v->tab_obj[i].pos.z};
+	v->tab_obj[i].ve = vec_normalize(vec_cross_product((t_vec){1, 0, 0},
+			v->tab_obj[i].dir));
+	v->tab_obj[i].vn = vec_normalize(vec_cross_product(v->tab_obj[i].dir,
+			v->tab_obj[i].ve));
+}
+
 void				create_first_tab_obj(t_env *v)
 {
 	int				i;
@@ -70,17 +83,7 @@ void				create_first_tab_obj(t_env *v)
 			check_plan(i, v);
 		v->tab_obj[i] = make_obj(tmp);
 		if (v->tab_obj[i].type == 4 && v->tab_obj[i].texture)
-		{
-			v->tab_obj[i].plan_cylinder_for_tex = (t_plane){v->tab_obj[i].dir.x,
-					v->tab_obj[i].dir.y, v->tab_obj[i].dir.z,
-					-v->tab_obj[i].dir.x * v->tab_obj[i].pos.x -
-					v->tab_obj[i].dir.y * v->tab_obj[i].pos.y -
-					v->tab_obj[i].dir.z * v->tab_obj[i].pos.z};
-			v->tab_obj[i].ve = vec_normalize(vec_cross_product((t_vec){1, 0, 0},
-					v->tab_obj[i].dir));
-			v->tab_obj[i].vn = vec_normalize(vec_cross_product(v->tab_obj[i].dir,
-					v->tab_obj[i].ve));
-		}
+			create_first_tab_obj_2(v, i);
 		i++;
 		tmp = tmp->next;
 	}
