@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/19 19:24:24 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 13:32:16 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,9 @@ typedef struct		s_tab_obj
 	int				waves;
 	SDL_Surface		*texture;
 	t_quadric		q;
+	t_plane			plan_cylinder_for_tex;
+	t_vec			vn;
+	t_vec			ve;
 }					t_tab_obj;
 
 typedef struct		s_tab_lights
@@ -373,7 +376,8 @@ void				make_texture_sphere(t_tab_obj *obj, t_vec point,\
 		SDL_Color col);
 void				make_texture_plan(t_tab_obj *obj, t_vec point);
 //void				make_texture_cone(t_tab_obj *obj);
-//void				make_texture_cylindre(t_tab_obj *obj);
+void				make_texture_cylinder(t_tab_obj *obj, t_vec pt,
+		SDL_Color col);
 
 /*
 ** --procedural_textures--
