@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 17:15:43 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:02:26 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ typedef struct		s_lst_obj
 	float			specular;
 	float			shininess;
 	int				procedural;
-	int				waves;
+	int				tx_pertu;
+	int				bump;
 	t_vec			fix;
 	SDL_Surface		*texture;
 	struct s_lst_obj*next;
@@ -172,7 +173,8 @@ typedef struct		s_tab_obj
 	float			refract;
 	float			shininess;
 	int				procedural;
-	int				waves;
+	int				tx_pertu;
+	int				bump;
 	t_vec			fix;
 	SDL_Surface		*texture;
 	t_quadric		q;

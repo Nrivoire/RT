@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_first_tab_obj.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/20 15:06:13 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:02:09 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static t_tab_obj	make_obj(t_lst_obj *p)
 	data.refract = p->refract;
 	data.shininess = p->shininess;
 	data.procedural = p->procedural;
-	data.waves = p->waves;
+	data.tx_pertu = p->tx_pertu;
+	data.bump = p->bump;
 	data.fix = p->fix;
 	data.texture = p->texture;
 	data.plan_cylinder_for_tex = (t_plane){0, 0, 0, 0};
