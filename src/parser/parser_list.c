@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:54:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/19 04:09:55 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:38:40 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 	new->texture = content.texture;
 	new->procedural = content.procedural;
 	new->waves = content.waves;
+	new->fix = content.fix;
 	new->next = (!*ob) ? NULL : *ob;
 	*ob = new;
 }

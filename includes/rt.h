@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/19 12:48:33 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 14:28:29 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@
 # define MARBLE 3
 # define WAVES 4
 # define GRAD 5
-
-# define SCALE_WAVES 100
 
 # define CELSHADING 30
 
@@ -95,6 +93,7 @@ typedef struct		s_lst_obj
 	float			shininess;
 	int				procedural;
 	int				waves;
+	t_vec			fix;
 	SDL_Surface		*texture;
 	struct s_lst_obj*next;
 }					t_lst_obj;
@@ -173,6 +172,7 @@ typedef struct		s_tab_obj
 	float			shininess;
 	int				procedural;
 	int				waves;
+	t_vec			fix;
 	SDL_Surface		*texture;
 	t_quadric		q;
 }					t_tab_obj;

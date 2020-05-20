@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screenshot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 18:17:11 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/16 19:08:19 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 04:56:00 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@
 static void		save_screen(t_env *v, char *full)
 {
 	SDL_Surface	*save;
-	//char		*open;
 
 	if (!(save = malloc(sizeof(SDL_Surface *) * v->w * v->h + 1)))
 		return ;
 	save = SDL_GetWindowSurface(v->win);
-	IMG_SavePNG(save, full);
-	//system(open = my_strcat("open ", full));
+	if (IMG_SavePNG(save, full) != 0)
+		ft_putendl("Error : screenshot couldn't be saved.");
 	SDL_FreeSurface(save);
-	//free(open);
 }
 
 void			screenshot(t_env *v, int id)

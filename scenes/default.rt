@@ -41,11 +41,12 @@ object{
 	type= CYLINDER
 	radius= 1.2
 	pos= {-1, 0, 0}
-	dir= {1, 1, -0.1}
+	dir= {-1, -1, 0.1}
 	color= 0x00FF00
 	reflect= 0
 	refract= 0
 	shininess= 0
+	texture= "./textures/checkboard_test.jpg"
 }
 
 object{
