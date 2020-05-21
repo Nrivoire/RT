@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer_light.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 22:46:45 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/20 22:47:13 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 14:10:19 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,13 @@ t_color	light_diffuse(t_vec point, t_vec *normal, t_tab_lights light)
 
 t_color	light_reflection(t_env *v, t_vec point, t_rt rt, t_vec normal)
 {
-	t_rt		prev;
 	t_tab_obj	obj;
 	t_color		light;
 
-	prev = (t_rt){point, 												\
-			vec_sub(rt.ray, vec_mult_float(vec_mult_float(normal, 2), 	\
-			vec_scale_product(rt.ray, normal))), rt.reflect};
-	select_obj(v, prev, &obj, &light);
-	return (light);
+	rt.o = point;
+	rt.ray = vec_sub(rt.ray, vec_mult_float(vec_mult_float(normal, 2), 	\
+			vec_scale_product(rt.ray, normal)));
+	return (select_obj(v, rt, &obj, &light) ? light : (t_color){0, 0, 0});
 }
 
 t_color	light_shine(t_vec point, t_rt rt, t_vec normal, t_tab_lights light)
@@ -68,4 +66,14 @@ t_color	light_shine(t_vec point, t_rt rt, t_vec normal, t_tab_lights light)
 	return (ratio < shine - 1 											\
 			? color_ratio(light.color, 1 - (ratio + 1) / shine) 		\
 			: (t_color){0, 0, 0});
+}
+
+t_color	light_refraction(t_env *v, t_vec point, t_rt rt, t_vec normal)
+{
+	t_tab_obj	obj;
+	t_color		light;
+
+	rt.o = point;
+	return (select_obj(v, rt, &obj, &light) ? light : (t_color){0, 0, 0});
+	(void)normal;
 }

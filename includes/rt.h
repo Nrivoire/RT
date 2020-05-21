@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 10:54:41 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 14:00:07 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 # define CELSHADING 30
 
-# define REFLECTION 3
+# define REFLECTION 10
 
 /*
 ** -----------------------------PARSING----------------------------
@@ -300,6 +300,7 @@ typedef struct		s_tracer
 {
 	t_vec			normal;
 	t_color			reflect;
+	t_color			refract;
 	t_color			light;
 	t_color			diffuse;
 	t_color			shine;
@@ -419,6 +420,8 @@ int					light_shadow(t_env *v, t_vec point, t_vec normal, 	\
 t_color				light_diffuse(t_vec point, t_vec *normal, 			\
 		t_tab_lights light);
 t_color				light_reflection(t_env *v, t_vec point, t_rt rt, 	\
+		t_vec normal);
+t_color				light_refraction(t_env *v, t_vec point, t_rt rt, 	\
 		t_vec normal);
 t_color				light_shine(t_vec point, t_rt rt, t_vec normal, 	\
 		t_tab_lights light);

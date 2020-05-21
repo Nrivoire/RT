@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/21 01:05:06 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 14:13:46 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,23 @@ t_color		ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt)
 		generate_texture(v, obj, point, &t.normal);
 	if (vec_scale_product(t.normal, rt.ray) > 0)
 		t.normal = vec_mult_float(t.normal, -1);
+	t.refract = (t_color){0, 0, 0};
 	t.reflect = (t_color){0, 0, 0};
-	if (obj->reflect)
-		t.reflect = rt.reflect-- ? color_ratio(light_reflection(v, point,\
-		rt, t.normal), obj->reflect) : (t_color){0, 0, 0};
+	if (obj->refract && rt.reflect--)
+		t.refract = color_ratio(light_refraction(v, point, rt, t.normal), 	\
+				obj->refract);
+	if (obj->reflect && rt.reflect--)
+		t.reflect = color_ratio(light_reflection(v, point, rt, t.normal), 	\
+				obj->reflect);
 	t.light = v->p.sc.amb_light;
 	t.shine = (t_color){0, 0, 0};
 	t.i = -1;
 	while (++t.i < v->nb_l)
 		ray_loop(v, &t, point, rt);
 	t.light = color_op(color_ratio(color_op(t.light, '*', obj->color), 	\
-			1 - obj->reflect), '+', color_ratio(t.shine, obj->reflect));
-	return (color_op(t.light, '+', t.reflect));
+			1 - obj->refract - obj->reflect), 							\
+			'+', color_ratio(t.shine, obj->reflect));
+	return (color_op(color_op(t.light, '+', t.refract), '+', t.reflect));
 }
 
 t_rt		create_ray(t_env *v, int x, int y)
