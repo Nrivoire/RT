@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/21 13:18:01 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 15:23:01 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,19 @@ static void		parse_tex_pro(char *tmp, t_lst_obj *c)
 		{
 			c->procedural = WAVES;
 			c->tx_pertu = 0 + ft_clamp(parse_int_value(tmp), 0, 100);
-			if (c->tx_pertu == 0)
-				c->tx_pertu = 10;
+			c->tx_pertu == 0 ? c->tx_pertu = 10 : 0;
 		}
-		ft_strstr(tmp, "GRADIENT") ? c->procedural = GRAD : 0;
-		if (ft_strstr(tmp, "BUMP"))
+		else if (ft_strstr(tmp, "GRADIENT"))
+		{
+			c->procedural = GRAD;
+			c->tx_pertu = 0 + ft_clamp(parse_int_value(tmp), 1, 10);
+			c->tx_pertu == 0 ? c->tx_pertu = 4 : 0;
+		}
+		else if (ft_strstr(tmp, "BUMP"))
 		{
 			c->bump = BUMP;
 			c->tx_pertu = 0 + ft_clamp(parse_int_value(tmp), 0, 100);
-			if (c->tx_pertu == 0)
-				c->tx_pertu = 50;
+			c->tx_pertu == 0 ? c->tx_pertu = 50 : 0;
 		}
 	}
 }

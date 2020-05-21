@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 13:01:40 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 15:25:47 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,30 @@ float		perlin_noise(t_env *v, t_perlin p, t_vec normal)
 	return (r * lim);
 }
 
+void		grad_texture(t_tab_obj *obj, float time)
+{
+	t_vec		grad;
+
+	grad = obj->pos;
+	grad.x < 0 ? grad.x = -grad.x : 0;
+	grad.y < 0 ? grad.y = -grad.y : 0;
+	grad.z < 0 ? grad.z = -grad.z : 0;
+	grad.x > 255 ? grad.x = -grad.x : 0;
+	grad.y > 255 ? grad.y = -grad.y : 0;
+	grad.z > 255 ? grad.z = -grad.z : 0;
+	if (obj->procedural == GRAD)
+	{
+		if (time >= 0.0 && time < 0.15)
+			obj->color = (t_color){grad.x, grad.y, grad.z};
+		else if (time < 0.35)
+			obj->color = (t_color){grad.y, grad.z, grad.x};
+		else if (time < 0.70)
+			obj->color = (t_color){grad.z, grad.x, grad.y};
+		else
+			obj->color = (t_color){grad.z, grad.x, grad.y};
+	}
+}
+
 void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec *normal)
 {
 	float	time;
@@ -51,7 +75,7 @@ void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec *normal)
 	}
 	else if (obj->procedural == GRAD)
 	{
-		time = perlin_noise(v, (t_perlin){1, 2, 2}, *normal);
+		time = perlin_noise(v, (t_perlin){1, obj->tx_pertu, 2}, *normal);
 		time = (1. + sin((time / 2.) * 20.)) / 2;
 	}
 	else
@@ -59,19 +83,5 @@ void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec *normal)
 	if (time >= 0 && obj->procedural != GRAD)
 		obj->color = (t_color){obj->color.r * time, obj->color.g * time,
 				obj->color.b * time};
-	//printf("%f time\n", time);
-	// if (time >= 0 && obj->procedural == GRAD)
-	// 	obj->color = (t_color){obj->color.r * 10, obj->color.g * 10,
-	// 			obj->color.b * 10};
-	if (obj->procedural == GRAD)
-	{
-		if (time < 0.30)
-			obj->color = (t_color){1, 4, 209};
-		else if (time < 0.60)
-			obj->color = (t_color){5, 3, 38};
-		else if (time < 0.9)
-			obj->color = (t_color){255 * time, 163, 238};
-		else
-			obj->color = (t_color){0, 30, 8};
-	}
+	grad_texture(obj, time);
 }

@@ -3,7 +3,7 @@ scene{
 }
 
 camera{
-	pos= {7, 0, 25}
+	pos= {7, 0.8, 25}
 	dir= {0, 15, 0}
 	fov= 60
 }
@@ -18,7 +18,7 @@ light{
 object{
 	type= SPHERE
 	radius= 3
-	pos= {0, 7, 0}
+	pos= {0, 7.8, 0}
 	color= 0x855E42
 	texture-procedural= WOOD
 }
@@ -26,7 +26,7 @@ object{
 object{
 	type= SPHERE
 	radius= 3
-	pos= {0, -7, -1}
+	pos= {0, -6.2, -1}
 	color= 0x605ADF
 	texture-procedural= PERLIN
 }
@@ -34,7 +34,7 @@ object{
 object{
 	type= SPHERE
 	radius= 3
-	pos= {-7, 0, 1}
+	pos= {-7, 0.8, 1}
 	color= 0xE6E4D8
 	texture-procedural= WAVES 15
 }
@@ -42,7 +42,7 @@ object{
 object{
 	type= SPHERE
 	radius= 3
-	pos= {7, 0, 0}
+	pos= {7, 0.8, 0}
 	color= {255, 212, 249}
 	texture-procedural= MARBLE
 }
@@ -50,7 +50,8 @@ object{
 object{
 	type= SPHERE
 	radius= 3
-	pos= {0, 0, 0}
+	pos= {0, 0.8, -1.4}
 	color= 0xFF00DF
-	texture-procedural= GRADIENT
+	shininess= 1.0
+	texture-procedural= GRADIENT 2
 }
