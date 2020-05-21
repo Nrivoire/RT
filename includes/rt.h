@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 14:20:39 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 16:09:10 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define CELSHADING 30
 
 # define REFLECTION 10
+# define REFRACTION 30
 
 /*
 ** -----------------------------PARSING----------------------------
@@ -312,6 +313,7 @@ typedef struct		s_rt
 {
 	t_vec	o;
 	t_vec	ray;
+	int		refract;
 	int		reflect;
 }					t_rt;
 
