@@ -1,0 +1,110 @@
+scene{
+	ambient-light= {0.09, 0.09, 0.09}
+}
+
+camera{
+	pos= {0, 1, 15}
+	dir= {-5, 0, 0}
+	fov= 60
+}
+
+light{
+	type= POINT
+	color= {100, 200, 200}
+	pos= {0.0, 0.0, -19.0}
+	intensity= 0.1
+}
+
+light{
+	type= POINT
+	color= {255, 255, 255}
+	pos= {0.0, -1.0, -8.0}
+	intensity= 0.1
+}
+
+# box
+object{
+	type= PLANE
+	point_a= {15, 8, 30}
+	point_b= {-15, 8, 30}
+	point_c= {15, 8, -10}
+	color= {15, 15, 15}
+}
+
+object{
+	type= PLANE
+	point_a= {15, -8, 30}
+	point_b= {-15, -8, 30}
+	point_c= {15, -8, -10}
+	color= {102, 65, 25}
+	reflect= 0.2
+}
+
+object{
+	type= PLANE
+	point_a= {-10, 0, 15}
+	point_b= {-10, 0, -15}
+	point_c= {-10, 15, 15}
+	color= {171, 19, 7}
+}
+
+object{
+	type= PLANE
+	point_a= {10, 0, 15}
+	point_b= {10, 0, -15}
+	point_c= {10, 15, 15}
+	color= {12, 39, 75}
+}
+
+object{
+	type= PLANE
+	point_a= {-15, 10, -25}
+	point_b= {15, 10, -25}
+	point_c= {15, -10, -25}
+	color= {112, 75, 35}
+}
+
+object{
+	type= PLANE
+	point_a= {-15, 10, 16}
+	point_b= {15, 10, 16}
+	point_c= {15, -10, 16}
+	color= {112, 75, 35}
+}
+
+object{
+	type= SPHERE
+	radius= 3.5
+	pos= {4.5, -3.5, -13}
+	color= {35, 35, 35}
+	shininess= 1.0
+	reflect= 1.0
+}
+
+object{
+	type= SPHERE
+	radius= 3.3
+	pos= {-5, -4.2, -18}
+	color= {35, 35, 35}
+	shininess= 1.0
+	reflect= 1.0
+	texture-procedural= WAVES 8
+}
+
+object{
+	type= CONE
+	radius= 0.2
+	pos= {0, 0, 16}
+	dir= {0, 1, 0}
+	color= {35, 35, 35}
+	reflect= 1.0
+}
+
+object{
+	type= SPHERE
+	radius= 3
+	pos= {-5, 0, 0}
+	color= {200, 200, 255}
+	refract= 0.8
+	reflect= 0.1
+}
