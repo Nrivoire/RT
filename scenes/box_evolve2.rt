@@ -106,5 +106,14 @@ object{
 	pos= {-5, 0, 0}
 	color= {200, 200, 255}
 	refract= 0.8
-	reflect= 0.1
+reflect= 0.1
+}
+
+object{
+	type= SPHERE
+	radius= 3
+	pos= {5, 0, 0}
+	color= {200, 200, 255}
+	refract= 0.2
+reflect= 0.1
 }
