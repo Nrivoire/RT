@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_texture_plan.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:17:20 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/04/02 13:58:29 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 06:11:16 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

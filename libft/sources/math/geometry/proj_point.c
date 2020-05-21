@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proj_point.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 10:17:15 by slopez            #+#    #+#             */
-/*   Updated: 2020/04/12 21:29:30 by qpupier          ###   ########lyon.fr   */
+/*   Created: 2020/02/01 10:17:15 by qpupier           #+#    #+#             */
+/*   Updated: 2020/05/21 02:43:28 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

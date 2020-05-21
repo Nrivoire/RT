@@ -88,7 +88,7 @@ object{
 	color= {35, 35, 35}
 	shininess= 1.0
 	reflect= 1.0
-	texture-procedural= WAVES
+	texture-procedural= WAVES 8
 }
 
 object{
@@ -97,4 +97,5 @@ object{
 	pos= {0, 0, 16}
 	dir= {0, 1, 0}
 	color= {35, 35, 35}
+	reflect= 1.0
 }

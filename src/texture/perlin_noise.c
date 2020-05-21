@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perlin_noise.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 18:20:40 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 06:32:25 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec normal)
 	{
 		time = perlin_noise(v, (t_perlin){1, 4, 4}, normal);
 		time = (1. + cos((normal.x + time) * 12.)) / 3;
+	}
+	else if (obj->procedural == GRAD)
+	{
+		time = perlin_noise(v, (t_perlin){1, 2, 2}, normal);
+		time = (1. + sin((time / 2.) * 20.)) / 2;
 	}
 	else
 		return ;

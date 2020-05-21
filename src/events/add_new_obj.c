@@ -6,13 +6,13 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/20 19:10:41 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 04:44:31 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-static void		recreate_tab(t_env *v, t_tab_obj new_obj)
+void			recreate_tab(t_env *v, t_tab_obj new_obj)
 {
 	int			i;
 	t_tab_obj	*old_tab;
@@ -31,6 +31,34 @@ static void		recreate_tab(t_env *v, t_tab_obj new_obj)
 	v->tab_obj[i] = new_obj;
 	v->nb_o = v->nb_o + 1;
 	free(old_tab);
+}
+
+static void		set_torre(t_env *v, float x, float y, float z)
+{
+	if (v->add_new_obj == 5)
+	{
+		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 1, 2, (t_vec){x + 3, y,
+		z}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0,
+		0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0}, 0, 0, 0, 0, 0, 0,
+		(t_vec){0, 0, 0}, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		(t_plane){0, 0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}});
+		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 1, 2, (t_vec){x - 3, y,
+		z}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0,
+		0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0}, 0, 0, 0, 0, 0, 0,
+		(t_vec){0, 0, 0}, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		(t_plane){0, 0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}});
+		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 1, 2, (t_vec){x, y + 3,
+		z}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0,
+		0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0}, 0, 0, 0, 0, 0, 0,
+		(t_vec){0, 0, 0}, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		(t_plane){0, 0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}});
+		recreate_tab(v, (t_tab_obj){v->nb_o + 1, 1, 2, (t_vec){x, y - 3,
+		z}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0,
+		0}, (t_color){205 / 255.0, 35 / 255.0, 35 / 255.0}, 0, 0, 0, 0, 0, 0,
+		(t_vec){0, 0, 0}, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		(t_plane){0, 0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}});
+		full_torre(v, x, y, z);
+	}
 }
 
 static void		set_new_obj(t_env *v, float x, float y, float z)
@@ -59,7 +87,6 @@ static void		set_new_obj(t_env *v, float x, float y, float z)
 		(t_vec){15, -3, -10}, (t_color){30 / 255.0, 30 / 255.0, 30 / 255.0}, 0,\
 		0, 0, 0, 0, 0, (t_vec){0, 0, 0}, NULL, (t_quadric){0, 0, 0, 0, 0, 0, 0,\
 		0, 0, 0}, (t_plane){0, 0, 0, 0}, (t_vec){0, 0, 0}, (t_vec){0, 0, 0}});
-	v->add_new_obj = 0;
 }
 
 void			add_new_obj(t_env *v, SDL_Event e)
@@ -73,4 +100,7 @@ void			add_new_obj(t_env *v, SDL_Event e)
 			(2. * e.button.y / v->h - 1), -1});
 	set_new_obj(v, v->cam.ori.x + ray.d.x * 20,
 			v->cam.ori.y + ray.d.y * 20, v->cam.ori.z + ray.d.z * 20);
+	set_torre(v, v->cam.ori.x + ray.d.x * 20,
+			v->cam.ori.y + ray.d.y * 20, v->cam.ori.z + ray.d.z * 20);
+	v->add_new_obj = 0;
 }

@@ -34,3 +34,10 @@ object{
 	pos= {-1600.000, 0, 0}
 	texture= "textures/sun.jpg"
 }
+
+object{
+	type= SPHERE
+	radius= 9000.000
+	pos= {0, 0, 0}
+	texture= "textures/2k_stars_milky_way.jpg"
+}

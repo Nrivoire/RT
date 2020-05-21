@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:53:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/17 19:51:04 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 04:56:35 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,10 @@ int			is_it_a_button(SDL_Event e)
 		return (3);
 	else if (mouse_location(e, (t_between){189, 365, 235, 275}))
 		return (2);
+	else if (mouse_location(e, (t_between){335, 365, 10, 30}))
+	{
+		ft_putendl("Easter egg: Torre selected");
+		return (5);
+	}
 	return (0);
 }

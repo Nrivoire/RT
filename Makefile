@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/20 12:58:22 by nrivoire         ###   ########lyon.fr    #
+#    Updated: 2020/05/21 04:43:53 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRC_NAME = 	draw_tools/display.c				\
 			events/plane_event.c				\
 			events/rotate.c						\
 			events/add_new_obj.c				\
+			events/add_secret_torre_up.c		\
+			events/add_secret_torre_down.c		\
 			init/create_first_tab_obj.c			\
 			init/create_first_tab_lgt.c			\
 			init/init_value.c					\
@@ -70,6 +72,7 @@ SRC_NAME = 	draw_tools/display.c				\
 			ray_tracer/colors.c					\
 			ray_tracer/loop.c					\
 			ray_tracer/ray_tracer.c				\
+			ray_tracer/ray_tracer_light.c		\
 			ray_tracer/select_obj.c				\
 			texture/make_texture_plan.c			\
 			texture/make_texture_sphere.c		\

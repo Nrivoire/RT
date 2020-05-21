@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 19:19:21 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 01:17:42 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 {
 	if (mouse == 1)
 	{
-		//v->ppc.render_mouse = 1;
-		// if (abs(e.motion.xrel) > abs(e.motion.yrel))
-		// 	v->cam.angle_y -= (e.motion.xrel * 0.1) * (M_PI / 180);
-		// else
-		// 	v->cam.angle_x -= (e.motion.yrel * 0.1) * (M_PI / 180);
-		// SDL_SetRelativeMouseMode(SDL_TRUE);
-		
+		v->ppc.render_mouse = 1;
+		if (abs(e.motion.xrel) > abs(e.motion.yrel))
+			v->cam.angle_y -= (e.motion.xrel * 0.1) * (M_PI / 180);
+		else
+			v->cam.angle_x -= (e.motion.yrel * 0.1) * (M_PI / 180);
+		SDL_SetRelativeMouseMode(SDL_TRUE);
 	}
 	if (mouse == 4)
 	{

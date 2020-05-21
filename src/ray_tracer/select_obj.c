@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:20:05 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/20 20:00:20 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 23:02:44 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				select_obj(t_env *v, t_rt rt, t_tab_obj *obj, t_color *light)
 	rt.o = vec_add(rt.o, vec_mult_float(vec_normalize(rt.ray), 0.01));
 	i = -1;
 	while (++i < v->nb_o)
-		if (inter_ray_quadric((t_ray){rt.o, rt.ray}, v->tab_obj[i].q, &sol) 	\
+		if (inter_ray_quadric((t_ray){rt.o, rt.ray}, v->tab_obj[i].q, &sol) \
 				&& choose_closest_point(rt.o, sol, &dist, &point))
 		{
 			v->tab_obj[i].i = i;

@@ -51,6 +51,6 @@ object{
 	type= SPHERE
 	radius= 3
 	pos= {0, 0, 0}
-	color= 0x855E42
+	color= 0xFF00DF
 	texture-procedural= GRADIENT
 }

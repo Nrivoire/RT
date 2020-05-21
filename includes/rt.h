@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 20:36:49 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 06:44:05 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,6 @@ typedef struct		s_env
 	t_ui			ui;
 	float			sc_m;
 	Uint32			hover[4];
-	// int				reflect;
 	int				print;
 	int				pe[512];
 	int				thread_index;
@@ -296,6 +295,16 @@ typedef struct		s_env
 	int				cooldown;
 	int				add_new_obj;
 }					t_env;
+
+typedef struct		s_tracer
+{
+	t_vec			normal;
+	t_color			reflect;
+	t_color			light;
+	t_color			diffuse;
+	t_color			shine;
+	int				i;
+}					t_tracer;
 
 typedef struct		s_rt
 {
@@ -324,7 +333,8 @@ void				init_menu(t_env *v, int scale);
 ** --quadric--
 */
 t_vec				quadric_normal(t_quadric q, t_vec p);
-void				quadric_normal_pertu(t_quadric q, t_vec p, int waves, t_vec *normal);
+void				quadric_normal_pertu(t_quadric q, t_vec p, int waves, 	\
+		t_vec *normal);
 int					inter_ray_quadric(t_ray r, t_quadric q, t_sol_2_vec *sol);
 int					inter_seg_quadric(t_seg s, t_quadric q, t_sol_2_vec *sol);
 
@@ -400,10 +410,18 @@ void				create_texture_procedural(t_env *v, t_tab_obj *obj,\
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				make_tab_obj(t_env *v);
 t_rt				create_ray(t_env *v, int x, int y);
-int					select_obj(t_env *v, t_rt rt, t_tab_obj *obj, 	\
+int					select_obj(t_env *v, t_rt rt, t_tab_obj *obj, 		\
 		t_color *light);
 void				multi_thread_with_loop(t_env *v);
 void				loop_event(t_env *v);
+int					light_shadow(t_env *v, t_vec point, t_vec normal, 	\
+		t_tab_lights light);
+t_color				light_diffuse(t_vec point, t_vec *normal, 			\
+		t_tab_lights light);
+t_color				light_reflection(t_env *v, t_vec point, t_rt rt, 	\
+		t_vec normal);
+t_color				light_shine(t_vec point, t_rt rt, t_vec normal, 	\
+		t_tab_lights light);
 
 /*
 ** --usage--
@@ -490,5 +508,15 @@ void				put_text(t_env *v, SDL_Surface *sur, int s_x, int s_y);
 int					is_it_a_button(SDL_Event e);
 void				add_new_obj(t_env *v, SDL_Event e);
 void				over_a_button(t_env *v, SDL_Event e);
+void				recreate_tab(t_env *v, t_tab_obj new_obj);
+void				full_torre(t_env *v, float x, float y, float z);
+void				torre_upleft(t_env *v, float x, float y, float z);
+void				torre_upleft_2(t_env *v, float x, float y, float z);
+void				torre_upright(t_env *v, float x, float y, float z);
+void				torre_upright_2(t_env *v, float x, float y, float z);
+void				torre_downleft(t_env *v, float x, float y, float z);
+void				torre_downleft_2(t_env *v, float x, float y, float z);
+void				torre_downright(t_env *v, float x, float y, float z);
+void				torre_downright_2(t_env *v, float x, float y, float z);
 
 #endif

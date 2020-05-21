@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:47:32 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/20 19:58:46 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 23:22:11 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ void			calc_light(t_tab_obj obj, t_color light, t_color *px_color)
 	px_color->b = light.b * obj.color.b;
 }
 
+static void		big_or_not(t_env *v, t_color color, int x, int y)
+{
+	if (v->ppc.render_size == 1)
+		pixel_put(v, x, y, color);
+	else
+		big_pixel(v, (t_int){x, y}, v->ppc.render_size, color);
+}
+
 static void		loop(t_env *v)
 {
 	int			x;
@@ -47,7 +55,6 @@ static void		loop(t_env *v)
 		while ((x += v->ppc.render_size) < ((i + 1) * v->width_thread))
 		{
 			color = (t_color){0, 0, 0};
-			// v->reflect[y * v->w + x] = 1;
 			if (select_obj(v, create_ray(v, x, y), &obj, &color))
 			{
 				color = limit_color(color);
@@ -55,10 +62,7 @@ static void		loop(t_env *v)
 					calc_light(obj, color, &color);
 			}
 			color = limit_color(color);
-			if (v->ppc.render_size == 1)
-				pixel_put(v, x, y, color);
-			else
-				big_pixel(v, (t_int){x, y}, v->ppc.render_size, color);
+			big_or_not(v, color, x, y);
 		}
 	pthread_exit(NULL);
 }

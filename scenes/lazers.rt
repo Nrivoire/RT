@@ -29,6 +29,7 @@ object{
 	point_b= {-15, 8, 30}
 	point_c= {15, 8, -10}
 	color= {15, 15, 15}
+	reflect= 0.2
 }
 
 object{
@@ -46,6 +47,7 @@ object{
 	point_b= {-10, 0, -15}
 	point_c= {-10, 15, 15}
 	color= {15, 15, 15}
+	reflect= 0.2
 }
 
 object{
@@ -54,6 +56,7 @@ object{
 	point_b= {10, 0, -15}
 	point_c= {10, 15, 15}
 	color= {15, 15, 15}
+	reflect= 0.2
 }
 
 object{
@@ -62,6 +65,7 @@ object{
 	point_b= {15, 10, -25}
 	point_c= {15, -10, -25}
 	color= {15, 15, 15}
+	reflect= 1.0
 }
 
 object{
@@ -70,6 +74,7 @@ object{
 	point_b= {15, 10, 22}
 	point_c= {15, -10, 22}
 	color= {15, 15, 15}
+	reflect= 0.2
 }
 
 object{
