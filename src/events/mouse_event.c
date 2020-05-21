@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 16:55:52 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 19:19:21 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -25,15 +25,15 @@ object{
 	texture-procedural= BUMP 30
 }
 
-# object{
-# 	type= SPHERE
-# 	radius= 2.0
-# 	pos= {-5, 1, 1}
-# 	reflect= 0
-# 	refract= 0
-# 	shininess= 0
-# 	texture= "./textures/checkboard_test.jpg"
-# }
+object{
+	type= SPHERE
+	radius= 2.0
+	pos= {-5, 1, 1}
+	reflect= 0
+	refract= 0
+	shininess= 0
+	texture= "./textures/checkboard_test.jpg"
+}
 
 # object{
 # 	type= PLANE

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   select_obj.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:20:05 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/20 12:44:33 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/20 20:00:20 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int		choose_closest_point(t_vec o, t_sol_2_vec s,
 	return (0);
 }
 
-int				select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light)
+int				select_obj(t_env *v, t_rt rt, t_tab_obj *obj, t_color *light)
 {
 	float		dist;
 	int			i;
@@ -64,15 +64,15 @@ int				select_obj(t_env *v, t_ray ray, t_tab_obj *obj, t_color *light)
 	t_vec		point;
 
 	dist = -1;
-	ray.o = vec_add(ray.o, vec_mult_float(vec_normalize(ray.d), 0.01));
+	rt.o = vec_add(rt.o, vec_mult_float(vec_normalize(rt.ray), 0.01));
 	i = -1;
 	while (++i < v->nb_o)
-		if (inter_ray_quadric(ray, v->tab_obj[i].q, &sol) 				\
-				&& choose_closest_point(ray.o, sol, &dist, &point))
+		if (inter_ray_quadric((t_ray){rt.o, rt.ray}, v->tab_obj[i].q, &sol) 	\
+				&& choose_closest_point(rt.o, sol, &dist, &point))
 		{
 			v->tab_obj[i].i = i;
 			*obj = v->tab_obj[i];
 		}
-	*light = dist >= 0 ? ray_tracer(v, obj, point, ray.d) : (t_color){0, 0, 0};
+	*light = dist >= 0 ? ray_tracer(v, obj, point, rt) : (t_color){0, 0, 0};
 	return (dist >= 0);
 }
