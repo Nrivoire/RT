@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 10:11:12 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 10:52:42 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 	}
 	if (obj->procedural && obj->procedural != GRAD)
 	{
+		if (obj->procedural == WAVES)
+			quadric_normal_pertu(obj->q, point, obj->tx_pertu, normal);
 		if (v->pe[0] != 151)
 			init_permutation(v);
-		create_texture_procedural(v, obj, point, normal);
+		create_texture_procedural(v, obj, normal);
 	}
-	else
+	else if (obj->texture)
 	{
 		if (obj->type == 1)
 			make_texture_sphere(obj, point, col);

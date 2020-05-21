@@ -6,23 +6,11 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 19:08:19 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/20 19:04:42 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 10:51:42 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-// void		bump_mapping(t_env *v, t_tab_obj *obj, t_vec *normal, t_vec point)
-// {
-// 	t_vec	bump;
-
-// 	bump.x = noise(v, point.x - obj->tx_pertu, point.y, point.z) - noise(v, point.x + obj->tx_pertu, point.y, point.z);
-// 	bump.y = noise(v, point.x, point.y - obj->tx_pertu, point.z) - noise(v, point.x, point.y + obj->tx_pertu, point.z);
-// 	bump.z = noise(v, point.x, point.y, point.z - obj->tx_pertu) - noise(v, point.x, point.y, point.z + obj->tx_pertu);
-// 	normal->x = bump.x + normal->x;
-// 	normal->y = bump.y + normal->y;
-// 	normal->z = bump.z + normal->z;
-// }
 
 float		perlin_noise(t_env *v, t_perlin p, t_vec normal)
 {
@@ -34,8 +22,6 @@ float		perlin_noise(t_env *v, t_perlin p, t_vec normal)
 	amplitude = 1.;
 	r = 0;
 	i = -1;
-	//if (obj->procedural == BUMP)
-	//	bump_mapping(v, obj, normal, pt);
 	while (++i < p.octaves)
 	{
 		r += noise(v, normal.x * p.frequency, normal.y * p.frequency,
@@ -47,12 +33,10 @@ float		perlin_noise(t_env *v, t_perlin p, t_vec normal)
 	return (r * lim);
 }
 
-void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec pt, t_vec *normal)
+void		create_texture_procedural(t_env *v, t_tab_obj *obj, t_vec *normal)
 {
 	float	time;
 
-	// if (obj->procedural == WAVES)
-	// 	quadric_normal_pertu(obj->q, pt, obj->tx_pertu, normal);
 	if (obj->procedural == PERLIN)
 		time = perlin_noise(v, (t_perlin){1, 7, 2}, *normal);
 	else if (obj->procedural == WOOD)

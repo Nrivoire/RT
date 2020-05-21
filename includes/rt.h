@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 10:11:14 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 10:52:23 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -392,7 +392,7 @@ void				make_texture_cylinder(t_tab_obj *obj, t_vec pt,
 void				init_permutation(t_env *v);
 float				noise(t_env *v, float x, float y, float z);
 void				create_texture_procedural(t_env *v, t_tab_obj *obj,\
-		t_vec pt, t_vec *normal);
+		t_vec *normal);
 
 /*
 ** --rays--
