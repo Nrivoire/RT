@@ -35,19 +35,33 @@ object{
 	texture= "./textures/checkboard_test.jpg"
 }
 
-object{
-	type= PLANE
-	point_a= {15, 10, 30}
-	point_b= {-15, 10, 30}
-	point_c= {15, 10, -10}
-	texture= "./textures/brick.jpg"
-}
+# object{
+# 	type= PLANE
+# 	point_a= {15, 10, 30}
+# 	point_b= {-15, 10, 30}
+# 	point_c= {15, 10, -10}
+# 	#color= {150, 150, 150}
+# 	#texture-procedural= PERLIN
+# 	texture= "./textures/brick.jpg"
+# }
 
-object{
-	type= CYLINDER
-	radius= 2.21
-	pos= {0, 0, 0}
-	dir= {0, -1, 0}
-	#color= {150, 150, 150}
-	texture= "./textures/checkboard_test.jpg"
-}
+# object{
+# 	type= CONE
+# 	radius= 0.2
+# 	pos= {1, 5, 1}
+# 	dir= {0, -1, 0}
+# 	color= {150, 150, 150}
+# 	texture-procedural= PERLIN
+# 	#color= {150, 150, 150}
+# 	#texture= "./textures/checkboard_test.jpg"
+# }
+
+# object{
+# 	type= CYLINDER
+# 	radius= 2.21
+# 	pos= {0, 0, 0}
+# 	dir= {0, -1, 0}
+# 	texture-procedural= PERLIN
+# 	color= {150, 150, 150}
+# 	#texture= "./textures/checkboard_test.jpg"
+# }
