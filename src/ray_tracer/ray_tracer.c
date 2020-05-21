@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/21 16:05:20 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 18:26:43 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_color		ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt)
 		t.normal = vec_mult_float(t.normal, -1);
 	t.refract = (t_color){0, 0, 0};
 	t.reflect = (t_color){0, 0, 0};
-	if (obj->refract && rt.reflect--)
+	if (obj->refract && rt.refract--)
 		t.refract = color_ratio(light_refraction(v, point, rt, t.normal), 	\
 				obj->refract);
 	if (obj->reflect && rt.reflect--)
@@ -61,6 +61,7 @@ t_rt		create_ray(t_env *v, int x, int y)
 	ray.ray = matrix_mult_vec(cam, 							\
 			(t_vec){v->cam.fov_x * (2. * x / v->w - 1), 	\
 			v->cam.fov_y * (2. * y / v->h - 1), -1});
+	ray.refract = REFRACTION;
 	ray.reflect = REFLECTION;
 	return (ray);
 }
