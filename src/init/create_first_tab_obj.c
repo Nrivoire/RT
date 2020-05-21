@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/21 02:33:19 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 13:17:02 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static t_tab_obj	make_obj(t_lst_obj *p)
 	data.color = p->color;
 	data.reflect = p->reflect;
 	data.refract = p->refract;
+	data.rho = p->rho;
 	data.shininess = p->shininess;
 	data.procedural = p->procedural;
 	data.tx_pertu = p->tx_pertu;

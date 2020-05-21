@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:53:05 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/20 19:58:43 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 13:18:01 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ static void		parse_material_obj(t_env *v, char *tmp, t_lst_obj *c, t_file *f)
 		c->reflect = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	else if (!ft_strncmp(tmp, "\trefract=", 9))
 		c->refract = ft_clampf(parse_value(tmp), 0.0, 1.0);
-	else if (!ft_strncmp(tmp, "\ttransparency=", 14))
-		c->transparency = ft_clampf(parse_value(tmp), 0.0, 1.0);
+	else if (!ft_strncmp(tmp, "\tdensity=", 9))
+		c->rho = ft_clampf(parse_value(tmp), 1.0, 3.0);
 	else if (!ft_strncmp(tmp, "\tshininess=", 11))
 		c->shininess = ft_clampf(parse_value(tmp), 0.0, 1.0);
 	else if (!ft_strncmp(tmp, "\tfix=", 5))

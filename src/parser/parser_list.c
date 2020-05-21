@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:54:06 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/20 19:52:32 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 13:18:37 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	add_lst_obj(t_lst_obj **ob, t_lst_obj content)
 	new->color = content.color;
 	new->reflect = content.reflect;
 	new->refract = content.refract;
-	new->transparency = content.transparency;
+	new->rho = content.rho;
 	new->shininess = content.shininess;
 	new->texture = content.texture;
 	new->procedural = content.procedural;

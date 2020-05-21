@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 14:00:07 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 14:20:39 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct		s_lst_obj
 	t_color			color;
 	float			reflect;
 	float			refract;
-	float			transparency;
+	float			rho;
 	float			shininess;
 	int				procedural;
 	int				tx_pertu;
@@ -169,6 +169,7 @@ typedef struct		s_tab_obj
 	t_color			color;
 	float			reflect;
 	float			refract;
+	float			rho;
 	float			shininess;
 	int				procedural;
 	int				tx_pertu;
