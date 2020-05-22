@@ -45,16 +45,15 @@ object{
 # 	texture= "./textures/brick.jpg"
 # }
 
-# object{
-# 	type= CONE
-# 	radius= 0.2
-# 	pos= {1, 5, 1}
-# 	dir= {0, -1, 0}
-# 	color= {150, 150, 150}
-# 	texture-procedural= PERLIN
-# 	#color= {150, 150, 150}
-# 	#texture= "./textures/checkboard_test.jpg"
-# }
+object{
+	type= CONE
+	radius= 0.3
+	pos= {1, 5, 1}
+	dir= {0, -1, 0}
+	# texture-procedural= PERLIN
+	#color= {150, 150, 150}
+	texture= "./textures/sun.jpg"
+}
 
 # object{
 # 	type= CYLINDER
