@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 18:52:08 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/18 21:58:42 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 12:59:05 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ void		parse_scene(t_env *v, t_file *file)
 ** Parse the values ​​of the camera in the file.
 */
 
+void		dir_cam(t_env *v, char *tmp, t_file *file)
+{
+	parse_xyz(tmp, v, file);
+	if (v->p.p_xyz.x < 0)
+		v->p.p_xyz.x = 360 + v->p.p_xyz.x;
+	if (v->p.p_xyz.y < 0)
+		v->p.p_xyz.y = 360 + v->p.p_xyz.y;
+	if (v->p.p_xyz.z < 0)
+		v->p.p_xyz.z = 360 + v->p.p_xyz.z;
+	v->p.cam.angle_x = ft_deg_to_rad(v->p.p_xyz.x);
+	v->p.cam.angle_y = ft_deg_to_rad(v->p.p_xyz.y);
+	v->p.cam.angle_z = ft_deg_to_rad(v->p.p_xyz.z);
+}
+
 void		parse_cam(t_env *v, t_file *file)
 {
 	char	*tmp;
@@ -72,13 +86,8 @@ void		parse_cam(t_env *v, t_file *file)
 			v->p.cam.pos = (t_vec){v->p.p_xyz.x, v->p.p_xyz.y, v->p.p_xyz.z};
 		}
 		else if (!ft_strncmp(tmp, "\tdir=", 5))
-		{
-			parse_xyz(tmp, v, file);
-			v->p.cam.angle_x = ft_deg_to_rad(v->p.p_xyz.x);
-			v->p.cam.angle_y = ft_deg_to_rad(v->p.p_xyz.y);
-			v->p.cam.angle_z = ft_deg_to_rad(v->p.p_xyz.z);
-		}
-		if (!ft_strncmp(tmp, "\tfov=", 5))
+			dir_cam(v, tmp, file);
+		else if (!ft_strncmp(tmp, "\tfov=", 5))
 			v->p.cam.fov = ft_clamp(parse_int_value(tmp), 30, 170);
 		ft_strdel(&file->line);
 		ft_strdel(&tmp);
