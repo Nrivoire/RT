@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/22 16:55:19 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 17:30:30 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -392,13 +392,13 @@ t_quadric			make_cone(t_vec a, t_vec v, float alpha);
 /*
 ** --textures--
 */
-void				generate_texture(t_env *v, t_tab_obj *obj, t_vec point,\
-		t_vec *normal);
-void				make_texture_sphere(t_tab_obj *obj, t_vec point,\
+void				generate_texture(t_env *v, t_tab_obj *obj, 				\
+		t_vec point, t_vec *normal);
+void				make_texture_sphere(t_tab_obj *obj, t_vec point, 		\
 		SDL_Color col);
 void				make_texture_plan(t_tab_obj *obj, t_vec point);
-//void				make_texture_cone(t_tab_obj *obj);
-void				make_texture_cylinder(t_tab_obj *obj, t_vec pt,
+void				make_texture_cone(t_tab_obj *obj, t_vec pt, SDL_Color col);
+void				make_texture_cylinder(t_tab_obj *obj, t_vec pt, 		\
 		SDL_Color col);
 
 /*
@@ -406,7 +406,7 @@ void				make_texture_cylinder(t_tab_obj *obj, t_vec pt,
 */
 void				init_permutation(t_env *v);
 float				noise(t_env *v, float x, float y, float z);
-void				create_texture_procedural(t_env *v, t_tab_obj *obj,\
+void				create_texture_procedural(t_env *v, t_tab_obj *obj, 	\
 		t_vec *normal);
 
 /*
@@ -415,18 +415,18 @@ void				create_texture_procedural(t_env *v, t_tab_obj *obj,\
 int					closest_intersect(t_env *v, t_ray ray, t_tab_obj *closest);
 void				make_tab_obj(t_env *v);
 t_rt				create_ray(t_env *v, int x, int y);
-int					select_obj(t_env *v, t_rt rt, t_tab_obj *obj, 		\
+int					select_obj(t_env *v, t_rt rt, t_tab_obj *obj, 			\
 		t_color *light);
 void				multi_thread_with_loop(t_env *v);
 void				loop_event(t_env *v);
-float				light_shadow(t_env *v, t_vec point, t_vec normal, 	\
+float				light_shadow(t_env *v, t_vec point, t_vec normal, 		\
 		t_tab_lights light);
-t_color				light_diffuse(t_vec point, t_vec *normal, 			\
+t_color				light_diffuse(t_vec point, t_vec *normal, 				\
 		t_tab_lights light);
-t_color				light_reflection(t_env *v, t_vec point, t_rt rt, 	\
+t_color				light_reflection(t_env *v, t_vec point, t_rt rt, 		\
 		t_vec normal);
 t_color				light_refraction(t_env *v, t_rt rt, t_vec normal, float n);
-t_color				light_shine(t_vec point, t_rt rt, t_vec normal, 	\
+t_color				light_shine(t_vec point, t_rt rt, t_vec normal, 		\
 		t_tab_lights light);
 
 /*
