@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/21 16:11:11 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 15:50:28 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 static void	ray_loop(t_env *v, t_tracer *t, t_vec point, t_rt rt)
 {
+	float	shadow;
+
 	t->diffuse = light_diffuse(point, &t->normal, v->tab_lights[t->i]);
-	if (!light_shadow(v, point, t->normal, v->tab_lights[t->i]))
+	if ((shadow = light_shadow(v, point, t->normal, v->tab_lights[t->i])) < 1)
 	{
-		t->light = color_op(t->light, '+', t->diffuse);
-		t->shine = color_op(t->shine, '+',\
-			light_shine(point, rt, t->normal, v->tab_lights[t->i]));
+		t->light = color_op(t->light, '+', color_ratio(t->diffuse, 1 - shadow));
+		t->shine = color_op(t->shine, '+', color_ratio(light_shine(point, 	\
+				rt, t->normal, v->tab_lights[t->i]), 1 - shadow));
 	}
 }
 
@@ -35,8 +37,11 @@ t_color		ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt)
 	t.refract = (t_color){0, 0, 0};
 	t.reflect = (t_color){0, 0, 0};
 	if (obj->refract && rt.refract--)
-		t.refract = color_ratio(light_refraction(v, point, rt, t.normal), 	\
-				obj->refract);
+	{
+		rt.o = point;
+		t.refract = color_ratio(light_refraction(v, rt, t.normal, 	\
+				obj->rho), obj->refract);
+	}
 	if (obj->reflect && rt.reflect--)
 		t.reflect = color_ratio(light_reflection(v, point, rt, t.normal), 	\
 				obj->reflect);
@@ -58,10 +63,11 @@ t_rt		create_ray(t_env *v, int x, int y)
 
 	matrix_rotation(v->cam.angle_x, v->cam.angle_y, v->cam.angle_z, cam);
 	ray.o = v->cam.ori;
-	ray.ray = matrix_mult_vec(cam, 							\
+	ray.ray = vec_normalize(matrix_mult_vec(cam, 			\
 			(t_vec){v->cam.fov_x * (2. * x / v->w - 1), 	\
-			v->cam.fov_y * (2. * y / v->h - 1), -1});
+			v->cam.fov_y * (2. * y / v->h - 1), -1}));
 	ray.refract = REFRACTION;
 	ray.reflect = REFLECTION;
+	ray.n = 1;
 	return (ray);
 }

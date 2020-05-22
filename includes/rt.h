@@ -6,7 +6,7 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 16:09:10 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 15:56:01 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,6 +315,7 @@ typedef struct		s_rt
 	t_vec	ray;
 	int		refract;
 	int		reflect;
+	float	n;
 }					t_rt;
 
 /*
@@ -418,14 +419,13 @@ int					select_obj(t_env *v, t_rt rt, t_tab_obj *obj, 		\
 		t_color *light);
 void				multi_thread_with_loop(t_env *v);
 void				loop_event(t_env *v);
-int					light_shadow(t_env *v, t_vec point, t_vec normal, 	\
+float				light_shadow(t_env *v, t_vec point, t_vec normal, 	\
 		t_tab_lights light);
 t_color				light_diffuse(t_vec point, t_vec *normal, 			\
 		t_tab_lights light);
 t_color				light_reflection(t_env *v, t_vec point, t_rt rt, 	\
 		t_vec normal);
-t_color				light_refraction(t_env *v, t_vec point, t_rt rt, 	\
-		t_vec normal);
+t_color				light_refraction(t_env *v, t_rt rt, t_vec normal, float n);
 t_color				light_shine(t_vec point, t_rt rt, t_vec normal, 	\
 		t_tab_lights light);
 

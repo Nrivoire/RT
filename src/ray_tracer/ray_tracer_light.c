@@ -6,16 +6,16 @@
 /*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 22:46:45 by vasalome          #+#    #+#             */
-/*   Updated: 2020/05/21 14:10:19 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 15:55:47 by qpupier          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int		light_shadow(t_env *v, t_vec point, t_vec normal, t_tab_lights light)
+float	light_shadow(t_env *v, t_vec point, t_vec normal, t_tab_lights light)
 {
 	t_seg		seg;
-	int			shadow;
+	float		shadow;
 	int			i;
 	t_sol_2_vec	sol;
 
@@ -23,7 +23,8 @@ int		light_shadow(t_env *v, t_vec point, t_vec normal, t_tab_lights light)
 	shadow = 0;
 	i = -1;
 	while (++i < v->nb_o)
-		shadow += inter_seg_quadric(seg, v->tab_obj[i].q, &sol);
+		if (inter_seg_quadric(seg, v->tab_obj[i].q, &sol))
+			shadow += 1 - v->tab_obj[i].refract;
 	return (shadow);
 }
 
@@ -68,12 +69,26 @@ t_color	light_shine(t_vec point, t_rt rt, t_vec normal, t_tab_lights light)
 			: (t_color){0, 0, 0});
 }
 
-t_color	light_refraction(t_env *v, t_vec point, t_rt rt, t_vec normal)
+t_color	light_refraction(t_env *v, t_rt rt, t_vec normal, float n)
 {
+	float		r;
+	float		sp;
+	float		radicand;
 	t_tab_obj	obj;
 	t_color		light;
 
-	rt.o = point;
+	if (rt.n == 1)
+		r = 1 / n;
+	else
+	{
+		r = n;
+		rt.n = n;
+	}
+	sp = vec_scale_product(normal, rt.ray);
+	radicand = 1 - r * r * (1 - sp * sp);
+	if (radicand < 0)
+		return (light_reflection(v, rt.o, rt, normal));
+	rt.ray = vec_sub(vec_mult_float(rt.ray, r), 	\
+			vec_mult_float(normal, r * sp + sqrtf(radicand)));
 	return (select_obj(v, rt, &obj, &light) ? light : (t_color){0, 0, 0});
-	(void)normal;
 }
