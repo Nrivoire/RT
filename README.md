@@ -17,6 +17,7 @@ make
 * puis lancer le projet
 ```bash
 ./rt
+./rt --help -> pour voir son utilisation
 ```
 ### Sur Linux
 * Installer la librairie SDL
@@ -30,6 +31,7 @@ make
 * puis lancer le projet
 ```bash
 ./rt
+./rt --help -> pour voir son utilisation
 ```
 ### Sur Windows
 * Installer [MinGW](http://www.mingw.org) pour intégrer le compilateur gcc et la librairie de threading POSIX : Lancer l'executable [```mingw.exe```](Windows/mingw.exe) présent dans le dossier [Windows](Windows)
@@ -70,268 +72,248 @@ make
 ```bash
 .\rt.exe
 ```
+
 ## Utilisation des scenes
-* Respecter le format de chaque bloc du fichier
+* Format d'utilisation et de création d'un fichier de configuation/scene.
 
 ```
-[type de bloc]{
+[BLOCK]{
 'tabulation'[variable]= [données]
 }
 
-type de block = [scene - camera - light - object]
+BLOCK = [scene / camera / light / object]
 ```
 
 ### Scene
 
 ```
-'	ambient-light= {r, g, b}'
-
-r.g.b = [0-1]
-```
-```
-'	width= largeur'
-
-largeur = [100-960]
-```
-```
-'	height= hauteur'
-
-hauteur = [100-720]
-```
-```
-'	filter= nom_du_filtre'
-
-nom_du_filtre = [greyscale - sepia - negative - cel-shading]
+'	ambient-light= {red [0-1 float], green [0-1 float], blue [0-1 float]}'
+'	width= [100-1280 int]'
+'	height= [100-720 int]'
+'	filter= [greyscale / sepia / negative / cel-shading]'
 ```
 
 ### Camera
 
 ```
-'	pos= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	dir= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	fov= fov_cam'
-
-fov_cam = [int]
+'	pos= {x [float], y [float], z [float]}'
+'	dir= {angle_x [degrees float], angle_y [degrees float], angle_z [degrees float]}'
+'	fov= [30-170 int]
 ```
 
 ### Lumière
 
 ```
-'	type= type_de_lumière'
-
-type_de_lumière = [POINT - DIRECTIONAL - SPOT]
-```
-```
-'	pos= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	dir= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	color= {r, g, b}'
-
-{r, g, b} = [float]
----
-'	color= hexa'
-
-hexa = [#......] ou [0x......]
+'	type= [POINT / DIRECTIONAL / SPOT]'
+'	pos= {x [float], y [float], z [float]}'
+'	dir= {x [float], y [float], z [float]}'
+'	color= {red [0-1 float], green [0-1 float], blue [0-1 float]} ou {#......} ou {0x......}'
 ```
 
 ### Objet
 
 ```
-'	type= type_objet'
-
-type_objet = [SPHERE - PLANE - CONE - CYLINDER]
-```
-```
-'	radius= rayon'
-
-rayon = [float]
-```
-```
-'	pos= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	dir= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	point_a= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	point_b= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	point_c= {x, y, z}'
-
-x.y.z = [float]
-```
-```
-'	color= {r, g, b}'
-
-{r, g, b} = [float]
----
-'	color= hexa'
-
-hexa = [#......] ou [0x......]
-```
-```
-'	reflect= reflection'
-
-reflection = [0-1]
-```
-```
-'	refract= refraction'
-
-refraction = [0-1]
-```
-```
-'	shininess= brillance'
-
-brillance = [0-1]
+'	type= [SPHERE / PLANE / CONE / CYLINDER]
+'	radius= [float]'
+'	pos= {x [float], y [float], z [float]}'
+'	dir= pos= {x [-1-1 float], y [-1-1 float], z [-1-1 float]}'
+'	point_a= {x [float], y [float], z [float]}'
+'	point_b= {x [float], y [float], z [float]}'
+'	point_c= {x [float], y [float], z [float]}'
+'	color= {red [0-255 float], green [0-255 float], blue [0-255 float]} ou {#......} ou {0x......}'
+'	reflect= [0-1 float]'
+'	refract= [0-1 float]'
+'	density= [1-3 float]'
+'	shininess= [0-1 float]'
+'	texture= "./textures/nom_de_la_texture.png"'
+'	fix= {x [float], y [float], z [float]}'
+'	texture-procedural= [PERLIN / WOOD / MARBLE / WAVES / GRADIENT]
 ```
 
-# TO-DO
-tuto raytracing: https://www.gabrielgambetta.com/computer-graphics-from-scratch/basic-ray-tracing.html <br>
+## Commandes
 
-plan: ax + by + cz + d = 0 <br>
-quadratique: ax2 + by2 + cz2 + dxy + exz + fyz + gx + hy + iz + j = 0 <br>
-sphere: (x-a)2 + (y-b)2 + (z-c)2 = r2 <br>
-
-
-## To-do
-
-- [X] Préliminaire
-
-Partie Obligatoire
-
-- [X] Expose sans recalcule
-
-- [X] Les Objets
-	- [X] 4 Objets simple
-	- [X] Translation des Objets
-	- [X] Rotation des Objets
-
-- [X] REM : Rapide Eye Movement
-
-- [ ] Lumiere
-	- [/] L'ombre des Objets
-	- [/] L'ombre multi-spot
-	- [ ] La Brillance
-	- [/] Le Multi-spot
-
-Partie Optionnelle
-
-- [X] Fichier de scene
-- [X] Fichier de scene ++
-
-- [X] Lumiere ambiante
-- [X] Ambiante ++
-
-- [ ] Objets limites
-	- [ ] Decoupe basique d'un Objet en XYZ
-	- [ ] Choix de l'axe de decoupe
-	- [ ] Rotation et Translation de l'Objet decouper
-	- [ ] Decoupe unique a chaque Objet
-	- [ ] Decoupe du Plan
-
-- [ ] Perturbations
-	- [ ] Normal	--->	"impression d'avoir des vaguelettes"
-	- [ ] Couleur	--->	"Le Damier"
-	- [X] Couleur	--->	"Texture Procedurale"
-	- [X] Couleur	--->	"Bruit de Perlin"
-
-- [ ] Lumiere Directe
-- [ ] Lumiere Paralelle --->	"Lumiere Directionnel"
-
-- [ ] Reflexion & Transparence
-	- [ ] Reflexion	--->	"Effet Miroir"
-	- [ ] Change % de reflexion
-	- [ ] La Transparence
-	- [ ] Indice de refraction
-	- [ ] Change le % de transparence
-
-- [ ] Ombres de l'Objet Transparent
-
-- [ ] Textures I
-	- [X] Applique une texture au moins sur 1 Objet
-	- [/] Applique une texture sur les 4 Objets de base
-	- [ ] Etire ou Contracte une Texture
-	- [ ] Faire bouge la texture sur l'Objet
-	- [X] Texture au format jpeg, png, ...
-
-- [ ] Texture II
-	- [ ] La Texture sert a modifier la normal
-	- [ ] La Texture sert a la transparence de l'objet
-	- [ ] La Texture sert a la limite de decoupe de l'Objet
-	- [ ] La Texture sert de diapositive
-
-- [ ] Objets Compose
-	- [ ] Un Cube
-	- [ ] Un Verre
-	- [ ] Bouge les Objets compose
-
-- [ ] Objets simple suplementaire
-	- [ ] Une autre primitive => A FAIRE
-
-- [ ] Effet visuel classique
-	- [X] Anti-aliasing "Super-sampling"
-	- [X] Effet Cartoon
-	- [X] Motion Blur ou Blur
-	- [X] Filtre sepia ou autre filtre de couleur
-	- [ ] Stereoscopie Simple
-
-- [ ] Effets Technique
-	- [ ] Calculs en Cluster
-	- [ ] Calculs multi-tread
-	- [ ] GPU
-	- [X] Sauvegarde d'une Image dans RT
-
-- [ ] Environnement
-	- [X] Interface Sommaire "Bare de Progression"
-	- [ ] Interface Chiade en GTK, QT ...
-	- [X] Modifie les variables de la scene
-	- [X] Paramettre plusieurs rendus
-	- [/] Ajoute des Objets dans la scene
-
-- [X] Travaille en Groupe
-
-- [ ] Les Objets Exotique
-	- [ ] Cube Troue
-	- [ ] Une Nappe
-	- [ ] Le Tore
-	- [ ] Resolution d'equation
-	- [ ] Fractal
-
-- [ ] En vrac
-	- [ ] Sequence video du RT => !!!!!!!
-	- [ ] Gestion du Fichier .pov, .3ds, .obj => !!!
-	- [ ] Enrelief sur TV 3D ou Oculuse Rift
-	- [ ] Spot non Ponctuel => !!
-	- [ ] Autre "Au choix" => !!!!!
-
-- [ ] Ruban de Moebius => !!
-
-- [ ] Caustics et/ou Global illumination
-
-- [?] Rendu Magnifique
+<table style="background-color:grey;" width="100%">
+<thead>
+<tr>
+<td width="60%" height="60px" style="background-color:#606060;" align="center" cellpadding="0">
+<strong>Description</strong>
+</td>
+<td width="40%" align="center" style="background-color:#606060;" cellpadding="0">
+<span style="width:70px">&nbsp;</span><strong>Key(s)</strong><span style="width:50px">&nbsp;</span>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td valign="top" height="30px">Close the program (quit/exit)</td>
+<td valign="top" align="center"><kbd>&nbsp;esc&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" style="background-color:#707070;">Move the camera</td>
+<td valign="top" style="background-color:#707070;" align="center"></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the axe z (-z)</td>
+<td valign="top" align="center"><kbd>&nbsp;W&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the axe x (-x)</td>
+<td valign="top" align="center"><kbd>&nbsp;A&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the axe z (+z)</td>
+<td valign="top" align="center"><kbd>&nbsp;S&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the axe x (+x)</td>
+<td valign="top" align="center"><kbd>&nbsp;D&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the axe y (+y)</td>
+<td valign="top" align="center"><kbd>&nbsp;Q&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the axe y (-y)</td>
+<td valign="top" align="center"><kbd>&nbsp;E&nbsp;</kbd></td>
+</tr>
+<td valign="top" style="background-color:#707070;">Rotate the camera</td>
+<td valign="top" style="background-color:#707070;" align="center"></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_x (+angle_x)</td>
+<td valign="top" align="center"><kbd>&nbsp;I&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_y (+angle_y)</td>
+<td valign="top" align="center"><kbd>&nbsp;J&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_x (-angle_x)</td>
+<td valign="top" align="center"><kbd>&nbsp;K&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_y (-angle_y)</td>
+<td valign="top" align="center"><kbd>&nbsp;L&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_z (+angle_z)</td>
+<td valign="top" align="center"><kbd>&nbsp;U&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_z (-angle_z)</td>
+<td valign="top" align="center"><kbd>&nbsp;O&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_z (-angle_z)</td>
+<td valign="top" align="center"><kbd>&nbsp;O&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top"></td>
+<td valign="top" align="center"></td>
+</tr>
+<tr>
+<td valign="top" style="background-color:#707070;">Move the selected object<br></td>
+<td valign="top" style="background-color:#707070;" align="center"></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> position on y (+y)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;W&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> position on x (-x)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;A&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> position on y (-y)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;S&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> position on x (+x)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;D&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> position on z (-z)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;Q&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> position on z (+z)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;E&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" style="background-color:#707070;">Rotate the selected object</td>
+<td valign="top" style="background-color:#707070;" align="center"></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> direction on x (+x)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;I&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> direction on y (+)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;J&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> direction on x (-x)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;K&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> direction on y (-angle_y)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;L&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> direction on z (+angle_z)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;U&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> direction on z (-angle_z)</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;O&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">To accelerate the object event</td>
+<td valign="top" align="center"><kbd>&nbsp;LSHIFT&nbsp;</kbd> or <kbd>&nbsp;RSHIFT&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Change the radius of the selected object</td>
+<td valign="top" align="center"><kbd>&nbsp;WHEEL&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Delete the selected object</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;G&nbsp;</kbd> + <kbd>&nbsp;N&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top"></td>
+<td valign="top" align="center"></td>
+</tr>
+<tr>
+<td valign="top" style="background-color:#707070;">+Plus</td>
+<td valign="top" style="background-color:#707070;" align="center"></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Change the filter</td>
+<td valign="top" align="center"><kbd>&nbsp;F&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Activate the supersampling</td>
+<td valign="top" align="center"><kbd>&nbsp;V&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Activate the blur</td>
+<td valign="top" align="center"><kbd>&nbsp;B&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Desactivate supersampling & blur</td>
+<td valign="top" align="center"><kbd>&nbsp;C&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Desactivate the BigPixel rendering</td>
+<td valign="top" align="center"><kbd>&nbsp;T&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Reactivate the BigPixel rendering</td>
+<td valign="top" align="center"><kbd>&nbsp;R&nbsp;</kbd></td>
+</tr>
+<tr>
+<td valign="top" height="30px">Take a screenshot (or the right click)</td>
+<td valign="top" align="center"><kbd>&nbsp;P&nbsp;</kbd></td>
+</tr>
+</tbody>
+</table>

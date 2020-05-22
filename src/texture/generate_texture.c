@@ -6,16 +6,11 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 19:11:49 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 15:47:03 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 17:54:26 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-float			texture_color_move(float x)
-{
-	return ((1 - round((2 * (x - floor(x)) - 1))));
-}
 
 void			generate_texture(t_env *v, t_tab_obj *obj, t_vec point, \
 					t_vec *normal)
