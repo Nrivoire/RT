@@ -6,7 +6,7 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/23 16:39:39 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 17:31:46 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 		else
 			v->cam.angle_x -= (e.motion.yrel * 0.01);
 		SDL_ShowCursor(SDL_DISABLE);
+		SDL_SetWindowGrab(v->win, SDL_TRUE);
 	}
 	else if (mouse == 4)
 	{
@@ -34,7 +35,11 @@ void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 	else if (mouse == 0)
 	{
 		v->ppc.render_mouse = 0;
-		SDL_ShowCursor(SDL_ENABLE);
+		if (SDL_GetWindowGrab(v->win))
+		{
+			SDL_SetWindowGrab(v->win, SDL_FALSE);
+			SDL_ShowCursor(SDL_ENABLE);
+		}
 	}
 }
 
