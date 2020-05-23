@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/23 10:59:30 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 17:18:18 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ static void	event_texture(t_env *v, const Uint8 *keyboard_state)
 	}
 }
 
+static void			dir_tex_cylinder(t_tab_obj *obj)
+{
+	t_vec			cross;
+
+	obj->ve = vec_normalize(vec_cross_product((t_vec){1, 0, 0}, obj->dir));
+	if (vec_scale_product(obj->ve, obj->dir) != 0)
+	{
+		cross = vec_normalize(vec_cross_product(obj->ve, obj->dir));
+		cross = vec_cross_product(cross, obj->ve);
+		obj->ve = vec_sub(cross, obj->dir);
+	}
+	obj->vn = vec_normalize(vec_cross_product(obj->dir, obj->ve));
+	obj->plan_cylinder_for_tex = (t_plane){obj->dir.x, obj->dir.y,
+			obj->dir.z, -obj->dir.x * obj->pos.x - obj->dir.y *
+			obj->pos.y - obj->dir.z * obj->pos.z};
+}
+
 static void	obj_event_rotate(t_env *v, const Uint8 *keyboard_state)
 {
 	float	angle;
@@ -64,6 +81,8 @@ static void	obj_event_rotate(t_env *v, const Uint8 *keyboard_state)
 		v->selected_obj->dir = rot_axe_y(v->selected_obj->dir, angle, 'L');
 	if (keyboard_state[SDL_SCANCODE_O])
 		v->selected_obj->dir = rot_axe_z(v->selected_obj->dir, angle, 'L');
+	if (v->selected_obj->type == 4 && v->selected_obj->texture)
+		dir_tex_cylinder(v->selected_obj);
 }
 
 void		obj_event(t_env *v, const Uint8 *keyboard, float scale)

@@ -14,26 +14,6 @@ light{
 	dir= {0, 0, 0}
 }
 
-object{
-	type= SPHERE
-	radius= 2.0
-	pos= {0, 0, 10}
-	reflect= 0
-	refract= 0
-	shininess= 0
-	color= {10, 150, 10}
-	texture-procedural= BUMP 30
-}
-
-object{
-	type= SPHERE
-	radius= 2.0
-	pos= {-5, 1, 1}
-	reflect= 0
-	refract= 0
-	shininess= 0
-	texture= "./textures/checkboard_test.jpg"
-}
 
 # object{
 # 	type= PLANE
@@ -45,22 +25,28 @@ object{
 # 	texture= "./textures/brick.jpg"
 # }
 
-object{
-	type= CONE
-	radius= 0.3
-	pos= {1, 5, 1}
-	dir= {0, -1, 0}
-	# texture-procedural= PERLIN
-	#color= {150, 150, 150}
-	texture= "./textures/sun.jpg"
-}
+# object{
+# 	type= CONE
+# 	radius= 0.3
+# 	pos= {4, 0, 1}
+# 	dir= {0, -1, 0}
+# 	color= {150, 150, 150}
+# }
 
 # object{
-# 	type= CYLINDER
-# 	radius= 2.21
-# 	pos= {0, 0, 0}
+# 	type= CONE
+# 	radius= 0.3
+# 	pos= {1, 0, 1}
 # 	dir= {0, -1, 0}
-# 	texture-procedural= PERLIN
-# 	color= {150, 150, 150}
-# 	#texture= "./textures/checkboard_test.jpg"
+# 	texture= "./textures/brick.jpg"
 # }
+
+object{
+	type= CYLINDER
+	radius= 2.21
+	pos= {0, 0, 0}
+	dir= {0, -1, 0}
+	#texture-procedural= PERLIN
+	color= {150, 150, 150}
+	texture= "./textures/checkboard_test.jpg"
+}

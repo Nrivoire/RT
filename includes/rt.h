@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/23 03:34:56 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 15:47:03 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,19 +190,19 @@ typedef struct		s_tab_lights
 	t_color			color;
 }					t_tab_lights;
 
-typedef struct		s_mapping
-{
-	double			start1;
-	double			stop1;
-	double			start2;
-	double			stop2;
-}					t_mapping;
-
 typedef struct		s_unit
 {
 	float			u;
 	float			v;
 }					t_unit;
+
+typedef struct		s_between
+{
+	int				min_x;
+	int				max_x;
+	int				min_y;
+	int				max_y;
+}					t_between;
 
 /*
 ** ---------------------------------PERLIN--------------------------------
@@ -259,14 +259,6 @@ typedef struct		s_ui
 	int				m_w;
 	int				m_h;
 }					t_ui;
-
-typedef struct		s_between
-{
-	int				min_x;
-	int				max_x;
-	int				min_y;
-	int				max_y;
-}					t_between;
 
 typedef struct		s_env
 {

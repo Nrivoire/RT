@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_first_tab_obj.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/23 03:20:34 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 17:10:02 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void			check_plan(int i, t_env *v)
 
 	ab = vec_sub(v->tab_obj[i].b, v->tab_obj[i].a);
 	ac = vec_sub(v->tab_obj[i].c, v->tab_obj[i].a);
-	cross = vec_cross_product(ab, ac);
 	if (vec_scale_product(ab, ac) != 0)
 	{
+		cross = vec_cross_product(ab, ac);
 		cross = vec_cross_product(cross, ab);
 		v->tab_obj[i].c = vec_sub(cross, v->tab_obj[i].a);
 	}

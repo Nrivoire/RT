@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 01:17:42 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 16:39:39 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 	{
 		v->ppc.render_mouse = 1;
 		if (abs(e.motion.xrel) > abs(e.motion.yrel))
-			v->cam.angle_y -= (e.motion.xrel * 0.1) * (M_PI / 180);
+			v->cam.angle_y -= (e.motion.xrel * 0.01);
 		else
-			v->cam.angle_x -= (e.motion.yrel * 0.1) * (M_PI / 180);
-		SDL_SetRelativeMouseMode(SDL_TRUE);
+			v->cam.angle_x -= (e.motion.yrel * 0.01);
+		SDL_ShowCursor(SDL_DISABLE);
 	}
-	if (mouse == 4)
+	else if (mouse == 4)
 	{
 		v->ppc.render_mouse = 1;
 		if (e.motion.xrel > 0 || e.motion.xrel < 0)
@@ -31,10 +31,10 @@ void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 		if (e.motion.yrel > 0 || e.motion.yrel < 0)
 			v->cam.ori.y += e.motion.yrel * 0.02;
 	}
-	if (mouse == 0)
+	else if (mouse == 0)
 	{
 		v->ppc.render_mouse = 0;
-		SDL_SetRelativeMouseMode(SDL_FALSE);
+		SDL_ShowCursor(SDL_ENABLE);
 	}
 }
 
