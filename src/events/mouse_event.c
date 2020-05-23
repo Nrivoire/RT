@@ -6,24 +6,27 @@
 /*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/23 17:31:46 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 17:55:16 by nrivoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
+static void	mouv_cam_with_mouse(SDL_Event e, t_env *v)
+{
+	v->ppc.render_mouse = 1;
+	if (abs(e.motion.xrel) > abs(e.motion.yrel))
+		v->cam.angle_y -= (e.motion.xrel * 0.01);
+	else
+		v->cam.angle_x -= (e.motion.yrel * 0.01);
+	SDL_ShowCursor(SDL_DISABLE);
+	SDL_SetWindowGrab(v->win, SDL_TRUE);
+}
+
 void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 {
 	if (mouse == 1)
-	{
-		v->ppc.render_mouse = 1;
-		if (abs(e.motion.xrel) > abs(e.motion.yrel))
-			v->cam.angle_y -= (e.motion.xrel * 0.01);
-		else
-			v->cam.angle_x -= (e.motion.yrel * 0.01);
-		SDL_ShowCursor(SDL_DISABLE);
-		SDL_SetWindowGrab(v->win, SDL_TRUE);
-	}
+		mouv_cam_with_mouse(e, v);
 	else if (mouse == 4)
 	{
 		v->ppc.render_mouse = 1;
@@ -35,11 +38,8 @@ void		mouse_motion_event(SDL_Event e, t_env *v, uint32_t mouse)
 	else if (mouse == 0)
 	{
 		v->ppc.render_mouse = 0;
-		if (SDL_GetWindowGrab(v->win))
-		{
-			SDL_SetWindowGrab(v->win, SDL_FALSE);
-			SDL_ShowCursor(SDL_ENABLE);
-		}
+		SDL_SetWindowGrab(v->win, SDL_FALSE);
+		SDL_ShowCursor(SDL_ENABLE);
 	}
 }
 
