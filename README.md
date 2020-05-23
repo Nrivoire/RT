@@ -204,10 +204,6 @@ BLOCK = [scene / camera / light / object]
 <td valign="top" align="center"><kbd>&nbsp;O&nbsp;</kbd></td>
 </tr>
 <tr>
-<td valign="top" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> on the angle_z (-angle_z)</td>
-<td valign="top" align="center"><kbd>&nbsp;O&nbsp;</kbd></td>
-</tr>
-<tr>
 <td valign="top"></td>
 <td valign="top" align="center"></td>
 </tr>
