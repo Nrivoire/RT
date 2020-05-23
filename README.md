@@ -272,6 +272,10 @@ BLOCK = [scene / camera / light / object]
 <td valign="top" align="center"><kbd>&nbsp;WHEEL&nbsp;</kbd></td>
 </tr>
 <tr>
+<td valign="top" height="30px">Stretching the texture of the object</td>
+<td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;▲&nbsp;</kbd> or <kbd>&nbsp;▼&nbsp;</kbd></td>
+</tr>
+<tr>
 <td valign="top" height="30px">Delete the selected object</td>
 <td valign="top" align="center"><kbd>&nbsp;SPACE&nbsp;</kbd> + <kbd>&nbsp;G&nbsp;</kbd> + <kbd>&nbsp;N&nbsp;</kbd></td>
 </tr>
