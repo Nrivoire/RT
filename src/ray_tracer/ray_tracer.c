@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/06 17:52:18 by qpupier           #+#    #+#             */
-/*   Updated: 2020/05/22 16:53:24 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 10:13:27 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ static void	ray_loop(t_env *v, t_tracer *t, t_vec point, t_rt rt)
 	}
 }
 
+static void	ray_init_value(t_env *v, t_tracer *t)
+{
+	t->refract = (t_color){0, 0, 0};
+	t->reflect = (t_color){0, 0, 0};
+	t->light = v->p.sc.amb_light;
+	t->shine = (t_color){0, 0, 0};
+	t->i = -1;
+}
+
 t_color		ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt)
 {
 	t_tracer	t;
@@ -34,8 +43,7 @@ t_color		ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt)
 		generate_texture(v, obj, point, &t.normal);
 	if (vec_scale_product(t.normal, rt.ray) > 0)
 		t.normal = vec_mult_float(t.normal, -1);
-	t.refract = (t_color){0, 0, 0};
-	t.reflect = (t_color){0, 0, 0};
+	ray_init_value(v, &t);
 	if (obj->refract && rt.refract--)
 	{
 		rt.o = point;
@@ -45,9 +53,6 @@ t_color		ray_tracer(t_env *v, t_tab_obj *obj, t_vec point, t_rt rt)
 	if (obj->reflect && rt.reflect--)
 		t.reflect = color_ratio(light_reflection(v, point, rt, t.normal), 	\
 				obj->reflect);
-	t.light = v->p.sc.amb_light;
-	t.shine = (t_color){0, 0, 0};
-	t.i = -1;
 	while (++t.i < v->nb_l)
 		ray_loop(v, &t, point, rt);
 	t.light = color_op(color_ratio(color_op(t.light, '*', obj->color), 	\

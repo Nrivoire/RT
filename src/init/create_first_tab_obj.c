@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_first_tab_obj.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:43:53 by natachaNata       #+#    #+#             */
-/*   Updated: 2020/05/22 18:36:12 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 03:20:34 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static t_tab_obj	make_obj(t_lst_obj *p)
 	data.plan_cylinder_for_tex = (t_plane){0, 0, 0, 0};
 	data.ve = vec_normalize(vec_cross_product(data.dir, (t_vec){1, 0, 0}));
 	data.vn = vec_normalize(vec_cross_product(data.dir, data.ve));
+	data.tex = 1.0;
 	return (data);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_texture_sphere.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:17:59 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/18 18:54:23 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 10:37:05 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	make_texture_sphere(t_tab_obj *obj, t_vec point, SDL_Color col)
 	res = calc_u_and_v(vn, vp, ve);
 	if (res.u >= 0 && res.v >= 0 && res.u <= 1 && res.v <= 1)
 	{
-		SDL_GetRGB(get_pixel(obj->texture, res.u * obj->texture->w,
-				res.v * obj->texture->h), obj->texture->format,
+		SDL_GetRGB(get_pixel(obj->texture, res.u * (obj->texture->w / obj->tex),
+				res.v * (obj->texture->h / obj->tex)), obj->texture->format,
 				&col.r, &col.g, &col.b);
 		obj->color = (t_color){col.r / 255.0, col.g / 255.0, col.b / 255.0};
 	}

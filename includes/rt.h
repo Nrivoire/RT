@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpupier <qpupier@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 11:56:50 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/22 17:30:30 by qpupier          ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 03:34:56 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ typedef struct		s_tab_obj
 	t_plane			plan_cylinder_for_tex;
 	t_vec			vn;
 	t_vec			ve;
+	float			tex;
 }					t_tab_obj;
 
 typedef struct		s_tab_lights

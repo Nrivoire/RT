@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 20:17:20 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/21 06:11:16 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 10:37:16 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void			make_texture_plan(t_tab_obj *obj, t_vec point)
 	vp = vec_sub(point, obj->a);
 	resolv_equation(u, v, vp, &res);
 	SDL_GetRGB(get_pixel(obj->texture,
-		(int)(fabs(res.x) * obj->texture->w) % obj->texture->w,
-		(int)(fabs(res.y) * obj->texture->h) % obj->texture->h),
+		(int)(fabs(res.x) * (obj->texture->w / obj->tex)) % obj->texture->w,
+		(int)(fabs(res.y) * (obj->texture->h / obj->tex)) % obj->texture->h),
 		obj->texture->format, &col.r, &col.g, &col.b);
 	obj->color = (t_color){col.r / 255.0, col.g / 255.0, col.b / 255.0};
 }

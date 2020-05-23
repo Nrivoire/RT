@@ -6,7 +6,7 @@
 #    By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/14 19:04:17 by nrivoire          #+#    #+#              #
-#    Updated: 2020/05/21 04:43:53 by vasalome         ###   ########lyon.fr    #
+#    Updated: 2020/05/23 03:33:58 by vasalome         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,10 +76,11 @@ SRC_NAME = 	draw_tools/display.c				\
 			ray_tracer/select_obj.c				\
 			texture/make_texture_plan.c			\
 			texture/make_texture_sphere.c		\
+			texture/make_texture_cylinder.c		\
+			texture/make_texture_cone.c			\
 			texture/noise.c						\
 			texture/perlin_noise.c				\
 			texture/generate_texture.c			\
-			texture/make_texture_cylinder.c		\
 			ui/menu_bouton.c					\
 			ui/menu_selected_utils.c			\
 			ui/menu_selected.c					\
