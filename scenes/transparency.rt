@@ -1,0 +1,72 @@
+scene{
+	ambient-light= {0.02, 0.02, 0.02}
+}
+
+camera{
+	pos= {0, 5, 20}
+	dir= {-10, 0, 0}
+	fov= 60
+}
+
+light{
+	type= POINT
+	color= 0xFFFFFF
+	pos= {0, -1, 5}
+	intensity= 1.0;
+}
+
+# light{
+# 	type= POINT
+# 	color= 0x00FF00
+# 	pos= {0, -1, 5}
+# 	intensity= 1.0;
+# }
+
+# light{
+# 	type= POINT
+# 	color= 0x0000FF
+# 	pos= {3, -1, 5}
+# 	intensity= 1.0;
+# }
+
+# light{
+# 	type= POINT
+# 	color= 0xFF0000
+# 	pos= {-3, -1, 5}
+# 	intensity= 1.0;
+# }
+
+object{
+	type= SPHERE
+	radius= 1.5
+	pos= {0, 0, 0}
+	color= {200, 200, 200}
+	refract= 0.5
+	density= 1.0
+}
+
+object{
+	type= SPHERE
+	radius= 1.5
+	pos= {3, 0, 0}
+	color= {200, 200, 200}
+	refract= 0.9
+	density= 1.0
+}
+
+object{
+	type= SPHERE
+	radius= 1.5
+	pos= {-3, 0, 0}
+	color= {200, 200, 200}
+	refract= 0.0
+	density= 1.0
+}
+
+object{
+	type= PLANE
+	point_a= {0, 1, -10}
+	point_b= {10, 2, -10}
+	point_c= {-10, 5, -10}
+	color= {235, 235, 235}
+}
