@@ -6,7 +6,7 @@
 /*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 18:05:31 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/24 16:41:10 by vasalome         ###   ########lyon.fr   */
+/*   Updated: 2020/05/24 17:58:31 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,18 @@ static void	event_texture(t_env *v, const Uint8 *keyboard_state)
 	}
 }
 
-static void			dir_tex_cylinder(t_tab_obj *obj)
+static void	dir_tex_cylinder(t_tab_obj *obj)
 {
 	t_vec			cross;
 
-	obj->vn = vec_normalize(vec_cross_product((t_vec){1, 0, 0}, obj->dir));
+	obj->ve = vec_normalize(vec_cross_product((t_vec){1, 0, 0}, obj->dir));
 	if (vec_scale_product(obj->vn, obj->dir) != 0)
 	{
-		cross = vec_normalize(vec_cross_product(obj->ve, obj->dir));
-		cross = vec_cross_product(cross, obj->ve);
-		obj->ve = vec_sub(cross, obj->dir);
+		cross = vec_normalize(vec_cross_product(obj->vn, obj->dir));
+		cross = vec_cross_product(cross, obj->vn);
+		obj->vn = vec_sub(cross, obj->dir);
 	}
-	obj->ve = vec_normalize(vec_cross_product(obj->dir, obj->vn));
+	obj->vn = vec_normalize(vec_cross_product(obj->dir, obj->ve));
 	obj->plan_cylinder_for_tex = (t_plane){obj->dir.x, obj->dir.y,
 			obj->dir.z, -obj->dir.x * obj->pos.x - obj->dir.y *
 			obj->pos.y - obj->dir.z * obj->pos.z};
