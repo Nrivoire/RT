@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrivoire <nrivoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vasalome <vasalome@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 17:58:38 by nrivoire          #+#    #+#             */
-/*   Updated: 2020/05/23 17:55:16 by nrivoire         ###   ########lyon.fr   */
+/*   Updated: 2020/05/25 10:36:11 by vasalome         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,21 @@ static void	mouv_cam_with_mouse(SDL_Event e, t_env *v)
 {
 	v->ppc.render_mouse = 1;
 	if (abs(e.motion.xrel) > abs(e.motion.yrel))
+	{
 		v->cam.angle_y -= (e.motion.xrel * 0.01);
+		if (v->cam.angle_y > (360 * (M_PI / 180)))
+			v->cam.angle_y = 0.00000;
+		else if (v->cam.angle_y < 0.000000)
+			v->cam.angle_y = (360 * (M_PI / 180));
+	}
 	else
+	{
 		v->cam.angle_x -= (e.motion.yrel * 0.01);
+		if (v->cam.angle_x > (360 * (M_PI / 180)))
+			v->cam.angle_x = 0.00000;
+		else if (v->cam.angle_x < 0.000000)
+			v->cam.angle_x = (360 * (M_PI / 180));
+	}
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_SetWindowGrab(v->win, SDL_TRUE);
 }
